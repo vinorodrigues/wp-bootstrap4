@@ -1,4 +1,4 @@
-WP-Bootstrap3
-==============
+WP-Bootstrap4
+=============
 
-Wordpress Theme derived from _s and Bootstrap 3
+A responsive Wordpress theme based on [Bootstrap 4](http://getbootstrap.com) and derived from [_s](http://underscores.me).
