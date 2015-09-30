@@ -1,0 +1,13 @@
+.dashicons {
+    font-size: 1.3em;
+    width: auto;
+    height: auto;
+}
+
+.dashicons-lg {
+    font-size: 1.6em;
+}
+
+.display-1 .dashicons {
+    font-size: inherit;
+}

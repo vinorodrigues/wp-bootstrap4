@@ -1,0 +1,48 @@
+/**
+ * wp-bootstrap4.css
+ */
+
+/* @import "compass"; */
+@import "variables";
+
+/**
+ * @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide
+ */
+
+/* -------------------- THEME SPECIFIC FIXES TO HTML -------------------- */
+
+img.pull-left,
+figure.pull-left {
+	padding-right: $spacer-y !important;
+}
+
+img.pull-right,
+figure.pull-right {
+	padding-left: $spacer-y !important;
+}
+
+hr.soft {
+	width: 16.667%;
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(128, 128, 128, 0.75), rgba(255, 255, 255, 0));
+	margin: ($spacer-y * 1.5) auto;
+}
+
+textarea,
+input[type="text"], input[type="password"], input[type="datetime"],
+input[type="datetime-local"], input[type="date"], input[type="month"],
+input[type="time"], input[type="week"], input[type="number"],
+input[type="email"], input[type="url"], input[type="search"],
+input[type="tel"], input[type="color"] {
+	max-width: 100%;
+}
+
+/* -------------------- BOOTSTRAP TRICKS -------------------- */
+
+.no-gutter > [class^="col-"] {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+/* -------------------- THEME SPECIFIC HELPER CLASSES -------------------- */

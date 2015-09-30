@@ -1,0 +1,291 @@
+<?php
+/**
+ * Template library for this theme.
+ *
+ * These are mostly format and helper functions.
+ */
+
+function bs4_icon_set() {
+	global $bs4_singletons;
+	if (!isset($bs4_singletons)) $bs4_singletons = array();
+
+	if (!isset($bs4_singletons['icon_set'])) {
+        	$bs4_singletons['icon_set'] = get_theme_mod('icon_set', 'fa');
+		$_fn = get_template_directory() . '/inc/iconset-' . $bs4_singletons['icon_set'] . '.php';
+        	if (file_exists($_fn)) include_once $_fn;
+	}
+
+	return $bs4_singletons['icon_set'];
+}
+
+function get_bs4_i($name, $before = '', $after = '', $attribs = false) {
+	return call_user_func('get_bs4_icon_'.bs4_icon_set(), $name, $before, $after, $attribs);
+}
+
+function bs4_i($name, $before = '', $after = '', $attribs = false) {
+	echo get_bs4_i($name, $before, $after, $attribs);
+}
+
+function get_bs4_user_i($id_or_email = null, $before = '', $after = '', $attribs = false) {
+	if (!empty($id_or_email) && get_option('show_avatars')) {
+		$avatar = get_avatar($id_or_email, 32, '', '');
+		if (!empty($avatar)) {
+			$avatar = str_replace(
+				array('height="32" width="32"', 'height=\'32\' width=\'32\''),
+				'style="width:1rem;height:1rem"',
+				$avatar);
+			$avatar = str_replace(
+				array('class="', 'class=\''),
+				array('class="'.AVATAR_CLASS.' ', 'class=\''.AVATAR_CLASS.' '),
+				$avatar);
+			return $before . $avatar . $after;
+		}
+	}
+	return get_bs4_i('user', $before, $after, $attribs);
+}
+
+/**
+ *  Rehash of get_the_category_list()
+ */
+function get_bs4_category_list( $post_id = false ) {
+	if ( ! is_object_in_taxonomy( get_post_type( $post_id ), 'category' ) )
+		return false;
+
+	$categories = get_the_category( $post_id );
+	if ( empty( $categories ) ) return false;
+
+	$cats = array();
+	foreach ( $categories as $category ) {
+        	$cats[] = $category->term_id;
+	}
+	return $cats;
+}
+
+function get_bs4_tag_list( $post_id = false ) {
+	if (!$post_id) $post_id = get_the_ID();
+	$terms = get_the_terms( $post_id, 'post_tag');
+	if ( empty( $terms ) ) return false;
+
+	$tags = array();
+	if ($terms)
+		foreach ($terms as $term) {
+        		$tags[] = $term->term_id;
+        	}
+	return $tags;
+}
+
+function __bs4_get_cat_cnt_limit($minmax = 'max') {
+	global $bs4_singletons;
+	if (!isset($bs4_singletons)) $bs4_singletons = array();
+
+	$singleton = 'category-' . $minmax;
+	if (!isset($bs4_singletons[$singleton])) {
+        	$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
+        	if ('min' != $minmax) $args['order'] = 'DESC';
+        	$cats = get_categories( $args );
+        	if (is_array($cats) && is_object($cats[0]))
+        		$bs4_singletons[$singleton] = intval( $cats[0]->count );
+        	else
+        		$bs4_singletons[$singleton] = 0;
+	}
+	return $bs4_singletons[$singleton];
+}
+
+function __bs4_get_cat_cnt_min() {
+	return __bs4_get_cat_cnt_limit('min');
+}
+
+function __bs4_get_cat_cnt_max() {
+	return __bs4_get_cat_cnt_limit('max');
+}
+
+function __bs4_get_tag_cnt_limit($minmax = 'max') {
+	global $bs4_singletons;
+	if (!isset($bs4_singletons)) $bs4_singletons = array();
+
+	$singleton = 'tag-' . $minmax;
+	if (!isset($bs4_singletons[$singleton])) {
+        	$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
+        	if ('min' != $minmax) $args['order'] = 'DESC';
+        	$tags = get_tags( $args );
+        	if (is_array($tags) && is_object($tags[0]))
+        		$bs4_singletons[$singleton] = intval( $tags[0]->count );
+        	else
+        		$bs4_singletons[$singleton] = 0;
+	}
+	return $bs4_singletons[$singleton];
+}
+
+function __bs4_get_tag_cnt_min() {
+	return __bs4_get_tag_cnt_limit('min');
+}
+
+function __bs4_get_tag_cnt_max() {
+	return __bs4_get_tag_cnt_limit('max');
+}
+
+/**
+ * Get Post meta data
+ */
+function get_bs4_post_meta() {
+	if ( 'post' != get_post_type() ) return '';
+	$o = '';
+
+	$o .= '<time datetime="' . get_the_time('c') . '" class="meta-time meta-item">';
+	$o .= get_bs4_i('calendar', '', ' ', 'title="Posted on"');
+	$o .= get_the_time(get_option('date_format'));
+	$o .= '</time>';
+
+	$o .= ' <span class="meta-author meta-item">';
+	$o .= '<a href="' . get_author_posts_url(get_the_author_meta('ID')) . '">';
+	$o .= get_bs4_user_i(get_the_author_meta('ID'), '', ' ', 'title="Posted by"');
+	$o .= get_the_author() . '</a>';
+	$o .= '</span>';
+
+	if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) :
+        	$o .= '<span class="meta-comments meta-item">';
+        	ob_start();
+        	comments_popup_link(
+        		get_bs4_i('commenta') . '<span class="hidden-sm-down"> Leave a comment</span>',
+        		get_bs4_i('comment') . ' 1<span class="hidden-sm-down"> comment</span>',
+        		get_bs4_i('comments') . ' %<span class="hidden-sm-down"> comments</span>',
+        		'',
+        		get_bs4_i('commentx') . '<span class="hidden-sm-down"> No comments</span>'  // never used
+        		);
+        	$o .= ob_get_clean();
+        	$o .= '</span>';
+	endif;
+
+	$categories = get_bs4_category_list();
+	if (!empty($categories)) {
+        	$o .= ' <span class="meta-categories meta-item">';
+        	$o .= get_bs4_i('category', '', ' ', 'title="Categories"');
+        	$i = count($categories);
+        	$max = __bs4_get_cat_cnt_max() - __bs4_get_cat_cnt_min() + 1;
+        	foreach ($categories as $id) {
+        		$i--;
+
+        		$cat = get_category($id);
+        		$per = intval(($cat->count / $max) * 100);
+        		if ($per > 75) $cls = 'danger top-25';
+        		elseif ($per > 50) $cls = 'warning top-50';
+        		elseif ($per > 25) $cls = 'success top-75';
+        		else $cls = 'info top-100';
+
+        		$o .= '<a href="' . get_category_link($id) . '"';
+        		if (!empty($cat->description)) $o .= ' title=" ' . $cat->description . '"';
+        		$o .= ' class="label label-' . $cls . '">' . $cat->name . '</a>';
+        		if ($i != 0) $o .= '<span class="sep"> </span>';
+        	}
+        	$o .= '</span>';
+	}
+
+	$tags = get_bs4_tag_list();
+	if (!empty($tags)) {
+        	$o .= ' <span class="meta-tags meta-item">';
+        	$o .= get_bs4_i('tag', '', ' ', 'title="Tags"');
+        	$i = count($tags);
+        	$max = __bs4_get_tag_cnt_max() - __bs4_get_tag_cnt_min() + 1;
+        	foreach ($tags as $id) {
+        		$i--;
+
+        		$tag = get_tag($id);
+
+        		$per = intval(($tag->count / $max) * 100);
+        		if ($per > 75) $cls = 'danger top-25';
+        		elseif ($per > 50) $cls = 'warning top-50';
+        		elseif ($per > 25) $cls = 'success top-75';
+        		else $cls = 'info top-100';
+
+        		$o .= '<a href="' . get_tag_link($id) . '"';
+        		if (!empty($tag->description)) $o .= ' title=" ' . $tag->description . '"';
+			$o .= ' class="label label-pill label-' . $cls . '">' . $tag->name . '</a>';
+        		if ($i != 0) $o .= '<span class="sep"> </span>';
+        	}
+        	$o .= '</span>';
+	}
+
+	return $o;
+}
+
+/**
+ * Echo Post meta data
+ */
+function bs4_post_meta() {
+	echo get_bs4_post_meta();
+}
+
+/**
+ * Count how many categories
+ */
+function get_category_count() {
+	global $bs4_singletons;
+	if (!isset($bs4_singletons)) $bs4_singletons = array();
+
+	if (!isset($bs4_singletons['category_count']))  // only need to do this once
+		$bs4_singletons['category_count'] = count( get_categories( array('parent' => 0, 'hide_empty' => 0) ) );
+	return $bs4_singletons['category_count'];
+}
+
+/**
+ * Echo page pagination
+ */
+function bs4_content_pager() {
+	global $wp_query;
+
+	$class = 'pager ';
+	if ( is_single() ) {
+        	// navigation links for single posts
+
+        	$in_same_cat = get_category_count() > 1;
+        	$_n = get_next_post_link( '<li>%link</li> ', 'Next', $in_same_cat );
+        	$_p = get_previous_post_link( '<li>%link</li> ', 'Previous', $in_same_cat );
+
+        	if ($_n || $_p) {
+			?><hr class="soft"><nav><ul class="<?= $class ?>"><?php
+        		if ($_p) echo $_p;
+        		if ($_n) echo $_n;
+        		?></ul></nav><?php
+        	}
+	} elseif ( ($wp_query->max_num_pages > 1) && ( is_home() || is_archive() || is_search() ) ) {
+        	// navigation links for home, blog,  archive, and search pages
+
+        	$_n = get_next_posts_link();
+        	$_p = get_previous_posts_link();
+
+        	if ($_n || $_p) {
+        		?><hr class="soft"><nav><ul class="<?= $class ?>"><?php
+			if ( $_n ) {
+		        	?><li class="pager-prev"><?php
+                		next_posts_link( 'Older' );
+                		?></li><?php
+			}
+			if ( $_p ) {
+		        	?><li class="pager-next"><?php
+                		previous_posts_link( 'Newer' );
+                		?></li><?php
+			}
+        		?></ul></nav><?php
+        	}
+	}
+}
+
+function bs4_link_pages() {
+	wp_link_pages_2( array(
+        	'before'           => '<nav class="text-center"><ul class="pagination">',
+        	'after'            => '</ul></nav>',
+        	'nextpagelink'     => '&raquo;',
+		'previouspagelink' => '&laquo;',
+        	'nolink'           => '<span>%</span>',
+        	'next_or_number'   => 'both',
+        	) );
+}
+
+/* function validate_gravatar($email) {
+	// Craft a potential url and test its headers
+	$hash = md5(strtolower(trim($email)));
+	$uri = 'http://www.gravatar.com/avatar/' . $hash . '?d=404';
+	$headers = @get_headers($uri);
+	if (!preg_match("|200|", $headers[0])) return false;
+	else return true;
+} /* */
