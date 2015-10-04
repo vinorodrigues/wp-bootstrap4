@@ -159,58 +159,58 @@ function bs4_comment_form($args = array(), $post_id = null) {
         	// New in WP 4.4
         	'title_reply_before'   => '<h4>' . get_bs4_i('commentr', '', ' '),
 		'title_reply_after'    => '</h4>',
+		'cancel_reply_before'  => '',  // DONE: From WP4.4
+		'cancel_reply_after'   => '',  // DONE: From WP4.4
         );
 
 	comment_form_2($args);
 }
 ?>
 
+<section id="comments" class="comments no-print">
+
 <hr class="soft">
 
 <?php
-if ( post_password_required() ) {
-	?><div class="alert alert-info"><?php bs4_i('info lg') ?>
-	This post is password protected. Enter the password to view comments.</div><?php
-	return;
-}
+if ( post_password_required() ) :
 
-$cn = get_comments_number();
-?>
+	?><div class="alert alert-info"><?php
+	bs4_i('info lg')
+	?>This post is password protected. Enter the password to view comments.</div><?php
 
-<section id="comments" class="comments">
+else :
 
-<h4><?php
-echo ' ' . sprintf( _n(
-        get_bs4_i('comment', '', ' ') . '%s comment',
-        get_bs4_i('comments', '', ' ') . '%s comments',
-        $cn), $cn);
-?></h4>
+	$cn = get_comments_number();
+	?><h4><?php
+	echo ' ' . sprintf( _n(
+        	get_bs4_i('comment', '', ' ') . '%s comment',
+        	get_bs4_i('comments', '', ' ') . '%s comments',
+        	$cn), $cn);
+	?></h4><?php
 
-<?php
-wp_list_comments( array(
-	'style'        => 'div',
-	'avatar_size'  => 48,
-	'callback'     => 'bs4_list_comments_callback',
-	'end-callback' => 'bs4_list_comments_end_callback',
-	) );
+	wp_list_comments( array(
+		'style'        => 'div',
+		'avatar_size'  => 48,
+		'callback'     => 'bs4_list_comments_callback',
+		'end-callback' => 'bs4_list_comments_end_callback',
+		) );
 
-paginate_comments_links_2( array(
-	'type' => 'list',
-	'next_text' => '&raquo;',
-	'prev_text' => '&laquo;',
-	'dots' => '&vellip;',
-	'before' => '<nav class="text-center"><ul class="pagination pagination-sm">',
-	'after' => '</ul></nav>',
-	) );
-?>
+		paginate_comments_links_2( array(
+			'type' => 'list',
+			'next_text' => '&raquo;',
+			'prev_text' => '&laquo;',
+			'dots' => '&vellip;',
+			'before' => '<nav class="text-center"><ul class="pagination pagination-sm">',
+			'after' => '</ul></nav>',
+		) );
 
-<?php
-// If comments are closed and there are comments, let's leave a little note, shall we?
-if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
-	?><p class="text-info comments-closed">Comments are closed.</p><?php
-} else {
-	?><hr class="soft"><?php
-	bs4_comment_form();
-}
-?>
-</section>
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
+			?><p class="text-info comments-closed">Comments are closed.</p><?php
+		} else {
+			?><hr class="soft"><?php
+			bs4_comment_form();
+		}
+endif;
+
+?></section>

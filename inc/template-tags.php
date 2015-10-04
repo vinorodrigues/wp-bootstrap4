@@ -68,7 +68,13 @@ function bs4_the_content($content) {
         	}
 	}
 
-	$html = $document->saveHTML();
+	$html = preg_replace(
+		'/^<!DOCTYPE.+?>/',
+		'',
+		str_replace(
+			array('<html>', '</html>', '<body>', '</body>'),
+			'',
+			$document->saveHTML() ) );
 	return $html;
 }
 add_filter('the_content', 'bs4_the_content'); /* */

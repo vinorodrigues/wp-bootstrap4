@@ -56,8 +56,26 @@ function bs4_sanitize_navbar_brand( $input ) {
 function bs4_customize_register( $wp_customize ) {
 	// Site Identity
 
+	$wp_customize->add_setting( 'title_color', false );
+	$wp_customize->add_setting( 'tagline_color', false );
 	$wp_customize->add_setting( 'logo_image' );
-	$wp_customize->add_setting( 'logo_placement', array( 'default' => 0, ) );
+	$wp_customize->add_setting( 'logo_placement', array( 'default' => 0 ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'title_color', array(
+			'label'        => 'Site Title Color',
+			'section'    => 'title_tagline',
+			'settings'   => 'title_color',
+			) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'tagline_color', array(
+			'label'        => 'Tagline Color',
+			'section'    => 'title_tagline',
+			'settings'   => 'tagline_color',
+			) ) );
 
 	$wp_customize->add_control( new WP_Customize_Image_Control(
         	$wp_customize,
@@ -66,7 +84,7 @@ function bs4_customize_register( $wp_customize ) {
         		'label'       => 'Site Logo',
         		'section'     => 'title_tagline',
         		'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
-        		'settings'    => 'logo_image'
+        		'settings'    => 'logo_image',
         		) ) );
 
 	$wp_customize->add_control( new My_Customize_Radio_Control(
@@ -116,7 +134,7 @@ function bs4_customize_register( $wp_customize ) {
         		'choices'  => array(
                 		0 => 'Responsive, Fixed-width',
                 		1 => 'Fluid',
-                		// 2 => 'Custom Width',  // FIXME : Fix container-custom SCSS
+                		2 => 'Custom Width',
                 		) ) ) );
 
 	$wp_customize->add_control( new My_Customize_Radio_Control(
@@ -146,7 +164,7 @@ function bs4_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'cust_navbar', array(
         	'title'       => 'Navbar',
         	'description' => 'Customise the look of the Bootstrap Navbar',
-        	'priority'    => 36,
+        	'priority'    => 85,
         	) );
 
 	$wp_customize->add_setting( 'navbar_color', array( 'default' => 0 ) );

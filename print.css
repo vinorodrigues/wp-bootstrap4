@@ -1,0 +1,37 @@
+
+.no-print {
+	display: none;
+}
+
+.col-print {
+	left: 0;
+	width: 100%;
+}
+
+.heading .col-print h1 {
+	text-align: inherit;
+}
+
+.heading .col-print img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.footing .col-print {
+	text-align: center !important;
+}
+
+hr.soft {
+	width: 80%;
+	border-top: 1px solid #777777;
+	background: none;
+}
+
+.heading {
+	border-bottom: 2px dotted #777777;
+}
+
+.footing {
+	border-top: 1px dotted #777777;
+}

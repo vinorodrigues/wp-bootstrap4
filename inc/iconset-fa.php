@@ -26,8 +26,8 @@ function bs4_customize_register_i_fa($wp_customize, $section) {
         	'description' => 'URL to <code>font-awesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
         	'label'       => 'Font Awesome Stylesheet',
         	'input_attrs' => array(
-        	'placeholder' => 'Use local copy',
-        	) ) );
+        		'placeholder' => 'Use local copy',
+        		) ) );
 }
 
 function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {

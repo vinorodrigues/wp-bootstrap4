@@ -11,7 +11,10 @@ Text Domain: bootstrap4
 Tags: bootstrap responsive
 */
 
-@import 'css/wp-bootstrap4.css';
+@media (min-width: 34em) { .container-custom { max-width: 34rem   ; } }
+@media (min-width: 48em) { .container-custom { max-width: 45rem   ; } }
+@media (min-width: 62em) { .container-custom { max-width: 60rem   ; } }
+@media (min-width: 75em) { .container-custom { max-width: 61.13rem; } }
 
 .sticky {
 	background-color: #f6f6f6;
@@ -27,22 +30,6 @@ Tags: bootstrap responsive
 	display: none;
 }
 
-/* Go Facebook style and use "·" (the interpunct character) for separators */
-.nav-footer ul { margin-bottom: 0 !important; }
-.nav-footer li { padding: 0; }
-.nav-footer li:after { content: "·"; }
-.nav-footer li:last-child:after { content:""; }
-.nav-footer li a { margin: 0 0.5rem; color: inherit; }
-.nav-footer li:first-child a { 	margin-left: 0; }
-.nav-footer li a:hover, .nav-footer li a:focus { text-decoration: none; }
-
-/* Fix meta items */
-.meta-author a,
-.meta-comments a { color: inherit !important; }
-.meta-item { padding: 0 0.5rem; }
-.meta-item:first-child { padding-left: 0; }
-.meta-item:last-child { padding-right: 0; }
-
 /* -------------------- DEBUG -------------------- */
 
 /* div[class^="container"] {
@@ -55,4 +42,4 @@ Tags: bootstrap responsive
 
 /* .folio { outline: 1px solid #777700; }
 .section { outline: 1px dashed green; }
-.band { outline: 1px dotted red; } */
+.band { outline: 1px dotted red; }  /* */

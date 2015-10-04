@@ -1,42 +1,84 @@
-/**
- * wp-bootstrap4.css
- */
+@charset "UTF-8";
+/** wp-bootstrap4.css */
 /* @import "compass"; */
-/**
- * @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide
- */
+/** @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide */
 /* -------------------- THEME SPECIFIC FIXES TO HTML -------------------- */
-/* line 14, ../scss/wp-bootstrap4.scss */
-img.pull-left,
-figure.pull-left {
-  padding-right: 1rem !important; }
+/* line 18, ../scss/wp-bootstrap4.scss */
+.heading h1 a { color: inherit; }
+/* line 21, ../scss/wp-bootstrap4.scss */
+.heading h1 a:hover, .heading h1 a:focus { color: inherit; text-decoration: none; }
 
-/* line 19, ../scss/wp-bootstrap4.scss */
-img.pull-right,
-figure.pull-right {
-  padding-left: 1rem !important; }
+/* line 28, ../scss/wp-bootstrap4.scss */
+img.pull-left, figure.pull-left { padding-right: 1rem !important; }
 
-/* line 24, ../scss/wp-bootstrap4.scss */
-hr.soft {
-  width: 16.667%;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(128, 128, 128, 0.75), rgba(255, 255, 255, 0));
-  margin: 1.5rem auto; }
+/* line 33, ../scss/wp-bootstrap4.scss */
+img.pull-right, figure.pull-right { padding-left: 1rem !important; }
 
-/* line 32, ../scss/wp-bootstrap4.scss */
-textarea,
-input[type="text"], input[type="password"], input[type="datetime"],
-input[type="datetime-local"], input[type="date"], input[type="month"],
-input[type="time"], input[type="week"], input[type="number"],
-input[type="email"], input[type="url"], input[type="search"],
-input[type="tel"], input[type="color"] {
-  max-width: 100%; }
+/* line 38, ../scss/wp-bootstrap4.scss */
+figure.figure { max-width: 100%; }
+
+/* line 42, ../scss/wp-bootstrap4.scss */
+hr.soft { width: 16.667%; border: 0; height: 1px; background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(128, 128, 128, 0.75), rgba(255, 255, 255, 0)); margin: 1.5rem auto; }
+
+/* line 50, ../scss/wp-bootstrap4.scss */
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] { max-width: 100%; }
+
+/* -------------------- THEME SPECIFIC UI -------------------- */
+/* Go Facebook style and use "·" (the interpunct character) for separators */
+/* line 63, ../scss/wp-bootstrap4.scss */
+.nav-footer ul { margin-bottom: 0 !important; }
+/* line 64, ../scss/wp-bootstrap4.scss */
+.nav-footer li { padding: 0; }
+/* line 65, ../scss/wp-bootstrap4.scss */
+.nav-footer li:after { content: "·"; }
+/* line 66, ../scss/wp-bootstrap4.scss */
+.nav-footer li:last-child:after { content: ""; }
+/* line 67, ../scss/wp-bootstrap4.scss */
+.nav-footer li a { margin: 0 1rem; color: inherit; }
+/* line 68, ../scss/wp-bootstrap4.scss */
+.nav-footer li:first-child a { margin-left: 0; }
+/* line 69, ../scss/wp-bootstrap4.scss */
+.nav-footer li a:hover, .nav-footer li a:focus { text-decoration: none; }
+
+/* Fix meta items */
+/* line 73, ../scss/wp-bootstrap4.scss */
+.meta-author a, .meta-comments a { color: inherit !important; }
+
+/* line 75, ../scss/wp-bootstrap4.scss */
+.meta-item { padding: 0 1rem; }
+
+/* line 76, ../scss/wp-bootstrap4.scss */
+.meta-item:first-child { padding-left: 0; }
+
+/* line 77, ../scss/wp-bootstrap4.scss */
+.meta-item:last-child { padding-right: 0; }
+
+/* line 79, ../scss/wp-bootstrap4.scss */
+.img-featured { width: 100% !important; }
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
-/* line 43, ../scss/wp-bootstrap4.scss */
-.no-gutter > [class^="col-"] {
-  padding-right: 0;
-  padding-left: 0; }
+/* line 85, ../scss/wp-bootstrap4.scss */
+.no-gutter > [class^="col-"] { padding-right: 0; padding-left: 0; }
 
 /* -------------------- THEME SPECIFIC HELPER CLASSES -------------------- */
+/* $container-custom-max-widths: ( sm: 34rem,    // 480 md: 45rem,    // 720 lg: 60rem,    // 960 xl: 61.13rem  // 978
+);  /* */
+/* line 99, ../scss/wp-bootstrap4.scss */
+.container-custom { margin-right: auto; margin-left: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; /* @include make-container-max-widths($container-custom-max-widths); */ }
+/* line 2, ../scss/mixins/_clearfix.scss */
+.container-custom::after { content: ""; display: table; clear: both; }
+
+/* -------------------- THEME SPACING -------------------- */
+/* line 108, ../scss/wp-bootstrap4.scss */
+.folioed .folio { margin-top: 0.5rem; margin-bottom: 0.5rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+/* line 114, ../scss/wp-bootstrap4.scss */
+.folioed .folio .heading { padding-bottom: 1rem; }
+/* line 120, ../scss/wp-bootstrap4.scss */
+.folioed .folio .feature, .folioed .folio .main, .folioed .folio .footing { padding-top: 1rem; }
+
+/* line 129, ../scss/wp-bootstrap4.scss */
+.banded .header { margin-top: 0.5rem; }
+/* line 132, ../scss/wp-bootstrap4.scss */
+.banded .band { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+/* line 136, ../scss/wp-bootstrap4.scss */
+.banded .footer { margin-bottom: 0.5rem; }

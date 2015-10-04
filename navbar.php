@@ -13,7 +13,6 @@ include_once 'inc/menu-walker.php';
 global $band_class;
 
 $navbar_color = get_theme_mod( 'navbar_color', 0 );
-$navbar_color_custom = get_theme_mod( 'navbar_color_custom', '#000000' );
 $navbar_shading = boolval( get_theme_mod( 'navbar_shading', 0 ) );
 $navbar_container = boolval( get_theme_mod( 'navbar_container', 0 ) );
 $navbar_placement = get_theme_mod( 'navbar_placement', 0 );
@@ -26,7 +25,7 @@ switch ($navbar_color) {
 	case 1: $navbar_class .= ' bg-inverse'; break;
 	case 2: $navbar_class .= ' bg-default'; break;
 	case 3: $navbar_class .= ' bg-faded'; break;
-	case 4: $navbar_class .= '" style="background-color:' . $navbar_color_custom; break;
+	case 4: $navbar_class .= ' bg-custom'; break;
 	default: $navbar_class .= ' bg-primary';
 }
 switch ($navbar_placement) {
@@ -36,10 +35,10 @@ switch ($navbar_placement) {
 }
 
 if ($navbar_container) {
-	?><nav class="navbar <?= $navbar_class ?> main-menu">
+	?><nav class="navbar <?= $navbar_class ?> main-menu no-print">
 	<div class="<?= $band_class ?>"><?php
 } else {
-	?><div class="<?= $band_class ?> main-menu">
+	?><div class="<?= $band_class ?> main-menu no-print">
 	<nav class="navbar <?= $navbar_class ?>"><?php
 }
 

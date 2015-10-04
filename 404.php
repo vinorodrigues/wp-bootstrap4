@@ -38,7 +38,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 <?php
 $wtag = 'h4';
 $args = array(
-	'before_widget' => '<aside class="widget ' . WIDGET_CLASS . '">',
+	'before_widget' => '<aside class="widget">',
 	'after_widget' => "</aside>",
 	'before_title' => '<' . $wtag . '>',
 	'after_title' => '</' . $wtag . '>',

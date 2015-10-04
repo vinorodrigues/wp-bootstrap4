@@ -27,7 +27,7 @@ function ___cr($cr_class, $cr_text) {
 
 function ___mn($mn_class, $mn_c_class, $center = false) {
 	?><div class="<?= $mn_class ?>"><?php
-	if ($center) echo '<div style="display:table;margin:0 auto">';
+	if ($center) echo '<div class="center-block">';
 	echo bs4_footernav('nav nav-footer ' . $mn_c_class);
 	if ($center) echo '</div>';
 	?></div><?php
@@ -42,7 +42,7 @@ $has_cr = ($cr_text === false) || !empty($cr_text);
 $has_mn = has_nav_menu( 'footer' );
 
 if ($has_cr) {
-	$cr_class = 'col-xs-12';
+	$cr_class = 'col-xs-12 col-print';
 	switch ($cr_position) {
         	case 1: $cr_class .= ' text-center'; break;
         	case 2: $cr_class .= ' text-right'; break;
@@ -51,7 +51,7 @@ if ($has_cr) {
 	if ($has_mn && ($cr_position != 1)) $cr_class .= ' col-md-6';
 }
 if ($has_mn) {
-	$mn_class = 'col-xs-12';
+	$mn_class = 'col-xs-12 no-print';
 	if ($has_cr && ($cr_position != 1)) $mn_class .= ' col-md-6';
 	switch ($cr_position) {
         	case 1: $mn_c_class = ''; break;
@@ -65,7 +65,7 @@ if ($has_mn) {
 
 <?php if ($container_segments != 0) { echo '</div><div class="footer">'; } ?>
 
-<footer class="section"><div class="<?= $band_class ?> footing <?php echo FSPACE_CLASS; ?>">
+<footer class="section"><div class="<?= $band_class ?> footing">
 <?php
 get_template_part( 'footbar' );
 if ($has_mn || $has_cr) :

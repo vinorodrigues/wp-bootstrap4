@@ -12,7 +12,7 @@ WP-Bootstrap4
 Introduction
 ------------
 
-A responsive Wordpress theme based on [Bootstrap 4](http://v4-alpha.getbootstrap.com).
+A responsive Wordpress blogging theme based on [Bootstrap 4](http://v4-alpha.getbootstrap.com).
 
 Unlike [WP-Bootstrap2](https://github.com/vinorodrigues/wp-bootstrap2) that started with [_S](#), this project written from the ground
 up to cut out a lot of clutter.
@@ -30,6 +30,11 @@ Releases
 *  0.1
   *  Initial functional upload to Github
 
+*  0.2
+  *  Custom Header image
+  *  Post Featured Image, that replaces the custom header image
+  *  Custom Background image
+  *  `print.css` - only print content
 
 Licences
 --------

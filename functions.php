@@ -5,9 +5,18 @@
  * @link https://codex.wordpress.org/Functions_File_Explained
  */
 
+// config
 include_once 'bs4-config.php';
+// general API
+include_once 'inc/raw-scripts.php';
+include_once 'inc/raw-styles.php';
+// template includes
 include_once 'inc/template-tags.php';
 include_once 'inc/template-lib.php';
+include_once 'inc/custom-header.php';
+include_once 'inc/custom-background.php';
+include_once 'inc/equal-heights.php';
+// Wordpress fix-ups
 include_once 'inc/fix-post-template.php';
 include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
@@ -39,7 +48,9 @@ function bs4_setup() {
 	 *
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
+	set_post_thumbnail_size( POST_THUMBNAIL_X, POST_THUMBNAIL_Y, true );
+	add_image_size( 'featured-image', FEATURED_IMAGE_X, FEATURED_IMAGE_Y, true);
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -53,11 +64,11 @@ function bs4_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array(
-		// 'search-form',
-		// 'comment-form',
-		// 'comment-list',
+		'search-form',
+		'comment-form',
+		'comment-list',
 		// 'gallery',
-		// 'caption',
+		'caption',
         	) );
 
 	/*
@@ -97,9 +108,22 @@ function bs4_scripts() {
 
 	call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
 
-	// XXX: Load parent style if child, with customise option to do so
+	wp_enqueue_style(
+		'wp-boostrap4',
+		get_stylesheet_directory_uri() . '/css/wp-bootstrap4.css',
+		array( 'bootstrap' ),
+		false );
 
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	wp_enqueue_style(
+		'print',
+		get_stylesheet_directory_uri() . '/print.css',
+		array('bootstrap'),
+		false,
+		'print' );
+
+	wp_enqueue_style(  // This theme or its child's style.css
+		'style',
+		get_stylesheet_uri() );
 
 	// JS
 
@@ -123,13 +147,13 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'bootstrap', $url, array( 'jquery' ), $ver, true );
 
-	/* wp_register_script(
-        'equalheights',
-        get_template_directory_uri() . '/js/equalheights' . $min . '.js',
-        array( 'jquery-core' ),
-        false,
-        true
-        );  /* */
+	if ( !get_theme_mod('bootstrap_flexbox', false) )
+		wp_register_script(
+        		'equalheights',
+        		get_template_directory_uri() . '/js/equalheights' . $min . '.js',
+        		array( 'jquery-core' ),
+        		false,
+        		true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
@@ -148,7 +172,7 @@ function bs4_widgets_init() {
 		'name'          => 'Primary Sidebar',
 		'id'            => 'sidebar-1',
 		'description'   => '',
-		'before_widget' => '<aside class="%2$s ' . WIDGET_CLASS . '">',
+		'before_widget' => '<aside class="%2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
@@ -158,7 +182,7 @@ function bs4_widgets_init() {
         	'name'          => 'Secondary Sidebar',
         	'id'            => 'sidebar-2',
 		'description'   => '',
-		'before_widget' => '<aside class="%2$s ' . WIDGET_CLASS . '">',
+		'before_widget' => '<aside class="%2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
@@ -179,7 +203,7 @@ function bs4_widgets_init() {
         		'name'          => 'Footer Bar ' . $i,
         		'id'            => 'sidebar-' . ($i+3),
         		'description'   => '',
-        		'before_widget' => '<aside class="%2$s ' . WIDGET_CLASS . '">',
+        		'before_widget' => '<aside class="%2$s">',
         		'after_widget'  => '</aside>',
         		'before_title'  => '<' . $tag . '>',
         		'after_title'   => '</' . $tag . '>',
