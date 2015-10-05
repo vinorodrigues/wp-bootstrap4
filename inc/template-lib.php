@@ -5,6 +5,8 @@
  * These are mostly format and helper functions.
  */
 
+include_once 'raw-scripts.php';
+
 function bs4_icon_set() {
 	global $bs4_singletons;
 	if (!isset($bs4_singletons)) $bs4_singletons = array();
@@ -32,7 +34,7 @@ function get_bs4_user_i($id_or_email = null, $before = '', $after = '', $attribs
 		if (!empty($avatar)) {
 			$avatar = str_replace(
 				array('height="32" width="32"', 'height=\'32\' width=\'32\''),
-				'style="width:1rem;height:1rem"',
+				'style="width:auto;height:1em"',
 				$avatar);
 			$avatar = str_replace(
 				array('class="', 'class=\''),
@@ -289,3 +291,25 @@ function bs4_link_pages() {
 	if (!preg_match("|200|", $headers[0])) return false;
 	else return true;
 } /* */
+
+function bs4_inject_feature($fn, $html) {
+	global $band_class;
+
+	$fi = 'fn_' . str_replace('-', '_', $fn);
+
+	$html = '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">' .
+		$html .
+		'</div></div></div>';
+
+	$js =
+		'(function() {' . PHP_EOL .
+		'  function ' . $fi . '(){' . PHP_EOL .
+		'    $("#feature").html("' .
+		str_replace(array('"', "\n", "\f"), array('\"', ' ', ''), $html) .
+		'");' . PHP_EOL .
+		'  }' . PHP_EOL .
+		'  $(document).ready(' . $fi . ');' . PHP_EOL .
+		'})(jQuery);';
+	ts_enqueue_script(str_replace('_', '-', $fn), $js);
+
+}

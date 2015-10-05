@@ -46,11 +46,14 @@ function bs4_list_comments_callback($comment, $args, $depth) {
 	echo '<p class="meta-data text-muted small">';
 	// echo '<a class="meta-item comment-link" href="' . get_comment_link( $comment->comment_ID ) .
 	//     '" title="Link to comment">' . get_bs4_i('link') . '</a>';
-	echo '<time datetime=""' . get_comment_time('c') . '" class="meta-item comment-time">';
-	bs4_i('calendar');
-	echo ' ' . get_comment_date() . ' ';
-	bs4_i('clock');
-	echo ' ' . get_comment_time();
+	echo '<time datetime=""' . get_comment_time('c') . '" class="comment-time">';
+	echo '<span class="meta-item">';
+	bs4_i('calendar', '', ' ');
+	echo get_comment_date() . ' ';
+	echo '</span><span class="meta-item">';
+	bs4_i('clock', '', ' ');
+	echo get_comment_time();
+	echo '</span>';
 	echo '</time>';
 	if ( '0' == $comment->comment_approved )
 		echo ' <span class="meta-item text-info comment-awaiting">' .

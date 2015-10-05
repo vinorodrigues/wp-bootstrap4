@@ -16,7 +16,7 @@ $___bs4_search_form_count += 1;
         		<?php /* <div class="input-group-addon"><?php bs4_i('search') ?></div> */ ?>
         		<input type="search" name="s" class="search-input form-control"
                 		results="10" placeholder="Search &hellip;"
-                		value="<?php esc_attr( get_search_query() ); ?>" />
+                		value="<?= get_search_query() ?>" />
         	</div>
 	</fieldset>
 	<button type="submit" class="search-button btn btn-primary"><?php

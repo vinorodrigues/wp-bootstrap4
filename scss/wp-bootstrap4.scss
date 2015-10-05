@@ -72,12 +72,17 @@ input[type="tel"], input[type="color"] {
 /* Fix meta items */
 .meta-author a,
 .meta-comments a { color: inherit !important; }
-.meta-item { padding: 0 $spacer-x; }
+.meta-item { padding: 0 ($spacer-x / 2); }
 .meta-item:first-child { padding-left: 0; }
 .meta-item:last-child { padding-right: 0; }
 
 .img-featured {
 	width: 100% !important;
+}
+
+.feature .card {
+	background-color: rgba(238, 238, 238, 0.5);
+	margin: 0;
 }
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */

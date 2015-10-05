@@ -30,6 +30,11 @@ Tags: bootstrap responsive
 	display: none;
 }
 
+.img-thumbnail {
+	box-shadow: 0px 1px 2px #444;
+	margin: 2px;
+}
+
 /* -------------------- DEBUG -------------------- */
 
 /* div[class^="container"] {

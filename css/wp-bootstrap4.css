@@ -45,7 +45,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .meta-author a, .meta-comments a { color: inherit !important; }
 
 /* line 75, ../scss/wp-bootstrap4.scss */
-.meta-item { padding: 0 1rem; }
+.meta-item { padding: 0 0.5rem; }
 
 /* line 76, ../scss/wp-bootstrap4.scss */
 .meta-item:first-child { padding-left: 0; }
@@ -56,29 +56,32 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 /* line 79, ../scss/wp-bootstrap4.scss */
 .img-featured { width: 100% !important; }
 
+/* line 83, ../scss/wp-bootstrap4.scss */
+.feature .card { background-color: rgba(238, 238, 238, 0.5); margin: 0; }
+
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
-/* line 85, ../scss/wp-bootstrap4.scss */
+/* line 90, ../scss/wp-bootstrap4.scss */
 .no-gutter > [class^="col-"] { padding-right: 0; padding-left: 0; }
 
 /* -------------------- THEME SPECIFIC HELPER CLASSES -------------------- */
 /* $container-custom-max-widths: ( sm: 34rem,    // 480 md: 45rem,    // 720 lg: 60rem,    // 960 xl: 61.13rem  // 978
 );  /* */
-/* line 99, ../scss/wp-bootstrap4.scss */
+/* line 104, ../scss/wp-bootstrap4.scss */
 .container-custom { margin-right: auto; margin-left: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; /* @include make-container-max-widths($container-custom-max-widths); */ }
 /* line 2, ../scss/mixins/_clearfix.scss */
 .container-custom::after { content: ""; display: table; clear: both; }
 
 /* -------------------- THEME SPACING -------------------- */
-/* line 108, ../scss/wp-bootstrap4.scss */
+/* line 113, ../scss/wp-bootstrap4.scss */
 .folioed .folio { margin-top: 0.5rem; margin-bottom: 0.5rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 114, ../scss/wp-bootstrap4.scss */
+/* line 119, ../scss/wp-bootstrap4.scss */
 .folioed .folio .heading { padding-bottom: 1rem; }
-/* line 120, ../scss/wp-bootstrap4.scss */
+/* line 125, ../scss/wp-bootstrap4.scss */
 .folioed .folio .feature, .folioed .folio .main, .folioed .folio .footing { padding-top: 1rem; }
 
-/* line 129, ../scss/wp-bootstrap4.scss */
+/* line 134, ../scss/wp-bootstrap4.scss */
 .banded .header { margin-top: 0.5rem; }
-/* line 132, ../scss/wp-bootstrap4.scss */
+/* line 137, ../scss/wp-bootstrap4.scss */
 .banded .band { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 136, ../scss/wp-bootstrap4.scss */
+/* line 141, ../scss/wp-bootstrap4.scss */
 .banded .footer { margin-bottom: 0.5rem; }
