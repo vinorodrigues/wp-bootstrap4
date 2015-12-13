@@ -23,7 +23,7 @@ function bs4_heading($logo_placement = 0) {
 	$logo_image = get_theme_mod('logo_image', '');
 	if (!empty($logo_image)) {
         	$output = '<a href="' . home_url( '/' ) . '" rel="home">';
-        	$output .= '<img src="' . $logo_image . '" class="img-responsive';
+        	$output .= '<img src="' . $logo_image . '" class="img-fluid';
         	if ($logo_placement != 0) $output .= ' ' . (($logo_placement == 1) ? 'center-block' : 'pull-right');
         	$output .= '" alt="' . get_bloginfo('name', 'display');
         	$_d = get_bloginfo( 'description', 'display' );
@@ -151,10 +151,10 @@ if ($color)
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
-  <meta charset="<?php bloginfo( 'charset' ); ?>">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
 	wp_head();
 	// comments_popup_script(640, 480);

@@ -11,10 +11,10 @@ Text Domain: bootstrap4
 Tags: bootstrap responsive
 */
 
-@media (min-width: 34em) { .container-custom { max-width: 34rem   ; } }
-@media (min-width: 48em) { .container-custom { max-width: 45rem   ; } }
-@media (min-width: 62em) { .container-custom { max-width: 60rem   ; } }
-@media (min-width: 75em) { .container-custom { max-width: 61.13rem; } }
+@media (min-width: 544px) { .container-custom { max-width: 544px; } }
+@media (min-width: 768px) { .container-custom { max-width: 720px; } }
+@media (min-width: 992px) { .container-custom { max-width: 960px; } }
+@media (min-width: 1200px) { .container-custom { max-width: 978px; } }
 
 .sticky {
 	background-color: #f6f6f6;

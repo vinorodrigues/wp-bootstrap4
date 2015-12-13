@@ -67,7 +67,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 /* $container-custom-max-widths: ( sm: 34rem,    // 480 md: 45rem,    // 720 lg: 60rem,    // 960 xl: 61.13rem  // 978
 );  /* */
 /* line 104, ../scss/wp-bootstrap4.scss */
-.container-custom { margin-right: auto; margin-left: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; /* @include make-container-max-widths($container-custom-max-widths); */ }
+.container-custom { margin-left: auto; margin-right: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; /* @include make-container-max-widths($container-custom-max-widths); */ }
 /* line 2, ../scss/mixins/_clearfix.scss */
 .container-custom::after { content: ""; display: table; clear: both; }
 
