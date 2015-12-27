@@ -27,9 +27,9 @@ function ___cr($cr_class, $cr_text) {
 
 function ___mn($mn_class, $mn_c_class, $center = false) {
 	?><div class="<?= $mn_class ?>"><?php
-	if ($center) echo '<div class="center-block">';
+	if ($center) echo '<span style="display:table;margin:0 auto">';
 	echo bs4_footernav('nav nav-footer ' . $mn_c_class);
-	if ($center) echo '</div>';
+	if ($center) echo '</span>';
 	?></div><?php
 }
 
@@ -44,9 +44,9 @@ $has_mn = has_nav_menu( 'footer' );
 if ($has_cr) {
 	$cr_class = 'col-xs-12 col-print';
 	switch ($cr_position) {
-        	case 1: $cr_class .= ' text-center'; break;
-        	case 2: $cr_class .= ' text-right'; break;
-        	default: $cr_class .= ' text-left'; break;
+        	case 1: $cr_class .= ' text-xs-center'; break;
+        	case 2: $cr_class .= ' text-xs-right'; break;
+        	default: $cr_class .= ' text-xs-left'; break;
 	}
 	if ($has_mn && ($cr_position != 1)) $cr_class .= ' col-md-6';
 }
@@ -76,11 +76,11 @@ if ($has_mn || $has_cr) :
         		if ($has_mn) ___mn($mn_class, $mn_c_class, true);
         		if ($has_cr) ___cr($cr_class, $cr_text);
         		break;
-			case 2:
+		case 2:
         		if ($has_mn) ___mn($mn_class, $mn_c_class);
         		if ($has_cr) ___cr($cr_class, $cr_text);
         		break;
-			default:
+		default:
         		if ($has_cr) ___cr($cr_class, $cr_text);
         		if ($has_mn) ___mn($mn_class, $mn_c_class);
         		break;

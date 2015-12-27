@@ -22,6 +22,12 @@ include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
 
+if (get_theme_mod('load_plugins', true)) {
+	include_once 'addon/bs4-layout.php';
+	include_once 'addon/bs4-components.php';
+	include_once 'addon/bs4-widgets.php';
+}
+
 if ( ! function_exists( 'bs4_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -84,7 +90,6 @@ function bs4_setup() {
         	) );
 
 	include get_template_directory() . '/inc/customizer.php';
-
 }
 endif; // wp_bootstrap_setup
 add_action( 'after_setup_theme', 'bs4_setup' );
@@ -138,6 +143,15 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'jquery', $url, array(), $ver, true );
 
+	$url = trim( get_theme_mod('tether_js', false) );
+	if (empty($url)) {
+		$url = get_stylesheet_directory_uri() . '/js/tether' . $min . '.js';
+		$ver = TE_VERSION;
+	} else {
+		$ver = NULL;
+	}
+	wp_enqueue_script( 'tether', $url, array( 'jquery' ), $ver, true );
+
 	$url = trim( get_theme_mod('bootstrap_js', false) );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/bootstrap' . $min . '.js';
@@ -151,7 +165,7 @@ function bs4_scripts() {
 		wp_register_script(
         		'equalheights',
         		get_template_directory_uri() . '/js/equalheights' . $min . '.js',
-        		array( 'jquery-core' ),
+        		array( 'jquery' ),
         		false,
         		true );
 

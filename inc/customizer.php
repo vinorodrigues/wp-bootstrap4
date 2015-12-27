@@ -32,14 +32,14 @@ class My_Customize_Radio_Control extends WP_Customize_Control {
         			<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php
 				foreach ( $this->choices as $value => $label ) : ?>
-					<input
-                				class="image-select"
+					<input class="image-select-input"
                 				type="radio"
                 				value="<?php echo esc_attr( $value ); ?>"
                 				id="<?php echo $this->id . $value; ?>"
                 				name="<?php echo $this->id; ?>"
                 				<?php $this->link(); checked( $this->value(), $value ); ?> />
-                			<label for="<?php echo $this->id . $value; ?>"><img
+                			<label class="image-select-label"
+						for="<?php echo $this->id . $value; ?>"><img
                 				src="<?php echo get_template_directory_uri() . '/img/' . $this->prefix . esc_html($value) . $this->suffix; ?>"
                 				title="<?php echo $label; ?>"></label>
 					<?php
@@ -257,11 +257,20 @@ function bs4_customize_register( $wp_customize ) {
         	'priority'    => 999,
         	) );
 
+	$wp_customize->add_setting( 'load_plugins', true );
 	$wp_customize->add_setting( 'bootstrap_css', '' );
 	$wp_customize->add_setting( 'bootstrap_flexbox', 0 );
 	$wp_customize->add_setting( 'bootstrap_js', '' );
+	$wp_customize->add_setting( 'tether_js', '' );
 	$wp_customize->add_setting( 'jquery_js', '' );
 	$wp_customize->add_setting( 'icon_set', 'fa' );
+
+	$wp_customize->add_control( 'load_plugins', array(
+        	'type'        => 'checkbox',
+        	'section'     => 'cust_bootstrap',
+        	'label'       => 'Load theme plugins',
+        	'description' => 'Dynamically load the TSWP-Bootsrap4 plugins.',
+        	) );
 
 	$wp_customize->add_control( 'bootstrap_css', array(
         	'type'        => 'url',
@@ -297,6 +306,15 @@ function bs4_customize_register( $wp_customize ) {
         	'input_attrs' => array(
         		'placeholder' => 'Use local copy',
         		) ) );
+
+	$wp_customize->add_control( 'tether_js', array(
+        	'type'        => 'url',
+        	'section'     => 'cust_bootstrap',
+        	'description' => 'URL to <code>tether.js</code> file (only used in Tooltip shortcode). Leave blank for local copy (version ' . TE_VERSION . ').',
+        	'label'       => 'Tether JavaScript',
+        	'input_attrs' => array(
+        		'placeholder' => 'Use local copy',
+			) ) );
 
 	$wp_customize->add_control( 'icon_set', array(
         	'type'        => 'select',

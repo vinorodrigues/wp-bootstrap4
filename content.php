@@ -21,7 +21,9 @@ if ( $is_card ) {
 	$title_class .= ' h4';
 }
 
-?><header class="meta"><?php
+?><header class="meta<?php if (is_home()) echo ' home';
+	if (is_front_page()) echo ' front-page';
+	if (is_singular()) echo ' singular'; ?>"><?php
 
 if ($has_thumbnail && is_singular()) {
 	$thumbnail = get_the_post_thumbnail( get_the_ID(),

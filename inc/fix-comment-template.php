@@ -123,7 +123,7 @@ function comment_form_2( $args = array(), $post_id = null ) {
 
 					echo $args['cancel_reply_before'];
                 			cancel_comment_reply_link( $args['cancel_reply_link'] );  // HACK - moved from title to next to the submit button
-					echo $args['cancel_reply_before'];
+					echo $args['cancel_reply_after'];
 
 					do_action( 'comment_form', $post_id );
 					?>
