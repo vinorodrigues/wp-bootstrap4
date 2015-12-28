@@ -6,23 +6,21 @@
 include_once 'plugin-lib.php';
 
 function ts_bootstrap4_alert_sc( $atts, $content = null, $tag = '' ) {
-	$atts = bs4_shortcode_atts(
+	$attribs = bs4_shortcode_atts(
 		array(
 			'type' => 'default',
 			'dismiss' => false,
-			// 'id' => false,
 		), $atts, $tag);
-	$atts = bs4_filter_booleans($atts, array('pill'));
+	$attribs = bs4_filter_booleans($attribs, array('pill'));
 
-	$output = '<div class="alert';
-
-	if (in_array($atts['type'], array('success', 'info', 'warning', 'danger'))) {
-		$output .= ' alert-' . $atts['type'];
+	$class = 'alert';
+	if (in_array($attribs['type'], array('success', 'info', 'warning', 'danger'))) {
+		$class .= ' alert-' . $attribs['type'];
 	}
-	if ($atts['dismiss']) $output .= ' alert-dismissable fade in';
+	if ($attribs['dismiss']) $class .= ' alert-dismissable fade in';
 
-	$output .= '" role="alert">';
-	if ($atts['dismiss'])
+	$output = '<div' . bs4_get_shortcode_class($atts, $class) . ' role="alert">';
+	if ($attribs['dismiss'])
 		$output .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
 			'<span aria-hidden="true">&times;</span>' .
 			'</button>';

@@ -6,22 +6,22 @@
 include_once 'plugin-lib.php';
 
 function ts_bootstrap4_label_sc( $atts, $content = null, $tag = '' ) {
-	$atts = bs4_shortcode_atts(
+	$attribs = bs4_shortcode_atts(
 		array(
 			'type' => 'default',
 			'pill' => false,
 			// 'id' => false,
 		), $atts, $tag);
-	$atts = bs4_filter_booleans($atts, array('pill'));
+	$attribs = bs4_filter_booleans($attribs, array('pill'));
 
-	$output = '<span class="label';
-	if ($atts['pill']) $output .= ' label-pill';
+	$class = 'label';
+	if ($attribs['pill']) $$class .= ' label-pill';
 
-	if (in_array($atts['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger'))) {
-		$output .= ' label-' . $atts['type'];
+	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger'))) {
+		$class .= ' label-' . $attribs['type'];
 	}
 
-	$output .= '">';
+	$output = '<span' . bs4_get_shortcode_class($atts, $class) . '>';
 	$output .= do_shortcode($content);
 	$output .= '</span>';
 

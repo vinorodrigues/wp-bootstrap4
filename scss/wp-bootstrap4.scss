@@ -146,3 +146,17 @@ header.front-page h1 {
 		margin-bottom: ($spacer-y / 2);
 	}
 }
+
+/* ----- Navbar fixes ----- */
+
+body.admin-bar .navbar-fixed-top {
+	top: 32px;
+}
+
+body.nav-fixed-top {
+	padding-top: ($spacer-y * 4);
+}
+
+body.nav-fixed-bottom {
+	padding-bottom: ($spacer-y * 4);
+}

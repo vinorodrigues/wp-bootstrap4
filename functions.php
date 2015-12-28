@@ -21,12 +21,13 @@ include_once 'inc/fix-post-template.php';
 include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
-
+// plugins
 if (get_theme_mod('load_plugins', true)) {
 	include_once 'addon/bs4-layout.php';
 	include_once 'addon/bs4-components.php';
 	include_once 'addon/bs4-widgets.php';
 }
+
 
 if ( ! function_exists( 'bs4_setup' ) ) :
 /**

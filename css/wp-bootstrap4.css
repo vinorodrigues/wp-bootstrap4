@@ -88,3 +88,13 @@ header.front-page h1 { display: none; }
 .banded .band { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 /* line 145, ../scss/wp-bootstrap4.scss */
 .banded .footer { margin-bottom: 0.5rem; }
+
+/* ----- Navbar fixes ----- */
+/* line 152, ../scss/wp-bootstrap4.scss */
+body.admin-bar .navbar-fixed-top { top: 32px; }
+
+/* line 156, ../scss/wp-bootstrap4.scss */
+body.nav-fixed-top { padding-top: 4rem; }
+
+/* line 160, ../scss/wp-bootstrap4.scss */
+body.nav-fixed-bottom { padding-bottom: 4rem; }

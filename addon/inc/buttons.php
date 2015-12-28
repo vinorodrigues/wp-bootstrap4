@@ -21,7 +21,7 @@ include_once 'plugin-lib.php';
 function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 	global $bs4_singletons;
 
-	$atts = bs4_shortcode_atts(
+	$attribs = bs4_shortcode_atts(
 		array(
 			'type' => 'default',
 			'size' => false,
@@ -32,39 +32,31 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 			'disabled' => false,
 			'outline' => false,
 			'block' => false,
-			// 'id' => false,
-			// 'title' => false,
+			'title' => false,
 		), $atts, $tag);
-	$atts = bs4_filter_booleans($atts, array('active', 'disabled', 'outline'));
-	$atts['type'] = strtolower($atts['type']);
-	$atts['size'] = strtolower($atts['size']);
+	$attribs = bs4_filter_booleans($attribs, array('active', 'disabled', 'outline'));
+	$attribs['type'] = strtolower($attribs['type']);
+	$attribs['size'] = strtolower($attribs['size']);
 
 	$class = 'btn';
-
-	if (in_array($atts['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'))) {
-		$class .= ' btn-' . $atts['type'];
-		if ($atts['outline'] === true) $class .= '-outline';
+	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'))) {
+		$class .= ' btn-' . $attribs['type'];
+		if ($attribs['outline'] === true) $class .= '-outline';
 	}
-
-	if (in_array($atts['size'], array('lg', 'sm'))) {
-		$class .= ' btn-' . $atts['size'];
+	if (in_array($attribs['size'], array('lg', 'sm'))) {
+		$class .= ' btn-' . $attribs['size'];
 	}
+	if ($attribs['block'] === true) $class .= ' btn-block';
+	if ($attribs['active'] === true) $class .= ' active';
 
-	if ($atts['block'] === true) $class .= ' btn-block';
-	if ($atts['active'] === true) $class .= ' active';
-	if ($atts['class'] !== false) $class .= ' ' . $atts['class'];
+	$element = ($attribs['link'] !== false) ? 'a' : 'button';
+	$output = '<' . $element . bs4_get_shortcode_class($atts, $class);
+	if ($attribs['link'] !== false) $output .= ' href="' . $attribs['link'] . '"';
+	if ($attribs['action'] !== false) $output .= ' onclick="' . $attribs['action'] . '"';
+	if ($attribs['title'] !== false) $output .= ' title="' . $attribs['title'] . '"';
 
-	$output = '';
-	$element = ($atts['link'] !== false) ? 'a' : 'button';
-	$output .= '<' . $element;
-	if ($atts['link'] !== false) $output .= ' href="' . $atts['link'] . '"';
-	if ($atts['action'] !== false) $output .= ' onclick="' . $atts['action'] . '"';
-	// if ($atts['id'] !== false) $output .= ' id="' . $atts['id'] . '"';
-	// if ($atts['title'] !== false) $output .= ' title="' . $atts['title'] . '"';
-
-	$output .= ' class="' . $class . '"';
-	if ($atts['link'] !== false) $output .= ' role="button"';
-	if ($atts['disabled'] === true) $output .= ' disabled';
+	if ($attribs['link'] !== false) $output .= ' role="button"';
+	if ($attribs['disabled'] === true) $output .= ' disabled';
 
 	$output .= '>' . do_shortcode($content) . '</' . $element . '>';
 
@@ -85,26 +77,24 @@ function ts_bootstrap4_button_grp_sc( $atts, $content = null, $tag = '' ) {
 	do_shortcode($content);
 	$bs4_singletons['in_button_grp'] = false;
 
-	$atts = bs4_shortcode_atts(
+	$attribs = bs4_shortcode_atts(
 		array(
 			'size' => false,
 			'vertical' => false,
 			'class' => false,
 			// 'id' => false,
 		), $atts, $tag);
-	$atts = bs4_filter_booleans($atts, array('vertical'));
+	$attribs = bs4_filter_booleans($attribs, array('vertical'));
 
 	$class = 'btn-group';
-	$atts['size'] = strtolower($atts['size']);
-	if (in_array($atts['size'], array('lg', 'sm'))) {
-		$class .= ' btn-group-' . $atts['size'];
+	$attribs['size'] = strtolower($attribs['size']);
+	if (in_array($attribs['size'], array('lg', 'sm'))) {
+		$class .= ' btn-group-' . $attribs['size'];
 	}
-	if ($atts['vertical'] === true) $class .= ' btn-group-vertical';
-	if ($atts['class'] !== false) $class .= ' ' . $atts['class'];
+	if ($attribs['vertical'] === true) $class .= ' btn-group-vertical';
 
 	if (key_exists('button_grp', $bs4_singletons)) {
-		$output = '<div class="' . $class . '"';
-		// if ($atts['id'] !== false) $output .= ' id="' . $atts['id'] . '"';
+		$output = '<div' . bs4_get_shortcode_class($atts, $class);
 		$output .= ' role="group">';
 		$output .= $bs4_singletons['button_grp'];
 		$output .= '</div>';
@@ -116,4 +106,30 @@ function ts_bootstrap4_button_grp_sc( $atts, $content = null, $tag = '' ) {
 
 add_shortcode( 'button', 'ts_bootstrap4_button_sc' );
 add_shortcode( 'buttons', 'ts_bootstrap4_button_grp_sc' );
-add_shortcode( 'button-group', 'ts_bootstrap4_button_grp_sc' );
+add_shortcode( 'button_group', 'ts_bootstrap4_button_grp_sc' );
+
+/* function ts_bootstrap4_buttons_shortcode_fix( $content ) {
+	$shortcodes = array(
+		'button',
+		'buttons',
+		'button_group',
+		);
+
+	foreach ( $shortcodes as $shortcode ) {
+        	$array = array (
+        		'<p>[' . $shortcode    => '[' .$shortcode,
+			'<br>[' . $shortcode   => '[' .$shortcode,
+			'<br />[' . $shortcode => '[' .$shortcode,
+        		// '<p>[/' . $shortcode   => '[/' .$shortcode,
+        		$shortcode . ']</p>'   => $shortcode . ']',
+			$shortcode . ']<br>'   => $shortcode . ']',
+			$shortcode . ']<br />' => $shortcode . ']',
+        		);
+
+        	$content = strtr( $content, $array );
+	}
+
+	return $content;
+} /* */
+
+/* add_filter( 'the_content', 'ts_bootstrap4_buttons_shortcode_fix' ); /* */

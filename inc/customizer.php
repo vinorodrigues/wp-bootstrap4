@@ -56,26 +56,8 @@ function bs4_sanitize_navbar_brand( $input ) {
 function bs4_customize_register( $wp_customize ) {
 	// Site Identity
 
-	$wp_customize->add_setting( 'title_color', false );
-	$wp_customize->add_setting( 'tagline_color', false );
 	$wp_customize->add_setting( 'logo_image' );
 	$wp_customize->add_setting( 'logo_placement', array( 'default' => 0 ) );
-
-	$wp_customize->add_control( new WP_Customize_Color_Control(
-		$wp_customize,
-		'title_color', array(
-			'label'        => 'Site Title Color',
-			'section'    => 'title_tagline',
-			'settings'   => 'title_color',
-			) ) );
-
-	$wp_customize->add_control( new WP_Customize_Color_Control(
-		$wp_customize,
-		'tagline_color', array(
-			'label'        => 'Tagline Color',
-			'section'    => 'title_tagline',
-			'settings'   => 'tagline_color',
-			) ) );
 
 	$wp_customize->add_control( new WP_Customize_Image_Control(
         	$wp_customize,
@@ -83,7 +65,7 @@ function bs4_customize_register( $wp_customize ) {
         	array(
         		'label'       => 'Site Logo',
         		'section'     => 'title_tagline',
-        		'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
+			'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
         		'settings'    => 'logo_image',
         		) ) );
 
@@ -245,7 +227,26 @@ function bs4_customize_register( $wp_customize ) {
 
 	// Colors
 
-	$wp_customize->remove_section('colors');
+	$wp_customize->add_setting( 'title_color', false );
+	$wp_customize->add_setting( 'tagline_color', false );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'title_color', array(
+			'label'        => 'Site Title Color',
+			'section'    => 'colors',
+			'settings'   => 'title_color',
+			'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
+			) ) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control(
+		$wp_customize,
+		'tagline_color', array(
+			'label'        => 'Tagline Color',
+			'section'    => 'colors',
+			'settings'   => 'tagline_color',
+			'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
+			) ) );
 
 	// Bootstrap 4
 

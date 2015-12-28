@@ -10,8 +10,8 @@
 include_once 'inc/menu-walker.php';
 include_once 'inc/raw-styles.php';
 
-function bs4_body_class_navbar_fixed_top($classes) { $classes[] = 'p-t-lg'; return $classes; }
-function bs4_body_class_navbar_fixed_bottom($classes) { $classes[] = 'p-b-lg'; return $classes; }
+function bs4_body_class_navbar_fixed_top($classes) { $classes[] = 'nav-fixed-top'; return $classes; }
+function bs4_body_class_navbar_fixed_bottom($classes) { $classes[] = 'nav-fixed-bottom'; return $classes; }
 function bs4_body_class_has_folio($classes) { $classes[] = 'folioed'; return $classes; }
 function bs4_body_class_no_folio($classes) { $classes[] = 'banded'; return $classes; }
 
