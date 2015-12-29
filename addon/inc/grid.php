@@ -6,7 +6,7 @@
 
 include_once 'plugin-lib.php';
 
-function ts_bootstrap4_row( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_row_sc( $atts, $content = null, $tag = '' ) {
 	global $bs4_singletons;
 
 	if (!isset($bs4_singletons)) $bs4_singletons = array();
@@ -23,7 +23,7 @@ function ts_bootstrap4_row( $atts, $content = null, $tag = '' ) {
 	return '<div' . bs4_get_shortcode_class($atts, 'row') . '>' . $output . '</div>';
 }
 
-function ts_bootstrap4_column( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 	global $bs4_singletons;
 
 	if (!isset($bs4_singletons) || !key_exists('in_row', $bs4_singletons) || ($bs4_singletons['in_row'] !== true))
@@ -37,6 +37,17 @@ function ts_bootstrap4_column( $atts, $content = null, $tag = '' ) {
 		if (key_exists('pull', $atts) && !key_exists('md-pull', $atts)) $atts['md-pull'] = $atts['pull'];
 		if (key_exists('push', $atts) && !key_exists('md-push', $atts)) $atts['md-push'] = $atts['push'];
 		if (key_exists('offset', $atts) && !key_exists('md-offset', $atts)) $atts['md-offset'] = $atts['offset'];
+		// legacy - from WP-Bootstrap2, backward compatability
+		if (!key_exists('md', $atts)) {
+			if (key_exists('span', $atts)) {
+				$atts['md'] = $atts['span'];
+			} else
+				foreach($atts as $name => $value )
+					if (is_numeric($name))
+						if (strncasecmp($value, 'span', 4) === 0)
+							$atts['md'] = substr($value, 4);
+		}
+
 	}
 
 	$attribs = bs4_shortcode_atts(
@@ -69,7 +80,7 @@ function ts_bootstrap4_column( $atts, $content = null, $tag = '' ) {
 	}
 
 	$output = '<div' . bs4_get_shortcode_class($atts, rtrim($class)) . '>';
-	$output .= $content;
+	$output .= do_shortcode( $content );
 	$output .= '</div>';
 
 	$bs4_singletons['columns'][] = $output;
@@ -91,38 +102,38 @@ function __ts_bootstrap4_col_part($value, $atts, $content) {
 	$bs4_singletons['columns'][] = $output;
 }
 
-function ts_bootstrap4_one_half( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_one_half_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(6, $atts, $content);
 }
 
-function ts_bootstrap4_one_third( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_one_third_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(4, $atts, $content);
 }
 
-function ts_bootstrap4_two_thirds( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_two_thirds_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(8, $atts, $content);
 }
 
-function ts_bootstrap4_one_fourth( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_one_fourth_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(3, $atts, $content);
 }
 
-function ts_bootstrap4_three_fourths( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_three_fourths_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(9, $atts, $content);
 }
 
-add_shortcode( 'row', 'ts_bootstrap4_row' );
-add_shortcode( 'column', 'ts_bootstrap4_column' );
-add_shortcode( 'col', 'ts_bootstrap4_column' );
-add_shortcode( 'one_half', 'ts_bootstrap4_one_half' );
-add_shortcode( 'half', 'ts_bootstrap4_one_half' );  // lazy
-add_shortcode( 'one_third', 'ts_bootstrap4_one_third' );
-add_shortcode( 'third', 'ts_bootstrap4_one_third' );  // lazy
-add_shortcode( 'two_thirds', 'ts_bootstrap4_two_thirds' );
-add_shortcode( 'one_fourth', 'ts_bootstrap4_one_fourth' );
-add_shortcode( 'fourth', 'ts_bootstrap4_one_fourth' );  // lazy
-add_shortcode( 'two_fourths', 'ts_bootstrap4_one_half' );  // unreduced
-add_shortcode( 'three_fourths', 'ts_bootstrap4_three_fourths' );
+add_shortcode( 'row', 'ts_bootstrap4_row_sc' );
+add_shortcode( 'column', 'ts_bootstrap4_column_sc' );
+add_shortcode( 'col', 'ts_bootstrap4_column_sc' );
+add_shortcode( 'one_half', 'ts_bootstrap4_one_half_sc' );
+add_shortcode( 'half', 'ts_bootstrap4_one_half_sc' );  // lazy
+add_shortcode( 'one_third', 'ts_bootstrap4_one_third_sc' );
+add_shortcode( 'third', 'ts_bootstrap4_one_third_sc' );  // lazy
+add_shortcode( 'two_thirds', 'ts_bootstrap4_two_thirds_sc' );
+add_shortcode( 'one_fourth', 'ts_bootstrap4_one_fourth_sc' );
+add_shortcode( 'fourth', 'ts_bootstrap4_one_fourth_sc' );  // lazy
+add_shortcode( 'two_fourths', 'ts_bootstrap4_one_half_sc' );  // unreduced
+add_shortcode( 'three_fourths', 'ts_bootstrap4_three_fourths_sc' );
 
 function ts_bootstrap4_grid_shortcode_fix( $content ) {
 	$shortcodes = array(
@@ -145,5 +156,4 @@ function ts_bootstrap4_grid_shortcode_fix( $content ) {
 
 	return $content;
 }
-
 add_filter( 'the_content', 'ts_bootstrap4_grid_shortcode_fix' );

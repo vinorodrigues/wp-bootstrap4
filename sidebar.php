@@ -37,4 +37,4 @@ if ($sidebar_position == 3) :
 endif;
 
 if ( !get_theme_mod('bootstrap_flexbox', false) )
-	ts_equal_heights('.in-main');
+	bs4_equal_heights('.in-main', 99);

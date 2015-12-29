@@ -35,13 +35,12 @@ function bs4_filter_booleans($list, $bools) {
 
 function bs4_shortcode_atts( $default_pairs, $atts, $shortcode = '') {
 	if (is_array($atts)) {
-		foreach($atts as $name => $value ) {
+		foreach($atts as $name => $value )
 			if (is_numeric($name)) {
 				$atts[$value] = true;
 				unset($atts[$name]);
 				continue;
 			}
-		}
 	} elseif (!empty($atts)) {
 		$atts = array($atts => true);  // $atts was a string, change to array
 	} else {
