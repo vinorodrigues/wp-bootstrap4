@@ -165,7 +165,7 @@ function bs4_scripts() {
 	if ( !get_theme_mod('bootstrap_flexbox', false) )
 		wp_register_script(
         		'equalheights',
-        		get_template_directory_uri() . '/js/equalheights' . $min . '.js',
+        		get_template_directory_uri() . '/js/grids' . $min . '.js',
         		array( 'jquery' ),
         		false,
         		true );

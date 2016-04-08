@@ -1,11 +1,11 @@
 <?php
 /*
- * Label Shortcode
+ * Tag Shortcode (was 'Label')
  */
 
 include_once 'plugin-lib.php';
 
-function ts_bootstrap4_label_sc( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_shortcode_atts(
 		array(
 			'type' => 'default',
@@ -14,11 +14,11 @@ function ts_bootstrap4_label_sc( $atts, $content = null, $tag = '' ) {
 		), $atts, $tag);
 	$attribs = bs4_filter_booleans($attribs, array('pill'));
 
-	$class = 'label';
-	if ($attribs['pill']) $$class .= ' label-pill';
+	$class = 'tag';
+	if ($attribs['pill']) $$class .= ' tag-pill';
 
 	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger'))) {
-		$class .= ' label-' . $attribs['type'];
+		$class .= ' tag-' . $attribs['type'];
 	}
 
 	$output = '<span' . bs4_get_shortcode_class($atts, $class) . '>';
@@ -28,4 +28,4 @@ function ts_bootstrap4_label_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'label', 'ts_bootstrap4_label_sc' );
+add_shortcode( 'tag', 'ts_bootstrap4_tag_sc' );

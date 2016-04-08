@@ -285,7 +285,7 @@ function bs4_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 'bootstrap_flexbox', array(
         	'type'        => 'checkbox',
         	'section'     => 'cust_bootstrap',
-        	'label'       => 'CSS is Flex Box variant &lt;or&gt; switch off equalheights.js',
+        	'label'       => 'CSS is Flex Box variant &lt;or&gt; switch off EqualHeights JS',
         	'description' => 'Flex Box columns are always equal in height. <b>NB:</b>' .
                         ' Requires Chrome 21+, Safari 6.1+, Firefox 22+, IE 10+.',
         	) );

@@ -66,7 +66,7 @@ function bs4_list_comments_callback($comment, $args, $depth) {
 
 	$link = get_edit_comment_link();
 	if ($link) {
-        	echo '<a href="' . $link . '" class="btn btn-warning-outline btn-sm small"';
+        	echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small"';
         	echo ' title="Edit Comment">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
 	}
 
@@ -144,7 +144,7 @@ function bs4_comment_form($args = array(), $post_id = null) {
         	'must_log_in' =>
         		'<p>' .
         		'<a href="' . wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) .
-			'" class="btn btn-success-outline btn-sm small">' .
+			'" class="btn btn-outline-success btn-sm small">' .
 			get_bs4_i('login', '', ' ') . 'Log in</a> to post a comment.' .
         		'</p>',
         	'logged_in_as' =>
@@ -152,7 +152,7 @@ function bs4_comment_form($args = array(), $post_id = null) {
 			'As ' . get_bs4_user_i(($user->exists() ? $user->ID : null), '', ' ') .
         		'<a href="' . get_edit_user_link() . '">' . $user_identity . '</a>. <a href="' .
 			wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) .
-			'" class="btn btn-danger-outline btn-sm small">' .
+			'" class="btn btn-outline-danger btn-sm small">' .
 			get_bs4_i('logout', '', ' ') . 'Log out</a></p>',
 
 		'label_submit' => 'Submit' . get_bs4_i('post', ' '),

@@ -9,7 +9,6 @@ function bs4_equal_heights_sc( $atts, $content = null, $tag = '' ) {
 			'for' => false,
 			'id' => false,
 			'class' => false,
-			'wait' => '100',
 		), $atts, $tag);
 
 	if ($attribs['for'] !== false) {
@@ -22,7 +21,7 @@ function bs4_equal_heights_sc( $atts, $content = null, $tag = '' ) {
 	} else
 		return '';
 
-	bs4_equal_heights($what, $attribs['wait']);
+	bs4_equal_heights($what);
 	return '';
 }
 add_shortcode('equalheights', 'bs4_equal_heights_sc');

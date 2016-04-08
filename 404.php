@@ -21,7 +21,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <hr class="soft">
 
-<div class='row'><div class="center-block">
+<div class='row'><div class="m-x-auto">
 <form method="get" id="search-form-404 ceter-block"
 	action="<?= home_url( '/' ) ?>" class="form-inline search-from">
 	<input type="search" name="s" class="search-input form-control"
@@ -46,7 +46,7 @@ $args = array(
 
 ?>
 <div class="row">
-	<div class="<?= ($catagorized ? 'col-sm-12 col-lg-4' : 'col-sm-6 col-lg-4 col-lg-offset-2') ?>">
+	<div class="<?= ($catagorized ? 'col-sm-12 col-lg-4' : 'col-sm-6 col-lg-4 offset-lg-2') ?>">
         	<?php the_widget( 'WP_Widget_Recent_Posts', array('title' => 'Recent Posts', 'number' => 5), $args ); ?>
 	</div>
 	<?php /*

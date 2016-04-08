@@ -9,9 +9,9 @@ function bs4_sidebar_class($sidebar_position, $first = true) {
 	$o = 'col-xs-12';
 	if ($first) {
 		switch ($sidebar_position) {
-        		case 1: $o .= ' col-md-4 col-md-pull-8 col-lg-3 col-lg-pull-9 sb-l'; break;
+        		case 1: $o .= ' col-md-4 pull-md-8 col-lg-3 pull-lg-9 sb-l'; break;
         		case 2: $o .= ' col-md-4 col-lg-3 sb-r'; break;
-        		case 3: $o .= ' col-sm-6 col-md-3 col-md-pull-6 col-lg-2 col-lg-pull-8 sb-l'; break;
+        		case 3: $o .= ' col-sm-6 col-md-3 pull-md-6 col-lg-2 pull-lg-8 sb-l'; break;
         	};
 	} else {
         	// $sidebar_position == 3

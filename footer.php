@@ -55,8 +55,8 @@ if ($has_mn) {
 	if ($has_cr && ($cr_position != 1)) $mn_class .= ' col-md-6';
 	switch ($cr_position) {
         	case 1: $mn_c_class = ''; break;
-        	case 2: $mn_c_class = 'pull-left'; break;
-        	default: $mn_c_class = 'pull-right'; break;
+        	case 2: $mn_c_class = 'pull-xs-left'; break;
+        	default: $mn_c_class = 'pull-xs-right'; break;
 	}
 }
 

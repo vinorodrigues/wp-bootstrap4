@@ -11,7 +11,7 @@
  */
 function bs4_excerpt_more( $more ) {
 	// label label-pill label-info
-	return ' <a title="More..." class="btn btn-primary-outline btn-sm small more-link" href="' .
+	return ' <a title="More..." class="btn btn-outline-primary btn-sm small more-link" href="' .
         	get_permalink() . '">' . get_bs4_i('hellip') . '</a>';
 }
 add_filter( 'excerpt_more', 'bs4_excerpt_more' );
@@ -22,7 +22,7 @@ add_filter( 'excerpt_more', 'bs4_excerpt_more' );
 function bs4_the_content_more_link( $link, $text) {
 	$hellip = get_bs4_i('hellip', ' ');
 	$text = str_replace( array('...', '&hellip;'), array($hellip, $hellip), $text );
-	return '<a class="btn btn-primary-outline btn-sm small more-link" href="' .
+	return '<a class="btn btn-outline-primary btn-sm small more-link" href="' .
         	get_permalink() . '">' . $text . '</a>';
 }
 add_filter( 'the_content_more_link', 'bs4_the_content_more_link', 10, 2 );
@@ -47,7 +47,7 @@ function bs4_the_content($content) {
         	$cls = $img->getAttribute('class');
         	$cls = ltrim( str_replace(
         		array('  ', 'alignnone', 'alignleft', 'alignright', 'aligncenter'),
-        		array(' ', '', 'pull-left', 'pull-right', 'center-block'),
+        		array(' ', '', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
         		$cls . ' img-fluid' ) );
         	$img->setAttribute('class', $cls);
 	}
@@ -116,7 +116,7 @@ function bs4_img_caption_shortcode( $output, $attr, $content ) {
 	$attributes .= ' class="figure wp-caption ' . esc_attr( $attr['align'] ) . '"';
 	$attributes = str_replace(
         	array(' alignnone', 'alignleft', 'alignright', 'aligncenter'),
-        	array('', 'pull-left', 'pull-right', 'center-block'),
+        	array('', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
         	$attributes );
 	if ($attr['align'] == 'aligncenter') {
         	$attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px;max-width:100%"';
@@ -182,7 +182,7 @@ function bs4_cancel_comment_reply_link($formatted_link, $link, $text) {
 	if (!isset($_GET['replytocom'])) return '';
 
 	return ' <a rel="nofollow" id="cancel-comment-reply-link" href="' .
-        	$link . '" class="btn btn-danger-outline">' . $text . '</a>';
+        	$link . '" class="btn btn-outline-danger">' . $text . '</a>';
 }
 add_filter('cancel_comment_reply_link', 'bs4_cancel_comment_reply_link', 10, 3);
 
@@ -194,7 +194,7 @@ function bs4_comment_reply_link($formatted_link /* , $args, $comment, $post */ )
 
 	return ' ' . str_replace(
         	'comment-reply-link',
-        	'btn btn-success-outline btn-sm small',
+        	'btn btn-outline-success btn-sm small',
         	$formatted_link );
 }
 add_filter('comment_reply_link', 'bs4_comment_reply_link' /* , 10, 4 */ );

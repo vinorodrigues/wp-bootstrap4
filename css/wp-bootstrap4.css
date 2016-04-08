@@ -9,10 +9,10 @@
 .heading h1 a:hover, .heading h1 a:focus { color: inherit; text-decoration: none; }
 
 /* line 28, ../scss/wp-bootstrap4.scss */
-img.pull-left, figure.pull-left { padding-right: 1rem !important; }
+img.pull-xs-left, figure.pull-xs-left { padding-right: 1rem !important; }
 
 /* line 33, ../scss/wp-bootstrap4.scss */
-img.pull-right, figure.pull-right { padding-left: 1rem !important; }
+img.pull-xs-right, figure.pull-xs-right { padding-left: 1rem !important; }
 
 /* line 38, ../scss/wp-bootstrap4.scss */
 figure.figure { max-width: 100%; }
@@ -70,7 +70,7 @@ header.front-page h1 { display: none; }
 /* $container-custom-max-widths: ( sm: 34rem,    // 480 md: 45rem,    // 720 lg: 60rem,    // 960 xl: 61.13rem  // 978
 );  /* */
 /* line 108, ../scss/wp-bootstrap4.scss */
-.container-custom { margin-left: auto; margin-right: auto; padding-left: 0.9375rem; padding-right: 0.9375rem; /* @include make-container-max-widths($container-custom-max-widths); */ }
+.container-custom { margin-left: auto; margin-right: auto; padding-left: 15px; padding-right: 15px; /* @include make-container-max-widths($container-custom-max-widths); */ }
 /* line 2, ../scss/mixins/_clearfix.scss */
 .container-custom::after { content: ""; display: table; clear: both; }
 

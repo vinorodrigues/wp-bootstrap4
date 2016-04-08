@@ -40,8 +40,9 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 
 	$class = 'btn';
 	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'))) {
-		$class .= ' btn-' . $attribs['type'];
-		if ($attribs['outline'] === true) $class .= '-outline';
+		$class .= ' btn-';
+		if ($attribs['outline'] === true) $class .= 'outline-';
+		$class .= $attribs['type'];
 	}
 	if (in_array($attribs['size'], array('lg', 'sm'))) {
 		$class .= ' btn-' . $attribs['size'];
