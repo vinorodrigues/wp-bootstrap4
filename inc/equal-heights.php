@@ -19,8 +19,10 @@ function bs4_equal_heights( $what = false ) {
 		if ($_ts_equalheights_count <= 1)
 			wp_enqueue_script( 'equalheights' );
 		ts_enqueue_script( 'equalheights-' . $_ts_equalheights_count . '-' . $h,
-			'(function($) {' .
-			'  $("' . $what . '").responsiveEqualHeightGrid(); ' .
+			'(function($) {' . PHP_EOL .
+			'  $(document).ready(function(){' . PHP_EOL .
+			'    $("' . $what . '").responsiveEqualHeightGrid(); ' . PHP_EOL .
+			'  });' . PHP_EOL .
 			'})(jQuery);', 'equalheights' );
 	}
 }

@@ -82,7 +82,7 @@ $link = get_edit_post_link();
 if (is_singular() && $link) { ?>
 <footer class="meta">
 	<p class="meta-data"><?php
-        	echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small no-print"' .
+        	echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small hidden-print"' .
         		'title="Edit post">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
         	/* $link = get_delete_post_link();
         	if ($link)

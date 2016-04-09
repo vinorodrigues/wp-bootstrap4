@@ -170,7 +170,7 @@ function bs4_comment_form($args = array(), $post_id = null) {
 }
 ?>
 
-<section id="comments" class="comments no-print">
+<section id="comments" class="comments hidden-print">
 
 <hr class="soft">
 

@@ -15,3 +15,6 @@ include_once 'inc/buttons.php';
 include_once 'inc/jumbotron.php';
 include_once 'inc/tags.php';
 include_once 'inc/alerts.php';
+
+// Deprecated stuff
+include_once 'inc/legacy.php';

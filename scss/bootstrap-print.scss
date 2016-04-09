@@ -1,0 +1,16 @@
+
+/* @import "compass"; */
+@import "variables";
+@import "mixins/grid";
+@import "mixins/grid-framework";
+@import "mixins/breakpoints";
+
+// $columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints
+
+$print-breakpoints: (
+	print: 0
+);
+
+@media print {
+	@include make-grid-columns($grid-columns, $grid-gutter-width, $print-breakpoints);
+}

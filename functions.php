@@ -112,20 +112,20 @@ function bs4_scripts() {
 	}
 	wp_enqueue_style( 'bootstrap', $url, array(), $ver );
 
-	call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
+	wp_enqueue_style(
+		'bootstrap-print',
+		get_stylesheet_directory_uri() . '/css/bootstrap-print.css',
+		array('bootstrap'),
+		false,
+		'print' );
+
+	@call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
 
 	wp_enqueue_style(
 		'wp-boostrap4',
 		get_stylesheet_directory_uri() . '/css/wp-bootstrap4.css',
 		array( 'bootstrap' ),
 		false );
-
-	wp_enqueue_style(
-		'print',
-		get_stylesheet_directory_uri() . '/print.css',
-		array('bootstrap'),
-		false,
-		'print' );
 
 	wp_enqueue_style(  // This theme or its child's style.css
 		'style',
@@ -172,6 +172,21 @@ function bs4_scripts() {
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
+
+	// Raw JS
+
+	ts_enqueue_script(
+		'wp-bootstrap4-tooltips',
+
+		'(function($) {' . PHP_EOL .
+		'  $(document).ready(function(){' . PHP_EOL .
+		'    $(\'a[href]\').tooltip();' . PHP_EOL .
+		'    $(\'abbr\').tooltip();' . PHP_EOL .
+		'    $(\'acronym\').tooltip();' . PHP_EOL .
+		'    $(\'[data-toggle="tooltip"]\').tooltip();' . PHP_EOL .
+		'  });' . PHP_EOL .
+		'})(jQuery);' );
+
 }
 add_action( 'wp_enqueue_scripts', 'bs4_scripts' );
 

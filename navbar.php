@@ -35,10 +35,10 @@ switch ($navbar_placement) {
 }
 
 if ($navbar_container) {
-	?><nav class="navbar <?= $navbar_class ?> main-menu no-print">
+	?><nav class="navbar <?= $navbar_class ?> main-menu hidden-print">
 	<div class="<?= $band_class ?>"><?php
 } else {
-	?><div class="<?= $band_class ?> main-menu no-print">
+	?><div class="<?= $band_class ?> main-menu hidden-print">
 	<nav class="navbar <?= $navbar_class ?>"><?php
 }
 

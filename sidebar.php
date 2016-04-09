@@ -17,7 +17,7 @@ function bs4_sidebar_class($sidebar_position, $first = true) {
         	// $sidebar_position == 3
         	$o .= ' col-sm-6 col-md-3 col-lg-2 sb-r';
 	}
-	$o .= ' sidebar no-print';
+	$o .= ' sidebar hidden-print';
 	if ( !get_theme_mod('bootstrap_flexbox', false) ) $o .= ' in-main';
 	return $o;
 }

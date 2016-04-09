@@ -244,7 +244,7 @@ function bs4_content_pager() {
         	$_p = get_previous_post_link( '<li>%link</li> ', 'Previous', $in_same_cat );
 
         	if ($_n || $_p) {
-			?><hr class="soft no-print"><nav class="no-print"><ul class="<?= $class ?>"><?php
+			?><hr class="soft hidden-print"><nav class="hidden-print"><ul class="<?= $class ?>"><?php
         		if ($_p) echo $_p;
         		if ($_n) echo $_n;
         		?></ul></nav><?php
@@ -256,7 +256,7 @@ function bs4_content_pager() {
         	$_p = get_previous_posts_link();
 
         	if ($_n || $_p) {
-        		?><hr class="soft no-print"><nav class="no-print"><ul class="<?= $class ?>"><?php
+        		?><hr class="soft hidden-print"><nav class="hidden-print"><ul class="<?= $class ?>"><?php
 			if ( $_n ) {
 		        	?><li class="pager-prev"><?php
                 		next_posts_link( 'Older' );

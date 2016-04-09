@@ -116,7 +116,7 @@ function bs4_customize_register( $wp_customize ) {
         		'choices'  => array(
                 		0 => 'Responsive, Fixed-width',
                 		1 => 'Fluid',
-                		2 => 'Custom Width',
+                		// 2 => 'Custom Width',
                 		) ) ) );
 
 	$wp_customize->add_control( new My_Customize_Radio_Control(

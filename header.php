@@ -64,7 +64,7 @@ function bs4_content_class($sidebar_position) {
         	case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
 	};
 	if ( !get_theme_mod('bootstrap_flexbox', false)) $o .= ' in-main';
-	$o .= ' col-print content';
+	$o .= ' col-print-12 content';
 	return $o;
 }
 
@@ -115,7 +115,7 @@ if (is_404()) $sidebar_position = 0;
 
 $container_class = 'container';
 if ($container_width == 1) { $container_class .= '-fluid'; }
-elseif ($container_width == 2) { $container_class .= '-custom'; }
+// elseif ($container_width == 2) { ??? }
 
 $band_class = 'band';
 if ($container_segments != 0) {
@@ -173,21 +173,21 @@ if ($color)
 <?php
 	switch ($logo_placement) {
         case 1:  // center
-        	?><div class="col-xs-12 col-print"><?= bs4_heading($logo_placement) ?></div><?php
+        	?><div class="col-xs-12 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
         	if (($head_a & 1) != 0) {
-                	?><div class="col-xs-12 no-print headspace"><div class="m-x-auto"><?=
+                	?><div class="col-xs-12 hidden-print headspace"><div class="m-x-auto"><?=
                 	bs4_headernav('nav-header') ?></div></div><?php
         	}
         	if (($head_a & 2) != 0) {
-                	?><div class="col-xs-12 no-print text-center headspace"><?php dynamic_sidebar('sidebar-3') ?></div><?php
+                	?><div class="col-xs-12 hidden-print text-center headspace"><?php dynamic_sidebar('sidebar-3') ?></div><?php
         	}
         	break;
         case 2:  // right
         	if ($head_a == 0) {
-                	?><div class="col-xs-12 col-print"><?= bs4_heading($logo_placement) ?></div><?php
+                	?><div class="col-xs-12 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
         	} else {
-                	?><div class="col-xs-12 col-md-5 push-md-7 col-print"><?= bs4_heading($logo_placement) ?></div><?php
-                	?><div class="col-xs-12 col-md-7 pull-md-5 no-print"><?php
+                	?><div class="col-xs-12 col-md-5 push-md-7 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
+                	?><div class="col-xs-12 col-md-7 pull-md-5 hidden-print"><?php
                 	if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
                 	if (($head_a & 1) != 0) echo bs4_headernav();
                 	if ($head_a === 3) echo '</div><div class="col-md-12 headspace">';
@@ -198,10 +198,10 @@ if ($color)
             	break;
         default:  // left
         	if ($head_a == 0) {
-                	?><div class="col-xs-12 col-print"><?= bs4_heading() ?></div><?php
+                	?><div class="col-xs-12 col-print-12"><?= bs4_heading() ?></div><?php
         	} else {
-                	?><div class="col-xs-12 col-md-5 col-print"><?= bs4_heading() ?></div><?php
-                	?><div class="col-xs-12 col-md-7 no-print"><?php
+                	?><div class="col-xs-12 col-md-5 col-print-12"><?= bs4_heading() ?></div><?php
+                	?><div class="col-xs-12 col-md-7 hidden-print"><?php
                 	if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
                 	if (($head_a & 1) != 0) echo bs4_headernav('clearfix pull-xs-right');
                 	if ($head_a === 3) echo '</div><div class="col-md-12 headspace">';
@@ -215,7 +215,7 @@ if ($color)
 </div></div><?php
 get_template_part( 'navbar' );
 if (!is_404()) {
-	?><div id="feature" class="no-print"><?php
+	?><div id="feature" class="hidden-print"><?php
 	$header_image = get_header_image();
 	if ( ! empty( $header_image ) ) {
 		echo '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">';
