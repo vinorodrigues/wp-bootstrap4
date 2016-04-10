@@ -64,7 +64,7 @@ function bs4_content_class($sidebar_position) {
         	case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
 	};
 	if ( !get_theme_mod('bootstrap_flexbox', false)) $o .= ' in-main';
-	$o .= ' col-print-12 content';
+	$o .= ' col-pr-12 content';
 	return $o;
 }
 
@@ -173,7 +173,7 @@ if ($color)
 <?php
 	switch ($logo_placement) {
         case 1:  // center
-        	?><div class="col-xs-12 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
+        	?><div class="col-xs-12"><?= bs4_heading($logo_placement) ?></div><?php
         	if (($head_a & 1) != 0) {
                 	?><div class="col-xs-12 hidden-print headspace"><div class="m-x-auto"><?=
                 	bs4_headernav('nav-header') ?></div></div><?php
@@ -184,9 +184,9 @@ if ($color)
         	break;
         case 2:  // right
         	if ($head_a == 0) {
-                	?><div class="col-xs-12 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
+                	?><div class="col-xs-12"><?= bs4_heading($logo_placement) ?></div><?php
         	} else {
-                	?><div class="col-xs-12 col-md-5 push-md-7 col-print-12"><?= bs4_heading($logo_placement) ?></div><?php
+                	?><div class="col-xs-12 col-md-5 push-md-7 col-pr-12"><?= bs4_heading($logo_placement) ?></div><?php
                 	?><div class="col-xs-12 col-md-7 pull-md-5 hidden-print"><?php
                 	if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
                 	if (($head_a & 1) != 0) echo bs4_headernav();
@@ -198,9 +198,9 @@ if ($color)
             	break;
         default:  // left
         	if ($head_a == 0) {
-                	?><div class="col-xs-12 col-print-12"><?= bs4_heading() ?></div><?php
+                	?><div class="col-xs-12"><?= bs4_heading() ?></div><?php
         	} else {
-                	?><div class="col-xs-12 col-md-5 col-print-12"><?= bs4_heading() ?></div><?php
+                	?><div class="col-xs-12 col-md-5 col-pr-12"><?= bs4_heading() ?></div><?php
                 	?><div class="col-xs-12 col-md-7 hidden-print"><?php
                 	if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
                 	if (($head_a & 1) != 0) echo bs4_headernav('clearfix pull-xs-right');

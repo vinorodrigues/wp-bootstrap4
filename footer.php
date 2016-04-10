@@ -42,17 +42,17 @@ $has_cr = ($cr_text === false) || !empty($cr_text);
 $has_mn = has_nav_menu( 'footer' );
 
 if ($has_cr) {
-	$cr_class = 'col-xs-12 col-print-12';
+	$cr_class = 'col-xs-12';
 	switch ($cr_position) {
         	case 1: $cr_class .= ' text-xs-center'; break;
         	case 2: $cr_class .= ' text-xs-right'; break;
         	default: $cr_class .= ' text-xs-left'; break;
 	}
 	if ($has_mn && ($cr_position != 1)) $cr_class .= ' col-md-6';
-	$cr_class .= ' copyright';
+	$cr_class .= ' col-pr-12 copyright';
 }
 if ($has_mn) {
-	$mn_class = 'col-xs-12 hidden-print';
+	$mn_class = 'col-xs-12';
 	if ($has_cr && ($cr_position != 1)) $mn_class .= ' col-md-6';
 	$mn_c_class = '';
 	switch ($cr_position) {
@@ -60,6 +60,7 @@ if ($has_mn) {
         	case 2: $mn_c_class .= ' pull-xs-left'; break;
         	default: $mn_c_class .= ' pull-xs-right'; break;
 	}
+	$mn_class .= ' hidden-print';
 }
 
 ?>

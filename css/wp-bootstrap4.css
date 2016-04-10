@@ -97,7 +97,7 @@ body.nav-fixed-bottom { padding-bottom: 4rem; }
 
 /* ----- Print ----- */
 @media print { /* line 160, ../scss/wp-bootstrap4.scss */
-  .heading { border-bottom: 2px solid #eee; }
+  .heading { border-bottom: 1px dotted #eee; }
   /* line 163, ../scss/wp-bootstrap4.scss */
   .heading h1 { text-align: inherit; }
   /* line 167, ../scss/wp-bootstrap4.scss */

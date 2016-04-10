@@ -37,17 +37,27 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 		if (key_exists('pull', $atts) && !key_exists('md-pull', $atts)) $atts['md-pull'] = $atts['pull'];
 		if (key_exists('push', $atts) && !key_exists('md-push', $atts)) $atts['md-push'] = $atts['push'];
 		if (key_exists('offset', $atts) && !key_exists('md-offset', $atts)) $atts['md-offset'] = $atts['offset'];
+
+		if (key_exists('print', $atts) && !key_exists('pr', $atts)) $atts['pr'] = $atts['print'];
+		if (key_exists('size', $atts) && !key_exists('pr', $atts)) $atts['pr'] = $atts['size'];
+		if (key_exists('pull', $atts) && !key_exists('pr-pull', $atts)) $atts['pr-pull'] = $atts['pull'];
+		if (key_exists('push', $atts) && !key_exists('pr-push', $atts)) $atts['pr-push'] = $atts['push'];
+		if (key_exists('offset', $atts) && !key_exists('pr-offset', $atts)) $atts['pr-offset'] = $atts['offset'];
+
+
 		// legacy - from WP-Bootstrap2, backward compatability
 		if (!key_exists('md', $atts)) {
 			if (key_exists('span', $atts)) {
 				$atts['md'] = $atts['span'];
+				if (!key_exists('pr', $atts)) $atts['pr'] = $atts['span'];
 			} else
 				foreach($atts as $name => $value )
 					if (is_numeric($name))
-						if (strncasecmp($value, 'span', 4) === 0)
+						if (strncasecmp($value, 'span', 4) === 0) {
 							$atts['md'] = substr($value, 4);
+							if (!key_exists('pr', $atts)) $atts['pr'] = substr($value, 4);
+						}
 		}
-
 	}
 
 	$attribs = bs4_shortcode_atts(
@@ -72,11 +82,21 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 			'md-offset' => false,
 			'lg-offset' => false,
 			'xl-offset' => false,
+			'pr' => false,
+			'pr-pull' => false,
+			'pr-push' => false,
+			'pr-offset' => false,
 		), $atts, $tag);
 
 	$class = '';
 	foreach ($attribs as $key => $value) {
-		if ($value !== false) $class .= 'col-' . $key . '-' . intval($value) . ' ';
+		if ($value !== false) {
+			if (('pr' == $key) && (intval($value) == 0)) {
+				$class .= 'hidden-print ';
+			} else {
+				$class .= 'col-' . $key . '-' . intval($value) . ' ';
+			}
+		}
 	}
 
 	$output = '<div' . bs4_get_shortcode_class($atts, rtrim($class)) . '>';
@@ -95,7 +115,7 @@ function __ts_bootstrap4_col_part($value, $atts, $content) {
 	if (!key_exists('columns', $bs4_singletons) || !is_array($bs4_singletons['columns']))
 		$bs4_singletons['columns'] = array();
 
-	$output = '<div' . bs4_get_shortcode_class($atts, 'col-md-'.$value) . '>';
+	$output = '<div' . bs4_get_shortcode_class($atts, 'col-md-'.$value.' col-pr-'.$value) . '>';
 	$output .= do_shortcode( $content );
 	$output .= '</div>';
 

@@ -33,20 +33,22 @@ Releases
 
 
 *  0.1.02
-  *  Custom Header image
-  *  Post Featured image, that replaces the custom header image
-  *  Custom Background image support
-  *  `print.css` - print content css
+  *  added custom header image
+  *  added post featured image support, that replaces the custom header image
+  *  added custom background image support
+  *  ~~added `print.css` print content css~~
 
 
-*  0.1.03  (Pulled 8-Apr-'16)
+*  0.1.03
+  * based on _twbs/bootstrap @26adc1_ (_v4-dev_ branch)
+  * includes _FortAwesome/Font-Awesome @d820f5c_ (_4.6.0-wip_ branch)
   * `center-block` replaced by `m-x-auto`, `pull-left` by `pull-xs-left` & `pull-right` by `pull-xs-right`
   * `btn-*-outline` replaced by `btn-outline-*`
   * `col-*-offset-*` replaced by `offset-*-*`, `col-*-push-*` by `push-*-*` & `col-*-pull-*` by `pull-*-*`
   * _`label`_ shortcode replaced by _`tag`_ shortcode
   * added `m-b-0` to `navbar-brand` as per docs
-  * EqualHeights now based on [@Sam152](https://github.com/Sam152/Javascript-Equal-Height-Responsive-Rows)
-
+  * EqualHeights now based on [@Sam152](https://github.com/Sam152/Javascript-Equal-Height-Responsive-Rows)'s work
+  * moved print support to theme css file and added `bootstrap-print.css` including `col-pr-*` classes
 
 Licences
 --------

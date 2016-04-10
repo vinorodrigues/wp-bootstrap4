@@ -1,3 +1,8 @@
+/*
+ * Fix to add printing columns.
+ *
+ * Submitted as issue / wishlist at https://github.com/twbs/bootstrap/issues/19701
+ */
 
 /* @import "compass"; */
 @import "variables";
@@ -5,12 +10,16 @@
 @import "mixins/grid-framework";
 @import "mixins/breakpoints";
 
-// $columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints
-
 $print-breakpoints: (
-	print: 0
+	pr: 0
 );
 
 @media print {
+	.hidden-pr,
+	.col-pr-0 {
+		// visibility: hidden;
+		display: none !important;
+	}
+
 	@include make-grid-columns($grid-columns, $grid-gutter-width, $print-breakpoints);
 }
