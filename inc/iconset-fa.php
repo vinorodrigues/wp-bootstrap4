@@ -4,7 +4,7 @@
  * @see: http://fontawesome.io/icons/
  */
 
-if (!defined( 'FA_VERSION' )) define( 'FA_VERSION', '4.4.0' );  // local version
+if (!defined( 'FA_VERSION' )) define( 'FA_VERSION', '4.6.0' );  // local version
 
 function bs4_enqueue_style_i_fa($min = '') {
 	$url = trim( get_theme_mod('fontawesome_css', false) );
