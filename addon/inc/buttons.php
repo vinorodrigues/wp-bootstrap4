@@ -6,16 +6,16 @@
 include_once 'plugin-lib.php';
 
 /**
- * Parameter	Description			Values							Default
- * type		The type of the button		default, primary, success, info, warning, danger, link	default
- * size		The size of the button		xs, sm, lg						none
- * link		Url to link to	optional	valid link						none
- * action	Create OnClick event code	valid JS						none
- * class	Any extra classes to add	free text						none
- * active 	Apply the "active" style	true, false						true if present
- * disabled	Button will be disabled		true, false						true if present
- * outline	Button not filled with color	true, false						true if present
- * block	Block-level button		true, false						false
+ * Parameter	Description			Values		Default
+ * type		The type of the button		primary, secondary, success, info, warning, danger, link	secondary
+ * size		The size of the button		xs, sm, lg	none
+ * link		Url to link to	optional	valid link	none
+ * action	Create OnClick event code	valid JS	none
+ * class	Any extra classes to add	free text	none
+ * active 	Apply the "active" style	true, false	true if present
+ * disabled	Button will be disabled		true, false	true if present
+ * outline	Button not filled with color	true, false	true if present
+ * block	Block-level button		true, false	false
  */
 
 function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
@@ -23,7 +23,7 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 
 	$attribs = bs4_shortcode_atts(
 		array(
-			'type' => 'default',
+			'type' => 'secondary',
 			'size' => false,
 			'link' => false,
 			'action' => false,
@@ -39,7 +39,7 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 	$attribs['size'] = strtolower($attribs['size']);
 
 	$class = 'btn';
-	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger', 'link'))) {
+	if (in_array($attribs['type'], array('primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'))) {
 		$class .= ' btn-';
 		if ($attribs['outline'] === true) $class .= 'outline-';
 		$class .= $attribs['type'];
@@ -49,6 +49,7 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 	}
 	if ($attribs['block'] === true) $class .= ' btn-block';
 	if ($attribs['active'] === true) $class .= ' active';
+	if ($attribs['disabled'] === true) $class .= ' disabled';  // maybe redundant
 
 	$element = ($attribs['link'] !== false) ? 'a' : 'button';
 	$output = '<' . $element . bs4_get_shortcode_class($atts, $class);

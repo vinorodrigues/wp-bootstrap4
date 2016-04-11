@@ -39,14 +39,6 @@ figure.figure {
 	max-width: 100%;
 }
 
-hr.soft {
-	width: 16.667%;
-	border: 0;
-	height: 1px;
-	background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(128, 128, 128, 0.75), rgba(255, 255, 255, 0));
-	margin: ($spacer-y * 1.5) auto;
-}
-
 textarea,
 input[type="text"], input[type="password"], input[type="datetime"],
 input[type="datetime-local"], input[type="date"], input[type="month"],
@@ -92,11 +84,29 @@ header.front-page h1 {
 	margin: 0;
 }
 
+.sidebar {
+	aside {
+		margin-bottom: $spacer-y;
+	}
+
+	input,
+	select {
+		max-width: 100%;  // stop overflowing form items
+	}
+}
+
+// .pager {
+// }
+
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
 
 .no-gutter > [class^="col-"] {
 	padding-right: 0;
 	padding-left: 0;
+}
+
+.input-group label {
+	margin: 0;
 }
 
 /* -------------------- THEME SPACING -------------------- */
@@ -122,7 +132,12 @@ header.front-page h1 {
 		.feature,
 		.main,
 		.footing {
-			padding-top: $spacer-y;
+			padding: $spacer-y 0;
+
+			.footbar,
+			.footer {
+				padding-top: $spacer-y;
+			}
 		}
 	}
 }

@@ -32,6 +32,10 @@ function bs4_customize_register_i_fa($wp_customize, $section) {
 
 function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {
 	$d = array(
+		// '2x'       => '2x',
+		// '3x'       => '3x',
+		// '4x'       => '4x',
+		// '5x'       => '5x',
         	'calendar' => 'calendar',
         	'cancel'   => 'close',
         	'category' => 'bookmark',
@@ -43,15 +47,19 @@ function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {
         	'commentx' => 'commenting-o',
         	'edit'     => 'edit',
         	'email'    => 'envelope',
+		'fw'       => 'fw',  // fixed width
         	'hellip'   => 'ellipsis-h',
         	'info'     => 'info-circle',
-        	'lg'       => 'lg',
+		'laquo'    => 'chevron-left',
+        	'lg'       => 'lg',  // large
         	'link'     => 'link',
         	'login'    => 'lock',
         	'logout'   => 'unlock',
         	'post'     => 'arrow-circle-right',
+		'raquo'    => 'chevron-right',
         	'reply'    => 'reply',
         	'search'   => 'search',
+		// 'spin'     => 'spin',
         	'tag'      => 'tag',
         	'trash'    => 'trash',
         	'user'     => 'user',

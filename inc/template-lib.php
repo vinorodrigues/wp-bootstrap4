@@ -7,6 +7,36 @@
 
 include_once 'raw-scripts.php';
 
+function inject_class_in_tag($tag, $class, $haystack) {
+
+	// (1) find the tag
+	$i = strpos($haystack, '<'.$tag);
+	if ($i !== false) {
+		// (2) find end of Tag
+		$j = strpos($haystack, '>', $i+1);
+		// (3) extract only the tag
+		if ($j !== false) $the_tag = substr($haystack, $i, $j-$i+1);
+		else $the_tag = substr($haystack, $i);
+
+		// (4) find if it has a class
+		$k = strpos($the_tag, 'class=');
+		if ($k !== false) {
+			// (5a) next should be the quote
+			$n = substr($the_tag, $k+6, 1);
+			$p = strpos($the_tag, $n, $k+7);
+			// (6a) then insert the class name
+			$haystack = substr_replace($haystack, ' '.$class, $i+$p, 0);
+		} else {
+			// (5b) find the end of the tag
+			$p = strpos($the_tag, '>');
+			// (6b) then insert class attribute and name
+			$haystack = substr_replace($haystack, ' class="'.$class.'"', $i+$p, 0);
+		}
+	}
+	// (7) done.
+	return $haystack;
+}
+
 function bs4_icon_set() {
 	global $bs4_singletons;
 	if (!isset($bs4_singletons)) $bs4_singletons = array();
@@ -176,7 +206,7 @@ function get_bs4_post_meta() {
 
         		$o .= '<a href="' . get_category_link($id) . '"';
         		if (!empty($cat->description)) $o .= ' title=" ' . $cat->description . '"';
-        		$o .= ' class="label label-' . $cls . '">' . $cat->name . '</a>';
+        		$o .= ' class="tag tag-' . $cls . '">' . $cat->name . '</a>';
         		if ($i != 0) $o .= '<span class="sep"> </span>';
         	}
         	$o .= '</span>';
@@ -201,7 +231,7 @@ function get_bs4_post_meta() {
 
         		$o .= '<a href="' . get_tag_link($id) . '"';
         		if (!empty($tag->description)) $o .= ' title=" ' . $tag->description . '"';
-			$o .= ' class="label label-pill label-' . $cls . '">' . $tag->name . '</a>';
+			$o .= ' class="tag tag-pill tag-' . $cls . ' t-link-' . $id . '">' . $tag->name . '</a>';
         		if ($i != 0) $o .= '<span class="sep"> </span>';
         	}
         	$o .= '</span>';
@@ -235,50 +265,50 @@ function get_category_count() {
 function bs4_content_pager() {
 	global $wp_query;
 
-	$class = 'pager ';
+	$_n = false;
+	$_p = false;
+
 	if ( is_single() ) {
+
         	// navigation links for single posts
-
         	$in_same_cat = get_category_count() > 1;
-        	$_n = get_next_post_link( '<li>%link</li> ', 'Next', $in_same_cat );
-        	$_p = get_previous_post_link( '<li>%link</li> ', 'Previous', $in_same_cat );
+        	$_n = get_next_post_link( '%link ', 'Next'.get_bs4_i('raquo', ' '), $in_same_cat );
+        	$_p = get_previous_post_link( '%link ', get_bs4_i('laquo', '', ' ').'Previous', $in_same_cat );
 
-        	if ($_n || $_p) {
-			?><hr class="soft hidden-print"><nav class="hidden-print"><ul class="<?= $class ?>"><?php
-        		if ($_p) echo $_p;
-        		if ($_n) echo $_n;
-        		?></ul></nav><?php
-        	}
 	} elseif ( ($wp_query->max_num_pages > 1) && ( is_home() || is_archive() || is_search() ) ) {
+
         	// navigation links for home, blog,  archive, and search pages
+        	$_n = get_next_posts_link( get_bs4_i('laquo', '', ' ').'Older' );
+        	$_p = get_previous_posts_link( 'Newer'.get_bs4_i('raquo', ' ') );
 
-        	$_n = get_next_posts_link();
-        	$_p = get_previous_posts_link();
+	}
 
-        	if ($_n || $_p) {
-        		?><hr class="soft hidden-print"><nav class="hidden-print"><ul class="<?= $class ?>"><?php
-			if ( $_n ) {
-		        	?><li class="pager-prev"><?php
-                		next_posts_link( 'Older' );
-                		?></li><?php
-			}
-			if ( $_p ) {
-		        	?><li class="pager-next"><?php
-                		previous_posts_link( 'Newer' );
-                		?></li><?php
-			}
-        		?></ul></nav><?php
-        	}
+	if ($_n || $_p) {
+		$_n = inject_class_in_tag('a', 'btn btn-outline-info', $_n);
+		$_p = inject_class_in_tag('a', 'btn btn-outline-info', $_p);
+
+		?><nav class="hidden-print"><center><div class="pager m-t-1"><?php
+
+		if ( is_single() ) {
+			if ($_p) echo $_p;
+			if ($_p && $_n) echo ' ';
+			if ($_n) echo $_n;
+		} else {
+			if ($_n) echo $_n;
+			if ($_p && $_n) echo ' ';
+			if ($_p) echo $_p;
+		}
+		?></div></center></nav><?php
 	}
 }
 
 function bs4_link_pages() {
 	wp_link_pages_2( array(
-        	'before'           => '<nav class="text-center"><ul class="pagination">',
-        	'after'            => '</ul></nav>',
+        	'before'           => '<nav><center><ul class="pagination m-b-0 m-t-1">',
+        	'after'            => '</ul></center></nav>',
         	'nextpagelink'     => '&raquo;',
 		'previouspagelink' => '&laquo;',
-        	'nolink'           => '<span>%</span>',
+        	'nolink'           => '<a>%</a>',
         	'next_or_number'   => 'both',
         	) );
 }
@@ -312,4 +342,15 @@ function bs4_inject_feature($fn, $html) {
 		'})(jQuery);';
 	ts_enqueue_script(str_replace('_', '-', $fn), $js);
 
+}
+
+function has_bs4_footer_bar() {
+	$ret = false;
+	for ($i = 1; $i <= 4; $i++) {
+		if ( is_active_sidebar( 'sidebar-' . ($i+3) ) ) {
+			$ret = true;
+			break;
+		}
+	}
+	return $ret;
 }

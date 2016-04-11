@@ -8,10 +8,12 @@ $catagorized = (get_category_count() > 1);
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 ?>
 
-<div class="alert alert-404">
+<div class="alert alert-warning alert-404">
 
-<h1 class="display-1 text-center"><?php bs4_i('warning', '', ' ') ?>404</h1>
-<p class="text-center text-danger">The page you were looking for could not be found.</p>
+<center>
+	<h1 class="display-1"><?php bs4_i('warning', '', ' ') ?>404</h1>
+	<p class="text-center text-danger">The page you were looking for could not be found.</p>
+</center>
 <?php if ($referer) {
 	echo '<p class="text-center text-info">';
 	bs4_i('info lg', '', ' ');
@@ -21,21 +23,26 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <hr class="soft">
 
-<div class='row'><div class="m-x-auto">
+<div class='row'><div class="col-xs-12 m-x-auto"><center>
 <form method="get" id="search-form-404 ceter-block"
 	action="<?= home_url( '/' ) ?>" class="form-inline search-from">
+	<fieldset class="form-group">
 	<input type="search" name="s" class="search-input form-control"
 		results="10" placeholder="Search &hellip;"
         	value="<?php esc_attr( get_search_query() ); ?>">
+	</fieldset>
 	<button type="submit" class="search-button btn btn-primary hidden-xs-down"><?php
         	bs4_i('search', '<span class="hidden-sm-down">', ' </span>') ?>Search</button>
 </form>
-</div></div>
+</center></div></div>
 </div>
 
-<hr class="soft">
-
 <?php
+
+if (!has_bs4_footer_bar()) :
+
+echo '<hr class="soft">';
+
 $wtag = 'h4';
 $args = array(
 	'before_widget' => '<aside class="widget">',
@@ -64,5 +71,8 @@ $args = array(
 </div>
 
 <?
+
+endif;  // has_bs4_footer_bar();
+
 // get_sidebar();  // no sidebar!
 get_footer();

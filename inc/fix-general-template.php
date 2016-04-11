@@ -43,7 +43,7 @@ function paginate_links_2( $args = '' ) {
         	'after_page_number' => '',
 
         	// HACK: general
-        	'nolink' => '<span>%#%</span>',  // HACK: nolink, %#% is replaced by page number, or dots, or Next/Prev text
+        	'nolink' => '<a>%#%</a>',  // HACK: nolink, %#% is replaced by page number, or dots, or Next/Prev text
         	'dots' => __( '&hellip;' ),
 
         	// HACK: for output when list

@@ -15,7 +15,7 @@ function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_filter_booleans($attribs, array('pill'));
 
 	$class = 'tag';
-	if ($attribs['pill']) $$class .= ' tag-pill';
+	if ($attribs['pill']) $class .= ' tag-pill';
 
 	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger'))) {
 		$class .= ' tag-' . $attribs['type'];

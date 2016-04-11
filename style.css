@@ -4,24 +4,32 @@ Theme URI: http://github.com/vinorodrigues/wp-bootstrap4
 Author: Vino Rodrigues
 Author URI: http://vinorodrigues.com
 Description: A responsive WordPress theme based on Bootstrap 4
-Version: 0.1.03
+Version: 0.1.04
 License: MIT License
 License URI: http://opensource.org/licenses/mit-license.html
 Text Domain: bootstrap4
 Tags: bootstrap responsive
 */
 
-@media (min-width: 544px) { .container-custom { max-width: 544px; } }
-@media (min-width: 768px) { .container-custom { max-width: 720px; } }
-@media (min-width: 992px) { .container-custom { max-width: 960px; } }
-@media (min-width: 1200px) { .container-custom { max-width: 978px; } }
-
 .sticky {
 	background-color: #f6f6f6;
 	background-image: linear-gradient(to bottom, #ffffff, #f6f6f6);
 }
-.footing {
-	font-size: small;
+
+.banded footer {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+
+.footing .footer {
+	font-size: 80%;
+}
+
+hr.soft {
+	width: 33.333%;
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(128, 128, 128, 0.75), rgba(255, 255, 255, 0));
+	margin: ($spacer-y * 1.5) auto;
 }
 
 .navbar .search-button,
@@ -33,6 +41,21 @@ Tags: bootstrap responsive
 .img-thumbnail {
 	box-shadow: 0px 1px 2px #444;
 	margin: 2px;
+}
+
+span.lead { display: inline-block; }
+span.lead:first-letter {
+	float: left;
+	font-size: 325%;
+	line-height: 3.25rem;
+	padding-top: 4px;
+	padding-right: 8px;
+	font-weight: bold;
+	font-style: oblique;
+}
+
+.footing .row:first-child {
+	border-top: 1px solid #eee;
 }
 
 /* -------------------- DEBUG -------------------- */

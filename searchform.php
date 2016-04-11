@@ -13,7 +13,7 @@ $___bs4_search_form_count += 1;
 	<fieldset class="form-group">
         	<label for="s" class="search-label">Search for:</label>
         	<div class="input-group">
-        		<?php /* <div class="input-group-addon"><?php bs4_i('search') ?></div> */ ?>
+        		<?php /* <label for="s" class="input-group-addon"><?php bs4_i('search') ?></label> */ ?>
         		<input type="search" name="s" class="search-input form-control"
                 		results="10" placeholder="Search &hellip;"
                 		value="<?= get_search_query() ?>" />

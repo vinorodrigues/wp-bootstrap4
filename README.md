@@ -25,30 +25,6 @@ This implies certain considerations:
 * Assistive technologies are excluded in this initial release.  This will be updated later.
 
 
-Releases
---------
-
-*  0.1.01
-  *  Initial functional upload to Github
-
-
-*  0.1.02
-  *  added custom header image
-  *  added post featured image support, that replaces the custom header image
-  *  added custom background image support
-  *  ~~added `print.css` print content css~~
-
-
-*  0.1.03
-  * based on _twbs/bootstrap @26adc1_ (_v4-dev_ branch)
-  * includes _FortAwesome/Font-Awesome @d820f5c_ (_4.6.0-wip_ branch)
-  * `center-block` replaced by `m-x-auto`, `pull-left` by `pull-xs-left` & `pull-right` by `pull-xs-right`
-  * `btn-*-outline` replaced by `btn-outline-*`
-  * `col-*-offset-*` replaced by `offset-*-*`, `col-*-push-*` by `push-*-*` & `col-*-pull-*` by `pull-*-*`
-  * _`label`_ shortcode replaced by _`tag`_ shortcode
-  * added `m-b-0` to `navbar-brand` as per docs
-  * EqualHeights now based on [@Sam152](https://github.com/Sam152/Javascript-Equal-Height-Responsive-Rows)'s work
-  * moved print support to theme css file and added `bootstrap-print.css` including `col-pr-*` classes
 
 Licences
 --------
@@ -57,3 +33,5 @@ Licences
 - [Bootstrap 4](http://v4-alpha.getbootstrap.com) under [MIT License](http://www.apache.org/licenses/LICENSE-2.0)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/) under [SIL OFL 1.1](http://scripts.sil.org/OFL)
 - [Wordpress](http://wordpress.org) under [GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)
+
+★

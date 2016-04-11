@@ -10,8 +10,7 @@
  * expert_more filter
  */
 function bs4_excerpt_more( $more ) {
-	// label label-pill label-info
-	return ' <a title="More..." class="btn btn-outline-primary btn-sm small more-link" href="' .
+	return ' <a title="More..." class="btn btn-outline-secondary btn-sm more-link" href="' .
         	get_permalink() . '">' . get_bs4_i('hellip') . '</a>';
 }
 add_filter( 'excerpt_more', 'bs4_excerpt_more' );
@@ -22,7 +21,7 @@ add_filter( 'excerpt_more', 'bs4_excerpt_more' );
 function bs4_the_content_more_link( $link, $text) {
 	$hellip = get_bs4_i('hellip', ' ');
 	$text = str_replace( array('...', '&hellip;'), array($hellip, $hellip), $text );
-	return '<a class="btn btn-outline-primary btn-sm small more-link" href="' .
+	return '<a class="btn btn-outline-secondary btn-sm more-link" href="' .
         	get_permalink() . '">' . $text . '</a>';
 }
 add_filter( 'the_content_more_link', 'bs4_the_content_more_link', 10, 2 );
@@ -154,11 +153,12 @@ add_filter('widget_tag_cloud_args', 'bs4_widget_tag_cloud_args');
  * Pagination, pages
  */
 function bs4_wp_link_pages_item($item, $i, $is_current, $is_disabled) {
-	// global $page;  // , $numpages, $multipage, $more;
-	if ($is_current)
-        	$item = str_replace('<li', '<li class="active"', $item);
-        if ($is_disabled)
-        	$item = str_replace('<li', '<li class="disabled"', $item);
+	if (strpos($item, '<li') !== false) {
+		$item = inject_class_in_tag('li', 'page-item', $item);
+		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
+        	if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
+		$item = inject_class_in_tag('a', 'page-link', $item);
+	}
 	return $item;
 }
 add_filter('wp_link_pages_item', 'bs4_wp_link_pages_item', 10, 4);
@@ -167,10 +167,12 @@ add_filter('wp_link_pages_item', 'bs4_wp_link_pages_item', 10, 4);
  * Pagination, comments
  */
 function bs4_paginate_links_item($item, $is_current, $is_disabled) {
-	if ($is_current)
-        	$item = str_replace('<li', '<li class="active"', $item);
-        if ($is_disabled)
-        	$item = str_replace('<li', '<li class="disabled"', $item);
+	if (strpos($item, '<li') !== false) {
+		$item = inject_class_in_tag('li', 'page-item', $item);
+		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
+        	if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
+		$item = inject_class_in_tag('a', 'page-link', $item);
+	}
 	return $item;
 }
 add_filter('paginate_links_item', 'bs4_paginate_links_item', 10, 3);
@@ -235,3 +237,10 @@ function bs4_password_form() {
 	return $o;
 }
 add_filter( 'the_password_form', 'bs4_password_form' );
+
+
+function bs4_wp_list_categories($links) {
+	$links = str_replace(array(' (', ')'), array(' <span class="tag tag-default">', '</span>'), $links);
+	return $links;
+}
+add_filter('wp_list_categories', 'bs4_wp_list_categories');

@@ -63,7 +63,7 @@ function bs4_content_class($sidebar_position) {
         	case 2: $o .= ' col-md-8 col-lg-9'; break;
         	case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
 	};
-	if ( !get_theme_mod('bootstrap_flexbox', false)) $o .= ' in-main';
+	if ( !get_theme_mod('bootstrap_flexbox', false)) $o .= ' eh';
 	$o .= ' col-pr-12 content';
 	return $o;
 }

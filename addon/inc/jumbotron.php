@@ -18,7 +18,7 @@ function ts_bootstrap4_jumbotron_sc( $atts, $content = null, $tag = '' ) {
 
 	$output = '<div' . bs4_get_shortcode_class($atts, $class) . '>';
 	if ($attribs['fluid']) $output .= '<div class="container-fluid">';
-	$output .= do_shortcode($content);
+	if (!empty($content)) $output .= do_shortcode($content);
 	if ($attribs['fluid']) $output .= '</div>';
 	$output .= '</div>';
 

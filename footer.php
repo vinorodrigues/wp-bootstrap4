@@ -72,7 +72,7 @@ if ($has_mn) {
 <?php
 get_template_part( 'footbar' );
 if ($has_mn || $has_cr) :
-	?><div class="row"><?php
+	?><div class="row footer"><?php
 
 	switch ($cr_position) {
 		case 1:

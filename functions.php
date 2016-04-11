@@ -21,6 +21,7 @@ include_once 'inc/fix-post-template.php';
 include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
+include_once 'inc/fix-tag-class.php';
 // plugins
 if (get_theme_mod('load_plugins', true)) {
 	include_once 'addon/bs4-layout.php';

@@ -25,6 +25,7 @@ function wp_link_pages_2( $args = '' ) {
 		'echo'                 => 1
 		);
 	$params = wp_parse_args( $args, $defaults );
+
 	$r = apply_filters( 'wp_link_pages_args', $params );
 
 	$output = '';
