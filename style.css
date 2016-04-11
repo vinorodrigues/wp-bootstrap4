@@ -16,10 +16,6 @@ Tags: bootstrap responsive
 	background-image: linear-gradient(to bottom, #ffffff, #f6f6f6);
 }
 
-.banded footer {
-	background-color: rgba(0, 0, 0, 0.05);
-}
-
 .footing .footer {
 	font-size: 80%;
 }
@@ -57,6 +53,7 @@ span.lead:first-letter {
 .footing .row:first-child {
 	border-top: 1px solid #eee;
 }
+
 
 /* -------------------- DEBUG -------------------- */
 
