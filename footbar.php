@@ -8,7 +8,7 @@ if (has_bs4_footer_bar()) :
 	$sidebars = array();
 	for ($i = 1; $i <= 4; $i++) {
 		if ( is_active_sidebar( 'sidebar-' . ($i+3) ) ) {
-        		$sidebars[] = 'sidebar-' . ($i+3);
+			$sidebars[] = 'sidebar-' . ($i+3);
 		}
 	}
 

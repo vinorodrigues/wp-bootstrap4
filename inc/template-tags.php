@@ -11,7 +11,7 @@
  */
 function bs4_excerpt_more( $more ) {
 	return ' <a title="More..." class="btn btn-outline-secondary btn-sm more-link" href="' .
-        	get_permalink() . '">' . get_bs4_i('hellip') . '</a>';
+		get_permalink() . '">' . get_bs4_i('hellip') . '</a>';
 }
 add_filter( 'excerpt_more', 'bs4_excerpt_more' );
 
@@ -22,7 +22,7 @@ function bs4_the_content_more_link( $link, $text) {
 	$hellip = get_bs4_i('hellip', ' ');
 	$text = str_replace( array('...', '&hellip;'), array($hellip, $hellip), $text );
 	return '<a class="btn btn-outline-secondary btn-sm more-link" href="' .
-        	get_permalink() . '">' . $text . '</a>';
+		get_permalink() . '">' . $text . '</a>';
 }
 add_filter( 'the_content_more_link', 'bs4_the_content_more_link', 10, 2 );
 
@@ -43,28 +43,28 @@ function bs4_the_content($content) {
 	// Fix images
 	$imgs = $document->getElementsByTagName('img');
 	foreach ($imgs as $img) {
-        	$cls = $img->getAttribute('class');
-        	$cls = ltrim( str_replace(
-        		array('  ', 'alignnone', 'alignleft', 'alignright', 'aligncenter'),
-        		array(' ', '', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
-        		$cls . ' img-fluid' ) );
-        	$img->setAttribute('class', $cls);
+		$cls = $img->getAttribute('class');
+		$cls = ltrim( str_replace(
+			array('  ', 'alignnone', 'alignleft', 'alignright', 'aligncenter'),
+			array(' ', '', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
+			$cls . ' img-fluid' ) );
+		$img->setAttribute('class', $cls);
 	}
 
 	// Fix tables
 	$tbls = $document->getElementsByTagName('table');
 	foreach ($tbls as $tbl) {
-        	$cls = $tbl->getAttribute('class');
-        	$cls = ltrim( $cls . ' table' );
-        	$tbl->setAttribute('class', $cls);
+		$cls = $tbl->getAttribute('class');
+		$cls = ltrim( $cls . ' table' );
+		$tbl->setAttribute('class', $cls);
 
-        	$thds = $tbl->getElementsByTagName('thead');
+		$thds = $tbl->getElementsByTagName('thead');
 
-        	foreach ($thds as $thd) {
-        		$cls = $thd->getAttribute('class');
-        		$cls = ltrim( $cls . ' thead-default' );
-        		$thd->setAttribute('class', $cls);
-        	}
+		foreach ($thds as $thd) {
+			$cls = $thd->getAttribute('class');
+			$cls = ltrim( $cls . ' thead-default' );
+			$thd->setAttribute('class', $cls);
+		}
 	}
 
 	$html = preg_replace(
@@ -114,11 +114,11 @@ function bs4_img_caption_shortcode( $output, $attr, $content ) {
 	$attributes = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="figure wp-caption ' . esc_attr( $attr['align'] ) . '"';
 	$attributes = str_replace(
-        	array(' alignnone', 'alignleft', 'alignright', 'aligncenter'),
-        	array('', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
-        	$attributes );
+		array(' alignnone', 'alignleft', 'alignright', 'aligncenter'),
+		array('', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
+		$attributes );
 	if ($attr['align'] == 'aligncenter') {
-        	$attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px;max-width:100%"';
+		$attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px;max-width:100%"';
 	}
 
 	/* Open the caption <div>. */
@@ -156,7 +156,7 @@ function bs4_wp_link_pages_item($item, $i, $is_current, $is_disabled) {
 	if (strpos($item, '<li') !== false) {
 		$item = inject_class_in_tag('li', 'page-item', $item);
 		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
-        	if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
+		if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
 		$item = inject_class_in_tag('a', 'page-link', $item);
 	}
 	return $item;
@@ -170,7 +170,7 @@ function bs4_paginate_links_item($item, $is_current, $is_disabled) {
 	if (strpos($item, '<li') !== false) {
 		$item = inject_class_in_tag('li', 'page-item', $item);
 		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
-        	if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
+		if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
 		$item = inject_class_in_tag('a', 'page-link', $item);
 	}
 	return $item;
@@ -184,7 +184,7 @@ function bs4_cancel_comment_reply_link($formatted_link, $link, $text) {
 	if (!isset($_GET['replytocom'])) return '';
 
 	return ' <a rel="nofollow" id="cancel-comment-reply-link" href="' .
-        	$link . '" class="btn btn-outline-danger">' . $text . '</a>';
+		$link . '" class="btn btn-outline-danger">' . $text . '</a>';
 }
 add_filter('cancel_comment_reply_link', 'bs4_cancel_comment_reply_link', 10, 3);
 
@@ -195,9 +195,9 @@ function bs4_comment_reply_link($formatted_link /* , $args, $comment, $post */ )
 	if (strpos($formatted_link, 'comment-reply-login') !== false) return '';
 
 	return ' ' . str_replace(
-        	'comment-reply-link',
-        	'btn btn-outline-success btn-sm small',
-        	$formatted_link );
+		'comment-reply-link',
+		'btn btn-outline-success btn-sm small',
+		$formatted_link );
 }
 add_filter('comment_reply_link', 'bs4_comment_reply_link' /* , 10, 4 */ );
 

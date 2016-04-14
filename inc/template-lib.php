@@ -42,9 +42,9 @@ function bs4_icon_set() {
 	if (!isset($bs4_singletons)) $bs4_singletons = array();
 
 	if (!isset($bs4_singletons['icon_set'])) {
-        	$bs4_singletons['icon_set'] = get_theme_mod('icon_set', 'fa');
+		$bs4_singletons['icon_set'] = get_theme_mod('icon_set', 'fa');
 		$_fn = get_template_directory() . '/inc/iconset-' . $bs4_singletons['icon_set'] . '.php';
-        	if (file_exists($_fn)) include_once $_fn;
+		if (file_exists($_fn)) include_once $_fn;
 	}
 
 	return $bs4_singletons['icon_set'];
@@ -88,7 +88,7 @@ function get_bs4_category_list( $post_id = false ) {
 
 	$cats = array();
 	foreach ( $categories as $category ) {
-        	$cats[] = $category->term_id;
+		$cats[] = $category->term_id;
 	}
 	return $cats;
 }
@@ -101,8 +101,8 @@ function get_bs4_tag_list( $post_id = false ) {
 	$tags = array();
 	if ($terms)
 		foreach ($terms as $term) {
-        		$tags[] = $term->term_id;
-        	}
+			$tags[] = $term->term_id;
+		}
 	return $tags;
 }
 
@@ -112,13 +112,13 @@ function __bs4_get_cat_cnt_limit($minmax = 'max') {
 
 	$singleton = 'category-' . $minmax;
 	if (!isset($bs4_singletons[$singleton])) {
-        	$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
-        	if ('min' != $minmax) $args['order'] = 'DESC';
-        	$cats = get_categories( $args );
-        	if (is_array($cats) && is_object($cats[0]))
-        		$bs4_singletons[$singleton] = intval( $cats[0]->count );
-        	else
-        		$bs4_singletons[$singleton] = 0;
+		$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
+		if ('min' != $minmax) $args['order'] = 'DESC';
+		$cats = get_categories( $args );
+		if (is_array($cats) && is_object($cats[0]))
+			$bs4_singletons[$singleton] = intval( $cats[0]->count );
+		else
+			$bs4_singletons[$singleton] = 0;
 	}
 	return $bs4_singletons[$singleton];
 }
@@ -137,13 +137,13 @@ function __bs4_get_tag_cnt_limit($minmax = 'max') {
 
 	$singleton = 'tag-' . $minmax;
 	if (!isset($bs4_singletons[$singleton])) {
-        	$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
-        	if ('min' != $minmax) $args['order'] = 'DESC';
-        	$tags = get_tags( $args );
-        	if (is_array($tags) && is_object($tags[0]))
-        		$bs4_singletons[$singleton] = intval( $tags[0]->count );
-        	else
-        		$bs4_singletons[$singleton] = 0;
+		$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
+		if ('min' != $minmax) $args['order'] = 'DESC';
+		$tags = get_tags( $args );
+		if (is_array($tags) && is_object($tags[0]))
+			$bs4_singletons[$singleton] = intval( $tags[0]->count );
+		else
+			$bs4_singletons[$singleton] = 0;
 	}
 	return $bs4_singletons[$singleton];
 }
@@ -175,66 +175,66 @@ function get_bs4_post_meta() {
 	$o .= '</span>';
 
 	if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) :
-        	$o .= '<span class="meta-comments meta-item">';
-        	ob_start();
-        	comments_popup_link(
-        		get_bs4_i('commenta') . '<span class="hidden-sm-down"> Leave a comment</span>',
-        		get_bs4_i('comment') . ' 1<span class="hidden-sm-down"> comment</span>',
-        		get_bs4_i('comments') . ' %<span class="hidden-sm-down"> comments</span>',
-        		'',
-        		get_bs4_i('commentx') . '<span class="hidden-sm-down"> No comments</span>'  // never used
-        		);
-        	$o .= ob_get_clean();
-        	$o .= '</span>';
+		$o .= '<span class="meta-comments meta-item">';
+		ob_start();
+		comments_popup_link(
+			get_bs4_i('commenta') . '<span class="hidden-sm-down"> Leave a comment</span>',
+			get_bs4_i('comment') . ' 1<span class="hidden-sm-down"> comment</span>',
+			get_bs4_i('comments') . ' %<span class="hidden-sm-down"> comments</span>',
+			'',
+			get_bs4_i('commentx') . '<span class="hidden-sm-down"> No comments</span>'  // never used
+			);
+		$o .= ob_get_clean();
+		$o .= '</span>';
 	endif;
 
 	$categories = get_bs4_category_list();
 	if (!empty($categories)) {
-        	$o .= ' <span class="meta-categories meta-item">';
-        	$o .= get_bs4_i('category', '', ' ', 'title="Categories"');
-        	$i = count($categories);
-        	$max = __bs4_get_cat_cnt_max() - __bs4_get_cat_cnt_min() + 1;
-        	foreach ($categories as $id) {
-        		$i--;
+		$o .= ' <span class="meta-categories meta-item">';
+		$o .= get_bs4_i('category', '', ' ', 'title="Categories"');
+		$i = count($categories);
+		$max = __bs4_get_cat_cnt_max() - __bs4_get_cat_cnt_min() + 1;
+		foreach ($categories as $id) {
+			$i--;
 
-        		$cat = get_category($id);
-        		$per = intval(($cat->count / $max) * 100);
-        		if ($per > 75) $cls = 'danger top-25';
-        		elseif ($per > 50) $cls = 'warning top-50';
-        		elseif ($per > 25) $cls = 'success top-75';
-        		else $cls = 'info top-100';
+			$cat = get_category($id);
+			$per = intval(($cat->count / $max) * 100);
+			if ($per > 75) $cls = 'danger top-25';
+			elseif ($per > 50) $cls = 'warning top-50';
+			elseif ($per > 25) $cls = 'success top-75';
+			else $cls = 'info top-100';
 
-        		$o .= '<a href="' . get_category_link($id) . '"';
-        		if (!empty($cat->description)) $o .= ' title=" ' . $cat->description . '"';
-        		$o .= ' class="tag tag-' . $cls . '">' . $cat->name . '</a>';
-        		if ($i != 0) $o .= '<span class="sep"> </span>';
-        	}
-        	$o .= '</span>';
+			$o .= '<a href="' . get_category_link($id) . '"';
+			if (!empty($cat->description)) $o .= ' title=" ' . $cat->description . '"';
+			$o .= ' class="tag tag-' . $cls . '">' . $cat->name . '</a>';
+			if ($i != 0) $o .= '<span class="sep"> </span>';
+		}
+		$o .= '</span>';
 	}
 
 	$tags = get_bs4_tag_list();
 	if (!empty($tags)) {
-        	$o .= ' <span class="meta-tags meta-item">';
-        	$o .= get_bs4_i('tag', '', ' ', 'title="Tags"');
-        	$i = count($tags);
-        	$max = __bs4_get_tag_cnt_max() - __bs4_get_tag_cnt_min() + 1;
-        	foreach ($tags as $id) {
-        		$i--;
+		$o .= ' <span class="meta-tags meta-item">';
+		$o .= get_bs4_i('tag', '', ' ', 'title="Tags"');
+		$i = count($tags);
+		$max = __bs4_get_tag_cnt_max() - __bs4_get_tag_cnt_min() + 1;
+		foreach ($tags as $id) {
+			$i--;
 
-        		$tag = get_tag($id);
+			$tag = get_tag($id);
 
-        		$per = intval(($tag->count / $max) * 100);
-        		if ($per > 75) $cls = 'danger top-25';
-        		elseif ($per > 50) $cls = 'warning top-50';
-        		elseif ($per > 25) $cls = 'success top-75';
-        		else $cls = 'info top-100';
+			$per = intval(($tag->count / $max) * 100);
+			if ($per > 75) $cls = 'danger top-25';
+			elseif ($per > 50) $cls = 'warning top-50';
+			elseif ($per > 25) $cls = 'success top-75';
+			else $cls = 'info top-100';
 
-        		$o .= '<a href="' . get_tag_link($id) . '"';
-        		if (!empty($tag->description)) $o .= ' title=" ' . $tag->description . '"';
+			$o .= '<a href="' . get_tag_link($id) . '"';
+			if (!empty($tag->description)) $o .= ' title=" ' . $tag->description . '"';
 			$o .= ' class="tag tag-pill tag-' . $cls . ' t-link-' . $id . '">' . $tag->name . '</a>';
-        		if ($i != 0) $o .= '<span class="sep"> </span>';
-        	}
-        	$o .= '</span>';
+			if ($i != 0) $o .= '<span class="sep"> </span>';
+		}
+		$o .= '</span>';
 	}
 
 	return $o;
@@ -270,16 +270,16 @@ function bs4_content_pager() {
 
 	if ( is_single() ) {
 
-        	// navigation links for single posts
-        	$in_same_cat = get_category_count() > 1;
-        	$_n = get_next_post_link( '%link ', 'Next'.get_bs4_i('raquo', ' '), $in_same_cat );
-        	$_p = get_previous_post_link( '%link ', get_bs4_i('laquo', '', ' ').'Previous', $in_same_cat );
+		// navigation links for single posts
+		$in_same_cat = get_category_count() > 1;
+		$_n = get_next_post_link( '%link ', 'Next'.get_bs4_i('raquo', ' '), $in_same_cat );
+		$_p = get_previous_post_link( '%link ', get_bs4_i('laquo', '', ' ').'Previous', $in_same_cat );
 
 	} elseif ( ($wp_query->max_num_pages > 1) && ( is_home() || is_archive() || is_search() ) ) {
 
-        	// navigation links for home, blog,  archive, and search pages
-        	$_n = get_next_posts_link( get_bs4_i('laquo', '', ' ').'Older' );
-        	$_p = get_previous_posts_link( 'Newer'.get_bs4_i('raquo', ' ') );
+		// navigation links for home, blog,  archive, and search pages
+		$_n = get_next_posts_link( get_bs4_i('laquo', '', ' ').'Older' );
+		$_p = get_previous_posts_link( 'Newer'.get_bs4_i('raquo', ' ') );
 
 	}
 
@@ -304,13 +304,13 @@ function bs4_content_pager() {
 
 function bs4_link_pages() {
 	wp_link_pages_2( array(
-        	'before'           => '<nav><center><ul class="pagination m-b-0 m-t-1">',
-        	'after'            => '</ul></center></nav>',
-        	'nextpagelink'     => '&raquo;',
-		'previouspagelink' => '&laquo;',
-        	'nolink'           => '<a>%</a>',
-        	'next_or_number'   => 'both',
-        	) );
+		'before'	   => '<nav><center><ul class="pagination m-b-0 m-t-1">',
+		'after'	    => '</ul></center></nav>',
+		'nextpagelink'     => get_bs4_i('raquo'),
+		'previouspagelink' => get_bs4_i('laquo'),
+		'nolink'	   => '<a>%</a>',
+		'next_or_number'   => 'both',
+		) );
 }
 
 /* function validate_gravatar($email) {

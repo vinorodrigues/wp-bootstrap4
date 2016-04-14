@@ -29,10 +29,10 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 	<fieldset class="form-group">
 	<input type="search" name="s" class="search-input form-control"
 		results="10" placeholder="Search &hellip;"
-        	value="<?php esc_attr( get_search_query() ); ?>">
+		value="<?php esc_attr( get_search_query() ); ?>">
 	</fieldset>
 	<button type="submit" class="search-button btn btn-primary hidden-xs-down"><?php
-        	bs4_i('search', '<span class="hidden-sm-down">', ' </span>') ?>Search</button>
+		bs4_i('search', '<span class="hidden-sm-down">', ' </span>') ?>Search</button>
 </form>
 </center></div></div>
 </div>
@@ -54,11 +54,11 @@ $args = array(
 ?>
 <div class="row">
 	<div class="<?= ($catagorized ? 'col-sm-12 col-lg-4' : 'col-sm-6 col-lg-4 offset-lg-2') ?>">
-        	<?php the_widget( 'WP_Widget_Recent_Posts', array('title' => 'Recent Posts', 'number' => 5), $args ); ?>
+		<?php the_widget( 'WP_Widget_Recent_Posts', array('title' => 'Recent Posts', 'number' => 5), $args ); ?>
 	</div>
 	<?php /*
-        	$args['after_title'] .= '<span class="text-center">';
-        	$args['after_widget'] = '</span>' . $args['after_widget'];
+		$args['after_title'] .= '<span class="text-center">';
+		$args['after_widget'] = '</span>' . $args['after_widget'];
 	*/ ?>
 	<?php if ($catagorized) { ?>
 		<div class="col-sm-6 col-lg-4">
@@ -66,7 +66,7 @@ $args = array(
 		</div>
 	<?php } ?>
 	<div class="col-sm-6 col-lg-4">
-        	<?php the_widget( 'WP_Widget_Tag_Cloud', array('title' => 'Tags'), $args ); ?>
+		<?php the_widget( 'WP_Widget_Tag_Cloud', array('title' => 'Tags'), $args ); ?>
 	</div>
 </div>
 

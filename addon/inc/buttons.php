@@ -118,17 +118,17 @@ add_shortcode( 'button_group', 'ts_bootstrap4_button_grp_sc' );
 		);
 
 	foreach ( $shortcodes as $shortcode ) {
-        	$array = array (
-        		'<p>[' . $shortcode    => '[' .$shortcode,
+		$array = array (
+			'<p>[' . $shortcode    => '[' .$shortcode,
 			'<br>[' . $shortcode   => '[' .$shortcode,
 			'<br />[' . $shortcode => '[' .$shortcode,
-        		// '<p>[/' . $shortcode   => '[/' .$shortcode,
-        		$shortcode . ']</p>'   => $shortcode . ']',
+			// '<p>[/' . $shortcode   => '[/' .$shortcode,
+			$shortcode . ']</p>'   => $shortcode . ']',
 			$shortcode . ']<br>'   => $shortcode . ']',
 			$shortcode . ']<br />' => $shortcode . ']',
-        		);
+			);
 
-        	$content = strtr( $content, $array );
+		$content = strtr( $content, $array );
 	}
 
 	return $content;

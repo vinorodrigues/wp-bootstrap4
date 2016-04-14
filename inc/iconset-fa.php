@@ -21,13 +21,13 @@ function bs4_customize_register_i_fa($wp_customize, $section) {
 	$wp_customize->add_setting( 'fontawesome_css', '' );
 
 	$wp_customize->add_control( 'fontawesome_css', array(
-        	'type'        => 'url',
-        	'section'     => $section,
-        	'description' => 'URL to <code>font-awesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
-        	'label'       => 'Font Awesome Stylesheet',
-        	'input_attrs' => array(
-        		'placeholder' => 'Use local copy',
-        		) ) );
+		'type'        => 'url',
+		'section'     => $section,
+		'description' => 'URL to <code>font-awesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
+		'label'       => 'Font Awesome Stylesheet',
+		'input_attrs' => array(
+			'placeholder' => 'Use local copy',
+			) ) );
 }
 
 function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {
@@ -36,42 +36,42 @@ function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {
 		// '3x'       => '3x',
 		// '4x'       => '4x',
 		// '5x'       => '5x',
-        	'calendar' => 'calendar',
-        	'cancel'   => 'close',
-        	'category' => 'bookmark',
-        	'clock'    => 'clock-o',
-        	'comment'  => 'comment',
-        	'commenta' => 'commenting',
-        	'commentr' => 'commenting-o',
-        	'comments' => 'comments',
-        	'commentx' => 'commenting-o',
-        	'edit'     => 'edit',
-        	'email'    => 'envelope',
+		'calendar' => 'calendar',
+		'cancel'   => 'close',
+		'category' => 'bookmark',
+		'clock'    => 'clock-o',
+		'comment'  => 'comment',
+		'commenta' => 'commenting',
+		'commentr' => 'commenting-o',
+		'comments' => 'comments',
+		'commentx' => 'commenting-o',
+		'edit'     => 'edit',
+		'email'    => 'envelope',
 		'fw'       => 'fw',  // fixed width
-        	'hellip'   => 'ellipsis-h',
-        	'info'     => 'info-circle',
+		'hellip'   => 'ellipsis-h',
+		'info'     => 'info-circle',
 		'laquo'    => 'chevron-left',
-        	'lg'       => 'lg',  // large
-        	'link'     => 'link',
-        	'login'    => 'lock',
-        	'logout'   => 'unlock',
-        	'post'     => 'arrow-circle-right',
+		'lg'       => 'lg',  // large
+		'link'     => 'link',
+		'login'    => 'lock',
+		'logout'   => 'unlock',
+		'post'     => 'arrow-circle-right',
 		'raquo'    => 'chevron-right',
-        	'reply'    => 'reply',
-        	'search'   => 'search',
+		'reply'    => 'reply',
+		'search'   => 'search',
 		// 'spin'     => 'spin',
-        	'tag'      => 'tag',
-        	'trash'    => 'trash',
-        	'user'     => 'user',
-        	'wait'     => 'hourglass-half',
-        	'warning'  => 'exclamation-triangle',
-        	);
+		'tag'      => 'tag',
+		'trash'    => 'trash',
+		'user'     => 'user',
+		'wait'     => 'hourglass-half',
+		'warning'  => 'exclamation-triangle',
+		);
 
 	$ns = explode(' ', $name);
 	$o = '<i class="fa';
 	foreach ($ns as $nm) {
-        	$v = isset($d[$nm]) ? 'fa-'.$d[$nm] : '';
-        	if ($v) $o .= ' ' . $v;
+		$v = isset($d[$nm]) ? 'fa-'.$d[$nm] : '';
+		if ($v) $o .= ' ' . $v;
 	}
 	$o .= '"';
 	if ($attribs) $o .= ' ' . $attribs;

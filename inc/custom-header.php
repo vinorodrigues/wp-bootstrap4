@@ -25,17 +25,17 @@ function bs4_custom_header_setup() {
 	global $wp_version;
 
 	$args = array(
-		// 'default-image'          => '',
-		'width'                  => FEATURED_IMAGE_X,
-		'height'                 => FEATURED_IMAGE_Y,
-		'flex-height'            => true,
-		// 'flex-width'             => false,
-		//'uploads'                => true,
-		'random-default'         => true,
-		'header-text'            => false,
-		// 'default-text-color'     => '',
-		// 'wp-head-callback'       => 'bs4_header_style',
-		// 'admin-head-callback'    => 'bs4_admin_header_style',
+		// 'default-image' => '',
+		'width'          => FEATURED_IMAGE_X,
+		'height'         => FEATURED_IMAGE_Y,
+		'flex-height'    => true,
+		// 'flex-width' => false,
+		//'uploads' => true,
+		'random-default' => true,
+		'header-text'    => false,
+		// 'default-text-color' => '',
+		// 'wp-head-callback' => 'bs4_header_style',
+		// 'admin-head-callback' => 'bs4_admin_header_style',
 		// 'admin-preview-callback' => 'bs4_admin_header_image',
 	);
 

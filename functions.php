@@ -63,9 +63,9 @@ function bs4_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => 'Primary Menu',
-        	'header'  => 'Header Menu',
+		'header'  => 'Header Menu',
 		'footer'  => 'Footer Menu',
-        	) );
+		) );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -77,7 +77,7 @@ function bs4_setup() {
 		'comment-list',
 		// 'gallery',
 		'caption',
-        	) );
+		) );
 
 	/*
 	 * Enable support for Post Formats.
@@ -89,7 +89,13 @@ function bs4_setup() {
 		// 'video',
 		// 'quote',
 		// 'link',
-        	) );
+		) );
+
+	if (function_exists('get_custom_logo'))  // NEW IN WP4.5
+		add_theme_support( 'custom-logo', array(
+			'flex-width' => true,
+			'flex-height' => true,
+		) );
 
 	include get_template_directory() . '/inc/customizer.php';
 }
@@ -165,11 +171,11 @@ function bs4_scripts() {
 
 	if ( !get_theme_mod('bootstrap_flexbox', false) )
 		wp_register_script(
-        		'equalheights',
-        		get_template_directory_uri() . '/js/grids' . $min . '.js',
-        		array( 'jquery' ),
-        		false,
-        		true );
+			'equalheights',
+			get_template_directory_uri() . '/js/grids' . $min . '.js',
+			array( 'jquery' ),
+			false,
+			true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
@@ -207,38 +213,38 @@ function bs4_widgets_init() {
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
-        	) );
+		) );
 
 	register_sidebar( array(
-        	'name'          => 'Secondary Sidebar',
-        	'id'            => 'sidebar-2',
+		'name'          => 'Secondary Sidebar',
+		'id'            => 'sidebar-2',
 		'description'   => '',
 		'before_widget' => '<aside class="%2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
-        	) );
+		) );
 
 	register_sidebar( array(
-        	'name'          => 'Header Ancillary',
-        	'id'            => 'sidebar-3',
+		'name'          => 'Header Ancillary',
+		'id'            => 'sidebar-3',
 		'description'   => 'Placed besides the Site Title or Site Logo',
 		'before_widget' => '<aside class="%2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . ' class="invisible" hidden>',
 		'after_title'   => '</' . $tag . '>',
-        	) );
+		) );
 
 	for ($i = 1; $i <= 4; $i++) {
-        	register_sidebar( array(
-        		'name'          => 'Footer Bar ' . $i,
-        		'id'            => 'sidebar-' . ($i+3),
-        		'description'   => '',
-        		'before_widget' => '<aside class="%2$s">',
-        		'after_widget'  => '</aside>',
-        		'before_title'  => '<' . $tag . '>',
-        		'after_title'   => '</' . $tag . '>',
+		register_sidebar( array(
+			'name'          => 'Footer Bar ' . $i,
+			'id'            => 'sidebar-' . ($i+3),
+			'description'   => '',
+			'before_widget' => '<aside class="%2$s">',
+			'after_widget'  => '</aside>',
+			'before_title'  => '<' . $tag . '>',
+			'after_title'   => '</' . $tag . '>',
 			) );
-    	}
+	}
 }
 add_action( 'widgets_init', 'bs4_widgets_init' );

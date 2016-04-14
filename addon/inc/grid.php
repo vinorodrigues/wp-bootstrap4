@@ -161,17 +161,17 @@ function ts_bootstrap4_grid_shortcode_fix( $content ) {
 		);
 
 	foreach ( $shortcodes as $shortcode ) {
-        	$array = array (
-        		'<p>[' . $shortcode    => '[' .$shortcode,
+		$array = array (
+			'<p>[' . $shortcode    => '[' .$shortcode,
 			'<br>[' . $shortcode   => '[' .$shortcode,
 			'<br />[' . $shortcode => '[' .$shortcode,
-        		// '<p>[/' . $shortcode   => '[/' .$shortcode,
-        		$shortcode . ']</p>'   => $shortcode . ']',
+			// '<p>[/' . $shortcode   => '[/' .$shortcode,
+			$shortcode . ']</p>'   => $shortcode . ']',
 			$shortcode . ']<br>'   => $shortcode . ']',
 			$shortcode . ']<br />' => $shortcode . ']',
-        		);
+			);
 
-        	$content = strtr( $content, $array );
+		$content = strtr( $content, $array );
 	}
 
 	return $content;

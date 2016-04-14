@@ -50,22 +50,22 @@ if (!empty($navbar_brand)) {
 }
 
 $navbar_array = array(
-	'menu'           => 'primary',
+	'menu'	         => 'primary',
 	'menu_class'     => 'nav navbar-nav',
 	'container'      => false,
 	'fallback_cb'    => false,
-	'depth'          => 2,
-	'walker'         => new Bootstrap_Walker_Menu_Nav(),
+	'depth'	         => 2,
+	'walker'	 => new Bootstrap_Walker_Menu_Nav(),
 	'theme_location' => 'primary',
 	);
 wp_nav_menu( $navbar_array );
 
 if ($navbar_search) {
 	?><form method="get" id="search-form-0" action="<?= home_url( '/' ) ?>" class="form-inline navbar-form search-from pull-xs-right">
-        	<input type="search" name="s" class="search-input form-control"
-        		results="5" placeholder="Search &hellip;"
-        		value="<?php esc_attr( get_search_query() ); ?>">
-        	<button type="submit" class="search-button btn btn-outline-success"><?php bs4_i('search'); ?></button>
+		<input type="search" name="s" class="search-input form-control"
+			results="5" placeholder="Search &hellip;"
+			value="<?php esc_attr( get_search_query() ); ?>">
+		<button type="submit" class="search-button btn btn-outline-success"><?php bs4_i('search'); ?></button>
 	</form><?php
 }
 

@@ -20,10 +20,10 @@ function get_bs4_icon_no($name, $before, $after, $attribs) {
 		case 'category': $o = '&#128193;'; break;
 		case 'clock': $o = '&#128338;'; break;
 		case 'comment':
-        	case 'commenta':
-        	case 'commentr':
-        	case 'comments':
-        	case 'commentx': $o = '&#128172;'; break;
+		case 'commenta':
+		case 'commentr':
+		case 'comments':
+		case 'commentx': $o = '&#128172;'; break;
 		case 'email': $o = '&#128231;'; break;
 		case 'hellip': $o = '&hellip;'; break;
 		case 'info': $o = '&#8505;'; break;

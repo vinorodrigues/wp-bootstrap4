@@ -24,11 +24,11 @@ function comment_form_2( $args = array(), $post_id = null ) {
 	$html5    = 'html5' === $args['format'];
 	$fields   =  array(
 		'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-		        '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></p>',
+			'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></p>',
 		'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-		        '<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
+			'<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
 		'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label> ' .
-		        '<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+			'<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
 		);
 
 	$required_text = sprintf( ' ' . __('Required fields are marked %s'), '<span class="required">*</span>' );
@@ -47,7 +47,7 @@ function comment_form_2( $args = array(), $post_id = null ) {
 		'name_submit'          => 'submit',
 		'title_reply'          => __( 'Leave a Reply' ),
 		'title_reply_to'       => __( 'Leave a Reply to %s' ),
-        	'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',  // DONE: From WP4.4
+		'title_reply_before'   => '<h3 id="reply-title" class="comment-reply-title">',  // DONE: From WP4.4
 		'title_reply_after'    => '</h3>',  // DONE: From WP4.4
 		'cancel_reply_before'  => ' <small>',  // DONE: From WP4.4
 		'cancel_reply_after'   => '</small>',  // DONE: From WP4.4
@@ -67,7 +67,7 @@ function comment_form_2( $args = array(), $post_id = null ) {
 		?>
 		<div id="respond" class="comment-respond">
 			<?php
-        		echo $args['title_reply_before'];
+			echo $args['title_reply_before'];
 			comment_form_title( $args['title_reply'], $args['title_reply_to'] );
 			echo $args['title_reply_after'];
 
@@ -122,7 +122,7 @@ function comment_form_2( $args = array(), $post_id = null ) {
 					echo apply_filters( 'comment_form_submit_field', $submit_field, $args );
 
 					echo $args['cancel_reply_before'];
-                			cancel_comment_reply_link( $args['cancel_reply_link'] );  // HACK - moved from title to next to the submit button
+					cancel_comment_reply_link( $args['cancel_reply_link'] );  // HACK - moved from title to next to the submit button
 					echo $args['cancel_reply_after'];
 
 					do_action( 'comment_form', $post_id );

@@ -38,14 +38,14 @@ if (empty($_t)) $_t = false;
 
 if (is_singular()) {
 	if ($_t) {
-        	?><h1 class="<?= $title_class ?>"><?= $_t ?></h1><?php
+		?><h1 class="<?= $title_class ?>"><?= $_t ?></h1><?php
 	}
 } else {
 	?><h1 class="<?= $title_class ?>"><a href="<?php the_permalink(); ?>"><?php
 	if (!$_t) {
-        	bs4_i('link');
+		bs4_i('link');
 	} else {
-        	echo $_t;
+		echo $_t;
 	}
 	?></a></h1><?php
 }
@@ -82,13 +82,13 @@ $link = get_edit_post_link();
 if (is_singular() && $link) { ?>
 <footer class="meta">
 	<p class="meta-data"><?php
-        	echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small hidden-print"' .
-        		'title="Edit post">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
-        	/* $link = get_delete_post_link();
-        	if ($link)
-        		echo ' <a href="' . $link . '" class="btn btn-outline-danger btn-sm small"' .
-                		'title="Delete post">' .
-                		get_bs4_i('trash', '', ' ') . 'Delete</a>'; */
+		echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small hidden-print"' .
+			'title="Edit post">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
+		/* $link = get_delete_post_link();
+		if ($link)
+			echo ' <a href="' . $link . '" class="btn btn-outline-danger btn-sm small"' .
+				'title="Delete post">' .
+				get_bs4_i('trash', '', ' ') . 'Delete</a>'; */
 	?></p>
 </footer>
 <?php }

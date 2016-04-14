@@ -23,13 +23,13 @@ function bs4_list_comments_callback($comment, $args, $depth) {
 	else echo '<div class="media-left">';
 
 	$link = get_avatar(
-        	$comment,
-        	$args['avatar_size'],
-        	'',
-        	$comment->comment_author,
-        	array(
-        		'class' => AVATAR_CLASS,
-        		'extra_attr' => 'title="' . esc_attr($comment->comment_author) . '"'
+		$comment,
+		$args['avatar_size'],
+		'',
+		$comment->comment_author,
+		array(
+			'class' => AVATAR_CLASS,
+			'extra_attr' => 'title="' . esc_attr($comment->comment_author) . '"'
 			));
 	if ($link) echo $link;
 	else echo get_bs4_user_i($comment);
@@ -57,7 +57,7 @@ function bs4_list_comments_callback($comment, $args, $depth) {
 	echo '</time>';
 	if ( '0' == $comment->comment_approved )
 		echo ' <span class="meta-item text-info comment-awaiting">' .
-        		get_bs4_i('wait', '', ' ') . 'Your comment is awaiting moderation.</span>';
+			get_bs4_i('wait', '', ' ') . 'Your comment is awaiting moderation.</span>';
 	echo '</p>';
 
 	echo '<p class="comment-text">' . get_comment_text() . '</p>';
@@ -66,18 +66,18 @@ function bs4_list_comments_callback($comment, $args, $depth) {
 
 	$link = get_edit_comment_link();
 	if ($link) {
-        	echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small"';
-        	echo ' title="Edit Comment">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
+		echo '<a href="' . $link . '" class="btn btn-outline-warning btn-sm small"';
+		echo ' title="Edit Comment">' . get_bs4_i('edit', '', ' ') . 'Edit</a>';
 	}
 
 	comment_reply_link(array_merge( $args, array(
-        	'depth'     => $depth,
-        	'max_depth' => $args['max_depth'],
-        	'add_below' => 'response',
-        	'reply_text'    => get_bs4_i('reply', '', ' ') . 'Reply',
-        	'reply_to_text' => get_bs4_i('reply', '', ' ') . 'Reply to %s',
-        	'login_text'    => get_bs4_i('login', '', ' ') . 'Log in to Reply',
-        	)));
+		'depth'     => $depth,
+		'max_depth' => $args['max_depth'],
+		'add_below' => 'response',
+		'reply_text'    => get_bs4_i('reply', '', ' ') . 'Reply',
+		'reply_to_text' => get_bs4_i('reply', '', ' ') . 'Reply to %s',
+		'login_text'    => get_bs4_i('login', '', ' ') . 'Log in to Reply',
+		)));
 
 	echo '</p>';
 	echo '<a id="response-' . get_comment_ID() . '"></a>';
@@ -96,75 +96,75 @@ function bs4_comment_form($args = array(), $post_id = null) {
 
 	$fields = array(
 		'author' =>
-        		'<div class="row">' .
-        		'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
-        		'<label for="author" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('user fw') . '</label>' .
-        		'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control" placeholder="Name"' . $html_req . '>' .
-        		'</div></div>',
+			'<div class="row">' .
+			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
+			'<label for="author" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('user fw') . '</label>' .
+			'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control" placeholder="Name"' . $html_req . '>' .
+			'</div></div>',
 		'email' =>
-        		'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
-        		'<label for="email" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('email fw') . '</label>' .
-        		'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control" placeholder="Email"' . $html_req . '>' .
-        		'</div></div>',
+			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
+			'<label for="email" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('email fw') . '</label>' .
+			'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control" placeholder="Email"' . $html_req . '>' .
+			'</div></div>',
 		'url' =>
-        		'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
+			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
 			'<label for="url" class="input-group-addon">' . get_bs4_i('link fw') . '</label>' .
-        		'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" class="form-control" placeholder="Website">' .
-        		'</div></div>' .
-        		'</div>',
-        	);
+			'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" class="form-control" placeholder="Website">' .
+			'</div></div>' .
+			'</div>',
+		);
 
 	$args = array(
-        	// 'format' => 'html5',  // doesn't matter
-        	'fields' => $fields,
-        	'title_reply' => 'Leave a Reply',
+		// 'format' => 'html5',  // doesn't matter
+		'fields' => $fields,
+		'title_reply' => 'Leave a Reply',
 		'title_reply_to' => 'Leave a Reply to %s',
 		'cancel_reply_link' => get_bs4_i('cancel', '', ' ') . 'Cancel',
 
-        	'comment_notes_before' =>
-        		'<p class="text-muted form-group">' .
-        		($req ?
-                		'The <i class="text-warning">name</i>, <i class="text-warning">email</i> and <i class="text-warning">comment</i> are required fields.' :
-                		'The <i class="text-warning">comment</i> field is required.') .
-        		'</p>',
-        	'comment_field' =>
-        		'<div class="row">' .
-        		'<div class="col-xs-12 form-group"><div class="input-group">' .
-        		'<label for="comment" class="input-group-addon text-warning">' . get_bs4_i('commenta fw') . '</label>' .
-        		'<textarea id="comment" name="comment" placeholder="Comment" rows="3" class="form-control" required></textarea>' .
-        		'</div></div>' .
-        		'</div>',
-        	/* 'comment_notes_after' =>
-        		'<div class="row"><div class="col-xs-12 form-group">' .
+		'comment_notes_before' =>
+			'<p class="text-muted form-group">' .
+			($req ?
+				'The <i class="text-warning">name</i>, <i class="text-warning">email</i> and <i class="text-warning">comment</i> are required fields.' :
+				'The <i class="text-warning">comment</i> field is required.') .
+			'</p>',
+		'comment_field' =>
+			'<div class="row">' .
+			'<div class="col-xs-12 form-group"><div class="input-group">' .
+			'<label for="comment" class="input-group-addon text-warning">' . get_bs4_i('commenta fw') . '</label>' .
+			'<textarea id="comment" name="comment" placeholder="Comment" rows="3" class="form-control" required></textarea>' .
+			'</div></div>' .
+			'</div>',
+		/* 'comment_notes_after' =>
+			'<div class="row"><div class="col-xs-12 form-group">' .
 			'<small class="text-muted">' .
-        		'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>' . allowed_tags() . '</code>' .
-        		'</small>' .
-        		'</div></div>',  /* */
+			'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>' . allowed_tags() . '</code>' .
+			'</small>' .
+			'</div></div>',  /* */
 
-        	'must_log_in' =>
-        		'<p>' .
-        		'<a href="' . wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) .
+		'must_log_in' =>
+			'<p>' .
+			'<a href="' . wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) .
 			'" class="btn btn-outline-success btn-sm small">' .
 			get_bs4_i('login', '', ' ') . 'Log in</a> to post a comment.' .
-        		'</p>',
-        	'logged_in_as' =>
-        		'<p>' .
+			'</p>',
+		'logged_in_as' =>
+			'<p>' .
 			'As ' . get_bs4_user_i(($user->exists() ? $user->ID : null), '', ' ') .
-        		'<a href="' . get_edit_user_link() . '">' . $user_identity . '</a>. <a href="' .
+			'<a href="' . get_edit_user_link() . '">' . $user_identity . '</a>. <a href="' .
 			wp_logout_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) .
 			'" class="btn btn-outline-danger btn-sm small">' .
 			get_bs4_i('logout', '', ' ') . 'Log out</a></p>',
 
 		'label_submit' => 'Submit' . get_bs4_i('post', ' '),
-        	'submit_button' => '<button name="%1$s" type="submit" id="%2$s" class="%3$s btn btn-primary">%4$s</button>',
-        	'submit_field' => '%1$s %2$s',
+		'submit_button' => '<button name="%1$s" type="submit" id="%2$s" class="%3$s btn btn-primary">%4$s</button>',
+		'submit_field' => '%1$s %2$s',
 
-        	// New in WP 4.4
-        	'title_reply_before'   => '<h4>' . get_bs4_i('commentr', '', ' '),
+		// New in WP 4.4
+		'title_reply_before'   => '<h4>' . get_bs4_i('commentr', '', ' '),
 		'title_reply_after'    => '</h4>',
 		'cancel_reply_before'  => '',  // DONE: From WP4.4
 		'cancel_reply_after'   => '',  // DONE: From WP4.4
-        );
+	);
 
 	comment_form_2($args);
 }
@@ -186,9 +186,9 @@ else :
 	$cn = get_comments_number();
 	?><h4><?php
 	echo ' ' . sprintf( _n(
-        	get_bs4_i('comment', '', ' ') . '%s comment',
-        	get_bs4_i('comments', '', ' ') . '%s comments',
-        	$cn), $cn);
+		get_bs4_i('comment', '', ' ') . '%s comment',
+		get_bs4_i('comments', '', ' ') . '%s comments',
+		$cn), $cn);
 	?></h4><?php
 
 	wp_list_comments( array(
@@ -200,8 +200,8 @@ else :
 
 		paginate_comments_links_2( array(
 			'type' => 'list',
-			'next_text' => '&raquo;',
-			'prev_text' => '&laquo;',
+			'next_text' => get_bs4_i('raquo'),
+			'prev_text' => get_bs4_i('laquo'),
 			'dots' => '&vellip;',
 			'before' => '<nav><center><ul class="pagination pagination-sm m-b-0 m-t-1">',
 			'after' => '</ul></center></nav>',
