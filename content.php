@@ -41,13 +41,13 @@ if (is_singular()) {
 		?><h1 class="<?= $title_class ?>"><?= $_t ?></h1><?php
 	}
 } else {
-	?><h1 class="<?= $title_class ?>"><a href="<?php the_permalink(); ?>"><?php
+	?><h2 class="<?= $title_class ?>"><a href="<?php the_permalink(); ?>"><?php
 	if (!$_t) {
 		bs4_i('link');
 	} else {
 		echo $_t;
 	}
-	?></a></h1><?php
+	?></a></h2><?php
 }
 
 if (is_singular() && !is_page()) { ?><p class="meta-data text-muted"><?php bs4_post_meta(); ?></p><?php }

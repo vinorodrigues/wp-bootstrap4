@@ -112,13 +112,15 @@ function __bs4_get_cat_cnt_limit($minmax = 'max') {
 
 	$singleton = 'category-' . $minmax;
 	if (!isset($bs4_singletons[$singleton])) {
+		$bs4_singletons[$singleton] = 0;
 		$args = array( 'parent' => 0, 'hide_empty' => 1, 'orderby' => 'count', 'number' => 1 );
 		if ('min' != $minmax) $args['order'] = 'DESC';
 		$cats = get_categories( $args );
-		if (is_array($cats) && is_object($cats[0]))
-			$bs4_singletons[$singleton] = intval( $cats[0]->count );
-		else
-			$bs4_singletons[$singleton] = 0;
+		if (is_array($cats)) {
+			$cats = array_values($cats)[0];
+		 	if (is_object($cats))
+				$bs4_singletons[$singleton] = intval( $cats->count );
+		}
 	}
 	return $bs4_singletons[$singleton];
 }
