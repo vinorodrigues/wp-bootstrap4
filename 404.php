@@ -28,8 +28,8 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 	action="<?= home_url( '/' ) ?>" class="form-inline search-from">
 	<fieldset class="form-group">
 	<input type="search" name="s" class="search-input form-control"
-		results="10" placeholder="Search &hellip;"
-		value="<?php esc_attr( get_search_query() ); ?>">
+		placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"
+		results="10" autosave="search-0" autocorrect="on">
 	</fieldset>
 	<button type="submit" class="search-button btn btn-primary hidden-xs-down"><?php
 		bs4_i('search', '<span class="hidden-sm-down">', ' </span>') ?>Search</button>

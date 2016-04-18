@@ -63,8 +63,8 @@ wp_nav_menu( $navbar_array );
 if ($navbar_search) {
 	?><form method="get" id="search-form-0" action="<?= home_url( '/' ) ?>" class="form-inline navbar-form search-from pull-xs-right">
 		<input type="search" name="s" class="search-input form-control"
-			results="5" placeholder="Search &hellip;"
-			value="<?php esc_attr( get_search_query() ); ?>">
+			placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"
+			results="5" autosave="search-0" autocorrect="on">
 		<button type="submit" class="search-button btn btn-outline-success"><?php bs4_i('search'); ?></button>
 	</form><?php
 }

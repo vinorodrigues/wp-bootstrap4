@@ -106,6 +106,13 @@ header.front-page h1 {
 	margin: 0;
 }
 
+input[type="search"].form-control::-webkit-search-decoration,
+input[type="search"].form-control::-webkit-search-cancel-button,
+input[type="search"].form-control::-webkit-search-results-button,
+input[type="search"].form-control::-webkit-search-results-decoration {
+	-webkit-appearance: none;  /* remove the default WebKit styling */
+}
+
 /* -------------------- THEME SPACING -------------------- */
 
 .main p {
@@ -168,7 +175,7 @@ body.nav-fixed-bottom {
 
 /* ----- Print ----- */
 
-@media print {
+@media only print {
 	.heading {
 		border-bottom: 1px dotted #eee;
 
