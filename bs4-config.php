@@ -4,8 +4,8 @@
  */
 
 define( 'BS_VERSION', '4-alpha' );  // Bootstrap Version
-define( 'JQ_VERSION', '2.1.4' );  // JQuery Version
-define( 'TE_VERSION', '1.1.1' );  // Tether Version
+define( 'JQ_VERSION', '2.2.3' );  // JQuery Version
+define( 'TE_VERSION', '1.2.0' );  // Tether Version
 
 
 define('AVATAR_CLASS', 'img-circle');

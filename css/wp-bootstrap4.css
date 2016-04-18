@@ -72,44 +72,47 @@ header.front-page h1 { display: none; }
 /* line 105, ../scss/wp-bootstrap4.scss */
 .input-group label { margin: 0; }
 
+/* line 109, ../scss/wp-bootstrap4.scss */
+input[type="search"].form-control::-webkit-search-decoration, input[type="search"].form-control::-webkit-search-cancel-button, input[type="search"].form-control::-webkit-search-results-button, input[type="search"].form-control::-webkit-search-results-decoration { -webkit-appearance: none; /* remove the default WebKit styling */ }
+
 /* -------------------- THEME SPACING -------------------- */
-/* line 111, ../scss/wp-bootstrap4.scss */
+/* line 118, ../scss/wp-bootstrap4.scss */
 .main p { word-wrap: break-word; }
 
-/* line 117, ../scss/wp-bootstrap4.scss */
+/* line 124, ../scss/wp-bootstrap4.scss */
 .folioed .folio { margin-top: 0.5rem; margin-bottom: 0.5rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 123, ../scss/wp-bootstrap4.scss */
+/* line 130, ../scss/wp-bootstrap4.scss */
 .folioed .folio .heading { padding-bottom: 1rem; }
-/* line 129, ../scss/wp-bootstrap4.scss */
+/* line 136, ../scss/wp-bootstrap4.scss */
 .folioed .folio .feature, .folioed .folio .main, .folioed .folio .footing { padding: 1rem 0; }
-/* line 134, ../scss/wp-bootstrap4.scss */
+/* line 141, ../scss/wp-bootstrap4.scss */
 .folioed .folio .feature .footbar, .folioed .folio .feature .footer, .folioed .folio .main .footbar, .folioed .folio .main .footer, .folioed .folio .footing .footbar, .folioed .folio .footing .footer { padding-top: 1rem; }
 
-/* line 143, ../scss/wp-bootstrap4.scss */
-.banded .header { margin-top: 0.5rem; }
-/* line 146, ../scss/wp-bootstrap4.scss */
-.banded .band { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 /* line 150, ../scss/wp-bootstrap4.scss */
+.banded .header { margin-top: 0.5rem; }
+/* line 153, ../scss/wp-bootstrap4.scss */
+.banded .band { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+/* line 157, ../scss/wp-bootstrap4.scss */
 .banded .footer { margin-bottom: 0.5rem; }
 
 /* ----- Navbar fixes ----- */
-/* line 157, ../scss/wp-bootstrap4.scss */
+/* line 164, ../scss/wp-bootstrap4.scss */
 body.admin-bar .navbar-fixed-top { top: 32px; }
 
-/* line 161, ../scss/wp-bootstrap4.scss */
+/* line 168, ../scss/wp-bootstrap4.scss */
 body.nav-fixed-top { padding-top: 4rem; }
 
-/* line 165, ../scss/wp-bootstrap4.scss */
+/* line 172, ../scss/wp-bootstrap4.scss */
 body.nav-fixed-bottom { padding-bottom: 4rem; }
 
 /* ----- Print ----- */
-@media print { /* line 172, ../scss/wp-bootstrap4.scss */
+@media only print { /* line 179, ../scss/wp-bootstrap4.scss */
   .heading { border-bottom: 1px dotted #eee; }
-  /* line 175, ../scss/wp-bootstrap4.scss */
+  /* line 182, ../scss/wp-bootstrap4.scss */
   .heading h1 { text-align: inherit; }
-  /* line 179, ../scss/wp-bootstrap4.scss */
-  .heading img { display: block; margin-left: auto; margin-right: auto; }
   /* line 186, ../scss/wp-bootstrap4.scss */
+  .heading img { display: block; margin-left: auto; margin-right: auto; }
+  /* line 193, ../scss/wp-bootstrap4.scss */
   .footing { margin-top: 1rem; text-align: center !important; border-top: 1px dotted #eee; }
-  /* line 192, ../scss/wp-bootstrap4.scss */
+  /* line 199, ../scss/wp-bootstrap4.scss */
   hr.soft { width: 80%; border-top: 1px solid #eee; background: none; } }

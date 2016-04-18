@@ -144,7 +144,7 @@ function bs4_scripts() {
 
 	$url = trim( get_theme_mod('jquery_js', false) );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/js/jquery' . $min . '.js';
+		$url = get_stylesheet_directory_uri() . '/js/jquery-' . JQ_VERSION . $min . '.js';
 		$ver = JQ_VERSION;
 	} else {
 		$ver = NULL;
