@@ -120,8 +120,8 @@ function bs4_scripts() {
 	wp_enqueue_style( 'bootstrap', $url, array(), $ver );
 
 	wp_enqueue_style(
-		'bootstrap-print',
-		get_stylesheet_directory_uri() . '/css/bootstrap-print.css',
+		'bootstrap-pr',
+		get_stylesheet_directory_uri() . '/css/bootstrap-pr' . $min . '.css',
 		array('bootstrap'),
 		false,
 		'print' );

@@ -21,7 +21,7 @@ Releases
   * _`label`_ shortcode replaced by _`tag`_ shortcode
   * added `.m-b-0` to `.navbar-brand` as per docs
   * EqualHeights now based on [@Sam152](https://github.com/Sam152/Javascript-Equal-Height-Responsive-Rows)'s work
-  * moved print support to theme css file and added `bootstrap-print.css` including `.col-pr-*` classes
+  * moved print support to theme css file and added `bootstrap-pr.css` including `.col-pr-*` classes
 
 
 *  0.1.04
