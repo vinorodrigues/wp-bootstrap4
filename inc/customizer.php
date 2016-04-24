@@ -326,7 +326,9 @@ function bs4_customize_register( $wp_customize ) {
 		'description' => '* = Refresh this page <u>after saving</u> to see icon set specific settings. (There may be none.)',
 		'choices' => array(
 			'fa' => 'Font Awesome *',
-			// 'oi' => 'Open Iconic * (default)',  // TODO: Open Iconic
+			// 'oi' => 'Open Iconic',  // TODO: Open Iconic - https://useiconic.com/open
+			// 'oc' => 'Octicons',  // TODO: GitHub Octicons - https://octicons.github.com
+			// 'gi' => 'Glyphicons'  // TODO: Glyphicons - http://glyphicons.com
 			'no' => 'None',
 			) ) );
 

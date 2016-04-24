@@ -40,7 +40,7 @@ hr.soft {
 }
 
 span.lead { display: inline-block; }
-span.lead:first-letter {
+.singular span.lead:first-letter {
 	float: left;
 	font-size: 325%;
 	line-height: 3.25rem;

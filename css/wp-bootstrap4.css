@@ -106,13 +106,43 @@ body.nav-fixed-top { padding-top: 4rem; }
 body.nav-fixed-bottom { padding-bottom: 4rem; }
 
 /* ----- Print ----- */
-@media only print { /* line 179, ../scss/wp-bootstrap4.scss */
+@media only print { /* line 180, ../scss/wp-bootstrap4.scss */
   .heading { border-bottom: 1px dotted #eee; }
-  /* line 182, ../scss/wp-bootstrap4.scss */
+  /* line 183, ../scss/wp-bootstrap4.scss */
   .heading h1 { text-align: inherit; }
-  /* line 186, ../scss/wp-bootstrap4.scss */
+  /* line 187, ../scss/wp-bootstrap4.scss */
   .heading img { display: block; margin-left: auto; margin-right: auto; }
-  /* line 193, ../scss/wp-bootstrap4.scss */
+  /* line 194, ../scss/wp-bootstrap4.scss */
   .footing { margin-top: 1rem; text-align: center !important; border-top: 1px dotted #eee; }
-  /* line 199, ../scss/wp-bootstrap4.scss */
+  /* line 200, ../scss/wp-bootstrap4.scss */
   hr.soft { width: 80%; border-top: 1px solid #eee; background: none; } }
+/* ----- Gallery ----- */
+/* line 212, ../scss/wp-bootstrap4.scss */
+ul.gallery { padding: 0; margin: 0; }
+/* line 216, ../scss/wp-bootstrap4.scss */
+ul.gallery li { list-style: none; }
+
+/* line 224, ../scss/wp-bootstrap4.scss */
+.gallery figure img { display: block; margin: 0 auto; }
+/* line 228, ../scss/wp-bootstrap4.scss */
+.gallery figure figcaption { font-size: 80%; }
+@media (min-width: 992px) { /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-1 { width: 100%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-2 { width: 50%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-3 { width: 33.33333%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-4 { width: 25%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-5 { width: 20%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-6 { width: 16.66667%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-7 { width: 14.28571%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-8 { width: 12.5%; }
+  /* line 234, ../scss/wp-bootstrap4.scss */
+  .gallery .col-gal-1-9 { width: 11.11111%; } }
+/* line 238, ../scss/wp-bootstrap4.scss */
+.gallery img { max-width: 100%; height: auto; }

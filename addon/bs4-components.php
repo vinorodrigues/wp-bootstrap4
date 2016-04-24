@@ -16,6 +16,7 @@ include_once 'inc/jumbotron.php';
 include_once 'inc/tags.php';
 include_once 'inc/alerts.php';
 include_once 'inc/typography.php';
+include_once 'inc/gallery.php';
 
 if ('fa' == bs4_icon_set()) @include_once 'inc/iconset-sc-fa.php';
 

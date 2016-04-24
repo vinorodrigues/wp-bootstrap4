@@ -27,12 +27,9 @@ function ts_bootstrap4_lead_sc( $atts, $content = null, $tag = '' ) {
 	if (!empty($content)) {
 		$s = do_shortcode($content);
 		$i = __pos_first_letter( $s );
-		if ($i !== false) {
-			// TODO - use substr_replace
-			$output .= substr($s, 0, $i);
-			$output .= '<span class="fc">' . substr($s, $i, 1) . '</span>';
-			$output .= substr($s, $i+1);
-		}
+		if ($i !== false)
+			$output .= substr_replace( $s, '<span class="fc">' .
+				substr($s, $i, 1) . '</span>', $i, 1);
 	}
 	$output .= '</span>';
 
@@ -58,9 +55,11 @@ function ts_bootstrap4_blockquote_sc( $atts, $content = null, $tag = '' ) {
 
 	if (!empty($attribs['source']) || !empty($attribs['cite'])) {
 		$output .= '<footer class="blockquote-footer">';
-		if (!empty($attribs['url'])) $output .= '<a href="' . $attribs['url'] . '">';
+		if (!empty($attribs['url']))
+			$output .= '<a href="' . $attribs['url'] . '">';
 		$output .= $attribs['source'];
-		if (!empty($attribs['url'])) $output .= '</a>';
+		if (!empty($attribs['url']))
+			$output .= '</a>';
 		if (!empty($attribs['cite'])) {
 			if (!empty($attribs['cite'])) $output .= ' ';
 			$output .= '<cite>' . $attribs['cite'] . '</cite>';
