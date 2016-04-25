@@ -180,11 +180,14 @@ if ($color)
 ?>
 </head>
 <body <?php body_class(); ?>><a name="top"></a>
-<?php if ($container_segments == 0) {
+<?php
+if ($container_segments == 0) {
 	echo '<div class="' . $container_class . ' folio">';
 } else {
 	echo '<div class="header">';
-} ?>
+}
+do_action('bs4_header_before');
+?>
 
 <header class="section">
 <div class="<?= $band_class ?> heading"><div class="row">
@@ -233,18 +236,21 @@ if ($color)
 </div></div><?php
 get_template_part( 'navbar' );
 if (!is_404()) {
-	?><div id="feature" class="hidden-print"><?php
 	$header_image = get_header_image();
 	if ( ! empty( $header_image ) ) {
+		?><div id="feature" class="hidden-print"><?php
 		echo '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">';
 		echo '<img src="' . $header_image . '" class="header-image img-fluid ' . FEATURED_IMAGE_CLASS . '">';
 		echo '</div></div></div>';
+		?></div><?php
 	}
-	?></div><?php
 }
 ?></header>
 
-<?php if ($container_segments != 0) { echo '</div><div class="main">'; } ?>
+<?php
+do_action('bs4_header_after');
+if ($container_segments != 0) { echo '</div><div class="main">'; }
+?>
 
 <main class="section">
 <div class="<?= $band_class ?><?= ($container_segments == 0 ? ' main' : '')?>"><div class="row"><div id="content" class="<?= bs4_content_class($sidebar_position) ?>">

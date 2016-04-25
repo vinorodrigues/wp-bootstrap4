@@ -10,18 +10,16 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <div class="alert alert-warning alert-404">
 
-<center>
+<center class="m-b-3">
 	<h1 class="display-1"><?php bs4_i('warning', '', ' ') ?>404</h1>
 	<p class="text-center text-danger">The page you were looking for could not be found.</p>
 </center>
 <?php if ($referer) {
-	echo '<p class="text-center text-info">';
+	echo '<p class="text-center text-info m-b-3">';
 	bs4_i('info lg', '', ' ');
 	echo 'You landed on this page from <a href="' . $referer . '" title="Go back" onclick="history.back();return false;">here</a>.';
 	echo '</p>';
 } ?>
-
-<hr class="soft">
 
 <div class='row'><div class="col-xs-12 m-x-auto"><center>
 <form method="get" id="search-form-404 ceter-block"
@@ -40,8 +38,6 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 <?php
 
 if (!has_bs4_footer_bar()) :
-
-echo '<hr class="soft">';
 
 $wtag = 'h4';
 $args = array(

@@ -44,10 +44,11 @@ function bs4_the_content($content) {
 	$imgs = $document->getElementsByTagName('img');
 	foreach ($imgs as $img) {
 		$cls = $img->getAttribute('class');
-		$cls = ltrim( str_replace(
+		/* $cls = ltrim( str_replace(
 			array('  ', 'alignnone', 'alignleft', 'alignright', 'aligncenter'),
 			array(' ', '', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
-			$cls . ' img-fluid' ) );
+			$cls ) ); */
+		$cls .=  ' img-fluid';
 		$img->setAttribute('class', $cls);
 	}
 

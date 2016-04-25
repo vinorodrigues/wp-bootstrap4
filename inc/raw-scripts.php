@@ -8,8 +8,8 @@
  * @since WordPress 3.4
 */
 
-// if ( ! defined( 'TS_RAW_SCRIPTS' ) ) :
-// 	define( 'TS_RAW_SCRIPTS', '1.1' );
+if ( ! defined( 'TS_RAW_SCRIPTS' ) ) :
+define( 'TS_RAW_SCRIPTS', '1.1' );
 
 global $ts_scripts;
 
@@ -75,4 +75,4 @@ function ts_dequeue_script( $handle ) {
 	$ts_scripts->dequeue( $handle );
 }
 
-// endif;  // defined TS_RAW_SCRIPTS
+endif;  // TS_RAW_SCRIPTS

@@ -8,8 +8,8 @@
  * @since WordPress 3.4
 */
 
-// if ( ! defined( 'TS_RAW_STYLES' ) ) :
-// 	define( 'TS_RAW_STYLES', '1.1' );
+if ( ! defined( 'TS_RAW_STYLES' ) ) :
+define( 'TS_RAW_STYLES', '1.2' );
 
 global $ts_styles;
 
@@ -98,4 +98,4 @@ function ts_dequeue_style( $handle, $media = false ) {
 	}
 }
 
-// endif;  // TS_RAW_STYLES
+endif;  // TS_RAW_STYLES

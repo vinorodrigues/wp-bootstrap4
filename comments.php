@@ -160,7 +160,7 @@ function bs4_comment_form($args = array(), $post_id = null) {
 		'submit_field' => '%1$s %2$s',
 
 		// New in WP 4.4
-		'title_reply_before'   => '<h4>' . get_bs4_i('commentr', '', ' '),
+		'title_reply_before'   => '<h4 class="m-t-2">' . get_bs4_i('commentr', '', ' '),
 		'title_reply_after'    => '</h4>',
 		'cancel_reply_before'  => '',  // DONE: From WP4.4
 		'cancel_reply_after'   => '',  // DONE: From WP4.4
@@ -170,9 +170,7 @@ function bs4_comment_form($args = array(), $post_id = null) {
 }
 ?>
 
-<section id="comments" class="comments hidden-print">
-
-<hr class="soft">
+<section id="comments" class="comments hidden-print m-t-2">
 
 <?php
 if ( post_password_required() ) :
@@ -211,7 +209,7 @@ else :
 		if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) {
 			?><p class="text-info comments-closed">Comments are closed.</p><?php
 		} else {
-			?><hr class="soft"><?php
+			/* ?><hr class="soft"><?php  */ // DELETE
 			bs4_comment_form();
 		}
 endif;

@@ -85,6 +85,7 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 	if (!isset($valid_tags[$itemtag])) $itemtag = 'figure';
 	if (!isset($valid_tags[$captiontag])) $captiontag = 'figcaption';
 	if (!isset($valid_tags[$icontag])) $icontag = '';
+	$is_f = ($itemtag == 'figure');
 
 	$columns = intval( $atts['columns'] );
 	if ($columns > 9) $columns = 9;
@@ -119,6 +120,7 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 		$attr = array();
 		if (!empty(trim($attachment->post_excerpt)))
 			$attr['aria-describedby'] = $selector . '-' . $id;
+		if ($is_f) $attr['class'] = 'figure-img img-fluid img-rounded';
 
 		if (!empty($atts['link']) && ('file' === $atts['link'])) {
 			$image_output = wp_get_attachment_link(
@@ -145,8 +147,9 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 		}
 		$image_meta = wp_get_attachment_metadata($id);
 
-		$output .= '<' . $itemtag . ' class="gal-item gal-' .
-			$size_class . '">';
+		$output .= '<' . $itemtag . ' class="gal-item gal-' . $size_class;
+		if ($is_f) $output .= ' figure';
+		$output .= '">';
 
 		if (!empty($icontag)) {
 			$orientation = '';
@@ -161,8 +164,9 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 		}
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= '<' . $captiontag .
-				' class="wp-caption-text gal-caption" id="' .
-				$selector . '-' . $id . '">';
+				' class="wp-caption-text gal-caption';
+			if ($is_f) $output .= ' figure-caption text-xs-center';
+			$output .= '" id="' . $selector . '-' . $id . '">';
 			$output .= wptexturize($attachment->post_excerpt);
 			$output .= '</' . $captiontag . '>';
 		}

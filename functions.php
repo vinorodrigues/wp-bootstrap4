@@ -209,7 +209,7 @@ function bs4_widgets_init() {
 		'name'          => 'Primary Sidebar',
 		'id'            => 'sidebar-1',
 		'description'   => '',
-		'before_widget' => '<aside class="%2$s">',
+		'before_widget' => '<aside class="widget widget-sidebar %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
@@ -219,7 +219,7 @@ function bs4_widgets_init() {
 		'name'          => 'Secondary Sidebar',
 		'id'            => 'sidebar-2',
 		'description'   => '',
-		'before_widget' => '<aside class="%2$s">',
+		'before_widget' => '<aside class="widget widget-sidebar %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . '>',
 		'after_title'   => '</' . $tag . '>',
@@ -229,9 +229,9 @@ function bs4_widgets_init() {
 		'name'          => 'Header Ancillary',
 		'id'            => 'sidebar-3',
 		'description'   => 'Placed besides the Site Title or Site Logo',
-		'before_widget' => '<aside class="%2$s">',
+		'before_widget' => '<aside class="widget widget-header %2$s">',
 		'after_widget'  => '</aside>',
-		'before_title'  => '<' . $tag . ' class="invisible" hidden>',
+		'before_title'  => '<' . $tag . ' class="hidden-xs-up" hidden>',
 		'after_title'   => '</' . $tag . '>',
 		) );
 
@@ -240,11 +240,22 @@ function bs4_widgets_init() {
 			'name'          => 'Footer Bar ' . $i,
 			'id'            => 'sidebar-' . ($i+3),
 			'description'   => '',
-			'before_widget' => '<aside class="%2$s">',
+			'before_widget' => '<aside class="widget widget-footer %2$s">',
 			'after_widget'  => '</aside>',
 			'before_title'  => '<' . $tag . '>',
 			'after_title'   => '</' . $tag . '>',
 			) );
 	}
+
+	register_sidebar( array(
+		'name'          => 'Home Page Only',
+		'id'            => 'sidebar-0',
+		'description'   => '',
+		'before_widget' => '<article class="widget widget-home %2$s">',
+		'after_widget'  => '</article>',
+		'before_title'  => '<h2>',
+		'after_title'   => '</h2>',
+		) );
 }
+
 add_action( 'widgets_init', 'bs4_widgets_init' );

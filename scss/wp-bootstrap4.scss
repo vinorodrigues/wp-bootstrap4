@@ -45,10 +45,45 @@ input[type="tel"], input[type="color"] {
 	max-width: 100%;
 }
 
+/* -------------------- WORDPRESS CORE -------------------- */
+
+.alignnone,
+a img.alignnone {
+	margin: ($spacer-y / 4) $spacer-x $spacer-y 0;
+}
+
+.aligncenter,
+div.aligncenter {
+	display: block;
+	margin: ($spacer-y / 4) auto ($spacer-y / 4) auto;
+}
+
+a img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.alignright,
+a img.alignright {
+	float:right;
+	margin: ($spacer-y / 4) 0 $spacer-y $spacer-x;
+}
+
+.alignleft,
+a img.alignleft {
+	float: left;
+	margin: ($spacer-y / 4) $spacer-x $spacer-y 0;
+}
+
 /* -------------------- THEME SPECIFIC UI -------------------- */
 
 header.front-page h1 {
 	display: none;
+}
+
+.content article:not(:last-child) {
+	margin-bottom: $spacer-y * 3;
 }
 
 /* Go Facebook style and use "·" (the interpunct character) for separators */
@@ -92,9 +127,6 @@ header.front-page h1 {
 	}
 }
 
-// .pager {
-// }
-
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
 
 .no-gutter > [class^="col-"] {
@@ -127,7 +159,8 @@ input[type="search"].form-control::-webkit-search-results-decoration {
 		padding-top: ($spacer-y / 2);
 		padding-bottom: ($spacer-y / 2);
 
-		.heading {
+		.heading,
+		.widget-home {
 			padding-bottom: $spacer-y;
 		}
 
@@ -196,12 +229,6 @@ body.nav-fixed-bottom {
 		text-align: center !important;
 		border-top: 1px dotted #eee;
 	}
-
-	hr.soft {
-		width: 80%;
-		border-top: 1px solid #eee;
-		background: none;
-	}
 }
 
 
@@ -229,6 +256,7 @@ ul.gallery {
 			font-size: 80%;
 		}
 	}
+
 	@include media-breakpoint-up(lg) {
 		@for $i from 1 through 9 {
 			.col-gal-1-#{$i} { width: percentage(1 / $i) }
@@ -238,5 +266,19 @@ ul.gallery {
 	img {
 		max-width: 100%;
 		height: auto;
+	}
+}
+
+/* ----- Carousel ----- */
+
+.carousel {
+	.carousel-inner {
+		.carousel-item {
+			& > img {
+				max-width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
 	}
 }

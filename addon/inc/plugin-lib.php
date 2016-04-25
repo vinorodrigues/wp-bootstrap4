@@ -17,11 +17,13 @@ function bs4_get_shortcode_class($atts, $class = '') {
 	if (is_array($atts) && array_key_exists('class', $atts) && !empty($atts['class']))
 		$class = empty($class) ? $atts['class'] : $class . ' ' . $atts['class'];
 
-	if (!empty($class)) $output = ' class="' . $class . '"';
-	else $output = '';
+	$output = '';
 
 	if (is_array($atts) && array_key_exists('id', $atts) && !empty($atts['id']))
 		$output .= ' id="' . $atts['id'] . '"';
+
+	if (!empty($class))
+		$output .= ' class="' . $class . '"';
 
 	return $output;
 }
@@ -60,3 +62,31 @@ function bs4_shortcode_atts( $default_pairs, $atts, $shortcode = '') {
 
 	return shortcode_atts($default_pairs, $atts, $shortcode);
 }
+
+/* --------------- in case raw-scripts.php is not included --------------- */
+
+if (!function_exists('ts_enqueue_script')) :
+
+	function __bs4_output_enqueued_scripts() {
+		global $__bs4_enqueued_scripts;
+
+		if (isset($__bs4_enqueued_scripts)) {
+			echo '<script type="text/javascript">' . PHP_EOL;
+			echo $__bs4_enqueued_scripts;
+			echo '</script>' . PHP_EOL;
+		}
+	}
+
+	function ts_enqueue_script($comment, $js) {
+		global $__bs4_enqueued_scripts;
+
+		if (!isset($__bs4_enqueued_scripts)) {
+			$__bs4_enqueued_scripts = '';
+			add_action( 'wp_footer', '__bs4_output_enqueued_scripts', 999 );
+		}
+
+		$__bs4_enqueued_scripts .= '/* ' . $comment . ' */' . PHP_EOL;
+		$__bs4_enqueued_scripts .= $js . PHP_EOL;
+	}
+
+endif;
