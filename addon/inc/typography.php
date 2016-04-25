@@ -27,9 +27,14 @@ function ts_bootstrap4_lead_sc( $atts, $content = null, $tag = '' ) {
 	if (!empty($content)) {
 		$s = do_shortcode($content);
 		$i = __pos_first_letter( $s );
-		if ($i !== false)
-			$output .= substr_replace( $s, '<span class="fc">' .
-				substr($s, $i, 1) . '</span>', $i, 1);
+		if ($i !== false) {
+			$c = 'fl';
+			$o = ord( substr($s, $i, 1) );
+			if ($o < 91) $o += 32;
+			if (($o > 96) && ($o < 123)) $c .= ' fl-' . chr($o);
+			$output .= substr_replace( $s, '<span class="' . $c .
+				'">' . substr($s, $i, 1) . '</span>', $i, 1);
+		}
 	}
 	$output .= '</span>';
 
@@ -40,9 +45,9 @@ add_shortcode( 'lead', 'ts_bootstrap4_lead_sc' );
 
 function ts_bootstrap4_blockquote_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_shortcode_atts( array(
-		'source' => '',
-		'url' => '',
-		'cite' => '',
+		'source'  => '',
+		'url'     => '',
+		'cite'    => '',
 		'reverse' => false,
 		), $atts, $tag);
 	$attribs = bs4_filter_booleans($attribs, array('reverse'));

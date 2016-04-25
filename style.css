@@ -13,7 +13,6 @@ Tags: bootstrap responsive
 
 .sticky {
 	background-color: #f6f6f6;
-	background-image: linear-gradient(to bottom, #ffffff, #f6f6f6);
 }
 
 .footing .footer {
@@ -32,14 +31,17 @@ Tags: bootstrap responsive
 }
 
 span.lead { display: inline-block; }
-.singular span.lead:first-letter {
+
+.single span.lead:first-letter,
+.single span.lead .fl {
+	font-size: 300%;
 	float: left;
-	font-size: 325%;
-	line-height: 3.25rem;
-	padding-top: 4px;
-	padding-right: 8px;
+	line-height: 0.8em;
+	padding: 4px 4px 0 0;
+	font-family: serif;
 	font-weight: bold;
-	font-style: oblique;
+	position: relative;
+	left: -4px;
 }
 
 .footing .row:first-child {
