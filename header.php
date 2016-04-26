@@ -15,10 +15,20 @@ function bs4_body_class_navbar_fixed_bottom($classes) { $classes[] = 'nav-fixed-
 function bs4_body_class_has_folio($classes) { $classes[] = 'folioed'; return $classes; }
 function bs4_body_class_no_folio($classes) { $classes[] = 'banded'; return $classes; }
 
+function bs4_body_class_singular($classes) {
+	if (is_page() || is_attachment() || is_single()) {
+		if (array_search('singular', $classes) === false)
+			$classes[] = 'singular';
+	} else {
+		$classes[] = 'multiple';
+	}
+	return $classes;
+}
+
 function bs4_heading($logo_placement = 0) {
-	// 0 = text-right
-	// 1 = text-center
-	// 2 = text-right
+	// 0 = right
+	// 1 = center
+	// 2 = right
 
 	if (function_exists('get_custom_logo')) {  // NEW IN WP4.5
 		$has_logo = has_custom_logo();
@@ -49,7 +59,7 @@ function bs4_heading($logo_placement = 0) {
 		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $logo_image . '</a>';
 	} else {
 		$output = '<h1 class="title';
-		if ($logo_placement != 0) $output .= ' ' . (($logo_placement == 1) ? 'text-center' : 'text-right');
+		if ($logo_placement == 2) $output .= ' text-xs-right';
 		$output .= '"><a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
 		if (!empty(get_bloginfo('description'))) {
 			$output .= ($logo_placement == 0) ? ' ' : '<br>';
@@ -60,12 +70,12 @@ function bs4_heading($logo_placement = 0) {
 	return $output;
 }
 
-function bs4_headernav($classes = '') {
+function bs4_headernav($container_class = '', $menu_class = '') {
 	return wp_nav_menu( array(
 		'menu'	          => 'header',
-		'menu_class'      => 'nav nav-pills',
+		'menu_class'      => 'nav nav-pills' . (!empty($menu_class) ? ' ' . $menu_class : ''),
 		'container'       => 'nav',
-		'container_class' => $classes,
+		'container_class' => $container_class,
 		'fallback_cb'     => false,
 		'depth'	          => 2,
 		'walker'          => new Bootstrap_Walker_Menu_Nav(),
@@ -139,6 +149,9 @@ $band_class = 'band';
 if ($container_segments != 0) {
 	$band_class .= ' ' . $container_class;
 }
+
+add_filter('body_class', 'bs4_body_class_singular');
+
 if ($container_segments == 0) {
 	add_filter('body_class', 'bs4_body_class_has_folio');
 } else {
@@ -194,13 +207,13 @@ do_action('bs4_header_before');
 <?php
 	switch ($logo_placement) {
 	case 1:  // center
-		?><div class="col-xs-12"><?= bs4_heading($logo_placement) ?></div><?php
+		?><div class="col-xs-12"><center><?= bs4_heading($logo_placement) ?></center></div><?php
 		if (($head_a & 1) != 0) {
-			?><div class="col-xs-12 hidden-print headspace"><div class="m-x-auto"><?=
-			bs4_headernav('nav-header') ?></div></div><?php
+			?><div class="col-xs-12 m-t-1 headspace hidden-print"><center><?=
+			bs4_headernav('nav-header', 'nav-center') ?></center></div><?php
 		}
 		if (($head_a & 2) != 0) {
-			?><div class="col-xs-12 hidden-print text-center headspace"><?php dynamic_sidebar('sidebar-3') ?></div><?php
+			?><div class="col-xs-12 m-t-1 text-xs-center headspace hidden-print"><center><?php dynamic_sidebar('sidebar-3') ?></center></div><?php
 		}
 		break;
 	case 2:  // right

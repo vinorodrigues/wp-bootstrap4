@@ -27,9 +27,9 @@ function ___cr($cr_class, $cr_text) {
 
 function ___mn($mn_class, $mn_c_class, $center = false) {
 	?><div class="<?= $mn_class ?>"><?php
-	if ($center) echo '<span style="display:table;margin:0 auto">';
+	if ($center) echo '<center>';
 	echo bs4_footernav('nav nav-footer ' . $mn_c_class);
-	if ($center) echo '</span>';
+	if ($center) echo '</center>';
 	?></div><?php
 }
 

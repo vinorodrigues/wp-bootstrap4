@@ -54,8 +54,8 @@ function bs4_sanitize_navbar_brand( $input ) {
 }
 
 function bs4_customize_register( $wp_customize ) {
-	// Site Identity
 
+	// Site Identity
 
 	if (!function_exists('get_custom_logo')) {
 		$wp_customize->add_setting( 'logo_image' );
@@ -82,6 +82,7 @@ function bs4_customize_register( $wp_customize ) {
 				1 => 'Center',
 				2 => 'Right',
 				) ) ) );
+
 
 	// Layout
 	/**
@@ -142,6 +143,7 @@ function bs4_customize_register( $wp_customize ) {
 			1 => 'Center',
 			2 => 'Right'
 			) ) );
+
 
 	// Navbar
 
@@ -227,6 +229,7 @@ function bs4_customize_register( $wp_customize ) {
 		'label'   => 'Include search box',
 		) );
 
+
 	// Colors
 
 	$wp_customize->add_setting( 'title_color', false );
@@ -249,6 +252,17 @@ function bs4_customize_register( $wp_customize ) {
 			'settings'   => 'tagline_color',
 			'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
 			) ) );
+
+
+	// Static Front Page
+
+	$wp_customize->add_setting( 'hide_front_page_title', true );
+
+	$wp_customize->add_control( 'hide_front_page_title', array(
+		'type'    => 'checkbox',
+		'section' => 'static_front_page',
+		'label'   => 'Hide meta (title) in static front page',
+		) );
 
 	// Bootstrap 4
 

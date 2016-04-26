@@ -12,10 +12,10 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <center class="m-b-3">
 	<h1 class="display-1"><?php bs4_i('warning', '', ' ') ?>404</h1>
-	<p class="text-center text-danger">The page you were looking for could not be found.</p>
+	<p class="text-danger text-xs-center">The page you were looking for could not be found.</p>
 </center>
 <?php if ($referer) {
-	echo '<p class="text-center text-info m-b-3">';
+	echo '<p class="text-info text-xs-center m-b-3">';
 	bs4_i('info lg', '', ' ');
 	echo 'You landed on this page from <a href="' . $referer . '" title="Go back" onclick="history.back();return false;">here</a>.';
 	echo '</p>';
@@ -53,7 +53,7 @@ $args = array(
 		<?php the_widget( 'WP_Widget_Recent_Posts', array('title' => 'Recent Posts', 'number' => 5), $args ); ?>
 	</div>
 	<?php /*
-		$args['after_title'] .= '<span class="text-center">';
+		$args['after_title'] .= '<span class="text-xs-center">';
 		$args['after_widget'] = '</span>' . $args['after_widget'];
 	*/ ?>
 	<?php if ($catagorized) { ?>

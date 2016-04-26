@@ -43,29 +43,32 @@ function bs4_the_content($content) {
 	// Fix images
 	$imgs = $document->getElementsByTagName('img');
 	foreach ($imgs as $img) {
-		$cls = $img->getAttribute('class');
-		/* $cls = ltrim( str_replace(
-			array('  ', 'alignnone', 'alignleft', 'alignright', 'aligncenter'),
-			array(' ', '', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
-			$cls ) ); */
-		$cls .=  ' img-fluid';
-		$img->setAttribute('class', $cls);
+		$cls = explode(' ', $img->getAttribute('class'));
+		if (!in_array('img-fluid', $cls)) $cls[] = 'img-fluid';
+		$img->setAttribute('class', implode(' ', $cls));
 	}
 
 	// Fix tables
 	$tbls = $document->getElementsByTagName('table');
 	foreach ($tbls as $tbl) {
-		$cls = $tbl->getAttribute('class');
-		$cls = ltrim( $cls . ' table' );
-		$tbl->setAttribute('class', $cls);
+		$cls = explode(' ', $tbl->getAttribute('class'));
+		if (!in_array('table', $cls)) $cls[] = 'table';
+		$tbl->setAttribute('class', implode(' ', $cls));
 
 		$thds = $tbl->getElementsByTagName('thead');
-
 		foreach ($thds as $thd) {
-			$cls = $thd->getAttribute('class');
-			$cls = ltrim( $cls . ' thead-default' );
-			$thd->setAttribute('class', $cls);
+			$cls = explode(' ', $thd->getAttribute('class'));
+			if (!in_array('thead-default', $cls))  $cls[] = 'thead-default';
+			$tbl->setAttribute('class', implode(' ', $cls));
 		}
+	}
+
+	// Fix blockquotes
+	$blks = $document->getElementsByTagName('blockquote');
+	foreach ($blks as $blk) {
+		$cls = explode(' ', $blk->getAttribute('class'));
+		if (!in_array('blockquote', $cls)) $cls[] = 'blockquote';
+		$blk->setAttribute('class', implode(' ', $cls));
 	}
 
 	$html = preg_replace(
