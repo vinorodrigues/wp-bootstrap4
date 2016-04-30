@@ -8,7 +8,7 @@
  */
 
 include_once 'inc/menu-walker.php';
-include_once 'inc/raw-styles.php';
+include_once 'inc/lib-ts/raw-styles.php';
 
 function bs4_body_class_navbar_fixed_top($classes) { $classes[] = 'nav-fixed-top'; return $classes; }
 function bs4_body_class_navbar_fixed_bottom($classes) { $classes[] = 'nav-fixed-bottom'; return $classes; }

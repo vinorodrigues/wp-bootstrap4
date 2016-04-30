@@ -8,8 +8,8 @@
 // config
 include_once 'bs4-config.php';
 // general API
-include_once 'inc/raw-scripts.php';
-include_once 'inc/raw-styles.php';
+include_once 'inc/lib-ts/raw-scripts.php';
+include_once 'inc/lib-ts/raw-styles.php';
 // template includes
 include_once 'inc/template-tags.php';
 include_once 'inc/template-lib.php';

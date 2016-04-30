@@ -5,7 +5,7 @@
  * These are mostly format and helper functions.
  */
 
-include_once 'raw-scripts.php';
+include_once 'lib-ts/raw-scripts.php';
 
 function inject_class_in_tag($tag, $class, $haystack) {
 

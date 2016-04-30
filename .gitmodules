@@ -1,6 +1,0 @@
-[submodule "inc/lib-ts"]
-	path = inc/lib-ts
-	url = git://github.com/vinorodrigues/wp-common
-[submodule "addon/inc/lib-ts"]
-	path = addon/inc/lib-ts
-	url = git://github.com/vinorodrigues/wp-common

@@ -3,7 +3,7 @@
  * Usage of grids.js
  */
 
-include_once 'raw-scripts.php';
+include_once 'lib-ts/raw-scripts.php';
 
 function bs4_equal_heights( $what = false ) {
 	static $_ts_equalheights_count = 0;  // was global
