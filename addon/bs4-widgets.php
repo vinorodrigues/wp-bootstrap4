@@ -11,3 +11,12 @@ License URI: http://opensource.org/licenses/mit-license.html
 */
 
 include_once 'inc/plugin-lib.php';
+
+
+// Tecsmith Options
+function bs4_widgets_admin_menu() {
+	if (function_exists('add_tecsmith_item'))
+		add_tecsmith_item( __('Bootstrap 4 Widgets'), basename(__FILE__, '.php'), 4 );
+}
+
+add_action( 'admin_menu', 'bs4_widgets_admin_menu' );

@@ -36,7 +36,7 @@ function ___mn($mn_class, $mn_c_class, $center = false) {
 $cr_position = get_theme_mod('copyright_position', 0);  // 0 => left, 1 => center, 2 => right
 $cr_text = apply_filters( 'bootstrap4_footer_text', false );
 if ($cr_text === false) {
-	$cr_text = '&copy; ' . date('Y') . ' ' . get_bloginfo( 'name' );
+	$cr_text = '&copy; ' . date('Y') . ' ' . get_bloginfo('name');
 }
 $has_cr = ($cr_text === false) || !empty($cr_text);
 $has_mn = has_nav_menu( 'footer' );

@@ -6,7 +6,7 @@
  */
 
 function bs4_enqueue_style_i_no($min) {}  // do nothing
-function bs4_customize_register_i_no($wp_customize, $section) {} // do nothing
+function bs4_options_register_i_no($section) {} // do nothing
 function get_bs4_icon_no($name, $before, $after, $attribs) {
 	$o = '';
 	$i = strpos($name, ' ');

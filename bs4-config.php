@@ -3,7 +3,7 @@
  * Configuration file
  */
 
-define( 'BS_VERSION', '4-alpha' );  // Bootstrap Version
+define( 'BS_VERSION', '4-alpha2' );  // Bootstrap Version
 define( 'JQ_VERSION', '2.2.3' );  // JQuery Version
 define( 'TE_VERSION', '1.2.0' );  // Tether Version
 

@@ -4,10 +4,12 @@
  * @see: http://fontawesome.io/icons/
  */
 
-if (!defined( 'FA_VERSION' )) define( 'FA_VERSION', '4.6.0' );  // local version
+
+if (!defined( 'FA_VERSION' )) define( 'FA_VERSION', '4.6.2' );  // local version
+
 
 function bs4_enqueue_style_i_fa($min = '') {
-	$url = trim( get_theme_mod('fontawesome_css', false) );
+	$url = trim( bs4_get_option('fontawesome_css') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/css/font-awesome' . $min . '.css';
 		$ver = FA_VERSION;
@@ -17,17 +19,33 @@ function bs4_enqueue_style_i_fa($min = '') {
 	wp_enqueue_style( 'font-awesome', $url, array(), $ver );
 }
 
-function bs4_customize_register_i_fa($wp_customize, $section) {
-	$wp_customize->add_setting( 'fontawesome_css', '' );
+function bs4_options_register_i_fa($section) {
+	add_settings_field(
+		'fontawesome_css',
+		'FontAwesome Stylesheet',
+		'bs4_opts_url_callback',
+		$section,
+		'bs4_dependancies',
+		array(
+			$section,
+			'fontawesome_css',
+			'URL to <code>fontawesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
+			)
+		);
+}
 
-	$wp_customize->add_control( 'fontawesome_css', array(
-		'type'        => 'url',
-		'section'     => $section,
-		'description' => 'URL to <code>font-awesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
-		'label'       => 'Font Awesome Stylesheet',
-		'input_attrs' => array(
-			'placeholder' => 'Use local copy',
-			) ) );
+function bs4_sanitize_i_options_fa($output) {
+
+	if (is_null($output)) return null;
+
+	if (isset($output['fontawesome_css'])) {
+		$url = esc_url_raw( strip_tags( stripslashes( $output['fontawesome_css'] ) ) );
+		if (empty($url) || (!filter_var($url, FILTER_VALIDATE_URL) === false))
+			$output['fontawesome_css'] = $url;
+		else
+			add_settings_error('fontawesome_css', 'url', '<label for="fontawesome_css">Invalid URL</label>');
+	}
+	return $output;
 }
 
 function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {

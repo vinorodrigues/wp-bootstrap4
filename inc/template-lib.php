@@ -42,7 +42,7 @@ function bs4_icon_set() {
 	if (!isset($bs4_singletons)) $bs4_singletons = array();
 
 	if (!isset($bs4_singletons['icon_set'])) {
-		$bs4_singletons['icon_set'] = get_theme_mod('icon_set', 'fa');
+		$bs4_singletons['icon_set'] = bs4_get_option('icon_set');
 		$_fn = get_template_directory() . '/inc/iconset-' . $bs4_singletons['icon_set'] . '.php';
 		if (file_exists($_fn)) include_once $_fn;
 	}

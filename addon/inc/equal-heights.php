@@ -2,7 +2,7 @@
 
 function bs4_equal_heights_sc( $atts, $content = null, $tag = '' ) {
 	if (!function_exists('bs4_equal_heights')) return '';
-	if ( get_theme_mod('bootstrap_flexbox', false) ) return '';
+	if ( !bs4_get_option('equalheights') ) return '';
 
 	$attribs = bs4_shortcode_atts(
 		array(

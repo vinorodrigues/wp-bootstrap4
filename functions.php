@@ -7,9 +7,12 @@
 
 // config
 include_once 'bs4-config.php';
+include_once 'inc/options.php';
+include_once 'inc/customizer.php';
 // general API
 include_once 'inc/lib-ts/raw-scripts.php';
 include_once 'inc/lib-ts/raw-styles.php';
+include_once 'inc/lib-ts/opt-common.php';
 // template includes
 include_once 'inc/template-tags.php';
 include_once 'inc/template-lib.php';
@@ -23,7 +26,7 @@ include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
 include_once 'inc/fix-tag-class.php';
 // plugins
-if (get_theme_mod('load_plugins', true)) {
+if (!bs4_get_option('block_plugins')) {
 	include_once 'addon/bs4-layout.php';
 	include_once 'addon/bs4-components.php';
 	include_once 'addon/bs4-widgets.php';
@@ -96,10 +99,9 @@ function bs4_setup() {
 			'flex-width' => true,
 			'flex-height' => true,
 		) );
-
-	include get_template_directory() . '/inc/customizer.php';
 }
 endif; // wp_bootstrap_setup
+
 add_action( 'after_setup_theme', 'bs4_setup' );
 
 /**
@@ -110,7 +112,7 @@ function bs4_scripts() {
 
 	// CSS
 
-	$url = trim( get_theme_mod('bootstrap_css', false) );
+	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/css/bootstrap' . $min . '.css';
 		$ver = BS_VERSION;
@@ -142,7 +144,7 @@ function bs4_scripts() {
 
 	wp_deregister_script('jquery');  // remove WP jquery that relies on v1
 
-	$url = trim( get_theme_mod('jquery_js', false) );
+	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/jquery-' . JQ_VERSION . $min . '.js';
 		$ver = JQ_VERSION;
@@ -151,7 +153,7 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'jquery', $url, array(), $ver, true );
 
-	$url = trim( get_theme_mod('tether_js', false) );
+	$url = trim( bs4_get_option('tether_js') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/tether' . $min . '.js';
 		$ver = TE_VERSION;
@@ -160,7 +162,7 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'tether', $url, array( 'jquery' ), $ver, true );
 
-	$url = trim( get_theme_mod('bootstrap_js', false) );
+	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/bootstrap' . $min . '.js';
 		$ver = BS_VERSION;
@@ -169,7 +171,7 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'bootstrap', $url, array( 'jquery' ), $ver, true );
 
-	if ( !get_theme_mod('bootstrap_flexbox', false) )
+	if ( bs4_get_option('equalheights') )
 		wp_register_script(
 			'equalheights',
 			get_template_directory_uri() . '/js/grids' . $min . '.js',
@@ -195,6 +197,7 @@ function bs4_scripts() {
 		'})(jQuery);' );
 
 }
+
 add_action( 'wp_enqueue_scripts', 'bs4_scripts' );
 
 /**

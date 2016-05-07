@@ -19,7 +19,7 @@ if (has_bs4_footer_bar()) :
 		case 4: $class = 'col-xs-12 col-md-6 col-lg-3'; break;
 	}
 	$class .= ' sidebar hidden-print';
-	// if ( !get_theme_mod('bootstrap_flexbox', false) ) $class .= ' ef';
+	// if ( bs4_get_option('equalheights') ) $class .= ' ef';
 
 	?><div class="row footbar"><?php
 	for ($i = 0; $i <= (count($sidebars) - 1); $i++) {
@@ -29,7 +29,7 @@ if (has_bs4_footer_bar()) :
 	}
 	?></div><?php
 
-	// if ( !get_theme_mod('bootstrap_flexbox', false) )
+	// if ( bs4_get_option('equalheights') )
 	// 	bs4_equal_heights('.ef', 101);
 endif;
 ?>
