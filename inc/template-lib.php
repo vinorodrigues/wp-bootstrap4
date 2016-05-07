@@ -51,7 +51,10 @@ function bs4_icon_set() {
 }
 
 function get_bs4_i($name, $before = '', $after = '', $attribs = false) {
-	return call_user_func('get_bs4_icon_'.bs4_icon_set(), $name, $before, $after, $attribs);
+	$fn = 'get_bs4_icon_'.bs4_icon_set();
+	if (function_exists($fn))
+		return call_user_func($fn, $name, $before, $after, $attribs);
+	else return '';
 }
 
 function bs4_i($name, $before = '', $after = '', $attribs = false) {

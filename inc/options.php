@@ -112,8 +112,10 @@ function bs4_get_option($option = null) {
 			'bootstrap_js' => '',
 			'tether_js' => '',
 			'jquery_js' => '',
-			'iconset' => 'fa',
+			'icon_set' => 'fa',
 
+			'inline_css' => '',
+			'inline_js' => '',
 			'footer_text' => '',
 			);
 		$bs4_singletons['options'] = wp_parse_args( $saved, $defaults );
@@ -370,8 +372,8 @@ function bs4_admin_init() {
 		BS4_THOPT_SEC1,
 		'bs4_dependancies' );
 
-	call_user_func('bs4_options_register_i_'.bs4_icon_set(),
-		BS4_THOPT_SEC1);
+	$fn = 'bs4_options_register_i_'.bs4_icon_set();
+	if (function_exists($fn)) call_user_func($fn, BS4_THOPT_SEC1);
 
 	/* ---------------------------------------------------------------- */
 
