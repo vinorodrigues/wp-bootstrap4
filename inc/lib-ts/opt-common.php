@@ -29,7 +29,7 @@ function ts_top_admin_options_page() {
 		add_settings_error(
     			TS_SETTINGS_MENU_SLUG,
 	    		esc_attr(TS_SETTINGS_MENU_SLUG),
-    			'There are no installed items with settings',
+    			'There are no active items with settings',
     			'error' );
 
 	settings_errors();
@@ -87,8 +87,8 @@ function add_tecsmith_menu() {
 
 	$slug = add_submenu_page(
 		TS_SETTINGS_MENU_SLUG,
-		'Installed Tecsmith Plugins',
-		'Installed Plugins',
+		'Active Tecsmith Plugins',
+		'Active Plugins',
 		'manage_options',
 		TS_SETTINGS_MENU_SLUG,
 		'ts_top_admin_options_page' );
