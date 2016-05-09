@@ -66,7 +66,7 @@ a img.aligncenter {
 
 .alignright,
 a img.alignright {
-	float:right;
+	float: right;
 	margin: ($spacer-y / 4) 0 $spacer-y $spacer-x;
 }
 
@@ -130,6 +130,10 @@ a img.alignleft {
 	select {
 		max-width: 100%;  // stop overflowing form items
 	}
+}
+
+.hidden {
+	display: none !important;
 }
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */

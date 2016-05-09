@@ -63,7 +63,7 @@ function bs4_heading($logo_placement = 0) {
 		$output .= '"><a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
 		if (!empty(get_bloginfo('description'))) {
 			$output .= ($logo_placement == 0) ? ' ' : '<br>';
-			$output .= '<small class="h3 subtitle text-muted">' .  get_bloginfo('description', 'display') . '</small>';
+			$output .= '<small class="text-muted subtitle">' .  get_bloginfo('description', 'display') . '</small>';
 		}
 		$output .= '</h1>';
 	}
@@ -171,13 +171,13 @@ $color = get_theme_mod('title_color', false);
 if ($color)
 	ts_enqueue_style(
 		'title-color',
-		'.heading .title { color: ' . $color . ' }' );
+		'.heading .title { color: ' . $color . ' !important; }' );
 
 $color = get_theme_mod('tagline_color', false);  // XXX
 if ($color)
 	ts_enqueue_style(
 		'tagline-color',
-		'.heading .subtitle { color: ' . $color . ' }' );
+		'.heading .subtitle { color: ' . $color . ' !important; }' );
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>

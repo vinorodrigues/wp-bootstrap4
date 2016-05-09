@@ -6,6 +6,7 @@
  * are required for the theme to function correctly.
  */
 
+
 /**
  * expert_more filter
  */
@@ -13,7 +14,9 @@ function bs4_excerpt_more( $more ) {
 	return ' <a title="More..." class="btn btn-outline-secondary btn-sm more-link" href="' .
 		get_permalink() . '">' . get_bs4_i('hellip') . '</a>';
 }
+
 add_filter( 'excerpt_more', 'bs4_excerpt_more' );
+
 
 /**
  * the_content_more_link filter
@@ -24,7 +27,9 @@ function bs4_the_content_more_link( $link, $text) {
 	return '<a class="btn btn-outline-secondary btn-sm more-link" href="' .
 		get_permalink() . '">' . $text . '</a>';
 }
+
 add_filter( 'the_content_more_link', 'bs4_the_content_more_link', 10, 2 );
+
 
 /**
  * the_content filter
@@ -80,15 +85,20 @@ function bs4_the_content($content) {
 			$document->saveHTML() ) );
 	return $html;
 }
+
 add_filter('the_content', 'bs4_the_content'); /* */
+
 
 /**
  * @see: http://www.sitepoint.com/wordpress-change-img-tag-html/
  */
-/* function bs4_get_image_tag_class($class, $id, $align, $size) {
+function bs4_get_image_tag_class($class, $id, $align, $size) {
+	$class .= ' img-fluid';
 	return $class;
 }
-add_filter('get_image_tag_class', 'bs4_get_image_tag_class', 0, 4);  /* */
+
+add_filter('get_image_tag_class', 'bs4_get_image_tag_class', 0, 4);
+
 
 /**
  * img_caption_shortcode filter
@@ -140,7 +150,9 @@ function bs4_img_caption_shortcode( $output, $attr, $content ) {
 	/* Return the formatted, clean caption. */
 	return $output;
 }
+
 add_filter( 'img_caption_shortcode', 'bs4_img_caption_shortcode', 10, 3 );
+
 
 /**
  * Tag cloud widget
@@ -151,7 +163,9 @@ function bs4_widget_tag_cloud_args($args) {
 	$args['unit'] = '%';
 	return $args;
 }
+
 add_filter('widget_tag_cloud_args', 'bs4_widget_tag_cloud_args');
+
 
 /**
  * Pagination, pages
@@ -165,7 +179,9 @@ function bs4_wp_link_pages_item($item, $i, $is_current, $is_disabled) {
 	}
 	return $item;
 }
+
 add_filter('wp_link_pages_item', 'bs4_wp_link_pages_item', 10, 4);
+
 
 /**
  * Pagination, comments
@@ -179,7 +195,9 @@ function bs4_paginate_links_item($item, $is_current, $is_disabled) {
 	}
 	return $item;
 }
+
 add_filter('paginate_links_item', 'bs4_paginate_links_item', 10, 3);
+
 
 /**
  * Comment
@@ -190,7 +208,9 @@ function bs4_cancel_comment_reply_link($formatted_link, $link, $text) {
 	return ' <a rel="nofollow" id="cancel-comment-reply-link" href="' .
 		$link . '" class="btn btn-outline-danger">' . $text . '</a>';
 }
+
 add_filter('cancel_comment_reply_link', 'bs4_cancel_comment_reply_link', 10, 3);
+
 
 /**
  * Comment
@@ -203,7 +223,9 @@ function bs4_comment_reply_link($formatted_link /* , $args, $comment, $post */ )
 		'btn btn-outline-success btn-sm small',
 		$formatted_link );
 }
+
 add_filter('comment_reply_link', 'bs4_comment_reply_link' /* , 10, 4 */ );
+
 
 /**
  * Default gravatar
@@ -213,6 +235,7 @@ function bs4_avatar_defaults($avatars) {
 	$avatars[$gravatar] = 'Theme Default';
 	return $avatars;
 }
+
 add_filter( 'avatar_defaults', 'bs4_avatar_defaults' );
 
 if ( defined('WP_DEBUG') && WP_DEBUG ) :
@@ -223,6 +246,7 @@ if ( defined('WP_DEBUG') && WP_DEBUG ) :
 	}
 	add_filter('get_avatar', 'get_gravatar_off', 1, 3);
 endif;
+
 
 /**
  * BS4 page password form
@@ -240,6 +264,7 @@ function bs4_password_form() {
 
 	return $o;
 }
+
 add_filter( 'the_password_form', 'bs4_password_form' );
 
 
@@ -247,4 +272,8 @@ function bs4_wp_list_categories($links) {
 	$links = str_replace(array(' (', ')'), array(' <span class="tag tag-default">', '</span>'), $links);
 	return $links;
 }
+
 add_filter('wp_list_categories', 'bs4_wp_list_categories');
+
+
+/* eof */
