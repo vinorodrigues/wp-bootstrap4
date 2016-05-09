@@ -434,8 +434,8 @@ add_action('admin_init', 'bs4_admin_init');
  */
 function bs4_footer_text_from_options($text) {
 	$content = str_replace(
-		array('%c%', '%y%', '%n%', '%x%'),
-		array('&copy;', date('Y'), get_bloginfo('name'), ' '),
+		array('%c%', '%y%', '%n%', '%x%', '%d%', '%l%'),
+		array('&copy;', date('Y'), get_bloginfo('name'), ' ', '·', '|'),
 		bs4_get_option('footer_text') );
 
 	if ($content != '') return trim($content);

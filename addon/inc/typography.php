@@ -3,8 +3,13 @@
  * Typography Shortcodes
  */
 
+
 include_once 'plugin-lib.php';
 
+
+/**
+ *
+ */
 function __pos_first_letter($haystack) {
 	$ret = false;
 	if (!empty($haystack)) {
@@ -22,6 +27,10 @@ function __pos_first_letter($haystack) {
 	return $ret;
 }
 
+
+/**
+ *
+ */
 function ts_bootstrap4_lead_sc( $atts, $content = null, $tag = '' ) {
 	$output = '<span' . bs4_get_shortcode_class($atts, 'lead') . '>';
 	if (!empty($content)) {
@@ -43,6 +52,10 @@ function ts_bootstrap4_lead_sc( $atts, $content = null, $tag = '' ) {
 
 add_shortcode( 'lead', 'ts_bootstrap4_lead_sc' );
 
+
+/**
+ *
+ */
 function ts_bootstrap4_blockquote_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_shortcode_atts( array(
 		'source'  => '',
@@ -78,3 +91,35 @@ function ts_bootstrap4_blockquote_sc( $atts, $content = null, $tag = '' ) {
 }
 
 add_shortcode( 'blockquote', 'ts_bootstrap4_blockquote_sc' );
+
+
+/**
+ *
+ */
+function ts_bootstrap4_justify_sc( $atts, $content = null, $tag = '' ) {
+	$output = '<div' . bs4_get_shortcode_class($atts, 'text-justify') . '>';
+	$output .= do_shortcode($content);
+	$output .= '</div>';
+	return $output;
+}
+
+add_shortcode( 'justify', 'ts_bootstrap4_justify_sc' );
+
+
+/**
+ *
+ */
+function ts_bootstrap4_nowrap_sc( $atts, $content = null, $tag = '' ) {
+	$output = '<div' . bs4_get_shortcode_class($atts, 'text-nowrap') . '>';
+	$output .= do_shortcode($content);
+	$output .= '</div>';
+	return $output;
+}
+
+add_shortcode( 'nowrap', 'ts_bootstrap4_nowrap_sc' );
+
+
+// TODO : http://v4-alpha.getbootstrap.com/components/utilities/
+
+
+/* eof */

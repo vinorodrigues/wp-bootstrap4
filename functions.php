@@ -262,3 +262,18 @@ function bs4_widgets_init() {
 }
 
 add_action( 'widgets_init', 'bs4_widgets_init' );
+
+
+/**
+ *
+ */
+function bs4_remove_hentry($classes) {
+	if (is_array($classes) && isset($classes['hentry']))
+		unset($classes['hentry']);
+	return $classes;
+}
+
+add_filter( 'post_class', 'bs4_remove_hentry' );
+
+
+/* oef */

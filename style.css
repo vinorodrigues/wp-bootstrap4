@@ -19,6 +19,9 @@ Tags: bootstrap responsive
 	font-size: 80%;
 }
 
+.footing .row:first-child {
+}
+
 .navbar .search-button,
 .widget_search .search-label,
 .widget_search .search-button {
@@ -40,22 +43,3 @@ Tags: bootstrap responsive
 	position: relative;
 	left: -4px;
 }
-
-.footing .row:first-child {
-	border-top: 1px solid #eee;
-}
-
-
-/* -------------------- DEBUG -------------------- */
-
-/* div[class^="container"] {
-	outline: 1px dotted red;
-}  /* */
-
-/* div[class^="col-"] {
-	outline: 1px dashed green;
-}  /* */
-
-/* .folio { outline: 1px solid #777700; }
-.section { outline: 1px dashed green; }
-.band { outline: 1px dotted red; }  /* */

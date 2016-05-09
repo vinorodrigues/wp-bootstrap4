@@ -49,9 +49,7 @@ function ts_top_admin_options_page() {
 				echo get_admin_url( null, 'admin.php?page=' . $data[1] );
 				echo '" class="button ">' . $data[2] . '</a>';
 			} else {
-				// echo '<span class="dashicons dashicons-yes"></span>';
-				echo '<img src="data:image/svg+xml;base64,'.base64_encode($TECSMITH_SVG).'" style="width:1.2em;height:1.2em;">';
-				echo ' <i style="margin-left:8px;color:rgba(0,0,0,0.3334);"><abbr title="Not Required">NR</abbr></i>';
+				echo '<center><span class="dashicons dashicons-yes"></span></center>';
 			}
 			echo '</td><td>';
 			echo $data[3];
