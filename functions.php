@@ -189,9 +189,9 @@ function bs4_scripts() {
 
 		'(function($) {' . PHP_EOL .
 		'  $(document).ready(function(){' . PHP_EOL .
-		'    $(\'a[href]\').tooltip();' . PHP_EOL .
-		'    $(\'abbr\').tooltip();' . PHP_EOL .
-		'    $(\'acronym\').tooltip();' . PHP_EOL .
+		// '    $(\'a[href]\').tooltip();' . PHP_EOL .
+		// '    $(\'abbr\').tooltip();' . PHP_EOL .
+		// '    $(\'acronym\').tooltip();' . PHP_EOL .
 		'    $(\'[data-toggle="tooltip"]\').tooltip();' . PHP_EOL .
 		'  });' . PHP_EOL .
 		'})(jQuery);' );
