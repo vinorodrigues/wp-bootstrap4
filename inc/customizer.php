@@ -57,20 +57,42 @@ function bs4_customize_register( $wp_customize ) {
 
 	// Site Identity
 
-	if (!function_exists('get_custom_logo')) {
-		$wp_customize->add_setting( 'logo_image' );
-		$wp_customize->add_control( new WP_Customize_Image_Control(
+	if (!USE_WP45_LOGO) {
+		$wp_customize->add_setting( 'custom_logo' );
+		$wp_customize->add_control( new WP_Customize_Cropped_Image_Control(
 			$wp_customize,
-			'logo_image',
+			'custom-logo',
 			array(
-				'label'       => 'Site Logo',
+				'label'       => 'Logo',
 				'section'     => 'title_tagline',
 				'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
-				'settings'    => 'logo_image',
+				'settings'    => 'custom_logo',
+				'priority'    => 8,
+				'flex_width'  => true,
+				'flex_height' => true,
 				) ) );
 	}
 
+	$wp_customize->add_setting( 'logo_width', array( 'default' => '' ) );
+	$wp_customize->add_setting( 'logo_height', array( 'default' => '' ) );
 	$wp_customize->add_setting( 'logo_placement', array( 'default' => 0 ) );
+
+	$wp_customize->add_control( 'logo_width', array(
+		'type'        => 'text',
+		'section'     => 'title_tagline',
+		'label'       => 'Width',
+		'priority'    => 9,
+		'description' => 'Set override logo image width (use valid css/style values)',
+		) );
+
+	$wp_customize->add_control( 'logo_height', array(
+		'type'        => 'text',
+		'section'     => 'title_tagline',
+		'label'       => 'Height',
+		'priority'    => 9,
+		'description' => 'Set override logo image height (can also be a percentage)',
+		) );
+
 	$wp_customize->add_control( new My_Customize_Radio_Control(
 		$wp_customize, 'logo_placement', array(
 			'settings' => 'logo_placement',

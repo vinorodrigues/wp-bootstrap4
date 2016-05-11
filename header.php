@@ -30,33 +30,40 @@ function bs4_heading($logo_placement = 0) {
 	// 1 = center
 	// 2 = right
 
-	if (function_exists('get_custom_logo')) {  // NEW IN WP4.5
+	$id = false;
+	if (USE_WP45_LOGO) {  // NEW IN WP4.5
 		$has_logo = has_custom_logo();
-		if ($has_logo) {
-			$id = get_theme_mod( 'custom_logo' );
-			if ($id) {
-				$class = 'img-fluid';
-				if ($logo_placement != 0) $class .= ' ' . (($logo_placement == 1) ? 'm-x-auto' : 'pull-xs-right');
-				$logo_image = wp_get_attachment_image( $id, 'full', false, array('class' => $class));
-			} else {
-				$has_logo = false;
-			}
+		if ($has_logo) $id = get_theme_mod( 'custom_logo' );
+	} else
+		$id = get_theme_mod('custom_logo', '');
+
+	$custom_logo = false;
+	if ($id) {
+		$custom_logo = wp_get_attachment_image_src( $id, 'full', false );
+		if ($custom_logo !== false) $custom_logo = $custom_logo[0];
+	}
+
+	$has_logo = !empty($custom_logo);
+	if ($has_logo) {
+		$w = get_theme_mod( 'logo_width', false );
+		$h = get_theme_mod( 'logo_height', false );
+
+		$custom_logo = '<img src="' . $custom_logo . '" class="site-logo img-fluid';
+      			if ($logo_placement != 0) $custom_logo .= ' ' . (($logo_placement == 1) ? 'm-x-auto' : 'pull-xs-right');
+		$custom_logo .= '" alt="' . get_bloginfo('name', 'display');
+		$_d = get_bloginfo( 'description', 'display' );
+		if ( $_d  ) $custom_logo .= ' - ' . $_d;
+		if ($w || $h) {
+			$custom_logo .= '" style="';
+			if ($w) $custom_logo .= 'width:'.$w.';';
+			if ($h) $custom_logo .= 'height:'.$h.';';
+			$custom_logo .= '"';
 		}
-	} else {
-		$logo_image = get_theme_mod('logo_image', '');
-		$has_logo = !empty($logo_image);
-		if ($has_logo) {
-			$logo_image .= '<img src="' . $logo_image . '" class="img-fluid';
-       			if ($logo_placement != 0) $logo_image .= ' ' . (($logo_placement == 1) ? 'm-x-auto' : 'pull-xs-right');
-			$logo_image .= '" alt="' . get_bloginfo('name', 'display');
-			$_d = get_bloginfo( 'description', 'display' );
-			if ( $_d  ) $logo_image .= ' - ' . $_d;
-			$logo_image .= '">';
-		}
+		$custom_logo .= '">';
 	}
 
 	if ($has_logo) {
-		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $logo_image . '</a>';
+		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $custom_logo . '</a>';
 	} else {
 		$output = '<h1 class="title';
 		if ($logo_placement == 2) $output .= ' text-xs-right';
@@ -100,7 +107,6 @@ function bs4_content_class($sidebar_position) {
 
 global $container_width, $container_segments, $sidebar_position, $band_class;
 
-$logo_image = get_theme_mod('logo_image', false);
 $logo_placement = intval( get_theme_mod('logo_placement', 0) );
 $container_width = intval( get_theme_mod('container_width', 0) );
 $container_segments = intval( get_theme_mod('container_segments', 0) );

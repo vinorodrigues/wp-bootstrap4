@@ -94,11 +94,11 @@ function bs4_setup() {
 		// 'link',
 		) );
 
-	if (function_exists('get_custom_logo'))  // NEW IN WP4.5
+	if (USE_WP45_LOGO)  // NEW IN WP4.5
 		add_theme_support( 'custom-logo', array(
 			'flex-width' => true,
 			'flex-height' => true,
-		) );
+		) );  /* */
 }
 endif; // wp_bootstrap_setup
 
