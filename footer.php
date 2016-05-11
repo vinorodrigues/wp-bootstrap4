@@ -95,6 +95,6 @@ endif;
 
 <?php echo '</div>'; // .folio or .footer ?>
 
-<div class="hidden" hidden><?php wp_footer(); ?></div>
+<div class="hidden-all" hidden><?php wp_footer(); ?></div>
 </body>
 </html>
