@@ -5,14 +5,15 @@
  */
 
 
-if (!defined( 'FA_VERSION' )) define( 'FA_VERSION', '4.6.2' );  // local version
+if (!defined( 'FONTAWESOME_VERSION' ))
+	define( 'FONTAWESOME_VERSION', '4.6.3' );
 
 
 function bs4_enqueue_style_i_fa($min = '') {
 	$url = trim( bs4_get_option('fontawesome_css') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/css/font-awesome' . $min . '.css';
-		$ver = FA_VERSION;
+		$ver = FONTAWESOME_VERSION;
 	} else {
 		$ver = NULL;
 	}
@@ -29,7 +30,7 @@ function bs4_options_register_i_fa($section) {
 		array(
 			$section,
 			'fontawesome_css',
-			'URL to <code>fontawesome.css</code> file. Leave blank for local copy (version ' . FA_VERSION . ').',
+			'URL to <code>fontawesome.css</code> file. Leave blank for local copy (version ' . FONTAWESOME_VERSION . ').',
 			)
 		);
 }

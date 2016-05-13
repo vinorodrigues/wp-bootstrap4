@@ -309,7 +309,7 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'bootstrap_css',
-			'URL to <code>boostrap.css</code> file. Leave blank for local copy (version ' . BS_VERSION . ').',
+			'URL to <code>boostrap.css</code> file. Leave blank for local copy (version ' . BOOTSTRAP_VERSION . ').',
 			)
 		);
 
@@ -348,7 +348,7 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'tether_js',
-			'URL to <code>tether_js</code> file. Leave blank for local copy (version ' . TE_VERSION . ').',
+			'URL to <code>tether_js</code> file. Leave blank for local copy (version ' . TETHER_VERSION . ').',
 			)
 		);
 
@@ -361,7 +361,7 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'jquery_js',
-			'URL to <code>jquery.js</code> file. Leave blank for local copy (version ' . JQ_VERSION . ').',
+			'URL to <code>jquery.js</code> file. Leave blank for local copy (version ' . JQUERY_VERSION . ').',
 			)
 		);
 

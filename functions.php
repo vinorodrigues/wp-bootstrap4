@@ -115,18 +115,23 @@ function bs4_scripts() {
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/css/bootstrap' . $min . '.css';
-		$ver = BS_VERSION;
+		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
 	}
 	wp_enqueue_style( 'bootstrap', $url, array(), $ver );
 
 	wp_enqueue_style(
+		'bootstrap-fix',
+		get_stylesheet_directory_uri() . '/css/bootstrap-fix.css',
+		array('bootstrap'),
+		false );
+
+	wp_enqueue_style(
 		'bootstrap-pr',
 		get_stylesheet_directory_uri() . '/css/bootstrap-pr' . $min . '.css',
 		array('bootstrap'),
-		false,
-		'print' );
+		false );
 
 	@call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
 
@@ -146,8 +151,8 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/js/jquery-' . JQ_VERSION . $min . '.js';
-		$ver = JQ_VERSION;
+		$url = get_stylesheet_directory_uri() . '/js/jquery-' . JQUERY_VERSION . $min . '.js';
+		$ver = JQUERY_VERSION;
 	} else {
 		$ver = NULL;
 	}
@@ -156,7 +161,7 @@ function bs4_scripts() {
 	$url = trim( bs4_get_option('tether_js') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/tether' . $min . '.js';
-		$ver = TE_VERSION;
+		$ver = TETHER_VERSION;
 	} else {
 		$ver = NULL;
 	}
@@ -165,7 +170,7 @@ function bs4_scripts() {
 	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
 		$url = get_stylesheet_directory_uri() . '/js/bootstrap' . $min . '.js';
-		$ver = BS_VERSION;
+		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
 	}
@@ -184,7 +189,7 @@ function bs4_scripts() {
 
 	// Raw JS
 
-	ts_enqueue_script(
+	/* ts_enqueue_script(
 		'wp-bootstrap4-tooltips',
 
 		'(function($) {' . PHP_EOL .
@@ -194,8 +199,7 @@ function bs4_scripts() {
 		// '    $(\'acronym\').tooltip();' . PHP_EOL .
 		'    $(\'[data-toggle="tooltip"]\').tooltip();' . PHP_EOL .
 		'  });' . PHP_EOL .
-		'})(jQuery);' );
-
+		'})(jQuery);' );  /* */
 }
 
 add_action( 'wp_enqueue_scripts', 'bs4_scripts' );

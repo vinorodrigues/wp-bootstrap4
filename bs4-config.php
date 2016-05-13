@@ -3,9 +3,10 @@
  * Configuration file
  */
 
-define( 'BS_VERSION', '4-alpha2' );  // Bootstrap Version
-define( 'JQ_VERSION', '2.2.3' );  // JQuery Version
-define( 'TE_VERSION', '1.2.0' );  // Tether Version
+define( 'BOOTSTRAP_VERSION', 'v4-dev:2a36b4b' );  // Bootstrap Version
+define( 'JQUERY_VERSION', '2.2.3' );  // JQuery Version
+define( 'TETHER_VERSION', '1.3.2' );  // Tether Version
+define( 'FONTAWESOME_VERSION', '4.6.3' );  // Fontawesome version
 
 define( 'AVATAR_CLASS', 'img-circle' );
 

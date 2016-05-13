@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/** bootstrap-fixes.css */
+/* ----- https://github.com/twbs/bootstrap/issues/19758 ----- */
+/* line 25, ../scss/bootstrap-fix.scss */
+input[type="search"].form-control::-webkit-search-decoration, input[type="search"].form-control::-webkit-search-cancel-button, input[type="search"].form-control::-webkit-search-results-button, input[type="search"].form-control::-webkit-search-results-decoration { -webkit-appearance: none; /* remove the default WebKit styling */ }
+
+/* ----- Form required ----- */
+/* line 38, ../scss/bootstrap-fix.scss */
+.form-control-optional, .form-control-required { padding-right: 2.25rem; background-repeat: no-repeat; background-position: center right 0.625rem; background-size: 1.25rem 1.25rem; }
+
+/* line 48, ../scss/bootstrap-fix.scss */
+.is-optional label:after { color: #5cd; content: ' °'; display: inline; }
+/* line 54, ../scss/bootstrap-fix.scss */
+.is-optional .form-control-optional { background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Ccircle cx='4' cy='4' r='1.5' stroke='%235cd' fill='none'/%3E%3C/svg%3E"); }
+
+/* line 59, ../scss/bootstrap-fix.scss */
+.text-optional { color: #5cd; }
+
+/* line 65, ../scss/bootstrap-fix.scss */
+.is-required label:after { color: #f70; content: ' *'; display: inline; }
+/* line 71, ../scss/bootstrap-fix.scss */
+.is-required .form-control-required { background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath stroke='%23f70' stroke-linecap='round' d='M2 2L6.6 5M2 5L6.6 2M4.3 1L4.3 6'/%3E%3C/svg%3E"); }
+/* line 75, ../scss/bootstrap-fix.scss */
+.is-required .form-control-required:focus { border-color: rgba(255, 119, 0, 0.85); }
+
+/* line 80, ../scss/bootstrap-fix.scss */
+.text-required { color: #f70; }

@@ -6,9 +6,9 @@ if (!defined('TS_SETTINGS_MENU')) :
 
 
 $TECSMITH_SVG = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="128" height="128">' .
-	'<path stroke="#333" stroke-width="4" fill="#f33" d="M 64 55.5776 L 119.9104 28.1088 L 64 2.6496 L 8.0896 28.1088 Z" />' .
-	'<path stroke="#333" stroke-width="4" fill="#0c0" d="M 59.3792 63.68 L 2.4832 35.0848 L 8.4736 93.1072 L 59.8272 125.1584 Z" />' .
-	'<path stroke="#333" stroke-width="4" fill="#44f" d="M 68.6208 63.68 L 125.5168 35.0848 L 119.5264 93.1072 L 68.1728 125.1584 Z" />' .
+	'<path stroke="#000" stroke-width="4" fill="#c30000" d="M 63.875 56.5054 L 112.7966 32.4702 L 63.875 10.1934 L 14.9534 32.4702 Z" />' .
+	'<path stroke="#000" stroke-width="4" fill="#00c300" d="M 59.8318 63.595 L 10.0478 38.5742 L 15.2894 89.3438 L 60.2238 117.3886 Z" />' .
+	'<path stroke="#000" stroke-width="4" fill="#0000c3" d="M 67.9182 63.595 L 117.7022 38.5742 L 112.4606 89.3438 L 67.5262 117.3886 Z" />' .
 	'</svg>';
 
 
@@ -23,7 +23,11 @@ function ts_top_admin_options_page() {
 
 	echo '<div class="wrap">';
 	screen_icon();
-	echo '<h2>' . $title . '</h2>';
+	echo '<h2 style="vertical-align:middle;">';
+	echo '<img src="data:image/svg+xml;base64,'.base64_encode($TECSMITH_SVG).'" style="width:32px;height:32px;vertical-align:middle;">';
+	echo ' ';
+	echo $title;
+	echo '</h2>';
 
 	if (!isset($ts_settings) || !isset( $ts_settings['tecsmith_menu_items'] ))
 		add_settings_error(
