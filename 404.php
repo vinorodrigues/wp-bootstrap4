@@ -21,7 +21,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 	echo '</p>';
 } ?>
 
-<div class='row'><div class="col-xs-12 m-x-auto"><center>
+<div class='row'><div class="col-xs-12"><center>
 <form method="get" id="search-form-404 ceter-block"
 	action="<?= home_url( '/' ) ?>" class="form-inline search-from">
 	<fieldset class="form-group">

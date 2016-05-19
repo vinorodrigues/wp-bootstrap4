@@ -68,7 +68,7 @@ if ($has_mn) {
 
 <?php if ($container_segments != 0) { echo '</div><div class="footer">'; } ?>
 
-<footer class="section"><div class="<?= $band_class ?> footing">
+<footer id="footer" class="section"><div class="<?= $band_class ?> footing">
 <?php
 get_template_part( 'footbar' );
 if ($has_mn || $has_cr) :

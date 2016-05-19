@@ -30,6 +30,28 @@ input[type="search"].form-control::-webkit-search-results-decoration {
 }
 
 
+/* ----- Centering ----- */
+
+@mixin center {
+	margin-left: auto !important;
+	margin-right: auto !important;
+	text-align: center !important;
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .center-#{$breakpoint} {
+      @include center();
+    }
+  }
+  @include media-breakpoint-down($breakpoint) {
+    .center-#{$breakpoint}-down {
+      @include center();
+    }
+  }
+}
+
+
 /* ----- Form required ----- */
 
 $form-icon-required: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath stroke='%23f70' stroke-linecap='round' d='M2 2L6.6 5M2 5L6.6 2M4.3 1L4.3 6'/%3E%3C/svg%3E") !default;

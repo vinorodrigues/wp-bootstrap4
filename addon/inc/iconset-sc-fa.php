@@ -21,4 +21,4 @@ function ts_bootstrap4_icon_fa_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'icon', 'ts_bootstrap4_icon_fa_sc' );
+bs4_add_shortcode( 'icon', 'ts_bootstrap4_icon_fa_sc' );

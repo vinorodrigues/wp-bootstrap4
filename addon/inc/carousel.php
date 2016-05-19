@@ -157,6 +157,6 @@ function ts_bootstrap4_carousel_caption_sc( $atts, $content = null, $tag = '' ) 
 	return '';  // no output
 }
 
-add_shortcode( 'carousel', 'ts_bootstrap4_carousel_sc' );
-add_shortcode( 'carousel-item', 'ts_bootstrap4_carousel_item_sc' );
-add_shortcode( 'carousel-caption', 'ts_bootstrap4_carousel_caption_sc' );
+bs4_add_shortcode( 'carousel', 'ts_bootstrap4_carousel_sc' );
+bs4_add_shortcode( 'carousel-item', 'ts_bootstrap4_carousel_item_sc' );
+bs4_add_shortcode( 'carousel-caption', 'ts_bootstrap4_carousel_caption_sc' );

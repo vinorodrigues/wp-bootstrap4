@@ -129,7 +129,7 @@ function bs4_img_caption_shortcode( $output, $attr, $content ) {
 	$attributes .= ' class="figure wp-caption ' . esc_attr( $attr['align'] ) . '"';
 	$attributes = str_replace(
 		array(' alignnone', 'alignleft', 'alignright', 'aligncenter'),
-		array('', 'pull-xs-left', 'pull-xs-right', 'm-x-auto'),
+		array('', 'pull-xs-left', 'pull-xs-right', 'center-xs'),
 		$attributes );
 	if ($attr['align'] == 'aligncenter') {
 		$attributes .= ' style="width: ' . esc_attr( $attr['width'] ) . 'px;max-width:100%"';

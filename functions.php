@@ -6,7 +6,7 @@
  */
 
 // config
-include_once 'bs4-config.php';
+include_once 'config.php';
 include_once 'inc/options.php';
 include_once 'inc/customizer.php';
 // general API
@@ -27,9 +27,11 @@ include_once 'inc/fix-link-template.php';
 include_once 'inc/fix-tag-class.php';
 // plugins
 if (!bs4_get_option('block_plugins')) {
+	include_once 'addon/inc/plugin-lib.php';
 	include_once 'addon/bs4-layout.php';
 	include_once 'addon/bs4-components.php';
 	include_once 'addon/bs4-widgets.php';
+	include_once 'addon/bs4-yoast-seo.php';
 }
 
 
@@ -94,6 +96,7 @@ function bs4_setup() {
 		// 'link',
 		) );
 
+	/* WP4.5 Cutom Logo */
 	if (USE_WP45_LOGO)  // NEW IN WP4.5
 		add_theme_support( 'custom-logo', array(
 			'flex-width' => true,

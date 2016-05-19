@@ -142,38 +142,16 @@ function ts_bootstrap4_three_fourths_sc( $atts, $content = null, $tag = '' ) {
 	__ts_bootstrap4_col_part(9, $atts, $content);
 }
 
-add_shortcode( 'row', 'ts_bootstrap4_row_sc' );
-add_shortcode( 'column', 'ts_bootstrap4_column_sc' );
-add_shortcode( 'col', 'ts_bootstrap4_column_sc' );
-add_shortcode( 'one_half', 'ts_bootstrap4_one_half_sc' );
-add_shortcode( 'half', 'ts_bootstrap4_one_half_sc' );  // lazy
-add_shortcode( 'one_third', 'ts_bootstrap4_one_third_sc' );
-add_shortcode( 'third', 'ts_bootstrap4_one_third_sc' );  // lazy
-add_shortcode( 'two_thirds', 'ts_bootstrap4_two_thirds_sc' );
-add_shortcode( 'one_fourth', 'ts_bootstrap4_one_fourth_sc' );
-add_shortcode( 'fourth', 'ts_bootstrap4_one_fourth_sc' );  // lazy
-add_shortcode( 'two_fourths', 'ts_bootstrap4_one_half_sc' );  // unreduced
-add_shortcode( 'three_fourths', 'ts_bootstrap4_three_fourths_sc' );
+bs4_add_shortcode( 'row', 'ts_bootstrap4_row_sc' );
+bs4_add_shortcode( 'column', 'ts_bootstrap4_column_sc' );
+bs4_add_shortcode( 'col', 'ts_bootstrap4_column_sc' );
+bs4_add_shortcode( 'one_half', 'ts_bootstrap4_one_half_sc' );
+bs4_add_shortcode( 'half', 'ts_bootstrap4_one_half_sc' );  // lazy
+bs4_add_shortcode( 'one_third', 'ts_bootstrap4_one_third_sc' );
+bs4_add_shortcode( 'third', 'ts_bootstrap4_one_third_sc' );  // lazy
+bs4_add_shortcode( 'two_thirds', 'ts_bootstrap4_two_thirds_sc' );
+bs4_add_shortcode( 'one_fourth', 'ts_bootstrap4_one_fourth_sc' );
+bs4_add_shortcode( 'fourth', 'ts_bootstrap4_one_fourth_sc' );  // lazy
+bs4_add_shortcode( 'two_fourths', 'ts_bootstrap4_one_half_sc' );  // unreduced
+bs4_add_shortcode( 'three_fourths', 'ts_bootstrap4_three_fourths_sc' );
 
-function ts_bootstrap4_grid_shortcode_fix( $content ) {
-	$shortcodes = array(
-		'row',
-		);
-
-	foreach ( $shortcodes as $shortcode ) {
-		$array = array (
-			'<p>[' . $shortcode    => '[' .$shortcode,
-			'<br>[' . $shortcode   => '[' .$shortcode,
-			'<br />[' . $shortcode => '[' .$shortcode,
-			// '<p>[/' . $shortcode   => '[/' .$shortcode,
-			$shortcode . ']</p>'   => $shortcode . ']',
-			$shortcode . ']<br>'   => $shortcode . ']',
-			$shortcode . ']<br />' => $shortcode . ']',
-			);
-
-		$content = strtr( $content, $array );
-	}
-
-	return $content;
-}
-add_filter( 'the_content', 'ts_bootstrap4_grid_shortcode_fix' );

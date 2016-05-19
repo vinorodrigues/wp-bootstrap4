@@ -28,4 +28,4 @@ function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'tag', 'ts_bootstrap4_tag_sc' );
+bs4_add_shortcode( 'tag', 'ts_bootstrap4_tag_sc' );

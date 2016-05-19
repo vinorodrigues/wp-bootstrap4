@@ -25,4 +25,4 @@ function ts_bootstrap4_jumbotron_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'jumbotron', 'ts_bootstrap4_jumbotron_sc' );
+bs4_add_shortcode( 'jumbotron', 'ts_bootstrap4_jumbotron_sc' );

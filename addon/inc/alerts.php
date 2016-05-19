@@ -30,4 +30,4 @@ function ts_bootstrap4_alert_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'alert', 'ts_bootstrap4_alert_sc' );
+bs4_add_shortcode( 'alert', 'ts_bootstrap4_alert_sc' );

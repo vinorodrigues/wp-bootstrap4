@@ -106,32 +106,7 @@ function ts_bootstrap4_button_grp_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'button', 'ts_bootstrap4_button_sc' );
-add_shortcode( 'buttons', 'ts_bootstrap4_button_grp_sc' );
-add_shortcode( 'button_group', 'ts_bootstrap4_button_grp_sc' );
+bs4_add_shortcode( 'button', 'ts_bootstrap4_button_sc' );
+bs4_add_shortcode( 'buttons', 'ts_bootstrap4_button_grp_sc' );
+bs4_add_shortcode( 'button_group', 'ts_bootstrap4_button_grp_sc' );
 
-/* function ts_bootstrap4_buttons_shortcode_fix( $content ) {
-	$shortcodes = array(
-		'button',
-		'buttons',
-		'button_group',
-		);
-
-	foreach ( $shortcodes as $shortcode ) {
-		$array = array (
-			'<p>[' . $shortcode    => '[' .$shortcode,
-			'<br>[' . $shortcode   => '[' .$shortcode,
-			'<br />[' . $shortcode => '[' .$shortcode,
-			// '<p>[/' . $shortcode   => '[/' .$shortcode,
-			$shortcode . ']</p>'   => $shortcode . ']',
-			$shortcode . ']<br>'   => $shortcode . ']',
-			$shortcode . ']<br />' => $shortcode . ']',
-			);
-
-		$content = strtr( $content, $array );
-	}
-
-	return $content;
-} /* */
-
-/* add_filter( 'the_content', 'ts_bootstrap4_buttons_shortcode_fix' ); /* */

@@ -6,6 +6,6 @@
  */
 
 get_header();
-include 'bs4-theloop.php';
+get_template_part( 'loop' );
 get_sidebar();
 get_footer();

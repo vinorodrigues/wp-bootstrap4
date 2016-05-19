@@ -63,6 +63,50 @@ function bs4_shortcode_atts( $default_pairs, $atts, $shortcode = '') {
 	return shortcode_atts($default_pairs, $atts, $shortcode);
 }
 
+/**
+ * Cleaner shortcodes
+ */
+function bs4_add_shortcode($tag, $func, $do_clean = true) {
+	global $bs4_singletons;
+
+	add_shortcode($tag, $func);
+
+	if ($do_clean) {
+		if (!isset($bs4_singletons))
+			$bs4_singletons = array();
+		if (!isset($bs4_singletons['shortcodes']))
+			$bs4_singletons['shortcodes'] = array();
+		if (!isset($bs4_singletons['shortcodes'][$tag]))
+			$bs4_singletons['shortcodes'][] = $tag;
+	}
+}
+
+/**
+ * Cleaner shortcodes - fix know issue with wpautop
+ */
+function bs4_clean_shortcodes_fix($content) {
+	global $bs4_singletons;
+
+	if (isset($bs4_singletons) && isset($bs4_singletons['shortcodes'])) {
+
+		foreach ( $bs4_singletons['shortcodes'] as $sc ) {
+			$replace_pairs = array (
+				'<p>['.$sc    => '['.$sc,
+				'<p>[/'.$sc   => '[/'.$sc,
+				$sc.']</p>'   => $sc.']',
+				$sc.']<br>'   => $sc.']',
+				$sc.']<br />' => $sc.']',
+				);
+			$content = strtr($content, $replace_pairs);
+		}
+	}
+	return $content;
+}
+
+add_filter( 'the_content', 'bs4_clean_shortcodes_fix' );
+add_filter( 'the_excerpt', 'bs4_clean_shortcodes_fix' );
+
+
 /* --------------- in case raw-scripts.php is not included --------------- */
 
 if (!function_exists('ts_enqueue_script')) :

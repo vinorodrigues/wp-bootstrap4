@@ -32,6 +32,6 @@ if (is_page() && get_theme_mod('hide_front_page_title', true))
 add_action('bs4_header_after', 'bs4_front_page_header_after');
 
 get_header();
-include 'bs4-theloop.php';
+get_template_part( 'loop' );
 get_sidebar();
 get_footer();

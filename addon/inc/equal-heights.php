@@ -24,4 +24,5 @@ function bs4_equal_heights_sc( $atts, $content = null, $tag = '' ) {
 	bs4_equal_heights($what);
 	return '';
 }
-add_shortcode('equalheights', 'bs4_equal_heights_sc');
+
+bs4_add_shortcode('equalheights', 'bs4_equal_heights_sc');

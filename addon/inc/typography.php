@@ -50,7 +50,7 @@ function ts_bootstrap4_lead_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'lead', 'ts_bootstrap4_lead_sc' );
+bs4_add_shortcode( 'lead', 'ts_bootstrap4_lead_sc' );
 
 
 /**
@@ -90,7 +90,7 @@ function ts_bootstrap4_blockquote_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'blockquote', 'ts_bootstrap4_blockquote_sc' );
+bs4_add_shortcode( 'blockquote', 'ts_bootstrap4_blockquote_sc' );
 
 
 /**
@@ -103,7 +103,7 @@ function ts_bootstrap4_justify_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'justify', 'ts_bootstrap4_justify_sc' );
+bs4_add_shortcode( 'justify', 'ts_bootstrap4_justify_sc' );
 
 
 /**
@@ -116,7 +116,7 @@ function ts_bootstrap4_nowrap_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-add_shortcode( 'nowrap', 'ts_bootstrap4_nowrap_sc' );
+bs4_add_shortcode( 'nowrap', 'ts_bootstrap4_nowrap_sc' );
 
 
 // TODO : http://v4-alpha.getbootstrap.com/components/utilities/
