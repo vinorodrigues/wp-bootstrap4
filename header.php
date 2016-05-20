@@ -227,7 +227,7 @@ do_action('bs4_header_before');
 			?><div class="col-xs-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
 		} else {
 			?><div class="col-xs-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
-			?><div class="col-xs-12 col-sm-7 pull-sm-5 hidden-print"><?php
+			?><div class="col-xs-12 col-sm-7 pull-sm-5 <?= $head_a !== 3 ? 'head-r-2 ' : '' ?>hidden-print"><?php
 			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-r-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
 			if ($head_a === 3) echo '</div><div class="col-xs-12 head-r-3">';
@@ -241,7 +241,7 @@ do_action('bs4_header_before');
 			?><div class="col-xs-12 head-l-1"><?= bs4_heading() ?></div><?php
 		} else {
 			?><div class="col-xs-12 col-sm-5 col-pr-12 head-l-1"><?= bs4_heading() ?></div><?php
-			?><div class="col-xs-12 col-sm-7 hidden-print"><?php
+			?><div class="col-xs-12 col-sm-7 <?= $head_a !== 3 ? 'head-l-2 ' : '' ?>hidden-print"><?php
 			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-l-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
 			if ($head_a === 3) echo '</div><div class="col-xs-12 head-l-3">';

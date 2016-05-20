@@ -112,7 +112,7 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 @media (max-width: 543px) { /* line 204, ../scss/wp-bootstrap4.scss */
   .head-l-1 .h-i, .head-l-2 .h-i, .head-l-3 .h-i, .head-r-1 .h-i, .head-r-2 .h-i, .head-r-3 .h-i { margin-left: auto !important; margin-right: auto !important; text-align: center !important; } }
 /* line 213, ../scss/wp-bootstrap4.scss */
-.folioed .folio { margin-top: 1rem; margin-bottom: 1rem; padding-top: 1rem; padding-bottom: 1rem; }
+.folioed .folio { padding-top: 1rem; padding-bottom: 1rem; }
 /* line 219, ../scss/wp-bootstrap4.scss */
 .folioed .folio .heading, .folioed .folio .main-menu, .folioed .folio .feature, .folioed .folio .widget-home { padding-bottom: 1rem; }
 /* line 228, ../scss/wp-bootstrap4.scss */
