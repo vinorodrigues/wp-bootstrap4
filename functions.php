@@ -213,6 +213,8 @@ add_action( 'wp_enqueue_scripts', 'bs4_scripts' );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function bs4_widgets_init() {
+	global $container_segments;
+
 	$tag = 'h4';
 
 	register_sidebar( array(
@@ -239,7 +241,7 @@ function bs4_widgets_init() {
 		'name'          => 'Header Ancillary',
 		'id'            => 'sidebar-3',
 		'description'   => 'Placed besides the Site Title or Site Logo',
-		'before_widget' => '<aside class="widget widget-header %2$s">',
+		'before_widget' => '<aside class="widget widget-header h-i %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<' . $tag . ' class="hidden-xs-up" hidden>',
 		'after_title'   => '</' . $tag . '>',
@@ -257,11 +259,13 @@ function bs4_widgets_init() {
 			) );
 	}
 
+	$cls = 'widget-home';
+	if (get_theme_mod('container_segments', 0) != 0) $cls .= ' band';
 	register_sidebar( array(
 		'name'          => 'Home Page Only',
 		'id'            => 'sidebar-0',
 		'description'   => '',
-		'before_widget' => '<article class="widget widget-home %2$s">',
+		'before_widget' => '<article class="widget '.$cls.' %2$s">',
 		'after_widget'  => '</article>',
 		'before_title'  => '<h2>',
 		'after_title'   => '</h2>',

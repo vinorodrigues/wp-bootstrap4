@@ -68,11 +68,11 @@ if ($has_mn) {
 
 <?php if ($container_segments != 0) { echo '</div><div class="footer">'; } ?>
 
-<footer id="footer" class="section"><div class="<?= $band_class ?> footing">
+<footer id="footer" class="section"><div class="<?= $band_class ?>">
 <?php
-get_template_part( 'footbar' );
+get_template_part( 'sidebar-footer' );
 if ($has_mn || $has_cr) :
-	?><div class="row footer"><?php
+	?><div class="row footing"><?php
 
 	switch ($cr_position) {
 		case 1:

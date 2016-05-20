@@ -43,3 +43,11 @@ Tags: bootstrap responsive
 	position: relative;
 	left: -4px;
 }
+
+/* ----- DEBUG ----- */
+
+/*
+
+.wp-debug [class^="col-"] {
+	outline: 1px dashed rgba(255,0,0,0.1);
+}

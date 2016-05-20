@@ -22,6 +22,7 @@ function bs4_body_class_singular($classes) {
 	} else {
 		$classes[] = 'multiple';
 	}
+	if ( defined('WP_DEBUG') && WP_DEBUG ) $classes[] = 'wp-debug';
 	return $classes;
 }
 
@@ -50,9 +51,8 @@ function bs4_heading($logo_placement = 0) {
 		$hs = get_theme_mod( 'logo_height', false );
 		$ha = ctype_digit($hs) ? $hs : false;  if ($ha) $hs = false;
 
-		$custom_logo = '<img src="' . $custom_logo . '" class="site-logo img-fluid center-xs-down';
-      			if ($logo_placement != 0) $custom_logo .= ' ' . (($logo_placement == 1) ? 'center-sm' : 'pull-sm-right');
-		$custom_logo .= '" alt="' . get_bloginfo('name', 'display');
+		$custom_logo = '<img src="' . $custom_logo . '" class="site-logo img-fluid h-i"';
+		$custom_logo .= ' alt="' . get_bloginfo('name', 'display');
 		$_d = get_bloginfo( 'description', 'display' );
 		if ( $_d  ) $custom_logo .= ' - ' . $_d;
 		if ($wa) $custom_logo .= ' width="'.$wa.'"';
@@ -69,13 +69,10 @@ function bs4_heading($logo_placement = 0) {
 	if ($has_logo) {
 		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $custom_logo . '</a>';
 	} else {
-		$output = '<h1 class="title';
-		if ($logo_placement == 2) $output .= ' text-xs-right';
-		$output .= '"><a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
-		if (!empty(get_bloginfo('description'))) {
-			$output .= ($logo_placement == 0) ? ' ' : '<br>';
-			$output .= '<small class="text-muted subtitle">' .  get_bloginfo('description', 'display') . '</small>';
-		}
+		$output = '<h1 class="title h-i">';
+		$output .= '<a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
+		if (!empty(get_bloginfo('description')))
+			$output .= '<br><small class="text-muted subtitle">' . get_bloginfo('description', 'display') . '</small>';
 		$output .= '</h1>';
 	}
 	return $output;
@@ -86,7 +83,7 @@ function bs4_headernav($container_class = '', $menu_class = '') {
 		'menu'	          => 'header',
 		'menu_class'      => 'nav nav-pills' . (!empty($menu_class) ? ' ' . $menu_class : ''),
 		'container'       => 'nav',
-		'container_class' => $container_class,
+		'container_class' => 'header-nav h-i' . (!empty($container_class) ? ' ' . $container_class : ''),
 		'fallback_cb'     => false,
 		'depth'	          => 2,
 		'walker'          => new Bootstrap_Walker_Menu_Nav(),
@@ -102,7 +99,7 @@ function bs4_content_class($sidebar_position) {
 		case 2: $o .= ' col-md-8 col-lg-9'; break;
 		case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
 	};
-	if ( bs4_get_option('equalheights') ) $o .= ' eh';
+	if ( bs4_get_option('equalheights') ) $o .= ' e-h';
 	$o .= ' col-pr-12 content';
 	return $o;
 }
@@ -217,24 +214,23 @@ do_action('bs4_header_before');
 <?php
 	switch ($logo_placement) {
 	case 1:  // center
-		?><div class="col-xs-12"><?= bs4_heading($logo_placement) ?></div><?php
+		?><div class="col-xs-12 head-c-1"><?= bs4_heading($logo_placement) ?></div><?php
 		if (($head_a & 1) != 0) {
-			?><div class="col-xs-12 m-t-1 headspace hidden-print"><?=
-			bs4_headernav('nav-header', 'nav-center') ?></div><?php
+			?><div class="col-xs-12 head-c-2 hidden-print"><?= bs4_headernav() ?></div><?php
 		}
 		if (($head_a & 2) != 0) {
-			?><div class="col-xs-12 m-t-1 center-xs headspace hidden-print"><?php dynamic_sidebar('sidebar-3') ?></div><?php
+			?><div class="col-xs-12 head-c-3 hidden-print"><?php dynamic_sidebar('sidebar-3') ?></div><?php
 		}
 		break;
 	case 2:  // right
 		if ($head_a == 0) {
-			?><div class="col-xs-12"><?= bs4_heading($logo_placement) ?></div><?php
+			?><div class="col-xs-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
 		} else {
-			?><div class="col-xs-12 col-md-5 push-md-7 col-pr-12"><?= bs4_heading($logo_placement) ?></div><?php
-			?><div class="col-xs-12 col-md-7 pull-md-5 hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
+			?><div class="col-xs-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
+			?><div class="col-xs-12 col-sm-7 pull-sm-5 hidden-print"><?php
+			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-r-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
-			if ($head_a === 3) echo '</div><div class="col-md-12 headspace">';
+			if ($head_a === 3) echo '</div><div class="col-xs-12 head-r-3">';
 			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
 			if ($head_a === 3) echo '</div></div>';
 			?></div><?php
@@ -242,14 +238,14 @@ do_action('bs4_header_before');
 	    	break;
 	default:  // left
 		if ($head_a == 0) {
-			?><div class="col-xs-12"><?= bs4_heading() ?></div><?php
+			?><div class="col-xs-12 head-l-1"><?= bs4_heading() ?></div><?php
 		} else {
-			?><div class="col-xs-12 col-md-5 col-pr-12"><?= bs4_heading() ?></div><?php
-			?><div class="col-xs-12 col-md-7 hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-md-12">';  // nested row
-			if (($head_a & 1) != 0) echo bs4_headernav('clearfix pull-xs-right');
-			if ($head_a === 3) echo '</div><div class="col-md-12 headspace">';
-			if (($head_a & 2) != 0) { echo '<div class="pull-xs-right">'; dynamic_sidebar('sidebar-3'); echo '</div>'; }
+			?><div class="col-xs-12 col-sm-5 col-pr-12 head-l-1"><?= bs4_heading() ?></div><?php
+			?><div class="col-xs-12 col-sm-7 hidden-print"><?php
+			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-l-2">';  // nested row
+			if (($head_a & 1) != 0) echo bs4_headernav();
+			if ($head_a === 3) echo '</div><div class="col-xs-12 head-l-3">';
+			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
 			if ($head_a === 3) echo '</div></div>';
 			?></div><?php
 		}
@@ -277,4 +273,4 @@ if ($container_segments != 0) { echo '</div><div class="main">'; }
 
 <main id="main" class="section">
 <div class="<?= $band_class ?><?= ($container_segments == 0 ? ' main' : '')?>"><div class="row"><div id="content" class="<?= bs4_content_class($sidebar_position) ?>">
-<?php if (function_exists('bs4_breadcrumb')) bs4_breadcrumb(); ?>
+<?php if (function_exists('bs4_breadcrumb') && !is_404()) bs4_breadcrumb(); ?>

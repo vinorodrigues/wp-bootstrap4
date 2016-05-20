@@ -84,8 +84,8 @@ a img.alignleft {
 	margin-bottom: $spacer-y * 3;
 }
 
-.nav-header {
-	.nav-center {
+.header-nav {
+	.nav {
 		display: inline-block;
 	}
 }
@@ -155,44 +155,109 @@ a img.alignleft {
 	word-wrap: break-word;
 }
 
-.folioed {
+.head-l-3,
+.head-c-2,
+.head-c-3,
+.head-r-3 {
+	margin-top: $spacer-y;
+}
 
+@include media-breakpoint-down(xs) {
+	.head-l-2,
+	.head-r-2 {
+		margin-top: $spacer-y;
+	}
+}
+
+.head-c-1,
+.head-c-2,
+.head-c-3 {
+	.h-i {
+		text-align: center !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+}
+
+@include media-breakpoint-up(sm) {
+	.head-r-1 {
+		.h-i {
+			float: right !important;
+		}
+	}
+
+	.head-l-2,
+	.head-l-3 {
+		.h-i {
+			float: right !important;
+		}
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.head-l-1,
+	.head-l-2,
+	.head-l-3,
+	.head-r-1,
+	.head-r-2,
+	.head-r-3 {
+		.h-i {
+			margin-left: auto !important;
+			margin-right: auto !important;
+			text-align: center !important;
+		}
+	}
+}
+
+.folioed {
 	.folio {
-		margin-top: ($spacer-y / 2);
-		margin-bottom: ($spacer-y / 2);
-		padding-top: ($spacer-y / 2);
-		padding-bottom: ($spacer-y / 2);
+		margin-top: $spacer-y;
+		margin-bottom: $spacer-y;
+		padding-top: $spacer-y;
+		padding-bottom: $spacer-y;
 
 		.heading,
+		.main-menu,
+		.feature,
 		.widget-home {
 			padding-bottom: $spacer-y;
 		}
 
-		.main-menu {}
+		.main { }
 
-		.feature,
-		.main,
+		.footbar,
 		.footing {
-			padding: $spacer-y 0;
-
-			.footbar,
-			.footer {
-				padding-top: $spacer-y;
-			}
+			padding-top: $spacer-y;
 		}
 	}
 }
 
 .banded {
 	.header {
-		margin-top: ($spacer-y / 2);
+		padding-top: ($spacer-y / 2);
+
+		.heading,
+		.main-menu,
+		.feature,
+		.widget-home {
+			padding-top: ($spacer-y / 2);
+			padding-bottom: ($spacer-y / 2);
+		}
 	}
-	.band {
+
+	.main {
 		padding-top: ($spacer-y / 2);
 		padding-bottom: ($spacer-y / 2);
 	}
+
 	.footer {
-		margin-bottom: ($spacer-y / 2);
+		padding-bottom: ($spacer-y / 2);
+
+		.footbar,
+		.footing {
+			padding-top: ($spacer-y / 2);
+			padding-bottom: ($spacer-y / 2);
+		}
 	}
 }
 
