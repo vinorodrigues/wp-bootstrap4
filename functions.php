@@ -113,6 +113,9 @@ add_action( 'after_setup_theme', 'bs4_setup' );
 function bs4_scripts() {
 	$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
 
+	$theme = wp_get_theme();
+	$t_ver = $theme->version;
+
 	// CSS
 
 	$url = trim( bs4_get_option('bootstrap_css') );
@@ -128,13 +131,13 @@ function bs4_scripts() {
 		'bootstrap-fix',
 		get_stylesheet_directory_uri() . '/css/bootstrap-fix.css',
 		array('bootstrap'),
-		false );
+		$t_ver );
 
 	wp_enqueue_style(
 		'bootstrap-pr',
 		get_stylesheet_directory_uri() . '/css/bootstrap-pr' . $min . '.css',
 		array('bootstrap'),
-		false );
+		BOOTSTRAP_PR_VERSION );
 
 	@call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
 
@@ -142,11 +145,13 @@ function bs4_scripts() {
 		'wp-boostrap4',
 		get_stylesheet_directory_uri() . '/css/wp-bootstrap4.css',
 		array( 'bootstrap' ),
-		false );
+		$t_ver );
 
 	wp_enqueue_style(  // This theme or its child's style.css
 		'style',
-		get_stylesheet_uri() );
+		get_stylesheet_uri(),
+		array(),
+		$t_ver );
 
 	// JS
 
