@@ -224,14 +224,14 @@ a img.alignleft {
 		.main-menu,
 		.feature,
 		.widget-home {
-			padding-bottom: $spacer-y;
+			margin-bottom: $spacer-y;
 		}
 
 		.main { }
 
 		.footbar,
 		.footing {
-			padding-top: $spacer-y;
+			margin-top: $spacer-y;
 		}
 	}
 }

@@ -117,9 +117,9 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 /* line 217, ../scss/wp-bootstrap4.scss */
 .folioed .folio { padding-top: 1rem; padding-bottom: 1rem; }
 /* line 223, ../scss/wp-bootstrap4.scss */
-.folioed .folio .heading, .folioed .folio .main-menu, .folioed .folio .feature, .folioed .folio .widget-home { padding-bottom: 1rem; }
+.folioed .folio .heading, .folioed .folio .main-menu, .folioed .folio .feature, .folioed .folio .widget-home { margin-bottom: 1rem; }
 /* line 232, ../scss/wp-bootstrap4.scss */
-.folioed .folio .footbar, .folioed .folio .footing { padding-top: 1rem; }
+.folioed .folio .footbar, .folioed .folio .footing { margin-top: 1rem; }
 
 /* line 240, ../scss/wp-bootstrap4.scss */
 .banded .header { padding-top: 0.5rem; }
