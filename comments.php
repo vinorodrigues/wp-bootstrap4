@@ -97,14 +97,14 @@ function bs4_comment_form($args = array(), $post_id = null) {
 	$fields = array(
 		'author' =>
 			'<div class="row">' .
-			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
-			'<label for="author" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('user fw') . '</label>' .
-			'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control" placeholder="Name"' . $html_req . '>' .
+			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
+			'<label for="author" class="input-group-addon">' . get_bs4_i('user fw') . '</label>' .
+			'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control' . ($req ? ' form-control-required' : '') . '" placeholder="Name"' . $html_req . '>' .
 			'</div></div>',
 		'email' =>
-			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
-			'<label for="email" class="input-group-addon' . ($req ? ' text-warning' : '') . '">' . get_bs4_i('email fw') . '</label>' .
-			'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control" placeholder="Email"' . $html_req . '>' .
+			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
+			'<label for="email" class="input-group-addon">' . get_bs4_i('email fw') . '</label>' .
+			'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control' . ($req ? ' form-control-required' : '') . '" placeholder="Email"' . $html_req . '>' .
 			'</div></div>',
 		'url' =>
 			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
@@ -123,15 +123,13 @@ function bs4_comment_form($args = array(), $post_id = null) {
 
 		'comment_notes_before' =>
 			'<p class="text-muted form-group">' .
-			($req ?
-				'The <i class="text-warning">name</i>, <i class="text-warning">email</i> and <i class="text-warning">comment</i> are required fields.' :
-				'The <i class="text-warning">comment</i> field is required.') .
+			'Fields marked <b class="text-required">*</b> are required.' .
 			'</p>',
 		'comment_field' =>
 			'<div class="row">' .
-			'<div class="col-xs-12 form-group"><div class="input-group">' .
-			'<label for="comment" class="input-group-addon text-warning">' . get_bs4_i('commenta fw') . '</label>' .
-			'<textarea id="comment" name="comment" placeholder="Comment" rows="3" class="form-control" required></textarea>' .
+			'<div class="col-xs-12 form-group"><div class="input-group is-required">' .
+			'<label for="comment" class="input-group-addon">' . get_bs4_i('commenta fw') . '</label>' .
+			'<textarea id="comment" name="comment" placeholder="Comment" rows="3" class="form-control form-control-required" required></textarea>' .
 			'</div></div>' .
 			'</div>',
 		/* 'comment_notes_after' =>
@@ -201,8 +199,8 @@ else :
 			'next_text' => get_bs4_i('raquo'),
 			'prev_text' => get_bs4_i('laquo'),
 			'dots' => '&vellip;',
-			'before' => '<nav><center><ul class="pagination pagination-sm m-b-0 m-t-1">',
-			'after' => '</ul></center></nav>',
+			'before' => '<nav class="center-xs"><ul class="pagination pagination-sm">',
+			'after' => '</ul></nav>',
 		) );
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?

@@ -53,7 +53,7 @@ function ts_top_admin_options_page() {
 				echo get_admin_url( null, 'admin.php?page=' . $data[1] );
 				echo '" class="button ">' . $data[2] . '</a>';
 			} else {
-				echo '<center><span class="dashicons dashicons-yes"></span></center>';
+				echo '<span class="dashicons dashicons-yes"></span>';
 			}
 			echo '</td><td>';
 			echo $data[3];

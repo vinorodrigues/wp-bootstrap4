@@ -90,6 +90,10 @@ a img.alignleft {
 	}
 }
 
+.alert-404 {
+	margin-bottom: 0;
+}
+
 /* Go Facebook style and use "·" (the interpunct character) for separators */
 .nav-footer {
 	ul { margin-bottom: 0 !important; }
@@ -342,6 +346,10 @@ ul.gallery {
 			margin-left: auto;
 			margin-right: auto;
 		}
+
+		a:after {
+			content: none;
+		}
 	}
 
 	.footing {
@@ -358,5 +366,15 @@ ul.gallery {
 	.title a:after {
 		content: "";
 	}
-}
 
+	div[data-title]:before {
+  		content: attr(data-title);
+  		display: block;
+  		font-weight: bold;
+	}
+
+	.meta-data a:after,
+	a.tag:after {
+		content: none;
+	}
+}

@@ -259,6 +259,7 @@ function bs4_sanitize_options( $input ) {
 
 	__bs4_san_bool('block_plugins', $input, $output);
 	__bs4_san_bool('equalheights', $input, $output);
+	__bs4_san_bool('wide_footer', $input, $output);
 	__bs4_san_url('bootstrap_css', $input, $output);
 	__bs4_san_url('bootstrap_js', $input, $output);
 	__bs4_san_url('tether_js', $input, $output);
@@ -424,6 +425,20 @@ function bs4_admin_init() {
 				' Leave empty to use the default.</small>'
 			)
 		);
+
+	add_settings_field(
+		'wide_footer',
+		'Wide footer bar',
+		'bs4_opts_bool_callback',
+		BS4_THOPT_SEC2,
+		'bs4_styling',
+		array(
+			BS4_THOPT_SEC2,
+			'wide_footer',
+			'Last footer bar is wide.'
+			)
+		);
+
 }
 
 add_action('admin_init', 'bs4_admin_init');

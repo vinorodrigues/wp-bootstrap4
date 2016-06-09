@@ -434,10 +434,31 @@
 
   /* line 50, ../scss/bootstrap-pr.scss */
   div.alert,
+  .breadcrumb,
   .btn,
+  .btn-group,
+  .carousel,
   .nav,
-  .navbar {
+  .navbar,
+  .nav-tabs,
+  .pagination {
     display: none !important;
+  }
+
+  /* line 63, ../scss/bootstrap-pr.scss */
+  .tab-content > .tab-pane {
+    display: block !important;
+    visibility: visible !important;
+  }
+  /* line 68, ../scss/bootstrap-pr.scss */
+  .tab-content > .fade {
+    opacity: 1;
+  }
+
+  /* line 73, ../scss/bootstrap-pr.scss */
+  .collapse {
+    display: block !important;
+    height: initial !important;
   }
 }
 @media only screen {

@@ -11,6 +11,7 @@ License URI: http://opensource.org/licenses/mit-license.html
 */
 
 include_once 'inc/plugin-lib.php';
+include_once 'inc/scrollspy.php';
 
 
 // Tecsmith Options

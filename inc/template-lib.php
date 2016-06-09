@@ -180,7 +180,7 @@ function get_bs4_post_meta() {
 	$o .= '</span>';
 
 	if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) :
-		$o .= '<span class="meta-comments meta-item">';
+		$o .= '<span class="meta-comments meta-item hidden-print">';
 		ob_start();
 		comments_popup_link(
 			get_bs4_i('commenta') . '<span class="hidden-sm-down"> Leave a comment</span>',
@@ -292,7 +292,7 @@ function bs4_content_pager() {
 		$_n = inject_class_in_tag('a', 'btn btn-outline-info', $_n);
 		$_p = inject_class_in_tag('a', 'btn btn-outline-info', $_p);
 
-		?><nav class="hidden-print"><center><div class="pager m-t-1"><?php
+		?><nav class="center-xs hidden-print"><div class="pager"><?php
 
 		if ( is_single() ) {
 			if ($_p) echo $_p;
@@ -303,17 +303,17 @@ function bs4_content_pager() {
 			if ($_p && $_n) echo ' ';
 			if ($_p) echo $_p;
 		}
-		?></div></center></nav><?php
+		?></div></nav><?php
 	}
 }
 
 function bs4_link_pages() {
 	wp_link_pages_2( array(
-		'before'	   => '<nav><center><ul class="pagination m-b-0 m-t-1">',
-		'after'	    => '</ul></center></nav>',
+		'before'           => '<nav class="center-xs"><ul class="pagination">',
+		'after'            => '</ul></center></nav>',
 		'nextpagelink'     => get_bs4_i('raquo'),
 		'previouspagelink' => get_bs4_i('laquo'),
-		'nolink'	   => '<a>%</a>',
+		'nolink'           => '<a>%</a>',
 		'next_or_number'   => 'both',
 		) );
 }
@@ -351,7 +351,7 @@ function bs4_inject_feature($fn, $html) {
 
 function has_bs4_footer_bar() {
 	$ret = false;
-	for ($i = 1; $i <= 4; $i++) {
+	for ($i = 1; $i <= 5; $i++) {
 		if ( is_active_sidebar( 'sidebar-' . ($i+3) ) ) {
 			$ret = true;
 			break;

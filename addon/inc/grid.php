@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Grid Shortcodes
  */

@@ -99,8 +99,10 @@ function bs4_content_class($sidebar_position) {
 		case 2: $o .= ' col-md-8 col-lg-9'; break;
 		case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
 	};
-	if ( bs4_get_option('equalheights') ) $o .= ' e-h';
-	$o .= ' col-pr-12 content';
+	if ( bs4_get_option('equalheights') ) $o .= ' eh';
+	$o .= ' col-pr-12';
+	if (($sidebar_position == 1) || ($sidebar_position == 3)) $o .= ' push-pr-0';
+	$o .= ' content';
 	return $o;
 }
 

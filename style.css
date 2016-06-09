@@ -4,7 +4,7 @@ Theme URI: http://github.com/vinorodrigues/wp-bootstrap4
 Author: Vino Rodrigues
 Author URI: http://vinorodrigues.com
 Description: A responsive WordPress theme based on Bootstrap 4
-Version: 0.2.02
+Version: 0.2.03
 License: MIT License
 License URI: http://opensource.org/licenses/mit-license.html
 Text Domain: bootstrap4
@@ -46,8 +46,6 @@ Tags: bootstrap responsive
 
 /* ----- DEBUG ----- */
 
-/*
-
-.wp-debug [class^="col-"] {
+/* .wp-debug [class^="col-"] {
 	outline: 1px dashed rgba(255,0,0,0.1);
-}
+}  /* */

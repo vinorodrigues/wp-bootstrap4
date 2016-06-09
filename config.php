@@ -4,7 +4,7 @@
  */
 
 define( 'BOOTSTRAP_VERSION', 'v4-dev:2a36b4b' );  // Bootstrap Version
-define( 'JQUERY_VERSION', '2.2.3' );  // JQuery Version
+define( 'JQUERY_VERSION', '2.2.4' );  // JQuery Version
 define( 'TETHER_VERSION', '1.3.2' );  // Tether Version
 define( 'FONTAWESOME_VERSION', '4.6.3' );  // Fontawesome version
 

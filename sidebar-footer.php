@@ -13,25 +13,51 @@ if (has_bs4_footer_bar()) :
 			$sidebars[] = 'sidebar-' . ($i+3);
 		}
 	}
+	$cnt = count($sidebars);
 
-	switch ( count( $sidebars ) ) {
-		case 1: $class = 'col-xs-12'; break;
-		case 2: $class = 'col-xs-12 col-md-6'; break;
-		case 3: $class = 'col-xs-12 col-lg-4'; break;
-		case 4: $class = 'col-xs-12 col-md-6 col-lg-3'; break;
+	$has_widebar = is_active_sidebar( 'sidebar-8' );
+
+	var_dump_pre($has_widebar);
+
+	if ($has_widebar) {
+		switch ( $cnt ) {
+			case 1: $class = 'col-xs-12 col-md-6'; break;
+			case 2:	$class = 'col-xs-12 col-md-3'; break;
+			case 3: $class = 'col-xs-12 col-md-4 col-lg-2'; break;
+			case 4: $class = 'col-xs-12 col-md-3 col-lg-2'; break;
+		}
+		switch ( $cnt ) {
+			case 1: $classw = 'col-xs-12 col-md-6'; break;
+			case 2: $classw = 'col-xs-12 col-md-6'; break;
+			case 3: $classw = 'col-xs-12 col-md-12 col-lg-6'; break;
+			case 4: $classw = 'col-xs-12 col-md-12 col-lg-4'; break;
+		}
+	} else {
+		switch ( $cnt ) {
+			case 1: $class = 'col-xs-12'; break;
+			case 2:	$class = 'col-xs-12 col-md-6'; break;
+			case 3: $class = 'col-xs-12 col-md-4'; break;
+			case 4: $class = 'col-xs-12 col-md-3'; break;
+		}
 	}
-	$class .= ' sidebar hidden-print';
-	// if ( bs4_get_option('equalheights') ) $class .= ' e-f';
+
+	$classf = ' sidebar hidden-print';
+	if ( bs4_get_option('equalheights') && ($cnt > 1) ) $classf .= ' ef';
 
 	?><div class="row footbar"><?php
-	for ($i = 0; $i <= (count($sidebars) - 1); $i++) {
-		?><div class="<?= $class ?>"><?php
+	for ($i = 0; $i <= ($cnt - 1); $i++) {
+		?><div class="<?= $class.$classf ?>"><?php
 		dynamic_sidebar( $sidebars[$i] );
+		?></div><?php
+	}
+	if ($has_widebar) {
+		?><div class="<?= $classw.$classf ?>"><?php
+		dynamic_sidebar( 'sidebar-8' );
 		?></div><?php
 	}
 	?></div><?php
 
-	// if ( bs4_get_option('equalheights') )
-	// 	bs4_equal_heights('.e-f', 101);
+	if ( bs4_get_option('equalheights') && (count($sidebars) > 1) )
+		bs4_equal_heights('.ef', 101);
 endif;
 ?>

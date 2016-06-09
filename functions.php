@@ -258,6 +258,15 @@ function bs4_widgets_init() {
 			'after_title'   => '</' . $tag . '>',
 			) );
 	}
+	register_sidebar( array(
+		'name'          => 'Footer Bar Wide',
+		'id'            => 'sidebar-8',
+		'description'   => '',
+		'before_widget' => '<aside class="widget widget-footer widget-wide %2$s">',
+		'after_widget'  => '</aside>',
+		'before_title'  => '<' . $tag . '>',
+		'after_title'   => '</' . $tag . '>',
+		) );
 
 	$cls = 'widget-home';
 	if (get_theme_mod('container_segments', 0) != 0) $cls .= ' band';
