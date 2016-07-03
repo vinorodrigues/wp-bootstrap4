@@ -23,7 +23,7 @@ class TS_BS4_ScrollSpy_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
 		global $bs4_singletons;
 
-		if (!isset($bs4_singletons) && !isset($bs4_singletons['scrollspy']) && !is_array($bs4_singletons['scrollspy']))
+		if (!isset($bs4_singletons) || !isset($bs4_singletons['scrollspy']) || !is_array($bs4_singletons['scrollspy']))
 			return;
 
 		if (!isset($bs4_singletons['nav_widget_count'])) $bs4_singletons['nav_widget_count'] = 0;
