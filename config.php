@@ -3,10 +3,10 @@
  * Configuration file
  */
 
-define( 'BOOTSTRAP_VERSION', 'v4-dev:2a36b4b' );  // Bootstrap Version
-define( 'JQUERY_VERSION', '3.0.0' );  // JQuery Version
-define( 'TETHER_VERSION', '1.3.2' );  // Tether Version
-define( 'FONTAWESOME_VERSION', '4.6.3' );  // Fontawesome version
+define( 'BOOTSTRAP_VERSION', 'v4-dev:#17021' );  // Bootstrap Version
+define( 'JQUERY_VERSION', '3.1.0' );  // JQuery Version - http://jquery.com
+define( 'TETHER_VERSION', '1.3.3' );  // Tether Version - http://tether.io
+define( 'FONTAWESOME_VERSION', '4.6.3' );  // Fontawesome version - http://fontawesome.io
 define( 'BOOTSTRAP_PR_VERSION', '0.0.1' );
 
 define( 'AVATAR_CLASS', 'img-circle' );
