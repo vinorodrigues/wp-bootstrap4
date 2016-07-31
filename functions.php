@@ -120,7 +120,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/css/bootstrap' . $min . '.css';
+		$url = get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap' . $min . '.css';
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -135,7 +135,7 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap-pr',
-		get_stylesheet_directory_uri() . '/css/bootstrap-pr' . $min . '.css',
+		get_stylesheet_directory_uri() . '/vendor/print-ready/css/bootstrap-pr' . $min . '.css',
 		array('bootstrap'),
 		BOOTSTRAP_PR_VERSION );
 
@@ -159,7 +159,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/js/jquery-' . JQUERY_VERSION . $min . '.js';
+		$url = get_stylesheet_directory_uri() . '/vendor/jquery/js/jquery-' . JQUERY_VERSION . $min . '.js';
 		$ver = JQUERY_VERSION;
 	} else {
 		$ver = NULL;
@@ -168,7 +168,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('tether_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/js/tether' . $min . '.js';
+		$url = get_stylesheet_directory_uri() . '/vendor/tether/js/tether' . $min . '.js';
 		$ver = TETHER_VERSION;
 	} else {
 		$ver = NULL;
@@ -177,7 +177,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/js/bootstrap' . $min . '.js';
+		$url = get_stylesheet_directory_uri() . '/vendor/bootstrap/js/bootstrap' . $min . '.js';
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;

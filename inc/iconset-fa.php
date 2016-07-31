@@ -12,7 +12,7 @@ if (!defined( 'FONTAWESOME_VERSION' ))
 function bs4_enqueue_style_i_fa($min = '') {
 	$url = trim( bs4_get_option('fontawesome_css') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/css/font-awesome' . $min . '.css';
+		$url = get_stylesheet_directory_uri() . '/vendor/font-awesome/css/font-awesome' . $min . '.css';
 		$ver = FONTAWESOME_VERSION;
 	} else {
 		$ver = NULL;
