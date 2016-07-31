@@ -15,7 +15,7 @@ $___bs4_search_form_count += 1;
 		<div class="col-sm-10">
 			<input type="search" name="s" class="search-input form-control"
 				placeholder="Search &hellip;" value="<?= get_search_query() ?>"
-				results="10" autosave="search-<?= $___bs4_search_form_count ?>"  autocorrect="on">
+				autosave="search-<?= $___bs4_search_form_count ?>"  autocorrect="on">
 		</div>
 	</div>
 	<div class="form-group row">
