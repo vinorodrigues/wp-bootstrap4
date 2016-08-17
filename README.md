@@ -1,8 +1,6 @@
 WP-Bootstrap4
 =============
 
-![WP-Bootstrap4](screenshot.png)
-
 ---
 
 **( _At the time of release Bootsrap 4 is in version 4.0-Alpha-3._ )**
@@ -10,6 +8,8 @@ WP-Bootstrap4
 This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 2-Aug-2016 - [#8e4f3fe](https://github.com/twbs/bootstrap/commit/8e4f3fe7b95f6bb7c9939288229ec5683364743d).
 
 ---
+
+![WP-Bootstrap4](screenshot.png)
 
 
 Introduction
@@ -35,4 +35,4 @@ Licences
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/) under [SIL OFL 1.1](http://scripts.sil.org/OFL)
 - [Wordpress](http://wordpress.org) under [GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)
 
-★
+<b style="text-align:center" markdown="1">★</b>
