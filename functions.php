@@ -5,6 +5,9 @@
  * @link https://codex.wordpress.org/Functions_File_Explained
  */
 
+if ( !defined('THEMEPATH') )
+	define('THEMEPATH', dirname(__FILE__).'/');
+
 // config
 include_once 'config.php';
 include_once 'inc/options.php';
@@ -25,13 +28,17 @@ include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
 include_once 'inc/fix-tag-class.php';
+
 // plugins
 if (!bs4_get_option('block_plugins')) {
-	include_once 'addon/inc/plugin-lib.php';
-	include_once 'addon/bs4-layout.php';
-	include_once 'addon/bs4-components.php';
-	include_once 'addon/bs4-widgets.php';
-	include_once 'addon/bs4-yoast-seo.php';
+	if ($handle = opendir(THEMEPATH.'addon/plugins')) {
+		while (false !== ($entry = readdir($handle))) {
+        		if (!is_dir(THEMEPATH.'addon/plugins/'.$entry)) {
+        			include_once 'addon/plugins/'.$entry;
+		        }
+		}
+		closedir($handle);
+	}
 }
 
 
@@ -65,7 +72,7 @@ function bs4_setup() {
 	set_post_thumbnail_size( POST_THUMBNAIL_X, POST_THUMBNAIL_Y, true );
 	add_image_size( 'featured-image', FEATURED_IMAGE_X, FEATURED_IMAGE_Y, true);
 
-	// This theme uses wp_nav_menu() in one location.
+	// This theme uses wp_nav_menu()
 	register_nav_menus( array(
 		'primary' => 'Primary Menu',
 		'header'  => 'Header Menu',
@@ -288,5 +295,12 @@ function bs4_widgets_init() {
 
 add_action( 'widgets_init', 'bs4_widgets_init' );
 
+
+/*
+ * PRO functions ====================
+ */
+
+if ( file_exists(THEMEPATH.'addon/pro/functions.php'))
+	include_once 'addon/pro/functions.php';
 
 /* oef */

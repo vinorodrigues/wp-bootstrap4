@@ -103,6 +103,8 @@ function bs4_customize_register( $wp_customize ) {
 				0 => 'Left',
 				1 => 'Center',
 				2 => 'Right',
+				3 => 'Navbar',
+				4 => 'Disabled',
 				) ) ) );
 
 
@@ -193,7 +195,8 @@ function bs4_customize_register( $wp_customize ) {
 			1 => 'Inverse',
 			2 => 'Faded',
 			3 => 'Default',
-			4 => 'Custom',
+			4 => 'Transparent',
+			5 => 'Custom',
 			) ) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control(

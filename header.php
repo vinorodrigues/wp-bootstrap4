@@ -108,13 +108,13 @@ function bs4_content_class($sidebar_position) {
 
 /* ----- */
 
-global $container_width, $container_segments, $sidebar_position, $band_class;
+global $logo_placement, $container_width, $container_segments, $sidebar_position, $container_class, $band_class;
 
 $logo_placement = intval( get_theme_mod('logo_placement', 0) );
 $container_width = intval( get_theme_mod('container_width', 0) );
 $container_segments = intval( get_theme_mod('container_segments', 0) );
 
-if (get_theme_mod( 'navbar_color', 0 ) == 4)
+if (get_theme_mod( 'navbar_color', 0 ) == 5)
 	ts_enqueue_style(
 		'navbar',
 		'.bg-custom { background-color: ' . get_theme_mod( 'navbar_color_custom', '#000000' ) . '; }' );
@@ -192,7 +192,7 @@ if ($color)
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <?php
@@ -212,11 +212,16 @@ do_action('bs4_header_before');
 ?>
 
 <header id="header" class="section">
-<div class="<?= $band_class ?> heading"><div class="row">
 <?php
+	$do_header = (($head_a & 3) == 0) && ($logo_placement != 3) && ($logo_placement != 4);
+
+	if ($do_header) echo '<div class="' . $band_class . ' heading"><div class="row">';
+
 	switch ($logo_placement) {
 	case 1:  // center
 		?><div class="col-xs-12 head-c-1"><?= bs4_heading($logo_placement) ?></div><?php
+	case 3:
+	case 4:
 		if (($head_a & 1) != 0) {
 			?><div class="col-xs-12 head-c-2 hidden-print"><?= bs4_headernav() ?></div><?php
 		}
@@ -237,7 +242,7 @@ do_action('bs4_header_before');
 			if ($head_a === 3) echo '</div></div>';
 			?></div><?php
 		}
-	    	break;
+		break;
 	default:  // left
 		if ($head_a == 0) {
 			?><div class="col-xs-12 head-l-1"><?= bs4_heading() ?></div><?php
@@ -253,19 +258,20 @@ do_action('bs4_header_before');
 		}
 		break;
 	}
-?>
-</div></div><?php
-get_template_part( 'navbar' );
-if (!is_404()) {
-	$header_image = get_header_image();
-	if ( ! empty( $header_image ) ) {
-		?><div id="feature" class="hidden-print"><?php
-		echo '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">';
-		echo '<img src="' . $header_image . '" class="header-image img-fluid ' . FEATURED_IMAGE_CLASS . '">';
-		echo '</div></div></div>';
-		?></div><?php
+
+	if ($do_header) echo '</div></div>';
+
+	get_template_part( 'navbar' );
+	if (!is_404()) {
+		$header_image = get_header_image();
+		if ( ! empty( $header_image ) ) {
+			?><div id="feature" class="hidden-print"><?php
+			echo '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">';
+			echo '<img src="' . $header_image . '" class="header-image img-fluid ' . FEATURED_IMAGE_CLASS . '">';
+			echo '</div></div></div>';
+			?></div><?php
+		}
 	}
-}
 ?></header>
 
 <?php
