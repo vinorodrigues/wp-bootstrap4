@@ -13,8 +13,6 @@
  *	<?php } // if ( ! empty( $header_image ) ) ?>
  */
 
-include_once get_stylesheet_directory() . "/config.php";
-
 /**
  * Setup the WordPress core custom header feature.
  *

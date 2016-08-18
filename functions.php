@@ -115,6 +115,19 @@ endif; // wp_bootstrap_setup
 add_action( 'after_setup_theme', 'bs4_setup' );
 
 /**
+ * Get URI of style file, if exists in child, else parent
+ */
+function get_theme_file_uri($filename) {
+	if (!is_child_theme()) {
+		return get_template_directory_uri() . $filename;
+	} else {
+		$f = get_stylesheet_directory() . $filename;
+		if (file_exists($f)) return get_stylesheet_directory_uri() . $filename;
+		else return get_template_directory_uri() . $filename;
+	}
+}
+
+/**
  * Enqueue scripts and styles.
  */
 function bs4_scripts() {
@@ -127,7 +140,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/vendor/bootstrap/css/bootstrap' . $min . '.css';
+		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' . $min . '.css' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -136,13 +149,13 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap-fix',
-		get_stylesheet_directory_uri() . '/css/bootstrap-fix.css',
+		get_theme_file_uri( '/css/bootstrap-fix.css' ),
 		array('bootstrap'),
 		$t_ver );
 
 	wp_enqueue_style(
 		'bootstrap-pr',
-		get_stylesheet_directory_uri() . '/vendor/print-ready/css/bootstrap-pr' . $min . '.css',
+		get_theme_file_uri( '/vendor/print-ready/css/bootstrap-pr' . $min . '.css' ),
 		array('bootstrap'),
 		BOOTSTRAP_PR_VERSION );
 
@@ -150,15 +163,28 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'wp-boostrap4',
-		get_stylesheet_directory_uri() . '/css/wp-bootstrap4.css',
+		get_theme_file_uri( '/css/wp-bootstrap4.css' ),
 		array( 'bootstrap' ),
 		$t_ver );
 
-	wp_enqueue_style(  // This theme or its child's style.css
-		'style',
-		get_stylesheet_uri(),
-		array(),
-		$t_ver );
+	if (is_child_theme()) {
+		wp_enqueue_style(
+			'style-parent',
+			get_template_directory_uri().'/style.css',
+			array(),
+			$t_ver );
+		wp_enqueue_style(
+			'style-child',
+			get_stylesheet_uri(),
+			array('style-parent'),
+			$t_ver );
+	} else {
+		wp_enqueue_style(
+			'style',
+			get_template_directory_uri(),
+			array(),
+			$t_ver );
+	}
 
 	// JS
 
@@ -166,7 +192,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/vendor/jquery/js/jquery-' . JQUERY_VERSION . $min . '.js';
+		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . $min . '.js' );
 		$ver = JQUERY_VERSION;
 	} else {
 		$ver = NULL;
@@ -175,7 +201,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('tether_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/vendor/tether/js/tether' . $min . '.js';
+		$url = get_theme_file_uri( '/vendor/tether/js/tether' . $min . '.js' );
 		$ver = TETHER_VERSION;
 	} else {
 		$ver = NULL;
@@ -184,7 +210,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
-		$url = get_stylesheet_directory_uri() . '/vendor/bootstrap/js/bootstrap' . $min . '.js';
+		$url = get_theme_file_uri( '/vendor/bootstrap/js/bootstrap' . $min . '.js' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -194,7 +220,7 @@ function bs4_scripts() {
 	if ( bs4_get_option('equalheights') )
 		wp_register_script(
 			'equalheights',
-			get_template_directory_uri() . '/js/grids' . $min . '.js',
+			get_theme_file_uri( '/js/grids' . $min . '.js' ),
 			array( 'jquery' ),
 			false,
 			true );
