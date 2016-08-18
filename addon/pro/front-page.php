@@ -87,3 +87,4 @@ my_trim_function( $trim_me );
 
 get_sidebar();
 get_footer();
+_d(__FILE__);

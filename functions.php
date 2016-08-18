@@ -42,6 +42,10 @@ if (!bs4_get_option('block_plugins')) {
 }
 
 
+function _d($m) {
+	echo '<!-- ' . $m . ' -->';
+}
+
 if ( ! function_exists( 'bs4_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
