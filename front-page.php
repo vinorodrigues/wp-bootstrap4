@@ -24,12 +24,6 @@ if (is_page() && get_theme_mod('hide_front_page_title', true))
 add_action('bs4_header_after', 'bs4_front_page_header_after');
 
 get_header();
-$content = apply_filters( 'bs4_front_page_content', '' );
-if ($content != '') {
-	echo $content;
-} else {
-	get_template_part( 'loop' );
-	get_sidebar();
-}
+get_template_part( 'loop' );
+get_sidebar();
 get_footer();
-_d(__FILE__);

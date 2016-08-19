@@ -1,5 +1,21 @@
 <?php
 
+/**
+ *
+ */
+function bs4_get_sidebar_position() {
+	return 0;
+}
+
+add_filter( 'bs4_get_sidebar_position', 'bs4_get_sidebar_position' );
+
+get_header();
+get_template_part( 'loop' );
+get_sidebar();
+get_footer();
+
+
+/*
 get_header();
 // get_template_part( 'loop' );
 
@@ -84,7 +100,7 @@ $post_12 = get_post(12);
 $trim_me = $post_12->post_content;
 my_trim_function( $trim_me );
 */
-
+/*
 get_sidebar();
 get_footer();
-_d(__FILE__);
+*/

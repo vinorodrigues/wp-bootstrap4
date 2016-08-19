@@ -36,4 +36,3 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 <?php
 // get_sidebar();  // no sidebar!
 get_footer();
-_d(__FILE__);

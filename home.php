@@ -33,4 +33,3 @@ if (false !== $page_for_posts) {
 get_template_part( 'loop' );
 get_sidebar();
 get_footer();
-_d(__FILE__);

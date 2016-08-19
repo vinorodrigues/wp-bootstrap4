@@ -41,9 +41,44 @@ if (!bs4_get_option('block_plugins')) {
 	}
 }
 
+function bs4_get_logo_img($class = '') {
+	$id = false;
+	if (USE_WP45_LOGO) {  // NEW IN WP4.5
+		$has_logo = has_custom_logo();
+		if ($has_logo) $id = get_theme_mod( 'custom_logo' );
+	} else
+		$id = get_theme_mod('custom_logo', '');
 
-function _d($m) {
-	echo '<!-- ' . $m . ' -->';
+	$custom_logo = false;
+	if ($id) {
+		$custom_logo = wp_get_attachment_image_src( $id, 'full', false );
+		if ($custom_logo !== false) $custom_logo = $custom_logo[0];
+	}
+
+	if ( !empty($custom_logo) ) {
+		$ws = get_theme_mod( 'logo_width', false );
+		$wa = ctype_digit($ws) ? $ws : false;  if ($wa) $ws = false;
+		$hs = get_theme_mod( 'logo_height', false );
+		$ha = ctype_digit($hs) ? $hs : false;  if ($ha) $hs = false;
+
+		$custom_logo = '<img src="' . $custom_logo . '"';
+		if ($class != '') $custom_logo .= ' class="' . $class . '"';
+		$custom_logo .= ' alt="' . get_bloginfo('name', 'display');
+		$_d = get_bloginfo( 'description', 'display' );
+		if ( $_d  ) $custom_logo .= ' - ' . $_d;
+		$custom_logo .= '"';
+		if ($wa) $custom_logo .= ' width="'.$wa.'"';
+		if ($ha) $custom_logo .= ' height="'.$ha.'"';
+		if ($ws || $hs) {
+			$custom_logo .= '" style="';
+			if ($ws) $custom_logo .= 'width:'.$ws.';';
+			if ($hs) $custom_logo .= 'height:'.$hs.';';
+			$custom_logo .= '"';
+		}
+		$custom_logo .= '>';
+	}
+
+	return $custom_logo;
 }
 
 if ( ! function_exists( 'bs4_setup' ) ) :

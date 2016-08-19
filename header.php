@@ -26,45 +26,8 @@ function bs4_body_class_singular($classes) {
 	return $classes;
 }
 
-function bs4_heading($logo_placement = 0) {
-	// 0 = right
-	// 1 = center
-	// 2 = right
-
-	$id = false;
-	if (USE_WP45_LOGO) {  // NEW IN WP4.5
-		$has_logo = has_custom_logo();
-		if ($has_logo) $id = get_theme_mod( 'custom_logo' );
-	} else
-		$id = get_theme_mod('custom_logo', '');
-
-	$custom_logo = false;
-	if ($id) {
-		$custom_logo = wp_get_attachment_image_src( $id, 'full', false );
-		if ($custom_logo !== false) $custom_logo = $custom_logo[0];
-	}
-
-	$has_logo = !empty($custom_logo);
-	if ($has_logo) {
-		$ws = get_theme_mod( 'logo_width', false );
-		$wa = ctype_digit($ws) ? $ws : false;  if ($wa) $ws = false;
-		$hs = get_theme_mod( 'logo_height', false );
-		$ha = ctype_digit($hs) ? $hs : false;  if ($ha) $hs = false;
-
-		$custom_logo = '<img src="' . $custom_logo . '" class="site-logo img-fluid h-i"';
-		$custom_logo .= ' alt="' . get_bloginfo('name', 'display');
-		$_d = get_bloginfo( 'description', 'display' );
-		if ( $_d  ) $custom_logo .= ' - ' . $_d;
-		if ($wa) $custom_logo .= ' width="'.$wa.'"';
-		if ($ha) $custom_logo .= ' height="'.$ha.'"';
-		if ($ws || $hs) {
-			$custom_logo .= '" style="';
-			if ($ws) $custom_logo .= 'width:'.$ws.';';
-			if ($hs) $custom_logo .= 'height:'.$hs.';';
-			$custom_logo .= '"';
-		}
-		$custom_logo .= '">';
-	}
+function bs4_heading() {
+	$has_logo = bs4_get_logo_img('site-logo img-fluid h-i');
 
 	if ($has_logo) {
 		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $custom_logo . '</a>';
@@ -124,31 +87,34 @@ if (get_theme_mod( 'navbar_color', 0 ) == 5)
  *  becomes ->
  * 0 => None, 1 => Left, 2 => Right, 3 => Center (sidebar position)
  */
-$_1 = is_active_sidebar('sidebar-1');
-$_2 = is_active_sidebar('sidebar-2');
-$_b = $_1 && $_2;  // both
-$_i = $_1 || $_2;  // either
-switch ( intval(get_theme_mod('content_position', 0)) ) {
-	case 1:  // content center
-		if ($_b) {
-			$sidebar_position = 3;
-		} elseif (!$_i) {
-			$sidebar_position = 0;
-		} elseif ($_1) {
-			$sidebar_position = 1;
-		} else {
-			$sidebar_position = 2;
-		}
-		break;
-	case 2:  // content left
-		$sidebar_position = $_i ? 2 : 0;
-		break;
-	default:  // 0, content right
-		$sidebar_position = $_i ? 1 : 0;
-		break;
-}
 
 if (is_404()) $sidebar_position = 0;
+else $sidebar_position = apply_filters( 'bs4_get_sidebar_position', -1 );
+if (-1 == $sidebar_position) {
+	$_1 = is_active_sidebar('sidebar-1');
+	$_2 = is_active_sidebar('sidebar-2');
+	$_b = $_1 && $_2;  // both
+	$_i = $_1 || $_2;  // either
+	switch ( intval(get_theme_mod('content_position', 0)) ) {
+		case 1:  // content center
+			if ($_b) {
+				$sidebar_position = 3;
+			} elseif (!$_i) {
+				$sidebar_position = 0;
+			} elseif ($_1) {
+				$sidebar_position = 1;
+			} else {
+				$sidebar_position = 2;
+			}
+			break;
+		case 2:  // content left
+			$sidebar_position = $_i ? 2 : 0;
+			break;
+		default:  // 0, content right
+			$sidebar_position = $_i ? 1 : 0;
+			break;
+	}
+}
 
 $container_class = 'container';
 if ($container_width == 1) { $container_class .= '-fluid'; }
@@ -219,7 +185,7 @@ do_action('bs4_header_before');
 
 	switch ($logo_placement) {
 	case 1:  // center
-		?><div class="col-xs-12 head-c-1"><?= bs4_heading($logo_placement) ?></div><?php
+		?><div class="col-xs-12 head-c-1"><?= bs4_heading() ?></div><?php
 	case 3:
 	case 4:
 		if (($head_a & 1) != 0) {
@@ -231,9 +197,9 @@ do_action('bs4_header_before');
 		break;
 	case 2:  // right
 		if ($head_a == 0) {
-			?><div class="col-xs-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
+			?><div class="col-xs-12 head-r-1"><?= bs4_heading() ?></div><?php
 		} else {
-			?><div class="col-xs-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?= bs4_heading($logo_placement) ?></div><?php
+			?><div class="col-xs-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?= bs4_heading() ?></div><?php
 			?><div class="col-xs-12 col-sm-7 pull-sm-5 <?= $head_a !== 3 ? 'head-r-2 ' : '' ?>hidden-print"><?php
 			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-r-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
@@ -280,5 +246,8 @@ if ($container_segments != 0) { echo '</div><div class="main">'; }
 ?>
 
 <main id="main" class="section">
-<div class="<?= $band_class ?><?= ($container_segments == 0 ? ' main' : '')?>"><div class="row"><div id="content" class="<?= bs4_content_class($sidebar_position) ?>">
+<div
+  class="<?= $band_class ?><?= ($container_segments == 0 ? ' main' : '')?>"><div
+  class="row"><div
+  id="content" class="<?= bs4_content_class($sidebar_position) ?>">
 <?php if (function_exists('bs4_breadcrumb') && !is_404()) bs4_breadcrumb(); ?>

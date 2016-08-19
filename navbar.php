@@ -6,18 +6,26 @@
  * @see: http://www.quackit.com/bootstrap/bootstrap_4/tutorial/bootstrap_navbars.cfm
  */
 
-if (has_nav_menu('primary') || !empty(get_theme_mod('navbar_brand', ''))) :
+global $band_class, $logo_placement, $container_class;
+
+if (has_nav_menu('primary') || !empty(get_theme_mod('navbar_brand', '')) || ($logo_placement == 3)) :
 
 include_once 'inc/menu-walker.php';
 
-global $band_class, $logo_placement, $container_class;
 $navbar_band_class = $band_class;
 
 $navbar_color = get_theme_mod( 'navbar_color', 0 );
 $navbar_shading = boolval( get_theme_mod( 'navbar_shading', 0 ) );
 $navbar_container = boolval( get_theme_mod( 'navbar_container', 0 ) );
 $navbar_placement = get_theme_mod( 'navbar_placement', 0 );
-$navbar_brand = get_theme_mod( 'navbar_brand', '' );  // TODO : $navbar_brand & ($logo_placement == 3)
+
+if ($logo_placement == 3) {
+	$navbar_logo = bs4_get_logo_img();
+	if (!$navbar_logo) $navbar_brand = get_bloginfo('name', 'display');
+	else $navbar_brand = $navbar_logo;
+} else $navbar_brand = '';
+$navbar_brand .= get_theme_mod( 'navbar_brand', '' );
+
 // $navbar_icon = get_theme_mod( 'navbar_icon', false );
 $navbar_search = boolval( get_theme_mod( 'navbar_search', 0 ) );
 
@@ -60,9 +68,12 @@ $menu_content = apply_filters('bs4_wp_nav_menu', '');
 if ($menu_content != '') {
 	echo $menu_content;
 } else {
+	$menu_class = 'nav navbar-nav';
+	if ($navbar_brand && ($logo_placement == 3) && (!$navbar_search))
+		$menu_class .= ' pull-xs-right';
 	$navbar_array = array(
 		'menu'	         => 'primary',
-		'menu_class'     => 'nav navbar-nav',
+		'menu_class'     => $menu_class,
 		'container'      => false,
 		'fallback_cb'    => false,
 		'depth'	         => 2,

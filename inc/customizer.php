@@ -40,7 +40,8 @@ class My_Customize_Radio_Control extends WP_Customize_Control {
 						<?php $this->link(); checked( $this->value(), $value ); ?> />
 					<label class="image-select-label"
 						for="<?php echo $this->id . $value; ?>"><img
-						src="<?php echo get_template_directory_uri() . '/img/' . $this->prefix . esc_html($value) . $this->suffix; ?>"
+						src="<?php echo get_template_directory_uri() . '/img/' .
+						  $this->prefix . esc_html($value) . $this->suffix; ?>"
 						title="<?php echo $label; ?>"></label>
 					<?php
 				endforeach;
@@ -239,6 +240,7 @@ function bs4_customize_register( $wp_customize ) {
 		'type'    => 'text',
 		'section' => 'cust_navbar',
 		'label'   => 'Brand Text',
+		'description' => '(Disabled when Site Identity Logo Placement is in the Navbar.)',
 		) );
 
 	/* $wp_customize->add_control( new WP_Customize_Image_Control(
