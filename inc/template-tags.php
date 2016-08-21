@@ -268,12 +268,37 @@ function bs4_password_form() {
 add_filter( 'the_password_form', 'bs4_password_form' );
 
 
+/**
+ *
+ */
 function bs4_wp_list_categories($links) {
 	$links = str_replace(array(' (', ')'), array(' <span class="tag tag-default">', '</span>'), $links);
 	return $links;
 }
 
 add_filter('wp_list_categories', 'bs4_wp_list_categories');
+
+
+/**
+ *
+ */
+function bs4_private_title_format($title, $post) {
+	$title = isset( $post->post_title ) ? $post->post_title : '';
+	return $title . get_bs4_i('private', ' <span class="private">', '</span>');
+}
+
+add_filter('private_title_format', 'bs4_private_title_format', 10, 2);
+
+
+/**
+ *
+ */
+function bs4_protected_title_format($title, $post) {
+	$title = isset( $post->post_title ) ? $post->post_title : '';
+	return $title . get_bs4_i('protected', ' <span class="protected">', '</span>');
+}
+
+add_filter('protected_title_format', 'bs4_protected_title_format', 10, 2);
 
 
 /* eof */

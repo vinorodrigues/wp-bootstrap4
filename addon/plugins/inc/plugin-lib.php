@@ -7,9 +7,11 @@ function var_dump_ret($mixed = null) {
 	return htmlspecialchars($content, ENT_QUOTES);
 }
 
-function var_dump_pre($mixed = null) {
+function var_dump_pre($mixed = null, $name = false) {
 	echo '<pre>';
-	echo var_dump_ret($mixed);
+	if ($name !== false)
+		echo '<span style="color:#F00">' . $name . '</span><span style="color:#0F0"> = </span>';
+	echo '<span style="color:#00F">' . var_dump_ret($mixed) . '</span>';
 	echo '</pre>';
 }
 

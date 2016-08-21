@@ -29,7 +29,7 @@ include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
 include_once 'inc/fix-tag-class.php';
 
-// plugins
+// addon plugins
 if (!bs4_get_option('block_plugins')) {
 	if ($handle = opendir(THEMEPATH.'addon/plugins')) {
 		while (false !== ($entry = readdir($handle))) {
