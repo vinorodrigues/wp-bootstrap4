@@ -256,6 +256,13 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'bootstrap', $url, array( 'jquery' ), $ver, true );
 
+	wp_enqueue_script(
+		'wp-bootstrap4',
+		get_theme_file_uri( '/js/wp-bootstrap4' . '.js' ),
+		array( 'jquery' ),
+		false,
+		true );
+
 	if ( bs4_get_option('equalheights') )
 		wp_register_script(
 			'equalheights',

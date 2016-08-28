@@ -82,6 +82,7 @@ function get_bs4_icon_fa($name, $before = '', $after = '', $attribs = false) {
 		'search'    => 'search',
 		// 'spin'      => 'spin',
 		'tag'       => 'tag',
+		'top'       => 'chevron-up',
 		'trash'     => 'trash',
 		'user'      => 'user',
 		'wait'      => 'hourglass-half',

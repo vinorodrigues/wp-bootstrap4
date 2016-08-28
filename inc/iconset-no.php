@@ -31,8 +31,11 @@ function get_bs4_icon_no($name, $before, $after, $attribs) {
 		case 'link': $o = '&#128279;'; break;
 		case 'login': $o = '&#128275;'; break;
 		case 'logout': $o = '&#128274;'; break;
+		case 'private': $o = '&#128274;'; break;
+		case 'protected': $o = '&#128272;'; break;
 		case 'raquo': $o = '&raquo;'; break;
 		case 'tag': $o = '&#128278;'; break;
+		case 'top': $o = '&#8679;'; break;
 		case 'user':
 			if (('' == $before) && ('' == $after)) $o = '&#128118;';
 			else $o = '&#128566;';  // or &#128528;
