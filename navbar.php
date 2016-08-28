@@ -61,16 +61,17 @@ if ($navbar_container) {
 <div class="collapse navbar-toggleable-xs" id="CollapsingNavbar"><?php
 
 if (!empty($navbar_brand)) {
-	?><a class="navbar-brand m-b-0" href="<?= site_url() ?>"><?= $navbar_brand ?></a><?php
+	?><a class="navbar-brand" href="<?= site_url() ?>"><?= $navbar_brand ?></a><?php
 }
 
-$menu_content = apply_filters('bs4_wp_nav_menu', '');
+$menu_class = 'nav navbar-nav';
+if ($navbar_brand && ($logo_placement == 3) && (!$navbar_search))
+	$menu_class .= ' pull-xs-right';
+$menu_content = apply_filters('bs4_wp_nav_menu', '', $menu_class);
+
 if ($menu_content != '') {
 	echo $menu_content;
 } else {
-	$menu_class = 'nav navbar-nav';
-	if ($navbar_brand && ($logo_placement == 3) && (!$navbar_search))
-		$menu_class .= ' pull-xs-right';
 	$navbar_array = array(
 		'menu'	         => 'primary',
 		'menu_class'     => $menu_class,
@@ -84,7 +85,7 @@ if ($menu_content != '') {
 }
 
 if ($navbar_search) {
-	?><form method="get" id="search-form-0" action="<?= home_url( '/' ) ?>" class="form-inline navbar-form search-from pull-xs-right">
+	?><form method="get" id="search-form-0" action="<?= site_url() ?>" class="form-inline navbar-form search-from pull-xs-right">
 		<input type="search" name="s" class="search-input form-control"
 			placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"
 			autosave="search-0" autocorrect="on">

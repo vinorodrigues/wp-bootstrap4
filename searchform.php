@@ -9,7 +9,7 @@ $___bs4_search_form_count += 1;
 
 ?>
 <form method="get" id="search-form-<?= $___bs4_search_form_count ?>"
-	action="<?= home_url( '/' ) ?>" class="form search-from">
+	action="<?= esc_url(home_url('/')) ?>" class="form search-from">
 	<div class="form-group row">
 		<label for="s" class="col-sm-2 form-control-label search-label">Search for</label>
 		<div class="col-sm-10">

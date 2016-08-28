@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
  * header.php
  *
@@ -30,10 +30,10 @@ function bs4_heading() {
 	$has_logo = bs4_get_logo_img('site-logo img-fluid h-i');
 
 	if ($has_logo) {
-		$output = '<a href="' . home_url( '/' ) . '" rel="home">' . $custom_logo . '</a>';
+		$output = '<a href="' . site_url() . '" rel="home">' . $custom_logo . '</a>';
 	} else {
 		$output = '<h1 class="title h-i">';
-		$output .= '<a href="' . home_url( '/' ) . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
+		$output .= '<a href="' . site_url() . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
 		if (!empty(get_bloginfo('description')))
 			$output .= '<br><small class="text-muted subtitle">' . get_bloginfo('description', 'display') . '</small>';
 		$output .= '</h1>';
@@ -242,12 +242,17 @@ do_action('bs4_header_before');
 
 <?php
 do_action('bs4_header_after');
-if ($container_segments != 0) { echo '</div><div class="main">'; }
+$main_band_class = $band_class;
+if ($container_segments == 0) {
+	$main_band_class .= ' ' . apply_filters('bs4_main_class', 'main');
+} else {
+	echo '</div><div class="' . apply_filters('bs4_main_class', 'main') . '">';
+}
 ?>
 
 <main id="main" class="section">
 <div
-  class="<?= $band_class ?><?= ($container_segments == 0 ? ' main' : '')?>"><div
+  class="<?= $main_band_class ?>"><div
   class="row"><div
   id="content" class="<?= bs4_content_class($sidebar_position) ?>">
 <?php if (function_exists('bs4_breadcrumb') && !is_404()) bs4_breadcrumb(); ?>

@@ -22,7 +22,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 } ?>
 
 <form method="get" id="search-form-404"
-	action="<?= home_url( '/' ) ?>" class="form-inline search-from center-sm">
+	action="<?= esc_url(home_url('/')) ?>" class="form-inline search-from center-sm">
 	<fieldset class="form-group">
 	<input type="search" name="s" class="search-input form-control"
 		placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"

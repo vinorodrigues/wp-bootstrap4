@@ -362,10 +362,10 @@ add_action( 'widgets_init', 'bs4_widgets_init' );
 
 
 /*
- * PRO functions ====================
+ * OnePage functions ====================
  */
 
-if ( file_exists(THEMEPATH.'addon/pro/functions.php'))
-	include_once 'addon/pro/functions.php';
+if ( file_exists(THEMEPATH.'addon/onepage/functions.php'))
+	include_once 'addon/onepage/functions.php';
 
 /* oef */

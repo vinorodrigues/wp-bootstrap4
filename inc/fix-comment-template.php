@@ -75,7 +75,7 @@ function comment_form_2( $args = array(), $post_id = null ) {
 				echo $args['must_log_in'];
 				do_action( 'comment_form_must_log_in_after' );
 			else : ?>
-				<form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" class="comment-form">  <?php // XXX ?>
+				<form action="<?php echo site_url( 'wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" class="comment-form">  <?php // XXX ?>
 					<?php
 					do_action( 'comment_form_top' );
 

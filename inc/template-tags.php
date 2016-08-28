@@ -255,7 +255,7 @@ function bs4_password_form() {
 	global $post;
 	$label = 'pwbox-'.( empty( $post->ID ) ? 'X' . rand() : $post->ID );
 	$o = '<p class="text-info">' . get_bs4_i('info lg', '', ' ') . 'Enter password to view this protected post.</p>';
-	$o .= '<form class="form-inline" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">';
+	$o .= '<form class="form-inline" action="' . site_url( 'wp-login.php?action=postpass', 'login_post' ) . '" method="post">';
 	$o .= '<div class="form-group">';
 	$o .= '<input type="text" class="form-control" id="' . $label . '" name="post_password" maxlength="20" placeholder="Password" required>';
 	$o .= '</div>';

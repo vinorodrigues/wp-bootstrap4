@@ -7,20 +7,22 @@ jQuery(document).ready(function($) {
 	var meta_image_frame;
 
 	function meta_image_update_preview() {
-		img_src = $('#meta-box-image').val();
+		var img_src = $('#metabox-bg-val').val();
 		if (!img_src.trim()) {
-			$('#meta-box-image-none').removeClass('hideit');
-			$('#meta-box-image-prvw').addClass('hideit');
-			$('#meta-box-image-prvw').attr('src', '');
+			$('#metabox-bg-img').hide();
+			$('#metabox-bg-img').attr('src', '');
+			$('#metabox-bg-ops').hide();
+			$('#metabox-bg-wrn').show();
 		} else {
-			$('#meta-box-image-none').addClass('hideit');
-			$('#meta-box-image-prvw').removeClass('hideit');
-			$('#meta-box-image-prvw').attr('src', img_src);
+			$('#metabox-bg-wrn').hide();
+			$('#metabox-bg-img').attr('src', img_src);
+			$('#metabox-bg-img').show();
+			$('#metabox-bg-ops').show();
 		}
 	}
 
 	// Runs when the image button is clicked.
-	$('#meta-box-image-btn').click(function(e) {
+	$('#metabox-bg-btn').click(function(e) {
 
 		// Prevents the default action from occuring.
 		e.preventDefault();
@@ -46,7 +48,7 @@ jQuery(document).ready(function($) {
 			var media_attachment = meta_image_frame.state().get('selection').first().toJSON();
 
 			// Sends the attachment URL to our custom image input field.
-			$('#meta-box-image').val(media_attachment.url);
+			$('#metabox-bg-val').val(media_attachment.url);
 			meta_image_update_preview();
 		});
 
@@ -54,13 +56,14 @@ jQuery(document).ready(function($) {
 		meta_image_frame.open();
 	});
 
-	$('#meta-box-image-clr').click(function(e) {
-		$('#meta-box-image').val('');
+	$('#metabox-bg-clr').click(function(e) {
 		e.preventDefault();
+		$('#metabox-bg-val').val('');
 		meta_image_update_preview();
 	});
 
-	$('#meta-box-image').change(function() {
+	$('#metabox-bg-val').change(function() {
+		alert('1');
 		meta_image_update_preview();
 	});
 });
