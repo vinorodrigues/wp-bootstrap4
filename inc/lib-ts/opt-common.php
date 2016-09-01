@@ -53,7 +53,7 @@ function ts_top_admin_options_page() {
 				echo get_admin_url( null, 'admin.php?page=' . $data[1] );
 				echo '" class="button ">' . $data[2] . '</a>';
 			} else {
-				echo '<span class="dashicons dashicons-yes"></span>';
+				echo '<center><span class="dashicons dashicons-yes"></span></center>';
 			}
 			echo '</td><td>';
 			echo $data[3];
@@ -71,7 +71,7 @@ function ts_top_admin_options_page() {
 	<i class="dashicons dashicons-email"></i> &lt;<a href="mailto:hello@tecsmith.com.au">hello@tecsmith.com.au</a>&gt;<br>
 	<i class="dashicons dashicons-twitter"></i> <a href="http://twitter.com/tcsmth" target="_blank">@tcsmth</a><br>
 	</p>
-	<?
+	<?php
 
 	echo '</div>';
 }
