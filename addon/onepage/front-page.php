@@ -84,7 +84,7 @@ foreach ($onepages as $sq => $page_id) {
 	$bg_image = get_post_meta( $page_id, 'bs4-bg-image', false );
 	if (is_array($bg_image)) $bg_image = implode(',', $bg_image);
 
-	if ($bg_image !== false) {
+	if ($bg_image) {
 		$bg_repeat = get_post_meta( $page_id, 'bs4-bg-repeat', 'no-repeat' );
 		$bg_position = get_post_meta( $page_id, 'bs4-bg-position', 'left' );
 		$bg_attachment = get_post_meta( $page_id, 'bs4-bg-attachment', 'scroll' );
@@ -92,8 +92,9 @@ foreach ($onepages as $sq => $page_id) {
 		$src = ".onepage-$sq {";
 		$src .= "\n\t\tbackground-image: url('$bg_image');";
 		$src .= "\n\t\tbackground-repeat: $bg_repeat;";
-		$src .= "\n\t\tbackground-position: $bg_position;";
+
 		if ($bg_attachment == 'parallax') {
+			$src .= "\n\t\tbackground-position: 0 0px;";
 			$src .= "\n\t\tbackground-attachment: fixed;";
 			if ($bg_repeat == 'no-repeat') {
 				$src .= "\n\t\t-webkit-background-size: cover;";
@@ -101,15 +102,16 @@ foreach ($onepages as $sq => $page_id) {
 				$src .= "\n\t\tbackground-size: cover;";
 			}
 		} else {
+			$src .= "\n\t\tbackground-position: $bg_position;";
 			$src .= "\n\t\tbackground-attachment: $bg_attachment;";
 		}
-		$src .= "\n\t }\n";
+		$src .= "\n\t}";
 
 		ts_enqueue_style( 'bg-'.$sq, $src );
 	}
 }
 
-
+/* ---------- Output ------------------------------ */
 
 get_header();
 get_template_part( 'loop' );
