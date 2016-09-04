@@ -3,6 +3,8 @@
  * sidebar.php
  */
 
+// TODO : Implement https://github.com/wilddeer/stickyfill
+
 global $sidebar_position;
 
 function bs4_sidebar_class($sidebar_position, $first = true) {

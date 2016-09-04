@@ -6,7 +6,7 @@
  * @see: http://www.quackit.com/bootstrap/bootstrap_4/tutorial/bootstrap_navbars.cfm
  */
 
-global $band_class, $logo_placement, $container_class;
+global $band_class, $logo_placement, $container_class, $container_segments;
 
 if (has_nav_menu('primary') || !empty(get_theme_mod('navbar_brand', '')) || ($logo_placement == 3)) :
 
@@ -20,7 +20,7 @@ $navbar_container = boolval( get_theme_mod( 'navbar_container', 0 ) );
 $navbar_placement = get_theme_mod( 'navbar_placement', 0 );
 
 if ($logo_placement == 3) {
-	$navbar_logo = bs4_get_logo_img();
+	$navbar_logo = bs4_get_logo_img('brand-logo');
 	if (!$navbar_logo) $navbar_brand = get_bloginfo('name', 'display');
 	else $navbar_brand = $navbar_logo;
 } else $navbar_brand = '';
@@ -29,36 +29,44 @@ $navbar_brand .= get_theme_mod( 'navbar_brand', '' );
 // $navbar_icon = get_theme_mod( 'navbar_icon', false );
 $navbar_search = boolval( get_theme_mod( 'navbar_search', 0 ) );
 
-$navbar_class = $navbar_shading ? 'navbar-light' : 'navbar-dark';
+$navbar_class = array('navbar');
+if ($navbar_shading) $navbar_class[] = 'navbar-light';
+else $navbar_class[] = 'navbar-dark';
+
 switch ($navbar_color) {
-	case 1: $navbar_class .= ' bg-inverse'; break;
-	case 2: $navbar_class .= ' bg-default'; break;
-	case 3: $navbar_class .= ' bg-faded'; break;
-	case 4: $navbar_class .= ' bg-transparent'; break;
-	case 5: $navbar_class .= ' bg-custom'; break;
-	default: $navbar_class .= ' bg-primary';
+	case 1: $navbar_class[] = 'bg-inverse'; break;
+	case 2: $navbar_class[] = 'bg-default'; break;
+	case 3: $navbar_class[] = 'bg-faded'; break;
+	case 4: $navbar_class[] = 'bg-transparent'; break;
+	case 5: $navbar_class[] = 'bg-custom'; break;
+	default: $navbar_class[] = 'bg-primary';
 }
 switch ($navbar_placement) {
-	case 1: $navbar_class .= ' navbar-fixed-top'; break;
-	case 2: $navbar_class .= ' navbar-fixed-bottom'; break;
-	// default: ;  // do nothing
+	case 1: $navbar_class[] = 'navbar-fixed-top'; break;
+	case 2: $navbar_class[] = 'navbar-fixed-bottom'; break;
+	default:
+		if ($navbar_container && ($container_segments != 0))
+			$navbar_class[] = 'navbar-full';
+		break;
 }
-$navbar_class = apply_filters( 'bs4_navbar_class', $navbar_class );
+$navbar_class[] = 'main-menu';
+$navbar_class[] = 'hidden-print';
+$navbar_class = implode( ' ', apply_filters( 'bs4_navbar_class', $navbar_class ) );
 
 if (($navbar_placement > 0) && (strpos($navbar_band_class, $container_class) !== 0)) {
 	$navbar_band_class .= ' ' . $container_class;
 }
 
 if ($navbar_container) {
-	?><nav class="navbar <?= $navbar_class ?> main-menu hidden-print">
+	?><nav id="main-navbar" class="<?= $navbar_class ?>">
 	<div class="<?= $navbar_band_class ?>"><?php
 } else {
-	?><div class="<?= $navbar_band_class ?> main-menu hidden-print">
-	<nav class="navbar <?= $navbar_class ?>"><?php
+	?><div class="<?= $navbar_band_class ?>">
+	<nav id="main-navbar" class="<?= $navbar_class ?>"><?php
 }
 
-?><button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#CollapsingNavbar">&#9776;</button>
-<div class="collapse navbar-toggleable-xs" id="CollapsingNavbar"><?php
+?><button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsible-navbar">&#9776;</button>
+<div class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
 
 if (!empty($navbar_brand)) {
 	?><a class="navbar-brand" href="<?= site_url() ?>"><?= $navbar_brand ?></a><?php

@@ -95,6 +95,7 @@ endif;
 
 <?php echo '</div>'; // .folio or .footer ?>
 
+<div class="ends">
 <?php wp_footer(); ?>
 <a
 	id="back-to-top"
@@ -104,5 +105,6 @@ endif;
 	title="Return on the top page"
 	data-toggle="tooltip"
 	data-placement="left"><?php bs4_i('top'); ?></a>
+</div>
 </body>
 </html>

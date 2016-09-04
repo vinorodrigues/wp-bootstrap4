@@ -3,10 +3,8 @@
 /* line 10, ../scss/wp-bootstrap4-onepage-admin.scss */
 #bs4-onepage-page-options-bg input[type="text"] { width: 100%; margin-bottom: 5px; }
 /* line 15, ../scss/wp-bootstrap4-onepage-admin.scss */
-#bs4-onepage-page-options-bg .hideit { display: none !important; }
-/* line 19, ../scss/wp-bootstrap4-onepage-admin.scss */
 #bs4-onepage-page-options-bg .thumbnail { display: block; margin-top: 5px; margin-right: 10px; margin-bottom: 5px; }
-/* line 26, ../scss/wp-bootstrap4-onepage-admin.scss */
+/* line 22, ../scss/wp-bootstrap4-onepage-admin.scss */
 #bs4-onepage-page-options-bg .thumbnail-image { max-width: 120px; max-height: 120px; }
-/* line 31, ../scss/wp-bootstrap4-onepage-admin.scss */
+/* line 27, ../scss/wp-bootstrap4-onepage-admin.scss */
 #bs4-onepage-page-options-bg .placeholder { width: 100%; text-align: center; border: 1px dashed #b4b9be; -webkit-box-sizing: border-box; moz-box-sizing: border-box; box-sizing: border-box; padding: 9px 0; }

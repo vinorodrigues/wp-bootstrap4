@@ -148,7 +148,26 @@ a img.alignleft {
 	bottom: $spacer-y;
 	right: $spacer-x;
 	display: none;
+	opacity: 0.8;
 }
+.back-to-top:hover {
+	opacity: 1;
+}
+
+.affix {
+	position: -webkit-sticky;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: sticky;
+	top: 0;
+	z-index: 1031;
+}
+.affix:before,
+.affix:after {
+	content: '';
+	display: table;
+}
+
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
 
@@ -160,6 +179,7 @@ a img.alignleft {
 .input-group label {
 	margin: 0;
 }
+
 
 /* -------------------- THEME SPACING -------------------- */
 
@@ -275,18 +295,20 @@ a img.alignleft {
 
 /* ----- Navbar fixes ----- */
 
-body.admin-bar .navbar-fixed-top {
-	top: 32px;
+@media screen {
+	body.admin-bar .navbar-fixed-top { top: 32px; }
+}
+@media screen and ( max-width: 782px ) {
+	body.admin-bar .navbar-fixed-top { top: 46px; }
 }
 
 body.nav-fixed-top {
-	padding-top: ($spacer-y * 4);
+	padding-top: (($navbar-padding-y * 2) + $font-size-lg + 0.425rem);
 }
 
 body.nav-fixed-bottom {
-	padding-bottom: ($spacer-y * 4);
+	padding-bottom: (($navbar-padding-y * 2) + $font-size-lg + 0.425rem);
 }
-
 
 /* ----- Gallery ----- */
 

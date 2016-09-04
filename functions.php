@@ -265,10 +265,10 @@ function bs4_scripts() {
 
 	if ( bs4_get_option('equalheights') )
 		wp_register_script(
-			'equalheights',
-			get_theme_file_uri( '/js/grids' . $min . '.js' ),
+			'match-height',
+			get_theme_file_uri( '/vendor/match-height/js/matchHeight' . $min . '.js' ),
 			array( 'jquery' ),
-			false,
+			MATCH_HEIGHT_VERSION,
 			true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )

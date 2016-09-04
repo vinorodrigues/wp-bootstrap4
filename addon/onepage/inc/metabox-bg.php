@@ -57,7 +57,6 @@ function bs4_onepage_add_meta_boxes_cb_bg( $post ) {
 	<p><strong>Background Attachment</strong></p>
 	<label><input type="radio" name="bs4-bg-attachment" value="scroll" <?php checked( $bs4_bg_attachment, 'scroll' ); ?>> Scroll<br></label>
 	<label><input type="radio" name="bs4-bg-attachment" value="fixed" <?php checked( $bs4_bg_attachment, 'fixed' ); ?>> Fixed<br></label>
-	<label><input type="radio" name="bs4-bg-attachment" value="parallax" <?php checked( $bs4_bg_attachment, 'parallax' ); ?>> Parallax<br></label>
 	</div>
 <?php
 }

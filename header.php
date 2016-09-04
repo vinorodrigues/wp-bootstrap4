@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
  * header.php
  *
@@ -7,9 +7,12 @@
  * @see: http://alistapart.com/article/previewofhtml5
  */
 
+global $logo_placement, $container_width, $container_segments, $sidebar_position, $container_class, $band_class;
+
 include_once 'inc/menu-walker.php';
 include_once 'inc/lib-ts/raw-styles.php';
 
+function bs4_body_class_navbar_default($classes) { $classes[] = 'nav-default'; return $classes; }
 function bs4_body_class_navbar_fixed_top($classes) { $classes[] = 'nav-fixed-top'; return $classes; }
 function bs4_body_class_navbar_fixed_bottom($classes) { $classes[] = 'nav-fixed-bottom'; return $classes; }
 function bs4_body_class_has_folio($classes) { $classes[] = 'folioed'; return $classes; }
@@ -27,9 +30,9 @@ function bs4_body_class_singular($classes) {
 }
 
 function bs4_heading() {
-	$has_logo = bs4_get_logo_img('site-logo img-fluid h-i');
+	$custom_logo = bs4_get_logo_img('site-logo img-fluid h-i');
 
-	if ($has_logo) {
+	if (false != $custom_logo) {
 		$output = '<a href="' . site_url() . '" rel="home">' . $custom_logo . '</a>';
 	} else {
 		$output = '<h1 class="title h-i">';
@@ -69,9 +72,12 @@ function bs4_content_class($sidebar_position) {
 	return $o;
 }
 
-/* ----- */
+function bs4_body_attribs($class = '') {
+	echo apply_filters( 'bs4_body_attribs',
+		'class="' . join( ' ', get_body_class( $class ) ) . '"' );
+}
 
-global $logo_placement, $container_width, $container_segments, $sidebar_position, $container_class, $band_class;
+/* ----- */
 
 $logo_placement = intval( get_theme_mod('logo_placement', 0) );
 $container_width = intval( get_theme_mod('container_width', 0) );
@@ -134,6 +140,7 @@ if ($container_segments == 0) {
 }
 
 switch (get_theme_mod( 'navbar_placement', 0 )) {
+	case 0: add_filter('body_class', 'bs4_body_class_navbar_default'); break;
 	case 1: add_filter('body_class', 'bs4_body_class_navbar_fixed_top'); break;
 	case 2: add_filter('body_class', 'bs4_body_class_navbar_fixed_bottom'); break;
 }
@@ -167,7 +174,7 @@ if ($color)
 	// XXX: http://www.quickonlinetips.com/archives/2014/06/add-popup-comments-in-wordpress-posts/
 ?>
 </head>
-<body <?php body_class(); ?>><a name="top"></a>
+<body <?php bs4_body_attribs(); ?>><a name="top"></a>
 <?php
 if ($container_segments == 0) {
 	echo '<div class="' . $container_class . ' folio">';

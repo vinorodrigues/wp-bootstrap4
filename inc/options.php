@@ -323,7 +323,7 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'equalheights',
-			'Use the <code>equalheights.js</code> JavaScript to create equal high columns.',
+			'Use the <code>match-heights.js</code> JavaScript to create equal high columns.',
 			'Do not use this option if you have set for the FlexBox variant of Bootstrap.')
 		);
 

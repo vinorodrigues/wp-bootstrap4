@@ -1,56 +1,61 @@
 <?php
 
+global $onepage_items, $onepage_top_id, $wp_query,
+	$band_class, $container_segments, $container_class;
+
 include_once get_template_directory().'/inc/lib-ts/opt-common.php';
 
 /**
  */
-function bs4_onepage_get_sidebar_position($ignore) {
-	return 0;
-}
-
-add_filter( 'bs4_get_sidebar_position', 'bs4_onepage_get_sidebar_position' );
-
-/**
- */
 function bs4_onepage_wp_nav_menu($content, $class) {
-	global $menu_items;
+	global $onepage_items, $onepage_top_id;
 
-	return $class;
+	$out = '<ul class="' . $class . '">';
+
+	$cnt = count($onepage_items);
+	for ($i=1; $i < $cnt; $i++) {
+		$item = $onepage_items[$i];
+		$out .= '<li class="nav-item">';
+		$out .= '<a class="nav-link page-scroll';
+		if ($onepage_top_id == $item['id']) $out .= ' active';
+		$out .= '" href="#' . $item['name'] . '">';
+		$out .= $item['title'];
+		$out .= '</a>';
+		$out .= '</li>';
+	}
+
+	$out .= '</ul>';
+
+	return $out;
 }
 
-add_filter( 'bs4_wp_nav_menu', 'bs4_onepage_wp_nav_menu', 10, 2);
+add_filter('bs4_wp_nav_menu', 'bs4_onepage_wp_nav_menu', 10, 2);
 
 /**
  */
-function bs4_onepage_main_class($class) {
-	if ('main' == $class) {
-		$sec = 0;
-	} else {
-		$sec = intval($class);
-		$class = '';
-	}
-	if ('' != $class) $class .= ' ';
-	return $class . 'onepage onepage-' . $sec;
-}
+function bs4_onepage_post_meta_class($classes) { $classes[] = 'hidden-xs-up'; return $classes; }
+add_filter('post_meta_class', 'bs4_onepage_post_meta_class');
 
-add_filter( 'bs4_main_class', 'bs4_onepage_main_class' );
 
 /* ---------- Business End ------------------------------ */
 
-global $menu_items;
-
 if (get_option('show_on_front') == 'page') {
-	$page_for_posts = get_option('page_for_posts');
-	$page_on_front = get_option('page_on_front');
+	$page_for_posts = intval(get_option('page_for_posts'));
+	$page_on_front = intval(get_option('page_on_front'));
 } else
 	$page_for_posts = $page_on_front = -1;
 
-$menu_items_temp = wp_get_nav_menu_items( 'front-page', array() );
-$menu_items = array();
-$onepages = array();
-$cnt = 0;
-$onepages[$cnt] = ($page_on_front >= 0) ? $page_on_front : get_the_ID();
-foreach ($menu_items_temp as $key => $value) {
+$onepage_top_id = $wp_query->post->ID;
+
+$menu_items = wp_get_nav_menu_items( 'front-page', array() );
+$onepage_items = array();
+
+$onepage_items[] = array(
+	'type' => 'home',
+	'id' => ($page_on_front >= 0) ? $page_on_front : get_the_ID(),
+	);
+
+foreach ($menu_items as $key => $value) {
 	$typ = false;
 	switch ($value->type) {
 		case 'post_type' :
@@ -61,8 +66,6 @@ foreach ($menu_items_temp as $key => $value) {
 					$typ = 'posts';
 				} else {
 					$typ = 'page';
-					$cnt++;
-					$onepages[$cnt] = $value->object_id;
 				}
 			}
 
@@ -73,42 +76,36 @@ foreach ($menu_items_temp as $key => $value) {
 			}
 			break;
 	}
-	if ($typ !== false) $menu_items[] = array(
-		'type' => $typ,
-		'id' => $value->object_id,
-		'title' => $value->title,
-		);
+	if ($typ !== false) {
+		$onepage_items[] = array(
+			'type' => $typ,
+			'id' => intval($value->object_id),
+			'title' => $value->title,
+			'name' => (intval($value->object_id) == $page_on_front) ?
+				'main' :
+				sanitize_title( $value->title, 'page-'.$value->object_id ),
+			);
+	}
 }
 
-foreach ($onepages as $sq => $page_id) {
-	$bg_image = get_post_meta( $page_id, 'bs4-bg-image', false );
+foreach ($onepage_items as $n => $item) {
+	$bg_image = get_post_meta( $item['id'], 'bs4-bg-image', false );
 	if (is_array($bg_image)) $bg_image = implode(',', $bg_image);
 
 	if ($bg_image) {
-		$bg_repeat = get_post_meta( $page_id, 'bs4-bg-repeat', 'no-repeat' );
-		$bg_position = get_post_meta( $page_id, 'bs4-bg-position', 'left' );
-		$bg_attachment = get_post_meta( $page_id, 'bs4-bg-attachment', 'scroll' );
+		$bg_repeat = get_post_meta( $item['id'], 'bs4-bg-repeat', 'no-repeat' );
+		$bg_position = get_post_meta( $item['id'], 'bs4-bg-position', 'left' );
+		$bg_attachment = get_post_meta( $item['id'], 'bs4-bg-attachment', 'scroll' );
 
-		$src = ".onepage-$sq {";
-		$src .= "\n\t\tbackground-image: url('$bg_image');";
-		$src .= "\n\t\tbackground-repeat: $bg_repeat;";
+		$src = ".onepage-$n{";
+		$src .= "background-image:url('$bg_image');";
+		$src .= "background-repeat:$bg_repeat;";
+		$src .= "background-position:$bg_position;";
+		$src .= "background-attachment:$bg_attachment;";
+		$src .= "}";
 
-		if ($bg_attachment == 'parallax') {
-			$src .= "\n\t\tbackground-position: 0 0px;";
-			$src .= "\n\t\tbackground-attachment: fixed;";
-			if ($bg_repeat == 'no-repeat') {
-				$src .= "\n\t\t-webkit-background-size: cover;";
-				$src .= "\n\t\t-moz-background-size: cover;";
-				$src .= "\n\t\tbackground-size: cover;";
-			}
-		} else {
-			$src .= "\n\t\tbackground-position: $bg_position;";
-			$src .= "\n\t\tbackground-attachment: $bg_attachment;";
-		}
-		$src .= "\n\t}";
-
-		ts_enqueue_style( 'bg-'.$sq, $src );
-	}
+		ts_enqueue_style( 'bg-'.$n, $src );
+ 	}
 }
 
 /* ---------- Output ------------------------------ */
@@ -116,99 +113,41 @@ foreach ($onepages as $sq => $page_id) {
 get_header();
 get_template_part( 'loop' );
 
-echo '</div>';
+$cnt = count($onepage_items);
+if ($cnt > 1) {
+	for ($i=1; $i < $cnt; $i++) {
+		$item = $onepage_items[$i];
+		if (($i == 1) && ($item['type'] == 'front')) continue;  // skip if 1st menu item is "front"
 
-get_footer();
+		if  ($item['type'] == 'page') {
 
-var_dump_pre($menu_items, '$menu_items');
-var_dump_pre($onepages, '$onepages');
+			echo '</div></div></div></main>';
+			// echo '</div></div></div>';
 
-/*
-get_header();
-// get_template_part( 'loop' );
-
-
-$menu_items_temp = wp_get_nav_menu_items( 'front-page', array() );
-
-$menu_items = array();
-if (get_option('show_on_front') == 'page') {
-	$page_for_posts = get_option('page_for_posts');
-	$page_on_front = get_option('page_on_front');
-} else {
-	$page_for_posts = $page_on_front = -1;
-}
-
-foreach ($menu_items_temp as $key => $value) {
-	$typ = false;
-	switch ($value->type) {
-		case 'post_type' :
-			if ($value->type_label == 'Page') {
-				if ($value->object_id == $page_on_front) {
-					$typ = 'front';
-				} elseif ($value->object_id == $page_for_posts) {
-					$typ = 'posts';
-				} else {
-					$typ = 'page';
-				}
+			$this_band_class = $band_class;
+			if ($container_segments == 0) {
+				$this_band_class .= ' onepage onepage-' . $i;
+			} else {
+				echo '</div><div class="main onepage onepage-' . $i . '">';
 			}
 
-			break;
-		case 'taxonomy' :
-			if ($value->type_label == 'Category') {
-				$typ = 'category';
-			}
-			break;
+			echo '<main id="' . $item['name'] . '" class="section">';
+			echo '<div class="' . $this_band_class . '">';
+			// echo '<div id="' . $item['name'] . '" class="' . $this_band_class . '">';
+			echo '<div class="row">';
+			echo '<div class="' . bs4_content_class(0) . '">';
+
+			$GLOBALS['post'] = $item['id'];
+			setup_postdata( get_post( $item['id'] ) );
+
+			$format = get_post_format() ? : 'onepage';
+			get_template_part( 'content', $format );
+		}
 	}
-	if ($typ !== false) $menu_items[] = array(
-		'type' => $typ,
-		'id' => $value->object_id,
-		'title' => $value->title);
-
-	// echo '--------------------------------'; var_dump_pre($key);
-	// echo 'post_type'; var_dump_pre($value->post_type);
-	// echo 'object_id'; var_dump_pre($value->object_id);
-	// echo 'type'; var_dump_pre($value->type);
-	// echo 'type_label'; var_dump_pre($value->type_label);
-	// echo 'title'; var_dump_pre($value->title);
+	rewind_posts();
 }
 
-// echo '===================================';
-// var_dump_pre( $menu_items );
-
-foreach ($menu_items as $item) {
-	echo '[' . $item['title'] . '(' . $item['type'] . ')]';
-}
-echo '<hr>';
-
-global $page, $more, $preview, $pages, $multipage, $post;
-
-foreach ($menu_items as $item) {
-	echo '{';
-	if (($item['type'] == 'front') || ($item['type']) == 'page') {
-		$GLOBALS['post'] = $item['id'];
-		setup_postdata( get_post( $item['id'] ) );
-		var_dump_pre( $multipage, '$multipage' );
-		var_dump_pre( $pages, '$pages' );
-		the_content();
-	}
-	echo '}';
-}
-rewind_posts();
-echo '<br>';
-
-/*
-// would echo post 7's content up until the <!--more--> tag
-$post_7 = get_post(7);
-$excerpt = $post_7->post_excerpt;
-echo $excerpt
-
-// would get post 12's entire content after which you
-// can manipulate it with your own trimming preferences
-$post_12 = get_post(12);
-$trim_me = $post_12->post_content;
-my_trim_function( $trim_me );
-*/
-/*
-get_sidebar();
+echo '</div>';  // replaces get_sidebar();
 get_footer();
-*/
+
+// eof
