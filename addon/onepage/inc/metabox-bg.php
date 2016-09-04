@@ -33,6 +33,8 @@ function bs4_onepage_add_meta_boxes_cb_bg( $post ) {
 	$bs4_bg_repeat = isset($post_meta['bs4-bg-repeat'][0]) ? $post_meta['bs4-bg-repeat'][0] : 'repeat';
 	$bs4_bg_position = isset($post_meta['bs4-bg-position'][0]) ? $post_meta['bs4-bg-position'][0] : 'left';
 	$bs4_bg_attachment = isset($post_meta['bs4-bg-attachment'][0]) ? $post_meta['bs4-bg-attachment'][0] : 'scroll';
+	$bs4_bg_size = isset($post_meta['bs4-bg-size'][0]) ? $post_meta['bs4-bg-size'][0] : 'auto';
+
 ?>
 	<p><label for="metabox-bg-val"><strong>Background Image</strong>
 	<div id="metabox-bg-wrn" class="thumbnail placeholder"<?php if ('' != $bs4_bg_image) echo ' style="display: none;"'; ?>>No image selected</div>
@@ -42,7 +44,7 @@ function bs4_onepage_add_meta_boxes_cb_bg( $post ) {
 	<button id="metabox-bg-clr" class="button">Clear</button>
 	</label></p>
 
-	<div id="metabox-bg-ops"<?php if ('' == $bs4_bg_image) echo ' style="display: none;"'; ?>>
+	<div id="metabox-bg-ops"<?php if ('' == $bs4_bg_image) echo ' style="display:none;"'; ?>>
 	<p><strong>Background Repeat</strong></p>
 	<label><input type="radio" name="bs4-bg-repeat" value="no-repeat" <?php checked( $bs4_bg_repeat, 'no-repeat' ); ?>> No Repeat<br></label>
 	<label><input type="radio" name="bs4-bg-repeat" value="repeat" <?php checked( $bs4_bg_repeat, 'repeat' ); ?>> Tile<br></label>
@@ -57,6 +59,15 @@ function bs4_onepage_add_meta_boxes_cb_bg( $post ) {
 	<p><strong>Background Attachment</strong></p>
 	<label><input type="radio" name="bs4-bg-attachment" value="scroll" <?php checked( $bs4_bg_attachment, 'scroll' ); ?>> Scroll<br></label>
 	<label><input type="radio" name="bs4-bg-attachment" value="fixed" <?php checked( $bs4_bg_attachment, 'fixed' ); ?>> Fixed<br></label>
+	</div>
+
+	<p><strong>Background Size</strong></p>
+	<label><input type="radio" name="bs4-bg-size" value="auto" <?php checked( $bs4_bg_size, 'auto' ); ?>> Default<br></label>
+	<?php /* <label><input type="radio" name="bs4-bg-size" value="100%" <?php checked( $bs4_bg_size, '100%' ); ?>> Full Width<br></label>
+	<label><input type="radio" name="bs4-bg-size" value="auto 100%" <?php checked( $bs4_bg_size, 'auto 100%' ); ?>> Full Height<br></label>
+	*/ ?><label><input type="radio" name="bs4-bg-size" value="contain" <?php checked( $bs4_bg_size, 'contain' ); ?>> Letterbox Scale<br></label>
+	<label><input type="radio" name="bs4-bg-size" value="cover" <?php checked( $bs4_bg_size, 'cover' ); ?>> Scale &amp; Crop<br></label>
+	<label><input type="radio" name="bs4-bg-size" value="100% 100%" <?php checked( $bs4_bg_size, '100% 100%' ); ?>> Stretch<br></label>
 	</div>
 <?php
 }
@@ -84,6 +95,8 @@ function bs4_onepage_metabox_save_post( $post_id ) {
 		update_post_meta( $post_id, 'bs4-bg-position', $_POST['bs4-bg-position'] );
 	if ( isset( $_POST[ 'bs4-bg-attachment' ] ) )
 		update_post_meta( $post_id, 'bs4-bg-attachment', $_POST['bs4-bg-attachment'] );
+	if ( isset( $_POST[ 'bs4-bg-size' ] ) )
+		update_post_meta( $post_id, 'bs4-bg-size', $_POST['bs4-bg-size'] );
 }
 
 add_action( 'save_post', 'bs4_onepage_metabox_save_post' );

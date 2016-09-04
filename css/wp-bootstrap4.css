@@ -101,111 +101,114 @@ a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
 /* line 165, ../scss/wp-bootstrap4.scss */
 .affix:before, .affix:after { content: ''; display: table; }
 
+/* line 171, ../scss/wp-bootstrap4.scss */
+.brand-logo { max-height: 1.85rem; }
+
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
-/* line 174, ../scss/wp-bootstrap4.scss */
+/* line 177, ../scss/wp-bootstrap4.scss */
 .no-gutter > [class^="col-"] { padding-right: 0; padding-left: 0; }
 
-/* line 179, ../scss/wp-bootstrap4.scss */
+/* line 182, ../scss/wp-bootstrap4.scss */
 .input-group label { margin: 0; }
 
 /* -------------------- THEME SPACING -------------------- */
-/* line 186, ../scss/wp-bootstrap4.scss */
+/* line 189, ../scss/wp-bootstrap4.scss */
 .main p { word-wrap: break-word; }
 
-/* line 190, ../scss/wp-bootstrap4.scss */
+/* line 193, ../scss/wp-bootstrap4.scss */
 .head-l-3, .head-c-2, .head-c-3, .head-r-3 { margin-top: 1rem; }
 
-@media (max-width: 543px) { /* line 198, ../scss/wp-bootstrap4.scss */
+@media (max-width: 543px) { /* line 201, ../scss/wp-bootstrap4.scss */
   .head-l-2, .head-r-2 { margin-top: 1rem; } }
-/* line 207, ../scss/wp-bootstrap4.scss */
+/* line 210, ../scss/wp-bootstrap4.scss */
 .head-c-1 .h-i, .head-c-2 .h-i, .head-c-3 .h-i { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
 
-@media (min-width: 544px) { /* line 216, ../scss/wp-bootstrap4.scss */
+@media (min-width: 544px) { /* line 219, ../scss/wp-bootstrap4.scss */
   .head-r-1 .h-i { float: right !important; }
-  /* line 223, ../scss/wp-bootstrap4.scss */
+  /* line 226, ../scss/wp-bootstrap4.scss */
   .head-l-2 .h-i, .head-l-3 .h-i { float: right !important; } }
-@media (max-width: 543px) { /* line 236, ../scss/wp-bootstrap4.scss */
+@media (max-width: 543px) { /* line 239, ../scss/wp-bootstrap4.scss */
   .head-l-1 .h-i, .head-l-2 .h-i, .head-l-3 .h-i, .head-r-1 .h-i, .head-r-2 .h-i, .head-r-3 .h-i { margin-left: auto !important; margin-right: auto !important; text-align: center !important; } }
-/* line 245, ../scss/wp-bootstrap4.scss */
+/* line 248, ../scss/wp-bootstrap4.scss */
 .folioed .folio { padding-top: 1rem; padding-bottom: 1rem; }
-/* line 251, ../scss/wp-bootstrap4.scss */
+/* line 254, ../scss/wp-bootstrap4.scss */
 .folioed .folio .heading, .folioed .folio .main-menu, .folioed .folio .feature, .folioed .folio .widget-home { margin-bottom: 1rem; }
-/* line 260, ../scss/wp-bootstrap4.scss */
+/* line 263, ../scss/wp-bootstrap4.scss */
 .folioed .folio .footbar, .folioed .folio .footing { margin-top: 1rem; }
 
-/* line 268, ../scss/wp-bootstrap4.scss */
-.banded .header { padding-top: 0.5rem; }
 /* line 271, ../scss/wp-bootstrap4.scss */
+.banded .header { padding-top: 0.5rem; }
+/* line 274, ../scss/wp-bootstrap4.scss */
 .banded .header .heading, .banded .header .main-menu, .banded .header .feature, .banded .header .widget-home { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 280, ../scss/wp-bootstrap4.scss */
+/* line 283, ../scss/wp-bootstrap4.scss */
 .banded .main { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 285, ../scss/wp-bootstrap4.scss */
-.banded .footer { padding-bottom: 0.5rem; }
 /* line 288, ../scss/wp-bootstrap4.scss */
+.banded .footer { padding-bottom: 0.5rem; }
+/* line 291, ../scss/wp-bootstrap4.scss */
 .banded .footer .footbar, .banded .footer .footing { padding-top: 0.5rem; padding-bottom: 0.5rem; }
 
 /* ----- Navbar fixes ----- */
-@media screen { /* line 299, ../scss/wp-bootstrap4.scss */
+@media screen { /* line 302, ../scss/wp-bootstrap4.scss */
   body.admin-bar .navbar-fixed-top { top: 32px; } }
-@media screen and (max-width: 782px) { /* line 302, ../scss/wp-bootstrap4.scss */
+@media screen and (max-width: 782px) { /* line 305, ../scss/wp-bootstrap4.scss */
   body.admin-bar .navbar-fixed-top { top: 46px; } }
-/* line 305, ../scss/wp-bootstrap4.scss */
+/* line 308, ../scss/wp-bootstrap4.scss */
 body.nav-fixed-top { padding-top: 2.675rem; }
 
-/* line 309, ../scss/wp-bootstrap4.scss */
+/* line 312, ../scss/wp-bootstrap4.scss */
 body.nav-fixed-bottom { padding-bottom: 2.675rem; }
 
 /* ----- Gallery ----- */
-/* line 315, ../scss/wp-bootstrap4.scss */
+/* line 318, ../scss/wp-bootstrap4.scss */
 ul.gallery { padding: 0; margin: 0; }
-/* line 319, ../scss/wp-bootstrap4.scss */
+/* line 322, ../scss/wp-bootstrap4.scss */
 ul.gallery li { list-style: none; }
 
-/* line 327, ../scss/wp-bootstrap4.scss */
+/* line 330, ../scss/wp-bootstrap4.scss */
 .gallery figure img { display: block; margin: 0 auto; }
-/* line 331, ../scss/wp-bootstrap4.scss */
+/* line 334, ../scss/wp-bootstrap4.scss */
 .gallery figure figcaption { font-size: 80%; }
-@media (min-width: 992px) { /* line 338, ../scss/wp-bootstrap4.scss */
+@media (min-width: 992px) { /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-1 { width: 100%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-2 { width: 50%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-3 { width: 33.33333%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-4 { width: 25%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-5 { width: 20%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-6 { width: 16.66667%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-7 { width: 14.28571%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-8 { width: 12.5%; }
-  /* line 338, ../scss/wp-bootstrap4.scss */
+  /* line 341, ../scss/wp-bootstrap4.scss */
   .gallery .col-gal-1-9 { width: 11.11111%; } }
-/* line 342, ../scss/wp-bootstrap4.scss */
+/* line 345, ../scss/wp-bootstrap4.scss */
 .gallery img { max-width: 100%; height: auto; }
 
 /* ----- Carousel ----- */
-/* line 354, ../scss/wp-bootstrap4.scss */
+/* line 357, ../scss/wp-bootstrap4.scss */
 .carousel .carousel-inner .carousel-item > img { max-width: 100%; margin-left: auto; margin-right: auto; }
 
 /* ----- Print ----- */
-@media print { /* line 367, ../scss/wp-bootstrap4.scss */
+@media print { /* line 370, ../scss/wp-bootstrap4.scss */
   .heading { border-bottom: 1px dotted #eee; }
-  /* line 370, ../scss/wp-bootstrap4.scss */
+  /* line 373, ../scss/wp-bootstrap4.scss */
   .heading h1 { text-align: inherit; }
-  /* line 374, ../scss/wp-bootstrap4.scss */
+  /* line 377, ../scss/wp-bootstrap4.scss */
   .heading img { display: block; margin-left: auto; margin-right: auto; }
-  /* line 380, ../scss/wp-bootstrap4.scss */
+  /* line 383, ../scss/wp-bootstrap4.scss */
   .heading a:after { content: none; }
-  /* line 385, ../scss/wp-bootstrap4.scss */
+  /* line 388, ../scss/wp-bootstrap4.scss */
   .footing { margin-top: 1rem; text-align: center !important; border-top: 1px dotted #eee; }
-  /* line 391, ../scss/wp-bootstrap4.scss */
+  /* line 394, ../scss/wp-bootstrap4.scss */
   a { color: inherit; text-decoration: none; }
-  /* line 396, ../scss/wp-bootstrap4.scss */
+  /* line 399, ../scss/wp-bootstrap4.scss */
   .title a:after { content: ""; }
-  /* line 400, ../scss/wp-bootstrap4.scss */
+  /* line 403, ../scss/wp-bootstrap4.scss */
   div[data-title]:before { content: attr(data-title); display: block; font-weight: bold; }
-  /* line 406, ../scss/wp-bootstrap4.scss */
+  /* line 409, ../scss/wp-bootstrap4.scss */
   .meta-data a:after, a.tag:after { content: none; } }

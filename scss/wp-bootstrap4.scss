@@ -168,6 +168,9 @@ a img.alignleft {
 	display: table;
 }
 
+.brand-logo {
+	max-height: ((.425rem * 2) - ($navbar-brand-padding-y * 2) + $line-height-base);
+}
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
 

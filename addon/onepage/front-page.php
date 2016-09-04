@@ -96,12 +96,14 @@ foreach ($onepage_items as $n => $item) {
 		$bg_repeat = get_post_meta( $item['id'], 'bs4-bg-repeat', 'no-repeat' );
 		$bg_position = get_post_meta( $item['id'], 'bs4-bg-position', 'left' );
 		$bg_attachment = get_post_meta( $item['id'], 'bs4-bg-attachment', 'scroll' );
+		$bg_size = get_post_meta( $item['id'], 'bs4-bg-size', 'auto' );
 
 		$src = ".onepage-$n{";
 		$src .= "background-image:url('$bg_image');";
 		$src .= "background-repeat:$bg_repeat;";
 		$src .= "background-position:$bg_position;";
 		$src .= "background-attachment:$bg_attachment;";
+		if ('auto' != $bg_size) $src .= "background-size:$bg_size;";
 		$src .= "}";
 
 		ts_enqueue_style( 'bg-'.$n, $src );
