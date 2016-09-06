@@ -19,9 +19,13 @@ function bs4_onepage_after_setup_theme() {
 		) );
 }
 
+add_action( 'after_setup_theme', 'bs4_onepage_after_setup_theme' );
+
 /**
  */
 function bs4_onepage_scripts() {
+	if (!in_front_page()) return;
+
 	$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
 
 	// CSS
@@ -51,6 +55,8 @@ function bs4_onepage_scripts() {
 	wp_enqueue_script( 'wp-bootstrap4-onepage' );
 }
 
+add_action( 'wp_enqueue_scripts', 'bs4_onepage_scripts' );
+
 /**
  */
 function bs4_onepage_admin_enqueue_scripts() {
@@ -75,29 +81,41 @@ function bs4_onepage_admin_enqueue_scripts() {
 	wp_enqueue_script( 'metabox-bg' );
 }
 
+add_action( 'admin_enqueue_scripts', 'bs4_onepage_admin_enqueue_scripts' );
+
 /* ---------- Filters ---------- */
 
 /**
  */
-function bs4_onepage_frontpage_template( $template ) {
-	return dirname(__FILE__).'/front-page.php';
+function bs4_onepage_frontpage_template( $default ) {
+	if (in_front_page()) return dirname(__FILE__).'/onepage-front-page.php';
+	else return $default;
 }
+
+add_filter( 'frontpage_template', 'bs4_onepage_frontpage_template' );
 
 /**
  */
-function bs4_onepage_home_url($url, $path) {
-	return (('' == $path) || ('/' == $path)) ? '#top' : $url;
+function bs4_onepage_home_url( $url, $path ) {
+	if (in_front_page()) return (('' == $path) || ('/' == $path)) ? '#top' : $url;
+	else return $url;
 }
+
+add_filter( 'bs4_home_url', 'bs4_onepage_home_url', 10, 2 );
 
 /**
  */
-function bs4_onepage_get_sidebar_position($default) {
-	return 0;
+function bs4_onepage_get_sidebar_position( $default ) {
+	return in_front_page() ? 0 : $default;
 }
+
+add_filter( 'bs4_get_sidebar_position', 'bs4_onepage_get_sidebar_position' );
 
 /**
  */
-function bs4_onepage_main_class($class) {
+function bs4_onepage_main_class( $class ) {
+	if (!in_front_page()) return $class;
+
 	if ('main' == $class) {
 		$sec = 0;
 	} else {
@@ -108,34 +126,24 @@ function bs4_onepage_main_class($class) {
 	return $class . 'onepage onepage-' . $sec;
 }
 
+add_filter( 'bs4_main_class', 'bs4_onepage_main_class' );
+
 /**
  */
-function bs4_onepage_body_class($classes) {
-	$classes[] = 'onepager';
+function bs4_onepage_body_class( $classes ) {
+	if (in_front_page()) $classes[] = 'onepager';
 	return $classes;
 }
 
+add_filter('body_class', 'bs4_onepage_body_class' );
+
 /**
  */
-function bs4_onepage_navbar_class($classes) {
-	$classes[] = 'initial';
+function bs4_onepage_navbar_class( $classes ) {
+	if (in_front_page()) $classes[] = 'initial';
  	return $classes;
 }
 
-/* ---------- All the filters ---------- */
-
-add_action( 'after_setup_theme', 'bs4_onepage_after_setup_theme' );
-add_action( 'admin_enqueue_scripts', 'bs4_onepage_admin_enqueue_scripts' );
-
-if (in_front_page()) {
-	add_action( 'wp_enqueue_scripts', 'bs4_onepage_scripts' );
-	add_filter( 'frontpage_template', 'bs4_onepage_frontpage_template' );
-
-	add_filter( 'bs4_home_url', 'bs4_onepage_home_url', 10, 2 );
-	add_filter( 'bs4_get_sidebar_position', 'bs4_onepage_get_sidebar_position' );
-	add_filter( 'bs4_main_class', 'bs4_onepage_main_class' );
-	add_filter('body_class', 'bs4_onepage_body_class' );
-	add_filter( 'bs4_navbar_class', 'bs4_onepage_navbar_class' );
-}
+add_filter( 'bs4_navbar_class', 'bs4_onepage_navbar_class' );
 
 // eof

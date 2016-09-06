@@ -33,7 +33,7 @@ add_filter('bs4_wp_nav_menu', 'bs4_onepage_wp_nav_menu', 10, 2);
 
 /**
  */
-function bs4_onepage_post_meta_class($classes) { $classes[] = 'hidden-xs-up'; return $classes; }
+function bs4_onepage_post_meta_class($classes) { $classes[] = 'front-page'; return $classes; }
 add_filter('post_meta_class', 'bs4_onepage_post_meta_class');
 
 

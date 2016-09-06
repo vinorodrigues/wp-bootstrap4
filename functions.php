@@ -385,7 +385,7 @@ add_action( 'widgets_init', 'bs4_widgets_init' );
  * OnePage functions ====================
  */
 
-if ( file_exists(THEMEPATH.'addon/onepage/functions.php'))
-	include_once 'addon/onepage/functions.php';
+if ( file_exists(THEMEPATH.'addon/onepage/onepage-functions.php'))
+	include_once 'addon/onepage/onepage-functions.php';
 
 /* oef */

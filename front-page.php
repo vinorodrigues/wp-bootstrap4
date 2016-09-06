@@ -8,7 +8,7 @@
  */
 
 function bs4_front_page_post_meta_class($classes) {
-	$classes[] = 'hidden-xs-up';
+	$classes[] = 'front-page';
 	return $classes;
 }
 

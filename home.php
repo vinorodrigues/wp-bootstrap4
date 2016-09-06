@@ -8,7 +8,7 @@
  */
 
 function bs4_home_post_meta_class($classes) {
-	$classes[] = 'hidden-xs-up';
+	$classes[] = 'home-page';
 	return $classes;
 }
 

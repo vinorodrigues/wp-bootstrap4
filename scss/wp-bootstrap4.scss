@@ -94,6 +94,12 @@ a img.alignleft {
 	margin-bottom: 0;
 }
 
+header.front-page,
+header.home-page {
+	// visibility: hidden;
+	display: none !important;
+}
+
 /* Go Facebook style and use "·" (the interpunct character) for separators */
 .nav-footer {
 	ul { margin-bottom: 0 !important; }
