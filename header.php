@@ -32,11 +32,11 @@ function bs4_body_class_singular($classes) {
 function bs4_heading() {
 	$custom_logo = bs4_get_logo_img('site-logo img-fluid h-i');
 
-	if (false != $custom_logo) {
-		$output = '<a href="' . site_url() . '" rel="home">' . $custom_logo . '</a>';
+	if (false !== $custom_logo) {
+		$output = '<a href="' . bs4_home_url() . '" rel="home">' . $custom_logo . '</a>';
 	} else {
 		$output = '<h1 class="title h-i">';
-		$output .= '<a href="' . site_url() . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
+		$output .= '<a href="' . bs4_home_url() . '" rel="home">' . get_bloginfo('name', 'display') . '</a>';
 		if (!empty(get_bloginfo('description')))
 			$output .= '<br><small class="text-muted subtitle">' . get_bloginfo('description', 'display') . '</small>';
 		$output .= '</h1>';

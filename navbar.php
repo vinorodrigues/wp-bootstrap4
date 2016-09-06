@@ -49,6 +49,9 @@ switch ($navbar_placement) {
 			$navbar_class[] = 'navbar-full';
 		break;
 }
+if ($navbar_container && ($navbar_placement == 0) && ($container_segments == 0)) 
+	$navbar_class[] = 'navbar-wide';
+
 $navbar_class[] = 'main-menu';
 $navbar_class[] = 'hidden-print';
 $navbar_class = implode( ' ', apply_filters( 'bs4_navbar_class', $navbar_class ) );
@@ -69,7 +72,7 @@ if ($navbar_container) {
 <div class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
 
 if (!empty($navbar_brand)) {
-	?><a class="navbar-brand" href="<?= site_url() ?>"><?= $navbar_brand ?></a><?php
+	?><a class="navbar-brand" href="<?= bs4_home_url() ?>" rel="home"><?= $navbar_brand ?></a><?php
 }
 
 $menu_class = 'nav navbar-nav';

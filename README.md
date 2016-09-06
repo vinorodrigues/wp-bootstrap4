@@ -3,9 +3,9 @@ WP-Bootstrap4
 
 ---
 
-**( _At the time of release Bootsrap 4 is in version 4.0-Alpha-3._ )**
+<b style="color:red" markdown="1">( _At the time of release Bootsrap 4 is in version 4.0.0-alpha.4_ )</b>
 
-This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 2-Aug-2016 - [#8e4f3fe](https://github.com/twbs/bootstrap/commit/8e4f3fe7b95f6bb7c9939288229ec5683364743d).
+This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 6-Sep-2016 - [#295c938](https://github.com/twbs/bootstrap/commit/295c93846c154fb461f85b30e663102f7e171104).
 
 ---
 

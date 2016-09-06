@@ -41,19 +41,24 @@ if (!bs4_get_option('block_plugins')) {
 	}
 }
 
+/**
+ * return logo Image
+ */
 function bs4_get_logo_img($class = '') {
 	$id = false;
 	if (USE_WP45_LOGO) {  // NEW IN WP4.5
 		$has_logo = has_custom_logo();
 		if ($has_logo) $id = get_theme_mod( 'custom_logo' );
 	} else
-		$id = get_theme_mod('custom_logo', '');
+		$id = get_theme_mod( 'custom_logo', '' );
 
 	$custom_logo = false;
 	if ($id) {
 		$custom_logo = wp_get_attachment_image_src( $id, 'full', false );
 		if ($custom_logo !== false) $custom_logo = $custom_logo[0];
 	}
+
+	$custom_logo = apply_filters( 'bs4_get_logo_img_url', $custom_logo );
 
 	if ( !empty($custom_logo) ) {
 		$ws = get_theme_mod( 'logo_width', false );
@@ -78,7 +83,14 @@ function bs4_get_logo_img($class = '') {
 		$custom_logo .= '>';
 	}
 
-	return $custom_logo;
+	return $custom_logo = apply_filters( 'bs4_get_logo_img_link', $custom_logo );
+}
+
+/**
+ * Return home location
+ */
+function bs4_home_url($path = '/') {
+	return apply_filters( 'bs4_home_url', esc_url(home_url($path)), $path );
 }
 
 if ( ! function_exists( 'bs4_setup' ) ) :
@@ -143,7 +155,8 @@ function bs4_setup() {
 		) );
 
 	/* WP4.5 Cutom Logo */
-	if (USE_WP45_LOGO)  // NEW IN WP4.5
+	// don't support if child theme overides with 'bs4_get_logo_img_url' filter
+	if (USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false))  // NEW IN WP4.5
 		add_theme_support( 'custom-logo', array(
 			'flex-width' => true,
 			'flex-height' => true,

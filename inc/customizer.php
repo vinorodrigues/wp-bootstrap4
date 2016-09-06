@@ -58,7 +58,8 @@ function bs4_customize_register( $wp_customize ) {
 
 	// Site Identity
 
-	if (!USE_WP45_LOGO) {
+	// don't support if child theme overides with 'bs4_get_logo_img_url' filter
+	if (!USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false)) {
 		$wp_customize->add_setting( 'custom_logo' );
 		$wp_customize->add_control( new WP_Customize_Cropped_Image_Control(
 			$wp_customize,
