@@ -1,0 +1,18 @@
+{
+  "name": "wp-bootstrap4",
+  "title": "WP-Bootstrap4",
+  "description": "A responsive WordPress theme based on Bootstrap 4",
+  "url": "http://github.com/vinorodrigues/wp-bootstrap4",
+  "version": "0.3.1",
+  "author": "Vino Rodrigues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinorodrigues/wp-bootstrap4.git"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}

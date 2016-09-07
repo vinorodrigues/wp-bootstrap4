@@ -1,220 +1,409 @@
 @charset "UTF-8";
-/** wp-bootstrap4.css */
+/**
+ * wp-bootstrap4.css
+ */
 /* @import "compass"; */
-/** @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide */
+/**
+ * @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide
+ */
 /* -------------------- THEME SPECIFIC FIXES TO HTML -------------------- */
-/* line 17, ../scss/wp-bootstrap4.scss */
-.heading h1 a { color: inherit; }
-/* line 20, ../scss/wp-bootstrap4.scss */
-.heading h1 a:hover, .heading h1 a:focus { color: inherit; text-decoration: none; }
+.heading h1 a {
+  color: inherit;
+}
+.heading h1 a:hover,
+.heading h1 a:focus {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* line 27, ../scss/wp-bootstrap4.scss */
-img.pull-xs-left, figure.pull-xs-left { padding-right: 1rem !important; }
+img.pull-xs-left,
+figure.pull-xs-left {
+  padding-right: 1rem !important;
+}
 
-/* line 32, ../scss/wp-bootstrap4.scss */
-img.pull-xs-right, figure.pull-xs-right { padding-left: 1rem !important; }
+img.pull-xs-right,
+figure.pull-xs-right {
+  padding-left: 1rem !important;
+}
 
-/* line 37, ../scss/wp-bootstrap4.scss */
-figure.figure { max-width: 100%; }
+figure.figure {
+  max-width: 100%;
+}
 
-/* line 41, ../scss/wp-bootstrap4.scss */
-textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] { max-width: 100%; }
+textarea,
+input[type="text"], input[type="password"], input[type="datetime"],
+input[type="datetime-local"], input[type="date"], input[type="month"],
+input[type="time"], input[type="week"], input[type="number"],
+input[type="email"], input[type="url"], input[type="search"],
+input[type="tel"], input[type="color"] {
+  max-width: 100%;
+}
 
 /* -------------------- WORDPRESS CORE -------------------- */
-/* line 52, ../scss/wp-bootstrap4.scss */
-.alignnone, a img.alignnone { margin: 0.25rem 1rem 1rem 0; }
+.alignnone,
+a img.alignnone {
+  margin: 0.25rem 1rem 1rem 0;
+}
 
-/* line 57, ../scss/wp-bootstrap4.scss */
-.aligncenter, div.aligncenter { display: block; margin: 0.25rem auto 0.25rem auto; }
+.aligncenter,
+div.aligncenter {
+  display: block;
+  margin: 0.25rem auto 0.25rem auto;
+}
 
-/* line 63, ../scss/wp-bootstrap4.scss */
-a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+a img.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-/* line 69, ../scss/wp-bootstrap4.scss */
-.alignright, a img.alignright { float: right; margin: 0.25rem 0 1rem 1rem; }
+.alignright,
+a img.alignright {
+  float: right;
+  margin: 0.25rem 0 1rem 1rem;
+}
 
-/* line 75, ../scss/wp-bootstrap4.scss */
-.alignleft, a img.alignleft { float: left; margin: 0.25rem 1rem 1rem 0; }
+.alignleft,
+a img.alignleft {
+  float: left;
+  margin: 0.25rem 1rem 1rem 0;
+}
 
 /* -------------------- THEME SPECIFIC UI -------------------- */
-/* line 83, ../scss/wp-bootstrap4.scss */
-.content article:not(:last-child) { margin-bottom: 3rem; }
+.content article:not(:last-child) {
+  margin-bottom: 3rem;
+}
 
-/* line 88, ../scss/wp-bootstrap4.scss */
-.header-nav .nav { display: inline-block; }
+.header-nav .nav {
+  display: inline-block;
+}
 
-/* line 93, ../scss/wp-bootstrap4.scss */
-.alert-404 { margin-bottom: 0; }
+.alert-404 {
+  margin-bottom: 0;
+}
 
-/* line 97, ../scss/wp-bootstrap4.scss */
-header.front-page, header.home-page { display: none !important; }
+header.front-page,
+header.home-page {
+  display: none !important;
+}
 
 /* Go Facebook style and use "·" (the interpunct character) for separators */
-/* line 105, ../scss/wp-bootstrap4.scss */
-.nav-footer ul { margin-bottom: 0 !important; }
-/* line 106, ../scss/wp-bootstrap4.scss */
-.nav-footer li { padding: 0; display: inline; }
-/* line 107, ../scss/wp-bootstrap4.scss */
-.nav-footer li:not(:last-child):after { content: "·"; }
-/* line 108, ../scss/wp-bootstrap4.scss */
-.nav-footer li a { margin: 0 0.5rem; color: #373a3c; }
-/* line 109, ../scss/wp-bootstrap4.scss */
-.nav-footer li:first-child a { margin-left: 0; }
-/* line 110, ../scss/wp-bootstrap4.scss */
-.nav-footer li:last-child a { margin-right: 0; }
-/* line 111, ../scss/wp-bootstrap4.scss */
-.nav-footer li a:hover, .nav-footer li a:focus { text-decoration: none; color: #014c8c; }
+.nav-footer ul {
+  margin-bottom: 0 !important;
+}
+.nav-footer li {
+  padding: 0;
+  display: inline;
+}
+.nav-footer li:not(:last-child):after {
+  content: "·";
+}
+.nav-footer li a {
+  margin: 0 0.5rem;
+  color: #373a3c;
+}
+.nav-footer li:first-child a {
+  margin-left: 0;
+}
+.nav-footer li:last-child a {
+  margin-right: 0;
+}
+.nav-footer li a:hover, .nav-footer li a:focus {
+  text-decoration: none;
+  color: #014c8c;
+}
 
-/* line 114, ../scss/wp-bootstrap4.scss */
-.copyright { color: #818a91; }
+.copyright {
+  color: #818a91;
+}
 
 /* Fix meta items */
-/* line 120, ../scss/wp-bootstrap4.scss */
-.meta .meta-author a, .meta .meta-comments a { color: inherit !important; }
-/* line 122, ../scss/wp-bootstrap4.scss */
-.meta .meta-item { padding: 0 0.5rem; }
-/* line 123, ../scss/wp-bootstrap4.scss */
-.meta .meta-item:first-child { padding-left: 0; }
-/* line 124, ../scss/wp-bootstrap4.scss */
-.meta .meta-item:last-child { padding-right: 0; }
+.meta .meta-author a,
+.meta .meta-comments a {
+  color: inherit !important;
+}
+.meta .meta-item {
+  padding: 0 0.5rem;
+}
+.meta .meta-item:first-child {
+  padding-left: 0;
+}
+.meta .meta-item:last-child {
+  padding-right: 0;
+}
 
-/* line 127, ../scss/wp-bootstrap4.scss */
-.img-featured { width: 100% !important; }
+.img-featured {
+  width: 100% !important;
+}
 
-/* line 131, ../scss/wp-bootstrap4.scss */
-.feature .card { background-color: rgba(238, 238, 238, 0.5); margin: 0; }
+.feature .card {
+  background-color: rgba(238, 238, 238, 0.5);
+  margin: 0;
+}
 
-/* line 137, ../scss/wp-bootstrap4.scss */
-.sidebar aside { margin-bottom: 1rem; }
-/* line 141, ../scss/wp-bootstrap4.scss */
-.sidebar input, .sidebar select { max-width: 100%; }
+.sidebar aside {
+  margin-bottom: 1rem;
+}
+.sidebar input,
+.sidebar select {
+  max-width: 100%;
+}
 
-/* line 147, ../scss/wp-bootstrap4.scss */
-.hidden-all { display: none !important; }
+.hidden-all {
+  display: none !important;
+}
 
-/* line 151, ../scss/wp-bootstrap4.scss */
-.back-to-top { cursor: pointer; position: fixed; bottom: 1rem; right: 1rem; display: none; opacity: 0.8; }
+.back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  display: none;
+  opacity: 0.8;
+}
 
-/* line 159, ../scss/wp-bootstrap4.scss */
-.back-to-top:hover { opacity: 1; }
+.back-to-top:hover {
+  opacity: 1;
+}
 
-/* line 163, ../scss/wp-bootstrap4.scss */
-.affix { position: -webkit-sticky; position: -moz-sticky; position: -ms-sticky; position: sticky; top: 0; z-index: 1031; }
+.affix {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1031;
+}
 
-/* line 171, ../scss/wp-bootstrap4.scss */
-.affix:before, .affix:after { content: ''; display: table; }
+.affix:before,
+.affix:after {
+  content: '';
+  display: table;
+}
 
-/* line 177, ../scss/wp-bootstrap4.scss */
-.brand-logo { max-height: 1.85rem; }
+.brand-logo {
+  max-height: 1.85rem;
+}
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */
-/* line 183, ../scss/wp-bootstrap4.scss */
-.no-gutter > [class^="col-"] { padding-right: 0; padding-left: 0; }
+.no-gutter > [class^="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
 
-/* line 188, ../scss/wp-bootstrap4.scss */
-.input-group label { margin: 0; }
+.input-group label {
+  margin: 0;
+}
 
-/* line 192, ../scss/wp-bootstrap4.scss */
-.navbar-wide { margin-left: -15px; margin-right: -15px; }
+.navbar-wide {
+  margin-left: -15px;
+  margin-right: -15px;
+}
 
 /* -------------------- THEME SPACING -------------------- */
-/* line 201, ../scss/wp-bootstrap4.scss */
-.main p { word-wrap: break-word; }
+.main p {
+  word-wrap: break-word;
+}
 
-/* line 205, ../scss/wp-bootstrap4.scss */
-.head-l-3, .head-c-2, .head-c-3, .head-r-3 { margin-top: 1rem; }
+.head-l-3,
+.head-c-2,
+.head-c-3,
+.head-r-3 {
+  margin-top: 1rem;
+}
 
-@media (max-width: 543px) { /* line 213, ../scss/wp-bootstrap4.scss */
-  .head-l-2, .head-r-2 { margin-top: 1rem; } }
-/* line 222, ../scss/wp-bootstrap4.scss */
-.head-c-1 .h-i, .head-c-2 .h-i, .head-c-3 .h-i { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+@media (max-width: 543px) {
+  .head-l-2,
+  .head-r-2 {
+    margin-top: 1rem;
+  }
+}
+.head-c-1 .h-i,
+.head-c-2 .h-i,
+.head-c-3 .h-i {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
-@media (min-width: 544px) { /* line 231, ../scss/wp-bootstrap4.scss */
-  .head-r-1 .h-i { float: right !important; }
-  /* line 238, ../scss/wp-bootstrap4.scss */
-  .head-l-2 .h-i, .head-l-3 .h-i { float: right !important; } }
-@media (max-width: 543px) { /* line 251, ../scss/wp-bootstrap4.scss */
-  .head-l-1 .h-i, .head-l-2 .h-i, .head-l-3 .h-i, .head-r-1 .h-i, .head-r-2 .h-i, .head-r-3 .h-i { margin-left: auto !important; margin-right: auto !important; text-align: center !important; } }
-/* line 260, ../scss/wp-bootstrap4.scss */
-.folioed .folio { padding-top: 1rem; padding-bottom: 1rem; }
-/* line 266, ../scss/wp-bootstrap4.scss */
-.folioed .folio .heading, .folioed .folio .main-menu, .folioed .folio .feature, .folioed .folio .widget-home { margin-bottom: 1rem; }
-/* line 275, ../scss/wp-bootstrap4.scss */
-.folioed .folio .footbar, .folioed .folio .footing { margin-top: 1rem; }
+@media (min-width: 544px) {
+  .head-r-1 .h-i {
+    float: right !important;
+  }
 
-/* line 283, ../scss/wp-bootstrap4.scss */
-.banded .header { padding-top: 0.5rem; }
-/* line 286, ../scss/wp-bootstrap4.scss */
-.banded .header .heading, .banded .header .main-menu, .banded .header .feature, .banded .header .widget-home { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 295, ../scss/wp-bootstrap4.scss */
-.banded .main { padding-top: 0.5rem; padding-bottom: 0.5rem; }
-/* line 300, ../scss/wp-bootstrap4.scss */
-.banded .footer { padding-bottom: 0.5rem; }
-/* line 303, ../scss/wp-bootstrap4.scss */
-.banded .footer .footbar, .banded .footer .footing { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .head-l-2 .h-i,
+  .head-l-3 .h-i {
+    float: right !important;
+  }
+}
+@media (max-width: 543px) {
+  .head-l-1 .h-i,
+  .head-l-2 .h-i,
+  .head-l-3 .h-i,
+  .head-r-1 .h-i,
+  .head-r-2 .h-i,
+  .head-r-3 .h-i {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}
+.folioed .folio {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.folioed .folio .heading,
+.folioed .folio .main-menu,
+.folioed .folio .feature,
+.folioed .folio .widget-home {
+  margin-bottom: 1rem;
+}
+.folioed .folio .footbar,
+.folioed .folio .footing {
+  margin-top: 1rem;
+}
+
+.banded .header {
+  padding-top: 0.5rem;
+}
+.banded .header .heading,
+.banded .header .main-menu,
+.banded .header .feature,
+.banded .header .widget-home {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.banded .main {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.banded .footer {
+  padding-bottom: 0.5rem;
+}
+.banded .footer .footbar,
+.banded .footer .footing {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
 
 /* ----- Navbar fixes ----- */
-@media screen { /* line 314, ../scss/wp-bootstrap4.scss */
-  body.admin-bar .navbar-fixed-top { top: 32px; } }
-@media screen and (max-width: 782px) { /* line 317, ../scss/wp-bootstrap4.scss */
-  body.admin-bar .navbar-fixed-top { top: 46px; } }
-/* line 320, ../scss/wp-bootstrap4.scss */
-body.nav-fixed-top { padding-top: 2.675rem; }
+@media screen {
+  body.admin-bar .navbar-fixed-top {
+    top: 32px;
+  }
+}
+@media screen and (max-width: 782px) {
+  body.admin-bar .navbar-fixed-top {
+    top: 46px;
+  }
+}
+body.nav-fixed-top {
+  padding-top: 2.675rem;
+}
 
-/* line 324, ../scss/wp-bootstrap4.scss */
-body.nav-fixed-bottom { padding-bottom: 2.675rem; }
+body.nav-fixed-bottom {
+  padding-bottom: 2.675rem;
+}
 
 /* ----- Gallery ----- */
-/* line 330, ../scss/wp-bootstrap4.scss */
-ul.gallery { padding: 0; margin: 0; }
-/* line 334, ../scss/wp-bootstrap4.scss */
-ul.gallery li { list-style: none; }
+ul.gallery {
+  padding: 0;
+  margin: 0;
+}
+ul.gallery li {
+  list-style: none;
+}
 
-/* line 342, ../scss/wp-bootstrap4.scss */
-.gallery figure img { display: block; margin: 0 auto; }
-/* line 346, ../scss/wp-bootstrap4.scss */
-.gallery figure figcaption { font-size: 80%; }
-@media (min-width: 992px) { /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-1 { width: 100%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-2 { width: 50%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-3 { width: 33.33333%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-4 { width: 25%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-5 { width: 20%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-6 { width: 16.66667%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-7 { width: 14.28571%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-8 { width: 12.5%; }
-  /* line 353, ../scss/wp-bootstrap4.scss */
-  .gallery .col-gal-1-9 { width: 11.11111%; } }
-/* line 357, ../scss/wp-bootstrap4.scss */
-.gallery img { max-width: 100%; height: auto; }
+.gallery figure img {
+  display: block;
+  margin: 0 auto;
+}
+.gallery figure figcaption {
+  font-size: 80%;
+}
+@media (min-width: 992px) {
+  .gallery .col-gal-1-1 {
+    width: 100%;
+  }
+  .gallery .col-gal-1-2 {
+    width: 50%;
+  }
+  .gallery .col-gal-1-3 {
+    width: 33.33333%;
+  }
+  .gallery .col-gal-1-4 {
+    width: 25%;
+  }
+  .gallery .col-gal-1-5 {
+    width: 20%;
+  }
+  .gallery .col-gal-1-6 {
+    width: 16.66667%;
+  }
+  .gallery .col-gal-1-7 {
+    width: 14.28571%;
+  }
+  .gallery .col-gal-1-8 {
+    width: 12.5%;
+  }
+  .gallery .col-gal-1-9 {
+    width: 11.11111%;
+  }
+}
+.gallery img {
+  max-width: 100%;
+  height: auto;
+}
 
 /* ----- Carousel ----- */
-/* line 369, ../scss/wp-bootstrap4.scss */
-.carousel .carousel-inner .carousel-item > img { max-width: 100%; margin-left: auto; margin-right: auto; }
+.carousel .carousel-inner .carousel-item > img {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /* ----- Print ----- */
-@media print { /* line 382, ../scss/wp-bootstrap4.scss */
-  .heading { border-bottom: 1px dotted #eee; }
-  /* line 385, ../scss/wp-bootstrap4.scss */
-  .heading h1 { text-align: inherit; }
-  /* line 389, ../scss/wp-bootstrap4.scss */
-  .heading img { display: block; margin-left: auto; margin-right: auto; }
-  /* line 395, ../scss/wp-bootstrap4.scss */
-  .heading a:after { content: none; }
-  /* line 400, ../scss/wp-bootstrap4.scss */
-  .footing { margin-top: 1rem; text-align: center !important; border-top: 1px dotted #eee; }
-  /* line 406, ../scss/wp-bootstrap4.scss */
-  a { color: inherit; text-decoration: none; }
-  /* line 411, ../scss/wp-bootstrap4.scss */
-  .title a:after { content: ""; }
-  /* line 415, ../scss/wp-bootstrap4.scss */
-  div[data-title]:before { content: attr(data-title); display: block; font-weight: bold; }
-  /* line 421, ../scss/wp-bootstrap4.scss */
-  .meta-data a:after, a.tag:after { content: none; } }
+@media print {
+  .heading {
+    border-bottom: 1px dotted #eee;
+  }
+  .heading h1 {
+    text-align: inherit;
+  }
+  .heading img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .heading a:after {
+    content: none;
+  }
+
+  .footing {
+    margin-top: 1rem;
+    text-align: center !important;
+    border-top: 1px dotted #eee;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .title a:after {
+    content: "";
+  }
+
+  div[data-title]:before {
+    content: attr(data-title);
+    display: block;
+    font-weight: bold;
+  }
+
+  .meta-data a:after,
+  a.tag:after {
+    content: none;
+  }
+}
+
+/*# sourceMappingURL=wp-bootstrap4.css.map */
