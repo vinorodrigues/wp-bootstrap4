@@ -201,7 +201,7 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap-fix',
-		get_theme_file_uri( '/css/bootstrap-fix.css' ),
+		get_theme_file_uri( '/css/bootstrap-fix' . $min . '.css' ),
 		array('bootstrap'),
 		$t_ver );
 
@@ -215,7 +215,7 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'wp-boostrap4',
-		get_theme_file_uri( '/css/wp-bootstrap4.css' ),
+		get_theme_file_uri( '/css/wp-bootstrap4' . $min . '.css' ),
 		array( 'bootstrap' ),
 		$t_ver );
 
@@ -233,7 +233,7 @@ function bs4_scripts() {
 	} else {
 		wp_enqueue_style(
 			'style',
-			get_template_directory_uri(),
+			get_stylesheet_uri(),
 			array(),
 			$t_ver );
 	}
@@ -271,7 +271,7 @@ function bs4_scripts() {
 
 	wp_enqueue_script(
 		'wp-bootstrap4',
-		get_theme_file_uri( '/js/wp-bootstrap4' . '.js' ),
+		get_theme_file_uri( '/js/wp-bootstrap4' . $min . '.js' ),
 		array( 'jquery' ),
 		false,
 		true );

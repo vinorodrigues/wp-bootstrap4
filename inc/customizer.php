@@ -22,7 +22,8 @@ class My_Customize_Radio_Control extends WP_Customize_Control {
 	public $suffix = '.png';
 
 	public function enqueue() {
-		wp_enqueue_style( 'bootstrap4_customizer', get_template_directory_uri() . "/css/customizer.css" );
+		$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
+		wp_enqueue_style( 'bootstrap4_customizer', get_template_directory_uri() . "/css/customizer' . $min . '.css" );
 	}
 
 	public function render_content() {

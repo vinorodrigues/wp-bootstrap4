@@ -1,6 +1,6 @@
 <?php
 /**
- * Usage of grids.js
+ *
  */
 
 include_once 'lib-ts/raw-scripts.php';

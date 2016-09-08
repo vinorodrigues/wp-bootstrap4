@@ -1,5 +1,5 @@
 /**
- *
+ * WP-Bootstrap4
  */
 
 jQuery(document).ready(function($) {

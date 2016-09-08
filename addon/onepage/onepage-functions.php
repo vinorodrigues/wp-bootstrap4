@@ -30,18 +30,18 @@ function bs4_onepage_scripts() {
 
 	// CSS
 	wp_enqueue_style( 'wp-bootstrap4-onepage',
-		get_template_directory_uri() . '/addon/onepage/css/wp-bootstrap4-onepage.css',
+		get_template_directory_uri() . '/addon/onepage/css/wp-bootstrap4-onepage' . $min . '.css',
 		array( 'bootstrap', 'wp-boostrap4' ) );
 
 	// JS
 	wp_register_script( 'easing',
-		get_template_directory_uri() . '/addon/onepage/js/easing' . $min . '.js',
+		get_template_directory_uri() . '/addon/onepage/vendor/easing/js/easing' . $min . '.js',
 		array( 'jquery' ),
 		'1.3',
 		true );
 
 	wp_register_script( 'wp-bootstrap4-onepage',
-		get_template_directory_uri() . '/addon/onepage/js/wp-bootstrap4-onepage.js',
+		get_template_directory_uri() . '/addon/onepage/js/wp-bootstrap4-onepage' . $min . '.js',
 		array( 'jquery', 'bootstrap', 'easing' ),
 		false,
 		true );
@@ -60,10 +60,12 @@ add_action( 'wp_enqueue_scripts', 'bs4_onepage_scripts' );
 /**
  */
 function bs4_onepage_admin_enqueue_scripts() {
+	$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
+
 	// CSS
 
 	wp_enqueue_style( 'wp-bootstrap4-onepage-admin', get_template_directory_uri() .
-		'/addon/onepage/css/wp-bootstrap4-onepage-admin.css' );
+		'/addon/onepage/css/wp-bootstrap4-onepage-admin' . $min . '.css' );
 
 	// JS
 
@@ -71,7 +73,7 @@ function bs4_onepage_admin_enqueue_scripts() {
 
 	// Registers and enqueues the required javascript.
 	wp_register_script( 'metabox-bg', get_template_directory_uri() .
-		'/addon/onepage/js/metabox-bg.js', array( 'jquery' ) );
+		'/addon/onepage/js/metabox-bg' . $min . '.js', array( 'jquery' ) );
 
 	wp_localize_script( 'metabox-bg', 'meta_image',
 		array(
