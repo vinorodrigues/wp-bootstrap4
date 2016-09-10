@@ -14,8 +14,6 @@ include_once 'inc/menu-walker.php';
 
 $navbar_band_class = $band_class;
 
-$navbar_color = get_theme_mod( 'navbar_color', 0 );
-$navbar_shading = boolval( get_theme_mod( 'navbar_shading', 0 ) );
 $navbar_container = boolval( get_theme_mod( 'navbar_container', 0 ) );
 $navbar_placement = get_theme_mod( 'navbar_placement', 0 );
 
@@ -30,17 +28,9 @@ $navbar_brand .= get_theme_mod( 'navbar_brand', '' );
 $navbar_search = boolval( get_theme_mod( 'navbar_search', 0 ) );
 
 $navbar_class = array('navbar');
-if ($navbar_shading) $navbar_class[] = 'navbar-light';
-else $navbar_class[] = 'navbar-dark';
+$navbar_class[] = bs4_navbar_color_class( get_theme_mod( 'navbar_color', 0 ) );
+$navbar_class[] = bs4_navbar_shading_class( boolval( get_theme_mod( 'navbar_shading', 0 ) ) );
 
-switch ($navbar_color) {
-	case 1: $navbar_class[] = 'bg-inverse'; break;
-	case 2: $navbar_class[] = 'bg-default'; break;
-	case 3: $navbar_class[] = 'bg-faded'; break;
-	case 4: $navbar_class[] = 'bg-transparent'; break;
-	case 5: $navbar_class[] = 'bg-custom'; break;
-	default: $navbar_class[] = 'bg-primary';
-}
 switch ($navbar_placement) {
 	case 1: $navbar_class[] = 'navbar-fixed-top'; break;
 	case 2: $navbar_class[] = 'navbar-fixed-bottom'; break;
@@ -49,7 +39,7 @@ switch ($navbar_placement) {
 			$navbar_class[] = 'navbar-full';
 		break;
 }
-if ($navbar_container && ($navbar_placement == 0) && ($container_segments == 0)) 
+if ($navbar_container && ($navbar_placement == 0) && ($container_segments == 0))
 	$navbar_class[] = 'navbar-wide';
 
 $navbar_class[] = 'main-menu';
@@ -68,8 +58,9 @@ if ($navbar_container) {
 	<nav id="main-navbar" class="<?= $navbar_class ?>"><?php
 }
 
-?><button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapsible-navbar">&#9776;</button>
-<div class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
+?><button class="navbar-toggler hidden-sm-up" type="button"
+	data-toggle="collapse" data-target="#collapsible-navbar">&#9776;</button><div
+	class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
 
 if (!empty($navbar_brand)) {
 	?><a class="navbar-brand" href="<?= bs4_home_url() ?>" rel="home"><?= $navbar_brand ?></a><?php
@@ -96,21 +87,19 @@ if ($menu_content != '') {
 }
 
 if ($navbar_search) {
-	?><form method="get" id="search-form-0" action="<?= site_url() ?>" class="form-inline navbar-form search-from pull-xs-right">
-		<input type="search" name="s" class="search-input form-control"
+	?><form method="get" id="search-form-0" action="<?php echo site_url(); ?>"
+		class="form-inline navbar-form search-from pull-xs-right"><input
+			type="search" name="s" class="search-input form-control"
 			placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"
-			autosave="search-0" autocorrect="on">
-		<button type="submit" class="search-button btn btn-outline-success"><?php bs4_i('search'); ?></button>
-	</form><?php
+			autosave="search-0" autocorrect="on"><button
+			type="submit" class="search-button btn btn-outline-success"><?php
+			bs4_i('search'); ?></button></form><?php
 }
 
 ?></div><?php
 
-if ($navbar_container) {
-	?></div></nav><?php
-} else {
-	?></nav></div><?php
-}
+if ($navbar_container) { ?></div></nav><?php }
+else { ?></nav></div><?php }
 
 endif;
 ?>

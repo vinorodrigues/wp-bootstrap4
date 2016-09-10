@@ -108,16 +108,24 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ['scss/*.scss'],
-				tasks: ['sass']
+				tasks: ['sass:css']
 			},
 			uglify: {
 				files: ['js/*.js', '!js/*.min.js'],
-				tasks: ['uglify']
+				tasks: ['uglify:js']
 			},
 			imagemin: {
 				files: ['images/*.png', 'images/*.jpg'],
 				tasks: ['imagemin']
-			}
+			},
+			sass_onepage: {
+				files: ['addon/onepage/scss/*.scss'],
+				tasks: ['sass:css_onepage']
+			},
+			uglify_onepage: {
+				files: ['addon/onepage/js/*.js', '!addon/onepage/js/*.min.js'],
+				tasks: ['uglify:js_onepage']
+			},
 		}
 
 	});

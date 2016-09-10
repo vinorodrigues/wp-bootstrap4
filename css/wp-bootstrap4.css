@@ -200,6 +200,10 @@ header.home-page {
   margin-right: -15px;
 }
 
+.bg-transparent {
+  background-color: transparent !important;
+}
+
 /* -------------------- THEME SPACING -------------------- */
 .main p {
   word-wrap: break-word;

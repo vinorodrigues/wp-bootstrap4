@@ -2,11 +2,34 @@
 
 // include_once 'inc/taxonomy-bg.php';
 include_once 'inc/metabox-bg.php';
+include_once 'inc/onepage-customizer.php';
+
 
 /* ---------- functions ---------- */
 
 function in_front_page() {
 	return (is_front_page() && (get_option('show_on_front') == 'page'));
+}
+
+/**
+ */
+function bs4_onepage_get_navbar_struct() {
+	global $bs4_singletons;
+	if (!isset($bs4_singletons)) $bs4_singletons = array();
+
+	if (!isset($bs4_singletons['onepage'])) {
+		$bs4_singletons['onepage'] = array();
+
+		$bs4_singletons['onepage']['cn'] =
+			bs4_navbar_color_class( get_theme_mod( 'navbar_color', 0 ) );
+		$bs4_singletons['onepage']['sn'] =
+			bs4_navbar_shading_class( boolval( get_theme_mod( 'navbar_shading', 0 ) ) );
+		$bs4_singletons['onepage']['c1'] =
+			bs4_navbar_color_class( get_theme_mod( 'navbar_color_1', 0 ), 'onepage' );
+		$bs4_singletons['onepage']['s1'] =
+			bs4_navbar_shading_class( boolval( get_theme_mod( 'navbar_shading_1', 0 ) ) );
+	}
+	return $bs4_singletons['onepage'];
 }
 
 /* ---------- actions ---------- */
@@ -46,11 +69,27 @@ function bs4_onepage_scripts() {
 		false,
 		true );
 
+	$struct = bs4_onepage_get_navbar_struct();
+	$xn = array('scrolled');
+	$x1 = array('initial');
+	if ($struct['cn'] != $struct['c1']) {
+		$xn[] = $struct['cn'];
+		$x1[] = $struct['c1'];
+	}
+	if ($struct['sn'] != $struct['s1']) {
+		$xn[] = $struct['sn'];
+		$x1[] = $struct['s1'];
+	}
+
 	wp_localize_script( 'wp-bootstrap4-onepage',
 		'onepage',
 		array(
-			'navbar_placement' => get_theme_mod('navbar_placement', 0),
-		) );
+			'navbar' => array(
+				'placement' => get_theme_mod('navbar_placement', 0),
+				'normal' => implode(' ', $xn),
+				'scrolltop' => implode(' ', $x1),
+				),
+			'offset' => 50 ) );
 
 	wp_enqueue_script( 'wp-bootstrap4-onepage' );
 }
@@ -72,6 +111,7 @@ function bs4_onepage_admin_enqueue_scripts() {
 	wp_enqueue_media();
 
 	// Registers and enqueues the required javascript.
+
 	wp_register_script( 'metabox-bg', get_template_directory_uri() .
 		'/addon/onepage/js/metabox-bg' . $min . '.js', array( 'jquery' ) );
 
@@ -142,7 +182,18 @@ add_filter('body_class', 'bs4_onepage_body_class' );
 /**
  */
 function bs4_onepage_navbar_class( $classes ) {
-	if (in_front_page()) $classes[] = 'initial';
+	if (in_front_page()) {
+		$struct = bs4_onepage_get_navbar_struct();
+		if ($struct['cn'] != $struct['c1']) {
+			unset( $classes[ array_search( $struct['cn'], $classes ) ] );
+			$classes[] = $struct['c1'];
+		}
+		if ($struct['sn'] != $struct['s1']) {
+			unset( $classes[ array_search( $struct['sn'], $classes ) ] );
+			$classes[] = $struct['s1'];
+		}
+		$classes[] = 'initial';
+	}
  	return $classes;
 }
 

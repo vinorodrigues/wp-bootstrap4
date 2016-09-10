@@ -3,9 +3,9 @@ WP-Bootstrap4
 
 ---
 
-<b style="color:#F00" markdown="1">(_At the time of release Bootstrap 4 is in version 4.0.0-alpha.4_)</b>
+(_At the time of release Bootstrap 4 is in version 4.0.0-alpha.4_)
 
-This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 6-Sep-2016 - [#295c938](https://github.com/twbs/bootstrap/commit/295c93846c154fb461f85b30e663102f7e171104).
+This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 9-Sep-2016 - [#82e7abc](https://github.com/twbs/bootstrap/commit/82e7abcdf301f27096ee180a53a08a1107e8da1a).
 
 ---
 
@@ -26,6 +26,18 @@ This implies certain considerations:
 * Assistive technologies are excluded in this initial release.  This will be updated later.
 
 
+Grunt - SCSS, JS-min, Image-Min
+-------------------------------
+
+This project uses the [Grunt](http://gruntjs.com) CLI (Command Line Interface) to process (complie / compress) the scss styles, js scripts and image files.
+
+* A functonal intallation of Grunt is assumed. (See how to [http://gruntjs.com/getting-started](get started).)
+* To initialise the project run `npm install`. This will initalise the dependancied into the `node_modules` folder.
+* To complie / compress all `scss`, `js` and images run:
+	- `grunt`
+* To start the watch process in development environmants run:
+	- `grunt watch`
+
 
 Licences
 --------
@@ -34,5 +46,6 @@ Licences
 - [Bootstrap 4](http://v4-alpha.getbootstrap.com) under [MIT License](http://www.apache.org/licenses/LICENSE-2.0)
 - [Font Awesome](http://fortawesome.github.io/Font-Awesome/) under [SIL OFL 1.1](http://scripts.sil.org/OFL)
 - [Wordpress](http://wordpress.org) under [GPLv2](http://www.gnu.org/licenses/gpl-2.0.html)
+- [Node.js](http://nodejs.org) and [Grunt](http://gruntjs.com) have propriatory licences.  Thier source is not included in this project.
 
-<b style="text-align:center" markdown="1">★</b>
+★

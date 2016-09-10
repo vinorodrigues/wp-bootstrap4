@@ -39,6 +39,11 @@ add_filter('post_meta_class', 'bs4_onepage_post_meta_class');
 
 /* ---------- Business End ------------------------------ */
 
+if (get_theme_mod( 'navbar_color_1', 0 ) == 5)
+	ts_enqueue_style(
+		'navbar-onepage',
+		'.bg-custom-onepage { background-color: ' . get_theme_mod( 'navbar_color_custom_1', '#000000' ) . '; }' );
+
 if (get_option('show_on_front') == 'page') {
 	$page_for_posts = intval(get_option('page_for_posts'));
 	$page_on_front = intval(get_option('page_on_front'));
