@@ -31,7 +31,7 @@ Grunt - SCSS, JS-min, Image-Min
 
 This project uses the [Grunt](http://gruntjs.com) CLI (Command Line Interface) to process (complie / compress) the scss styles, js scripts and image files.
 
-* A functonal intallation of Grunt is assumed. (See how to [http://gruntjs.com/getting-started](get started).)
+* A functonal intallation of Grunt is assumed. (See how to [get started](http://gruntjs.com/getting-started).)
 * To initialise the project run `npm install`. This will initalise the dependancied into the `node_modules` folder.
 * To complie / compress all `scss`, `js` and images run:
 	- `grunt`
