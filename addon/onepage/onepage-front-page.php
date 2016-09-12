@@ -52,7 +52,9 @@ if (get_option('show_on_front') == 'page') {
 
 $onepage_top_id = $wp_query->post->ID;
 
-$menu_items = wp_get_nav_menu_items( 'front-page', array() );
+$menu_items = has_nav_menu('front-page') ?
+	wp_get_nav_menu_items( 'front-page', array() ) :
+	array();
 $onepage_items = array();
 
 $onepage_items[] = array(

@@ -8,7 +8,7 @@ include_once 'inc/onepage-customizer.php';
 /* ---------- functions ---------- */
 
 function in_front_page() {
-	return (is_front_page() && (get_option('show_on_front') == 'page'));
+	return (has_nav_menu('front-page') && is_front_page() && (get_option('show_on_front') == 'page'));
 }
 
 /**
