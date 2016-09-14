@@ -31,10 +31,10 @@ include_once 'inc/fix-tag-class.php';
 
 // addon plugins
 if (!bs4_get_option('block_plugins')) {
-	if ($handle = opendir(THEMEPATH.'addon/plugins')) {
+	if ($handle = opendir(THEMEPATH.'plugins')) {
 		while (false !== ($entry = readdir($handle))) {
-        		if (!is_dir(THEMEPATH.'addon/plugins/'.$entry)) {
-        			include_once 'addon/plugins/'.$entry;
+        		if (!is_dir(THEMEPATH.'plugins/'.$entry)) {
+        			include_once 'plugins/'.$entry;
 		        }
 		}
 		closedir($handle);
@@ -381,11 +381,17 @@ function bs4_widgets_init() {
 add_action( 'widgets_init', 'bs4_widgets_init' );
 
 
-/*
- * OnePage functions ====================
+/**
+ * OnePage addon ====================
  */
+if ( USE_ONEPAGE )
+	include_once 'onepage/op-functions.php';
 
-if ( file_exists(THEMEPATH.'addon/onepage/onepage-functions.php'))
-	include_once 'addon/onepage/onepage-functions.php';
+
+/**
+ * WooCommerce addon ====================
+ */
+if ( USE_WOOCOMMERCE )
+	include_once 'woocommerce/wc-functions.php';
 
 /* oef */

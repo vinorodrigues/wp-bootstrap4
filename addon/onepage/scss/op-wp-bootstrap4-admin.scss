@@ -1,0 +1,36 @@
+
+#bs4-onepage-page-options-bg {
+	&.postbox {
+		background-image: url('../img/diagonal.png');
+		background-size: 5px 5px;
+		background-repeat: repeat;
+		background-position: center center;
+	}
+
+	input[type="text"] {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	.thumbnail {
+		display: block;
+		margin-top: 5px;
+		margin-right: 10px;
+		margin-bottom: 5px;
+	}
+
+	.thumbnail-image {
+		max-width: 120px;
+		max-height: 120px;
+	}
+
+	.placeholder {
+		width: 100%;
+		text-align: center;
+		border: 1px dashed #b4b9be;
+		-webkit-box-sizing: border-box;
+		moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 9px 0;
+	}
+}

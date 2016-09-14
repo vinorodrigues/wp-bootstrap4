@@ -1,7 +1,7 @@
 {
 "version": 3,
 "mappings": "AAEC,oCAAU;EACT,gBAAgB,EAAE,0BAA0B;EAC5C,eAAe,EAAE,OAAO;EACxB,iBAAiB,EAAE,MAAM;EACzB,mBAAmB,EAAE,aAAa;;AAGnC,+CAAmB;EAClB,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,GAAG;;AAGnB,uCAAW;EACV,OAAO,EAAE,KAAK;EACd,UAAU,EAAE,GAAG;EACf,YAAY,EAAE,IAAI;EAClB,aAAa,EAAE,GAAG;;AAGnB,6CAAiB;EAChB,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,KAAK;;AAGlB,yCAAa;EACZ,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,kBAAkB;EAC1B,kBAAkB,EAAE,UAAU;EAC9B,cAAc,EAAE,UAAU;EAC1B,UAAU,EAAE,UAAU;EACtB,OAAO,EAAE,KAAK",
-"sources": ["file:///Users/vino/Dropbox/Dev/wp-bootstrap4/addon/onepage/scss/wp-bootstrap4-onepage-admin.scss"],
+"sources": ["file:///Users/vino/Dropbox/Dev/wp-bootstrap4/addon/onepage/scss/op-wp-bootstrap4-admin.scss"],
 "names": [],
-"file": "wp-bootstrap4-onepage-admin.css"
+"file": "op-wp-bootstrap4-admin.css"
 }

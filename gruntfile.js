@@ -42,9 +42,9 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'addon/onepage/scss/',
+					cwd: 'onepage/scss/',
 					src: ['*.scss'],
-					dest: 'addon/onepage/css/',
+					dest: 'onepage/css/',
 					ext: '.min.css'
 				}]
 			},
@@ -55,9 +55,9 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'addon/onepage/scss/',
+					cwd: 'onepage/scss/',
 					src: ['*.scss'],
-					dest: 'addon/onepage/css/',
+					dest: 'onepage/css/',
 					ext: '.css'
 				}]
 			}
@@ -82,9 +82,9 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: 'addon/onepage/js/',
+					cwd: 'onepage/js/',
 					src: ['*.js', '!*.min.js'],
-					dest: 'addon/onepage/js/',
+					dest: 'onepage/js/',
 					ext: '.min.js'
 				}]
 			}
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
 		watch: {
 			sass: {
 				files: ['scss/*.scss'],
-				tasks: ['sass:css']
+				tasks: ['sass:css', 'sass:css_min']
 			},
 			uglify: {
 				files: ['js/*.js', '!js/*.min.js'],
@@ -119,11 +119,11 @@ module.exports = function(grunt) {
 				tasks: ['imagemin']
 			},
 			sass_onepage: {
-				files: ['addon/onepage/scss/*.scss'],
-				tasks: ['sass:css_onepage']
+				files: ['onepage/scss/*.scss'],
+				tasks: ['sass:css_onepage', 'sass:css_min_onepage']
 			},
 			uglify_onepage: {
-				files: ['addon/onepage/js/*.js', '!addon/onepage/js/*.min.js'],
+				files: ['onepage/js/*.js', '!onepage/js/*.min.js'],
 				tasks: ['uglify:js_onepage']
 			},
 		}
