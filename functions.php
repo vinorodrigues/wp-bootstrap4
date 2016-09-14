@@ -8,6 +8,9 @@
 if ( !defined('THEMEPATH') )
 	define('THEMEPATH', dirname(__FILE__).'/');
 
+if ( !defined('DOTMIN') )
+	define('DOTMIN', (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min');
+
 // config
 include_once 'config.php';
 include_once 'inc/options.php';
@@ -183,8 +186,6 @@ function get_theme_file_uri($filename) {
  * Enqueue scripts and styles.
  */
 function bs4_scripts() {
-	$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
-
 	$theme = wp_get_theme();
 	$t_ver = $theme->version;
 
@@ -192,7 +193,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' . $min . '.css' );
+		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' . DOTMIN . '.css' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -201,21 +202,21 @@ function bs4_scripts() {
 
 	wp_enqueue_style(
 		'bootstrap-fix',
-		get_theme_file_uri( '/css/bootstrap-fix' . $min . '.css' ),
+		get_theme_file_uri( '/css/bootstrap-fix' . DOTMIN . '.css' ),
 		array('bootstrap'),
 		$t_ver );
 
 	wp_enqueue_style(
 		'bootstrap-pr',
-		get_theme_file_uri( '/vendor/print-ready/css/bootstrap-pr' . $min . '.css' ),
+		get_theme_file_uri( '/vendor/print-ready/css/bootstrap-pr' . DOTMIN . '.css' ),
 		array('bootstrap'),
 		BOOTSTRAP_PR_VERSION );
 
-	@call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), $min);
+	@call_user_func('bs4_enqueue_style_i_'.bs4_icon_set(), DOTMIN);
 
 	wp_enqueue_style(
 		'wp-boostrap4',
-		get_theme_file_uri( '/css/wp-bootstrap4' . $min . '.css' ),
+		get_theme_file_uri( '/css/wp-bootstrap4' . DOTMIN . '.css' ),
 		array( 'bootstrap' ),
 		$t_ver );
 
@@ -244,7 +245,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . $min . '.js' );
+		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTMIN . '.js' );
 		$ver = JQUERY_VERSION;
 	} else {
 		$ver = NULL;
@@ -253,7 +254,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('tether_js') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/tether/js/tether' . $min . '.js' );
+		$url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
 		$ver = TETHER_VERSION;
 	} else {
 		$ver = NULL;
@@ -262,7 +263,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/bootstrap/js/bootstrap' . $min . '.js' );
+		$url = get_theme_file_uri( '/vendor/bootstrap/js/bootstrap' . DOTMIN . '.js' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -271,7 +272,7 @@ function bs4_scripts() {
 
 	wp_enqueue_script(
 		'wp-bootstrap4',
-		get_theme_file_uri( '/js/wp-bootstrap4' . $min . '.js' ),
+		get_theme_file_uri( '/js/wp-bootstrap4' . DOTMIN . '.js' ),
 		array( 'jquery' ),
 		false,
 		true );
@@ -279,7 +280,7 @@ function bs4_scripts() {
 	if ( bs4_get_option('equalheights') )
 		wp_register_script(
 			'match-height',
-			get_theme_file_uri( '/vendor/match-height/js/matchHeight' . $min . '.js' ),
+			get_theme_file_uri( '/vendor/match-height/js/matchHeight' . DOTMIN . '.js' ),
 			array( 'jquery' ),
 			MATCH_HEIGHT_VERSION,
 			true );

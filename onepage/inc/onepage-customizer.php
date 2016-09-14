@@ -70,10 +70,8 @@ add_action( 'customize_register', 'bs4_onepage_customize_register' );
 
 /*
 function bs4_onepage_customize_preview_init() {
-	$min = ( defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min';
-
 	wp_enqueue_script( 'op-customizer', get_template_directory_uri() .
-		'/onepage/js/op-customizer' . $min . '.js', array( 'jquery', 'customize-preview' ) );
+		'/onepage/js/op-customizer' . DOTMIN . '.js', array( 'jquery', 'customize-preview' ) );
 }
 
 add_action( 'customize_preview_init', 'bs4_onepage_customize_preview_init' );
