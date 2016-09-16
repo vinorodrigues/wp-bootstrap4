@@ -366,17 +366,19 @@ function bs4_widgets_init() {
 		'after_title'   => '</' . $tag . '>',
 		) );
 
-	$cls = 'widget-home';
-	if (get_theme_mod('container_segments', 0) != 0) $cls .= ' band';
-	register_sidebar( array(
-		'name'          => 'Home Page Only',
-		'id'            => 'sidebar-0',
-		'description'   => '',
-		'before_widget' => '<article class="widget '.$cls.' %2$s">',
-		'after_widget'  => '</article>',
-		'before_title'  => '<h2>',
-		'after_title'   => '</h2>',
-		) );
+	if (!USE_ONEPAGE) {
+		$cls = 'widget-home';
+		if (get_theme_mod('container_segments', 0) != 0) $cls .= ' band';
+		register_sidebar( array(
+			'name'          => 'Home Page Only',
+			'id'            => 'sidebar-0',
+			'description'   => '',
+			'before_widget' => '<article class="widget '.$cls.' %2$s">',
+			'after_widget'  => '</article>',
+			'before_title'  => '<h2>',
+			'after_title'   => '</h2>',
+			) );
+	}
 }
 
 add_action( 'widgets_init', 'bs4_widgets_init' );
