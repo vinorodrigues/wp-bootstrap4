@@ -9,8 +9,6 @@ This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-de
 
 ---
 
-![WP-Bootstrap4](screenshot.png)
-
 
 Introduction
 ------------
@@ -37,6 +35,7 @@ This project uses the [Grunt](http://gruntjs.com) CLI (Command Line Interface) t
 	- `grunt`
 * To start the watch process in development environmants run:
 	- `grunt watch`
+* Don't forget to `.gitignore` the `node_modules` folder.
 
 
 Licences
