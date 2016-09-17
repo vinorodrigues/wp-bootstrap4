@@ -20,5 +20,7 @@ define( 'FEATURED_IMAGE_X', 1156 );
 define( 'FEATURED_IMAGE_Y', 289 );
 define( 'FEATURED_IMAGE_CLASS', 'img-rounded' );
 
-// define( 'USE_WP45_LOGO', function_exists('get_custom_logo') );
-define( 'USE_WP45_LOGO', false );
+define( 'USE_WP45_LOGO', function_exists('get_custom_logo') );
+
+define( 'USE_ONEPAGE', true );
+define( 'USE_WOOCOMMERCE', file_exists('woocommerce/wc-functions.php') );

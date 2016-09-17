@@ -15,7 +15,7 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-	if (onepage.navbar.placement == 1) {
+	if (onepage.placement == 1) {
 		if (onepage.offset == 50)
 			onepage.offset = parseInt($('html').css('marginTop')) +
 				parseInt($('#main-navbar').css('height')) +
@@ -27,14 +27,5 @@ jQuery(document).ready(function($) {
 			offset: onepage.offset + 1
 		})
 	}
-
-	$(window).scroll(function() {
-		var cur_pos = $(window).scrollTop();
-		if (cur_pos > onepage.offset) {
-			$("#main-navbar").removeClass(onepage.navbar.scrolltop).addClass(onepage.navbar.normal);
-		} else {
-			$("#main-navbar").removeClass(onepage.navbar.normal).addClass(onepage.navbar.scrolltop);
-		}
-	});
 
 });

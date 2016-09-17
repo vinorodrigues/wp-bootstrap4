@@ -101,6 +101,7 @@ header.home-page {
 }
 
 /* Go Facebook style and use "·" (the interpunct character) for separators */
+
 .nav-footer {
 	ul { margin-bottom: 0 !important; }
 	li { padding: 0; display: inline; }
@@ -116,6 +117,7 @@ header.home-page {
 }
 
 /* Fix meta items */
+
 .meta {
 	.meta-author a,
 	.meta-comments a { color: inherit !important; }
@@ -326,6 +328,19 @@ body.nav-fixed-top {
 
 body.nav-fixed-bottom {
 	padding-bottom: (($navbar-padding-y * 2) + $font-size-lg + 0.425rem);
+}
+
+/* ----- Content ----- */
+
+.private,
+.protected {
+	color: $brand-info;
+	font-size: 75%;
+	opacity: 0.5;
+}
+
+.protected {
+	color: $brand-warning;
 }
 
 /* ----- Gallery ----- */

@@ -5,11 +5,9 @@ WP-Bootstrap4
 
 (_At the time of release Bootstrap 4 is in version 4.0.0-alpha.4_)
 
-This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 9-Sep-2016 - [#82e7abc](https://github.com/twbs/bootstrap/commit/82e7abcdf301f27096ee180a53a08a1107e8da1a).
+This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 12-Sep-2016 - [#13e4348](https://github.com/twbs/bootstrap/commit/13e4348dfd78c0f1a28d5a108a4ec4f55de1271a).
 
 ---
-
-![WP-Bootstrap4](screenshot.png)
 
 
 Introduction
@@ -37,6 +35,7 @@ This project uses the [Grunt](http://gruntjs.com) CLI (Command Line Interface) t
 	- `grunt`
 * To start the watch process in development environmants run:
 	- `grunt watch`
+* Don't forget to `.gitignore` the `node_modules` folder.
 
 
 Licences
