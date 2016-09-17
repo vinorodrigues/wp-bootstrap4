@@ -34,6 +34,8 @@ include_once 'inc/fix-tag-class.php';
 
 // addon plugins
 if (!bs4_get_option('block_plugins')) {
+	define('BOOTSTRAP4_LOADS_PLUGINS', true);
+
 	if ($handle = opendir(THEMEPATH.'plugins')) {
 		while (false !== ($entry = readdir($handle))) {
         		if (!is_dir(THEMEPATH.'plugins/'.$entry)) {

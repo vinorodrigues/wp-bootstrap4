@@ -9,6 +9,19 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		sass: {
+			css: {
+				options : {
+					style: 'expanded',
+					sourcemap: 'file'
+				},
+				files: [{
+					expand: true,
+					cwd: 'scss/',
+					src: ['*.scss'],
+					dest: 'css/',
+					ext: '.css'
+				}]
+			},
 			css_min: {
 				options : {
 					style: 'compressed',
@@ -22,16 +35,29 @@ module.exports = function(grunt) {
 					ext: '.min.css'
 				}]
 			},
-			css: {
+			// css_plugins: {
+			// 	options : {
+			// 		style: 'nested',
+			// 		sourcemap: 'none'
+			// 	},
+			// 	files: [{
+			// 		expand: true,
+			// 		cwd: 'plugins/scss/',
+			// 		src: ['*.scss'],
+			// 		dest: 'plugins/css/',
+			// 		ext: '.min.css'
+			// 	}]
+			// },
+			css_onepage: {
 				options : {
 					style: 'expanded',
 					sourcemap: 'file'
 				},
 				files: [{
 					expand: true,
-					cwd: 'scss/',
+					cwd: 'onepage/scss/',
 					src: ['*.scss'],
-					dest: 'css/',
+					dest: 'onepage/css/',
 					ext: '.css'
 				}]
 			},
@@ -47,19 +73,6 @@ module.exports = function(grunt) {
 					dest: 'onepage/css/',
 					ext: '.min.css'
 				}]
-			},
-			css_onepage: {
-				options : {
-					style: 'expanded',
-					sourcemap: 'file'
-				},
-				files: [{
-					expand: true,
-					cwd: 'onepage/scss/',
-					src: ['*.scss'],
-					dest: 'onepage/css/',
-					ext: '.css'
-				}]
 			}
 		},
 
@@ -73,6 +86,18 @@ module.exports = function(grunt) {
 					cwd: 'js/',
 					src: ['*.js', '!*.min.js'],
 					dest: 'js/',
+					ext: '.min.js'
+				}]
+			},
+			js_plugins: {
+				options: {
+					manage: false
+				},
+				files: [{
+					expand: true,
+					cwd: 'plugins/js/',
+					src: ['*.js', '!*.min.js'],
+					dest: 'plugins/js/',
 					ext: '.min.js'
 				}]
 			},
@@ -110,22 +135,30 @@ module.exports = function(grunt) {
 				files: ['scss/*.scss'],
 				tasks: ['sass:css', 'sass:css_min']
 			},
+			// sass_plugins: {
+			// 	files: ['plugins/scss/*.scss'],
+			// 	tasks: ['sass:css_plugins', 'sass:css_min_plugins']
+			// },
+			sass_onepage: {
+				files: ['onepage/scss/*.scss'],
+				tasks: ['sass:css_onepage', 'sass:css_min_onepage']
+			},
 			uglify: {
 				files: ['js/*.js', '!js/*.min.js'],
 				tasks: ['uglify:js']
 			},
-			imagemin: {
-				files: ['images/*.png', 'images/*.jpg'],
-				tasks: ['imagemin']
-			},
-			sass_onepage: {
-				files: ['onepage/scss/*.scss'],
-				tasks: ['sass:css_onepage', 'sass:css_min_onepage']
+			uglify_plugins: {
+				files: ['plugins/js/*.js', '!plugins/js/*.min.js'],
+				tasks: ['uglify:js_plugins']
 			},
 			uglify_onepage: {
 				files: ['onepage/js/*.js', '!onepage/js/*.min.js'],
 				tasks: ['uglify:js_onepage']
 			},
+			imagemin: {
+				files: ['images/*.png', 'images/*.jpg'],
+				tasks: ['imagemin']
+			}
 		}
 
 	});

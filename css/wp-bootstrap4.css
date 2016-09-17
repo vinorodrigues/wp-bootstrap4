@@ -309,6 +309,18 @@ body.nav-fixed-bottom {
   padding-bottom: 2.675rem;
 }
 
+/* ----- Content ----- */
+.private,
+.protected {
+  color: #5bc0de;
+  font-size: 75%;
+  opacity: 0.5;
+}
+
+.protected {
+  color: #f0ad4e;
+}
+
 /* ----- Gallery ----- */
 ul.gallery {
   padding: 0;
