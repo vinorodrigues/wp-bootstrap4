@@ -2,14 +2,9 @@
  * wp-bootstrap4.css
  */
 
-/* @import "compass"; */
 @import "variables";
+@import "custom";
 @import "mixins/breakpoints";  // used in gallery
-
-
-/**
- * @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide
- */
 
 /* -------------------- THEME SPECIFIC FIXES TO HTML -------------------- */
 
@@ -378,7 +373,6 @@ ul.gallery {
 	}
 }
 
-
 /* ----- Carousel ----- */
 
 .carousel {
@@ -392,7 +386,6 @@ ul.gallery {
 		}
 	}
 }
-
 
 /* ----- Print ----- */
 
