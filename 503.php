@@ -39,9 +39,7 @@ $jqry_url = trim( bs4_get_option('jquery_js') );
 if (empty($jqry_url))
 	$jqry_url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTMIN . '.js' );
 
-// $tthr_url = trim( bs4_get_option('tether_js') );
-// if (empty($tthr_url))
-// 	$tthr_url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
+// $tthr_url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
 
 $bsjs_url = trim( bs4_get_option('bootstrap_js') );
 if (empty($bsjs_url))

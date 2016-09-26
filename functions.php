@@ -243,8 +243,10 @@ function bs4_scripts() {
 
 	// JS
 
-	wp_deregister_script('jquery');  // remove WP jquery that relies on v1
+	// remove WP jquery that relies on v1
+	wp_deregister_script('jquery');
 
+	// jQuery
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
 		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTMIN . '.js' );
@@ -254,15 +256,17 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'jquery', $url, array(), $ver, true );
 
-	$url = trim( bs4_get_option('tether_js') );
-	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
-		$ver = TETHER_VERSION;
-	} else {
-		$ver = NULL;
-	}
+	// Tether
+	$url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
+	$ver = TETHER_VERSION;
 	wp_enqueue_script( 'tether', $url, array( 'jquery' ), $ver, true );
 
+	// Easing
+	$url = get_theme_file_uri( '/vendor/easing/js/easing' . DOTMIN . '.js' );
+	$ver = EASING_VERSION;
+	wp_enqueue_script( 'easing', $url, array( 'jquery' ), $ver, true );
+
+	// Bootstrap
 	$url = trim( bs4_get_option('bootstrap_js') );
 	if (empty($url)) {
 		$url = get_theme_file_uri( '/vendor/bootstrap/js/bootstrap' . DOTMIN . '.js' );
@@ -272,6 +276,7 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'bootstrap', $url, array( 'jquery' ), $ver, true );
 
+	// WP-Bootstrap4
 	wp_enqueue_script(
 		'wp-bootstrap4',
 		get_theme_file_uri( '/js/wp-bootstrap4' . DOTMIN . '.js' ),
@@ -279,6 +284,7 @@ function bs4_scripts() {
 		false,
 		true );
 
+	// Equal Heights
 	if ( bs4_get_option('equalheights') )
 		wp_register_script(
 			'match-height',
@@ -287,6 +293,7 @@ function bs4_scripts() {
 			MATCH_HEIGHT_VERSION,
 			true );
 
+	// Comment Reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 

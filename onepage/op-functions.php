@@ -27,18 +27,12 @@ add_action( 'after_setup_theme', 'bs4_onepage_after_setup_theme' );
 function bs4_onepage_scripts() {
 	if (!in_front_page()) return;
 
-	// CSS
+	// OP-WP-Bootstrap4 CSS
 	wp_enqueue_style( 'op-wp-bootstrap4',
 		get_template_directory_uri() . '/onepage/css/op-wp-bootstrap4' . DOTMIN . '.css',
 		array( 'bootstrap', 'wp-boostrap4' ) );
 
-	// JS
-	wp_enqueue_script( 'easing',
-		get_template_directory_uri() . '/onepage/vendor/easing/js/easing' . DOTMIN . '.js',
-		array( 'jquery' ),
-		'1.3',
-		true );
-
+	// OP-WP-Bootstrap4 JS
 	wp_register_script( 'op-wp-bootstrap4',
 		get_template_directory_uri() . '/onepage/js/op-wp-bootstrap4' . DOTMIN . '.js',
 		array( 'jquery', 'bootstrap', 'easing' ),

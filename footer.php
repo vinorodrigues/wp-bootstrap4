@@ -102,7 +102,7 @@ endif;
 	href="#top"
 	class="btn btn-info back-to-top"
 	role="button"
-	title="Return on the top page"
+	title="Return to the top of page"
 	data-toggle="tooltip"
 	data-placement="left"><?php bs4_i('top'); ?></a>
 </div>

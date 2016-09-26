@@ -110,7 +110,6 @@ function bs4_get_option($option = null) {
 			'bootstrap_css' => '',
 			'equalheights' => false,
 			'bootstrap_js' => '',
-			'tether_js' => '',
 			'jquery_js' => '',
 			'icon_set' => 'fa',
 
@@ -262,7 +261,6 @@ function bs4_sanitize_options( $input ) {
 	__bs4_san_bool('wide_footer', $input, $output);
 	__bs4_san_url('bootstrap_css', $input, $output);
 	__bs4_san_url('bootstrap_js', $input, $output);
-	__bs4_san_url('tether_js', $input, $output);
 	__bs4_san_url('jquery_js', $input, $output);
 	__bs4_san_text('footer_text', $input, $output);
 
@@ -337,19 +335,6 @@ function bs4_admin_init() {
 			BS4_THOPT_SEC1,
 			'bootstrap_js',
 			'URL to <code>boostrap.js</code> file.',
-			)
-		);
-
-	add_settings_field(
-		'tether_js',
-		'Tether JavaScript',
-		'bs4_opts_url_callback',
-		BS4_THOPT_SEC1,
-		'bs4_dependancies',
-		array(
-			BS4_THOPT_SEC1,
-			'tether_js',
-			'URL to <code>tether_js</code> file. Leave blank for local copy (version ' . TETHER_VERSION . ').',
 			)
 		);
 

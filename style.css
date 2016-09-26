@@ -24,8 +24,14 @@ Tags: bootstrap, responsive-layout
 
 .navbar .search-button,
 .widget_search .search-label,
+.widget_search .search-buttons,
+.widget_search .search-button-div,
 .widget_search .search-button {
 	display: none;
+}
+
+.widget_search .search-input-div {
+	width: 100%;
 }
 
 .img-thumbnail {
