@@ -160,8 +160,10 @@ function bs4_setup() {
 		) );
 
 	/* WP4.5 Cutom Logo */
-	// don't support if child theme overides with 'bs4_get_logo_img_url' filter
-	if (USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false))  // NEW IN WP4.5
+	// don't support if child theme overides with 'bs4_get_logo_img_url' or
+	// 'bs4_heading' filters
+	if ( USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false) &&
+		(false === apply_filters('bs4_heading', false)) )  // NEW IN WP4.5
 		add_theme_support( 'custom-logo', array(
 			'flex-width' => true,
 			'flex-height' => true,

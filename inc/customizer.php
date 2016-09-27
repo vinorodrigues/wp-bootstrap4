@@ -22,7 +22,7 @@ class My_Customize_Radio_Control extends WP_Customize_Control {
 	public $suffix = '.png';
 
 	public function enqueue() {
-		wp_enqueue_style( 'bootstrap4_customizer', get_template_directory_uri() . "/css/customizer' . DOTMIN . '.css" );
+		wp_enqueue_style( 'bootstrap4_customizer', get_template_directory_uri() . '/css/customizer' . DOTMIN . '.css' );
 	}
 
 	public function render_content() {
@@ -58,42 +58,47 @@ function bs4_customize_register( $wp_customize ) {
 
 	// Site Identity
 
-	// don't support if child theme overides with 'bs4_get_logo_img_url' filter
-	if (!USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false)) {
-		$wp_customize->add_setting( 'custom_logo' );
-		$wp_customize->add_control( new WP_Customize_Cropped_Image_Control(
-			$wp_customize,
-			'custom-logo',
-			array(
-				'label'       => 'Logo',
-				'section'     => 'title_tagline',
-				'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
-				'settings'    => 'custom_logo',
-				'priority'    => 8,
-				'flex_width'  => true,
-				'flex_height' => true,
-				) ) );
+	// don't support if child theme overides with 'bs4_get_logo_img_url' or
+	// 'bs4_heading' filters
+	if ( false === apply_filters('bs4_heading', false) ) {
+
+		if ( !USE_WP45_LOGO && !apply_filters('bs4_get_logo_img_url', false) ) {
+			$wp_customize->add_setting( 'custom_logo' );
+			$wp_customize->add_control( new WP_Customize_Cropped_Image_Control(
+				$wp_customize,
+				'custom-logo',
+				array(
+					'label'       => 'Logo',
+					'section'     => 'title_tagline',
+					'description' => '<b>Note:</b> Setting a Site Logo image will hide the Site Title and Tagline',
+					'settings'    => 'custom_logo',
+					'priority'    => 8,
+					'flex_width'  => true,
+					'flex_height' => true,
+					) ) );
+		}
+
+		$wp_customize->add_setting( 'logo_width', array( 'default' => '' ) );
+		$wp_customize->add_setting( 'logo_height', array( 'default' => '' ) );
+
+		$wp_customize->add_control( 'logo_width', array(
+			'type'        => 'text',
+			'section'     => 'title_tagline',
+			'label'       => 'Logo Width',
+			'priority'    => 9,
+			'description' => 'Set override logo image width (use valid css/style values)',
+			) );
+
+		$wp_customize->add_control( 'logo_height', array(
+			'type'        => 'text',
+			'section'     => 'title_tagline',
+			'label'       => 'Logo Height',
+			'priority'    => 9,
+			'description' => 'Set override logo image height (can also be a percentage)',
+			) );
 	}
 
-	$wp_customize->add_setting( 'logo_width', array( 'default' => '' ) );
-	$wp_customize->add_setting( 'logo_height', array( 'default' => '' ) );
 	$wp_customize->add_setting( 'logo_placement', array( 'default' => 0 ) );
-
-	$wp_customize->add_control( 'logo_width', array(
-		'type'        => 'text',
-		'section'     => 'title_tagline',
-		'label'       => 'Width',
-		'priority'    => 9,
-		'description' => 'Set override logo image width (use valid css/style values)',
-		) );
-
-	$wp_customize->add_control( 'logo_height', array(
-		'type'        => 'text',
-		'section'     => 'title_tagline',
-		'label'       => 'Height',
-		'priority'    => 9,
-		'description' => 'Set override logo image height (can also be a percentage)',
-		) );
 
 	$wp_customize->add_control( new My_Customize_Radio_Control(
 		$wp_customize, 'logo_placement', array(
@@ -108,7 +113,6 @@ function bs4_customize_register( $wp_customize ) {
 				3 => 'Navbar',
 				4 => 'Disabled',
 				) ) ) );
-
 
 	// Layout
 	/**

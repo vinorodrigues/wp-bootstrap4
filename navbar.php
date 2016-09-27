@@ -17,12 +17,15 @@ $navbar_band_class = $band_class;
 $navbar_container = boolval( get_theme_mod( 'navbar_container', 0 ) );
 $navbar_placement = get_theme_mod( 'navbar_placement', 0 );
 
-if ($logo_placement == 3) {
-	$navbar_logo = bs4_get_logo_img('brand-logo');
-	if (!$navbar_logo) $navbar_brand = get_bloginfo('name', 'display');
-	else $navbar_brand = $navbar_logo;
-} else $navbar_brand = '';
-$navbar_brand .= get_theme_mod( 'navbar_brand', '' );
+$navbar_brand = apply_filters('bs4_navbar_brand', false);
+if (false === $navbar_brand) {
+	if ($logo_placement == 3) {
+		$navbar_logo = bs4_get_logo_img('brand-logo');
+		if (!$navbar_logo) $navbar_brand = get_bloginfo('name', 'display');
+		else $navbar_brand = $navbar_logo;
+	} else $navbar_brand = '';
+	$navbar_brand .= get_theme_mod( 'navbar_brand', '' );
+}
 
 // $navbar_icon = get_theme_mod( 'navbar_icon', false );
 $navbar_search = boolval( get_theme_mod( 'navbar_search', 0 ) );
