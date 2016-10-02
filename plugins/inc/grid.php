@@ -15,9 +15,12 @@ function ts_bootstrap4_row_sc( $atts, $content = null, $tag = '' ) {
 	$bs4_singletons['in_row'] = false;
 
 	$output = '';
-	if (isset($bs4_singletons['columns']) && is_array($bs4_singletons['columns']) && (!empty($bs4_singletons['columns'])))
+	if (isset($bs4_singletons['columns']) && is_array($bs4_singletons['columns']) &&
+		(!empty($bs4_singletons['columns']))) {
 		foreach ($bs4_singletons['columns'] as $col)
 			$output .= $col;
+		unset($bs4_singletons['columns']);
+	}
 
 	return '<div' . bs4_get_shortcode_class($atts, 'row') . '>' . $output . '</div>';
 }
@@ -33,15 +36,15 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 
 	if (is_array($atts)) {
 		if (key_exists('size', $atts) && !key_exists('md', $atts)) $atts['md'] = $atts['size'];
-		if (key_exists('pull', $atts) && !key_exists('md-pull', $atts)) $atts['md-pull'] = $atts['pull'];
-		if (key_exists('push', $atts) && !key_exists('md-push', $atts)) $atts['md-push'] = $atts['push'];
-		if (key_exists('offset', $atts) && !key_exists('md-offset', $atts)) $atts['md-offset'] = $atts['offset'];
+		if (key_exists('pull', $atts) && !key_exists('pull-md', $atts)) $atts['pull-md'] = $atts['pull'];
+		if (key_exists('push', $atts) && !key_exists('push-md', $atts)) $atts['push-md'] = $atts['push'];
+		if (key_exists('offset', $atts) && !key_exists('offset-md', $atts)) $atts['offset-md'] = $atts['offset'];
 
 		if (key_exists('print', $atts) && !key_exists('pr', $atts)) $atts['pr'] = $atts['print'];
 		if (key_exists('size', $atts) && !key_exists('pr', $atts)) $atts['pr'] = $atts['size'];
-		if (key_exists('pull', $atts) && !key_exists('pr-pull', $atts)) $atts['pr-pull'] = $atts['pull'];
-		if (key_exists('push', $atts) && !key_exists('pr-push', $atts)) $atts['pr-push'] = $atts['push'];
-		if (key_exists('offset', $atts) && !key_exists('pr-offset', $atts)) $atts['pr-offset'] = $atts['offset'];
+		if (key_exists('pull', $atts) && !key_exists('pull-pr', $atts)) $atts['pull-pr'] = $atts['pull'];
+		if (key_exists('push', $atts) && !key_exists('push-pr', $atts)) $atts['push-pr'] = $atts['push'];
+		if (key_exists('offset', $atts) && !key_exists('offset-pr', $atts)) $atts['offset-pr'] = $atts['offset'];
 
 
 		// legacy - from WP-Bootstrap2, backward compatability
@@ -66,25 +69,25 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 			'md' => false,
 			'lg' => false,
 			'xl' => false,
-			'xs-pull' => false,
-			'sm-pull' => false,
-			'md-pull' => false,
-			'lg-pull' => false,
-			'xl-pull' => false,
-			'xs-push' => false,
-			'sm-push' => false,
-			'md-push' => false,
-			'lg-push' => false,
-			'xl-push' => false,
-			'xs-offset' => false,
-			'sm-offset' => false,
-			'md-offset' => false,
-			'lg-offset' => false,
-			'xl-offset' => false,
+			'pull-xs' => false,
+			'pull-sm' => false,
+			'pull-md' => false,
+			'pull-lg' => false,
+			'pull-xl' => false,
+			'push-xs' => false,
+			'push-sm' => false,
+			'push-md' => false,
+			'push-lg' => false,
+			'push-xl' => false,
+			'offset-xs' => false,
+			'offset-sm' => false,
+			'offset-md' => false,
+			'offset-lg' => false,
+			'offset-xl' => false,
 			'pr' => false,
-			'pr-pull' => false,
-			'pr-push' => false,
-			'pr-offset' => false,
+			'pull-pr' => false,
+			'push-pr' => false,
+			'offset-pr' => false,
 		), $atts, $tag);
 
 	$class = '';
@@ -92,8 +95,10 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 		if ($value !== false) {
 			if (('pr' == $key) && (intval($value) == 0)) {
 				$class .= 'hidden-print ';
-			} else {
+			} elseif (in_array($key, array('xs','sm','md','lg','xl'))) {
 				$class .= 'col-' . $key . '-' . intval($value) . ' ';
+			} else {
+				$class .= $key . '-' . intval($value) . ' ';
 			}
 		}
 	}

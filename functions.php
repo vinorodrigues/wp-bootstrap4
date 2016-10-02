@@ -190,8 +190,7 @@ function get_theme_file_uri($filename) {
  * Enqueue scripts and styles.
  */
 function bs4_scripts() {
-	$theme = wp_get_theme();
-	$t_ver = $theme->version;
+	$t_ver = wp_get_theme()->version;
 
 	// CSS
 
@@ -407,5 +406,6 @@ if ( USE_ONEPAGE )
  */
 if ( USE_WOOCOMMERCE )
 	include_once 'woocommerce/wc-functions.php';
+
 
 /* oef */

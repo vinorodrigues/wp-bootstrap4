@@ -78,8 +78,8 @@ function bs4_scroll_menu_scripts() {
 		true );
 
 	$struct = bs4_scroll_menu_get_navbar_struct();
-	// $xs = array('scrolled');
-	// $xu = array('unscrolled');
+	$xs = array('');
+	$xu = array('');
 	if ($struct['cs'] != $struct['cu']) {
 		$xs[] = $struct['cs'];
 		$xu[] = $struct['cu'];

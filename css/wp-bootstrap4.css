@@ -2,10 +2,6 @@
 /**
  * wp-bootstrap4.css
  */
-/* @import "compass"; */
-/**
- * @see: http://www.elegantthemes.com/blog/tips-tricks/how-to-use-sass-with-wordpress-a-step-by-step-guide
- */
 /* -------------------- THEME SPECIFIC FIXES TO HTML -------------------- */
 .heading h1 a {
   color: inherit;

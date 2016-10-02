@@ -75,17 +75,31 @@ function bs4_headernav($container_class = '', $menu_class = '') {
 }
 
 function bs4_content_class($sidebar_position) {
-	$o = 'col-xs-12';
+	$classes = array();
+	$classes[] = 'col-xs-12';
 	switch ($sidebar_position) {
-		case 1: $o .= ' col-md-8 push-md-4 col-lg-9 push-lg-3'; break;
-		case 2: $o .= ' col-md-8 col-lg-9'; break;
-		case 3: $o .= ' col-md-6 push-md-3 col-lg-8 push-lg-2'; break;
+		case 1:
+			$classes[] = 'col-md-8';
+			$classes[] = 'push-md-4';
+			$classes[] = 'col-lg-9';
+			$classes[] = 'push-lg-3';
+			break;
+		case 2:
+			$classes[] = 'col-md-8';
+			$classes[] = 'col-lg-9';
+			break;
+		case 3:
+			$classes[] = 'col-md-6';
+			$classes[] = 'push-md-3';
+			$classes[] = 'col-lg-8';
+			$classes[] = 'push-lg-2';
+			break;
 	};
-	if ( bs4_get_option('equalheights') ) $o .= ' eh';
-	$o .= ' col-pr-12';
-	if (($sidebar_position == 1) || ($sidebar_position == 3)) $o .= ' push-pr-0';
-	$o .= ' content';
-	return $o;
+	if ( bs4_get_option('equalheights') ) $classes[] = 'eh';
+	$classes[] = 'col-pr-12';
+	if (($sidebar_position == 1) || ($sidebar_position == 3)) $$classes[]= 'push-pr-0';
+	$classes[] = 'content';
+	return implode(' ', apply_filters('bs4_content_class', $classes));
 }
 
 function bs4_body_attribs($class = '') {
@@ -195,10 +209,11 @@ if ($color)
 <?php
 if ($container_segments == 0) {
 	echo '<div class="' . $container_class . ' folio">';
+	do_action('bs4_header_before');
 } else {
+	do_action('bs4_header_before');
 	echo '<div class="header">';
 }
-do_action('bs4_header_before');
 ?>
 
 <header id="header" class="section">

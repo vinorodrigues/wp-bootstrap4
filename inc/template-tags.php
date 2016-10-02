@@ -8,6 +8,12 @@
 
 
 /**
+ */
+remove_filter( 'the_content', 'wpautop' );
+remove_filter( 'the_excerpt', 'wpautop' );
+
+
+/**
  * expert_more filter
  */
 function bs4_excerpt_more( $more ) {

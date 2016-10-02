@@ -6,6 +6,31 @@
 jQuery(document).ready(function($) {
 	"use strict";
 
+	function panelHeight() {
+		var innerPanel = $('.onepageInner'),
+			windowHeight = $(window).height(),
+			firstPanelTop = Math.ceil( $('.onepage-0').position().top );
+		windowHeight = windowHeight - firstPanelTop;
+
+		$('.onepage').css({minHeight: windowHeight+'px'});
+
+		innerPanel.each(function() {
+			var innerPanelHeight = $(this).outerHeight(),
+				halfHeight = (windowHeight - innerPanelHeight) / 2;
+			if (innerPanelHeight < windowHeight) {
+				$(this).css({marginTop: halfHeight+'px'});
+			} else {
+				$(this).css({marginTop: '0'});
+			}
+		});
+	}
+
+	panelHeight();
+
+	$(window).resize(function() {
+		panelHeight();
+	});
+
 	$('a.page-scroll').bind('click', function(event) {
 		var $anchor = $(this);
 		$('html, body').stop().animate({

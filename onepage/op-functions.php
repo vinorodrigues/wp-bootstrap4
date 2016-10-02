@@ -79,6 +79,25 @@ add_action( 'admin_enqueue_scripts', 'bs4_onepage_admin_enqueue_scripts' );
 
 /* ---------- Filters ---------- */
 
+
+/**
+ */
+function bs4_onepage_post_class($classes) {
+	$classes[] = 'onepageInner';
+	return $classes;
+}
+
+add_filter( 'post_class', 'bs4_onepage_post_class' );
+
+/**
+ */
+function bs4_onepage_content_class($classes) {
+	$classes[] = 'onepageOuter';
+	return $classes;
+}
+
+add_filter( 'bs4_content_class', 'bs4_onepage_content_class' );
+
 /**
  */
 function bs4_onepage_frontpage_template( $default ) {

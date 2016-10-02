@@ -17,8 +17,6 @@ if (has_bs4_footer_bar()) :
 
 	$has_widebar = is_active_sidebar( 'sidebar-8' );
 
-	var_dump_pre($has_widebar);
-
 	if ($has_widebar) {
 		switch ( $cnt ) {
 			case 1: $class = 'col-xs-12 col-md-6'; break;
