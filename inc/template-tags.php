@@ -9,8 +9,10 @@
 
 /**
  */
-remove_filter( 'the_content', 'wpautop' );
-remove_filter( 'the_excerpt', 'wpautop' );
+if (defined('NO_AUTOP') && NO_AUTOP) {
+	remove_filter( 'the_content', 'wpautop' );
+	remove_filter( 'the_excerpt', 'wpautop' );
+}
 
 
 /**
