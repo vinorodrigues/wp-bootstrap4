@@ -25,5 +25,3 @@ define( 'USE_WP45_LOGO', function_exists('get_custom_logo') );
 
 define( 'USE_ONEPAGE', true );
 define( 'USE_WOOCOMMERCE', file_exists(trailingslashit(dirname(__FILE__)).'woocommerce/wc-functions.php') );
-
-define( 'NO_AUTOP', true );

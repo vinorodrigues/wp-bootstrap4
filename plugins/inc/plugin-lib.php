@@ -83,65 +83,6 @@ function bs4_add_shortcode($tag, $func, $do_clean = true) {
 	}
 }
 
-/**
- * Cleaner shortcodes - fix know issue with wpautop
- * @see: https://paulund.co.uk/remove-line-breaks-in-shortcodes
- */
-/*
-function bs4_shortcode_unautop( $content ) {
-	global $bs4_singletons;
-
-	if (!isset($bs4_singletons) || !isset($bs4_singletons['shortcodes']) ||
-		!is_array($bs4_singletons['shortcodes']) ) {
-		return $content;
-	}
-
-	$tagregexp = join( '|', array_map( 'preg_quote', array_values( $bs4_singletons['shortcodes'] ) ) );
-
-	$pattern =
-		  '/'
-		. '<p>'                              // Opening paragraph
-		. '\\s*+'                            // Optional leading whitespace
-		. '('                                // 1: The shortcode
-		.     '\\['                          // Opening bracket
-		.     "($tagregexp)"                 // 2: Shortcode name
-		.     '(?![\\w-])'                   // Not followed by word character or hyphen
-		                                     // Unroll the loop: Inside the opening shortcode tag
-		.     '[^\\]\\/]*'                   // Not a closing bracket or forward slash
-		.     '(?:'
-		.         '\\/(?!\\])'               // A forward slash not followed by a closing bracket
-		.         '[^\\]\\/]*'               // Not a closing bracket or forward slash
-		.     ')*?'
-		.     '(?:'
-		.         '\\/\\]'                   // Self closing tag and closing bracket
-		.     '|'
-		.         '\\]'                      // Closing bracket
-		.         '(?:'                      // Unroll the loop: Optionally, anything between the opening and closing shortcode tags
-		.             '[^\\[]*+'             // Not an opening bracket
-		.             '(?:'
-		.                 '\\[(?!\\/\\2\\])' // An opening bracket not followed by the closing shortcode tag
-		.                 '[^\\[]*+'         // Not an opening bracket
-		.             ')*+'
-		.             '\\[\\/\\2\\]'         // Closing shortcode tag
-		.         ')?'
-		.     ')'
-		. ')'
-		. '\\s*+'                            // optional trailing whitespace
-		. '<\\/p>'                           // closing paragraph
-		. '/s';
-
-	return preg_replace( $pattern, '$1', $content );
-}
-
-remove_filter( 'the_content', 'wpautop' );
-add_filter( 'the_content', 'wpautop', 99 );
-add_filter( 'the_content', 'bs4_shortcode_unautop', 100 );
-
-remove_filter( 'the_excerpt', 'wpautop' );
-add_filter( 'the_excerpt', 'wpautop', 99 );
-add_filter( 'the_excerpt', 'bs4_shortcode_unautop', 100 );
-*/
-
 
 /* --------------- in case raw-scripts.php is not included --------------- */
 
