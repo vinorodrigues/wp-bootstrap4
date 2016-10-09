@@ -393,6 +393,24 @@ function bs4_widgets_init() {
 
 add_action( 'widgets_init', 'bs4_widgets_init' );
 
+/**
+ * Place back to top button
+ */
+function bs4_back_to_top_button() {
+?>
+<a
+	id="back-to-top"
+	href="#top"
+	class="btn btn-info back-to-top"
+	role="button"
+	title="Return to the top of page"
+	data-toggle="tooltip"
+	data-placement="left"><?php bs4_i('top'); ?></a>
+<?php
+}
+
+add_action( 'wp_footer', 'bs4_back_to_top_button', 990 );
+
 
 /**
  * OnePage addon ====================

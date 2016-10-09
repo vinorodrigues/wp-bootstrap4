@@ -95,16 +95,7 @@ endif;
 
 <?php echo '</div>'; // .folio or .footer ?>
 
-<div class="ends">
-<?php wp_footer(); ?>
-<a
-	id="back-to-top"
-	href="#top"
-	class="btn btn-info back-to-top"
-	role="button"
-	title="Return to the top of page"
-	data-toggle="tooltip"
-	data-placement="left"><?php bs4_i('top'); ?></a>
-</div>
+<div class="ends"><?php wp_footer(); ?></div>
+
 </body>
 </html>
