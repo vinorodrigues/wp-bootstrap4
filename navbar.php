@@ -66,7 +66,9 @@ if ($navbar_container) {
 	class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
 
 if (!empty($navbar_brand)) {
-	?><a class="navbar-brand" href="<?= bs4_home_url() ?>" rel="home"><?= $navbar_brand ?></a><?php
+	echo apply_filters( 'bs4_navbar_brand_link',
+		'<a class="navbar-brand" href="' .
+		bs4_home_url() . '" rel="home">' . $navbar_brand . '</a>' );
 }
 
 $menu_class = 'nav navbar-nav';
