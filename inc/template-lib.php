@@ -84,8 +84,8 @@ function get_bs4_user_i($id_or_email = null, $before = '', $after = '', $attribs
 function bs4_navbar_color_class($navbar_color, $custom_color_class = false) {
 	switch ($navbar_color) {
 		case 1: return 'bg-inverse'; break;
-		case 2: return 'bg-default'; break;
-		case 3: return 'bg-faded'; break;
+		case 2: return 'bg-faded'; break;
+		case 3: return 'bg-default'; break;
 		case 4: return 'bg-transparent'; break;
 		case 5:
 			$ret = 'bg-custom';
