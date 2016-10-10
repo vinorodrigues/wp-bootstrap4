@@ -120,7 +120,7 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 		$attr = array();
 		if (!empty(trim($attachment->post_excerpt)))
 			$attr['aria-describedby'] = $selector . '-' . $id;
-		if ($is_f) $attr['class'] = 'figure-img img-fluid img-rounded';
+		if ($is_f) $attr['class'] = 'figure-img img-fluid rounded';
 
 		if (!empty($atts['link']) && ('file' === $atts['link'])) {
 			$image_output = wp_get_attachment_link(

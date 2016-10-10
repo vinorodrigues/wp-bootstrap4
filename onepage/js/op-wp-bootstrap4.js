@@ -41,6 +41,10 @@ jQuery(document).ready(function($) {
 	});
 
 	if (onepage.placement == 1) {
+		$('body').css({
+			'margin-top': parseInt($('#main-navbar').css('height'))
+			});
+
 		if (onepage.offset == 50)
 			onepage.offset = parseInt($('html').css('marginTop')) +
 				parseInt($('#main-navbar').css('height')) +
@@ -53,4 +57,9 @@ jQuery(document).ready(function($) {
 		})
 	}
 
+	if (onepage.placement == 2) {
+		$('body').css({
+			'margin-bottom': parseInt($('#main-navbar').css('height'))
+			});
+	}
 });

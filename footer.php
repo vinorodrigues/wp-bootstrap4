@@ -57,8 +57,8 @@ if ($has_mn) {
 	$mn_c_class = '';
 	switch ($cr_position) {
 		case 1: $mn_c_class .= ''; break;
-		case 2: $mn_c_class .= ' pull-xs-left'; break;
-		default: $mn_c_class .= ' pull-xs-right'; break;
+		case 2: $mn_c_class .= ' float-xs-left'; break;
+		default: $mn_c_class .= ' float-xs-right'; break;
 	}
 	$mn_class .= ' hidden-print';
 }

@@ -291,16 +291,19 @@ if ($container_segments == 0) {
 <?php
 do_action('bs4_header_after');
 $main_band_class = $band_class;
+$main_attribs = apply_filters('bs4_main_attribs', '');
+if ($main_attribs != '') $main_attribs = ' ' . $main_attribs;
 if ($container_segments == 0) {
 	$main_band_class .= ' ' . apply_filters('bs4_main_class', 'main');
 } else {
-	echo '</div><div class="' . apply_filters('bs4_main_class', 'main') . '">';
+	echo '</div><div class="' . apply_filters('bs4_main_class', 'main') . '"' .
+	$main_attribs . '>';
 }
 ?>
 
 <main id="main" class="section">
 <div
-  class="<?= $main_band_class ?>"><div
+  class="<?= $main_band_class ?>"<?php if ($container_segments == 0) echo $main_attribs; ?>><div
   class="row"><div
   id="content" class="<?= bs4_content_class($sidebar_position) ?>">
 <?php if (function_exists('bs4_breadcrumb') && !is_404()) bs4_breadcrumb(); ?>

@@ -18,14 +18,14 @@ input[type="search"].form-control::-webkit-search-results-decoration {
   text-align: center !important;
 }
 
-@media (max-width: 543px) {
+@media (max-width: 575px) {
   .center-xs-down {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
   }
 }
-@media (min-width: 544px) {
+@media (min-width: 576px) {
   .center-sm {
     margin-left: auto !important;
     margin-right: auto !important;

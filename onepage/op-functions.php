@@ -142,6 +142,17 @@ function bs4_onepage_main_class( $class ) {
 add_filter( 'bs4_main_class', 'bs4_onepage_main_class' );
 
 /**
+ *
+ */
+function bs4_onepage_main_attribs( $attribs ) {
+	if ($attribs != '') $attribs .= ' ';
+	$attribs = 'style="min-height: 768px"';
+	return $attribs;
+}
+
+add_filter( 'bs4_main_attribs', 'bs4_onepage_main_attribs' );
+
+/**
  */
 function bs4_onepage_body_class( $classes ) {
 	if (in_front_page()) $classes[] = 'onepager';

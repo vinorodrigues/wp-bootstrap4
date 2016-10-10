@@ -10,12 +10,12 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <div class="alert alert-warning alert-404">
 
-<div class="center-sm m-b-3">
+<div class="center-sm mb-3">
 	<h1 class="display-1"><?php bs4_i('warning', '', ' ') ?>404</h1>
 	<p class="text-danger text-xs-center">The page you were looking for could not be found.</p>
 </div>
 <?php if ($referer) {
-	echo '<p class="text-info text-xs-center m-b-3">';
+	echo '<p class="text-info text-xs-center mb-3">';
 	bs4_i('info lg', '', ' ');
 	echo 'You landed on this page from <a href="' . $referer . '" title="Go back" onclick="history.back();return false;">here</a>.';
 	echo '</p>';

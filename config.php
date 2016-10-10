@@ -11,7 +11,7 @@ define( 'FONTAWESOME_VERSION', '4.6.3' );  // Fontawesome version - @see http://
 define( 'MATCH_HEIGHT_VERSION', '0.7.0' );  // matchHeight.js - @see http://brm.io/jquery-match-height
 define( 'BOOTSTRAP_PR_VERSION', '0.0.1' );
 
-define( 'AVATAR_CLASS', 'img-circle' );
+define( 'AVATAR_CLASS', 'rounded-circle' );
 
 define( 'POST_THUMBNAIL_X', 96 );
 define( 'POST_THUMBNAIL_Y', 96 );
@@ -19,7 +19,7 @@ define( 'POST_THUMBNAIL_CLASS', 'img-thumbnail' );
 
 define( 'FEATURED_IMAGE_X', 1156 );
 define( 'FEATURED_IMAGE_Y', 289 );
-define( 'FEATURED_IMAGE_CLASS', 'img-rounded' );
+define( 'FEATURED_IMAGE_CLASS', 'rounded' );
 
 define( 'USE_WP45_LOGO', function_exists('get_custom_logo') );
 

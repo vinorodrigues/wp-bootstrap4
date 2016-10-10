@@ -49,7 +49,7 @@ $onepage_top_id = $wp_query->post->ID;
 
 $menu_items = has_nav_menu('front-page') ?
 	wp_get_nav_menu_items( 'front-page', array() ) :
-	array();
+	false;
 $onepage_items = array();
 
 $onepage_items[] = array(
@@ -57,7 +57,7 @@ $onepage_items[] = array(
 	'id' => ($page_on_front >= 0) ? $page_on_front : get_the_ID(),
 	);
 
-foreach ($menu_items as $key => $value) {
+if ($menu_items) foreach ($menu_items as $key => $value) {
 	$typ = false;
 	switch ($value->type) {
 		case 'post_type' :
