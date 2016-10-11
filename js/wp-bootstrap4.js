@@ -3,6 +3,16 @@
  */
 
 jQuery(document).ready(function($) {
+
+	var navBar = $('#main-navbar');
+	if (navBar) {
+		var barHeight = Math.ceil( navBar.outerHeight() );
+		$('body.nav-fixed-top').css({'padding-top': barHeight+'px'});
+		$('body.nav-fixed-bottom').css({'padding-bottom': barHeight+'px'});
+	}
+
+	$('#back-to-top').tooltip();
+
 	$(window).scroll(function () {
 		if ($(this).scrollTop() > 50) {
 			$('#back-to-top').fadeIn();
@@ -20,5 +30,4 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-	$('#back-to-top').tooltip();
 });

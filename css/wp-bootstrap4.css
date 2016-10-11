@@ -409,5 +409,8 @@ ul.gallery li {
     content: none;
   }
 }
+#wpadminbar {
+  opacity: 0.9;
+}
 
 /*# sourceMappingURL=wp-bootstrap4.css.map */

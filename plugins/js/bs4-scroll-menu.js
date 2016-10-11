@@ -5,6 +5,12 @@
 jQuery(document).ready(function($) {
 	"use strict";
 
+	$("#main-navbar").css({
+		'-webkit-transition': 'all 0.8s ease',
+		'-moz-transition': 'all 0.8s ease',
+		'transition': 'all 0.8s ease'
+	});
+
 	$(window).scroll(function() {
 		var cur_pos = $(window).scrollTop();
 		if (cur_pos > scroll_menu.offset) {
