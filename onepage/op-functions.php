@@ -42,6 +42,7 @@ function bs4_onepage_scripts() {
 	wp_localize_script( 'op-wp-bootstrap4',
 		'onepage',
 		array(
+			'banded' => get_theme_mod('container_segments', 0),
 			'placement' => get_theme_mod('navbar_placement', 0),
 			'offset' => apply_filters('bs4_scroll_offset_px', 50) ) );
 

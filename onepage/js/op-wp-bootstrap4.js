@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 
 	function panelHeight() {
 		var windowHeight = $(window).height();
-		if (onepage.placement > 0) {
+		if ((onepage.banded != 1) & (onepage.placement > 0)) {
 			var navBar = $('#main-navbar');
 			if (navBar) windowHeight = windowHeight - navBar.outerHeight();
 		}

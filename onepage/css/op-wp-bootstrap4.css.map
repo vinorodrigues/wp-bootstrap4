@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACC,6BAAQ;EACP,WAAW,EAAE,YAAY",
+"sources": ["file:///Users/vino/Dropbox/Dev/wp-bootstrap4/onepage/scss/op-wp-bootstrap4.scss"],
 "names": [],
 "file": "op-wp-bootstrap4.css"
 }
