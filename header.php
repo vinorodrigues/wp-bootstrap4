@@ -97,7 +97,7 @@ function bs4_content_class($sidebar_position) {
 	};
 	if ( bs4_get_option('equalheights') ) $classes[] = 'eh';
 	$classes[] = 'col-pr-12';
-	if (($sidebar_position == 1) || ($sidebar_position == 3)) $$classes[]= 'push-pr-0';
+	if (($sidebar_position == 1) || ($sidebar_position == 3)) $classes[]= 'push-pr-0';
 	$classes[] = 'content';
 	return implode(' ', apply_filters('bs4_content_class', $classes));
 }
