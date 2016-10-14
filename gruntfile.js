@@ -79,7 +79,7 @@ module.exports = function(grunt) {
 		uglify: {
 			js: {
 				options: {
-					manage: false
+					mangle: false
 				},
 				files: [{
 					expand: true,
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
 			},
 			js_plugins: {
 				options: {
-					manage: false
+					mangle: false
 				},
 				files: [{
 					expand: true,
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
 			},
 			js_onepage: {
 				options: {
-					manage: false
+					mangle: false
 				},
 				files: [{
 					expand: true,
