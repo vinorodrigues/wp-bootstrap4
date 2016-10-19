@@ -107,4 +107,3 @@ if ($navbar_container) { ?></div></nav><?php }
 else { ?></nav></div><?php }
 
 endif;
-?>
