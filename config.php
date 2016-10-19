@@ -3,7 +3,7 @@
  * Configuration file
  */
 
-define( 'BOOTSTRAP_VERSION', '4.0.0-alpha.4' );  // Bootstrap Version - @see http://v4-alpha.getbootstrap.com/
+define( 'BOOTSTRAP_VERSION', '4.0.0-alpha.5' );  // Bootstrap Version - @see http://v4-alpha.getbootstrap.com/
 define( 'JQUERY_VERSION', '3.1.1' );  // JQuery Version - @see http://jquery.com
 define( 'TETHER_VERSION', '1.3.7' );  // Tether Version - @see http://tether.io
 define( 'EASING_VERSION', '1.3' );  // Easing Version - @see http://gsgd.co.uk/sandbox/jquery/easing
