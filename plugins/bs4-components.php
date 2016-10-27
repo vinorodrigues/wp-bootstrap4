@@ -14,7 +14,7 @@ include_once 'inc/plugin-lib.php';
 include_once 'inc/buttons.php';
 // include_once 'inc/cards.php';  // TODO
 include_once 'inc/jumbotron.php';
-include_once 'inc/tags.php';
+include_once 'inc/badges.php';
 include_once 'inc/alerts.php';
 include_once 'inc/typography.php';
 include_once 'inc/tabs.php';

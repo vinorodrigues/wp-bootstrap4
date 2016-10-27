@@ -30,7 +30,6 @@ include_once 'inc/fix-post-template.php';
 include_once 'inc/fix-comment-template.php';
 include_once 'inc/fix-general-template.php';
 include_once 'inc/fix-link-template.php';
-include_once 'inc/fix-tag-class.php';
 
 // addon plugins
 if (!bs4_get_option('block_plugins')) {

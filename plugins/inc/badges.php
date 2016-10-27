@@ -1,11 +1,11 @@
 <?php
 /*
- * Tag Shortcode (was 'Label')
+ * Badge Shortcode (was 'Label')
  */
 
 include_once 'plugin-lib.php';
 
-function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
+function ts_bootstrap4_badge_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_shortcode_atts(
 		array(
 			'type' => 'default',
@@ -14,11 +14,11 @@ function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
 		), $atts, $tag);
 	$attribs = bs4_filter_booleans($attribs, array('pill'));
 
-	$class = 'tag';
-	if ($attribs['pill']) $class .= ' tag-pill';
+	$class = 'badge';
+	if ($attribs['pill']) $class .= ' badge-pill';
 
 	if (in_array($attribs['type'], array('default', 'primary', 'success', 'info', 'warning', 'danger'))) {
-		$class .= ' tag-' . $attribs['type'];
+		$class .= ' badge-' . $attribs['type'];
 	}
 
 	$output = '<span' . bs4_get_shortcode_class($atts, $class) . '>';
@@ -28,4 +28,4 @@ function ts_bootstrap4_tag_sc( $atts, $content = null, $tag = '' ) {
 	return $output;
 }
 
-bs4_add_shortcode( 'tag', 'ts_bootstrap4_tag_sc' );
+bs4_add_shortcode( 'badge', 'ts_bootstrap4_badge_sc' );

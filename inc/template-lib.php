@@ -234,7 +234,7 @@ function get_bs4_post_meta() {
 
 			$o .= '<a href="' . get_category_link($id) . '"';
 			if (!empty($cat->description)) $o .= ' title=" ' . $cat->description . '"';
-			$o .= ' class="tag tag-' . $cls . '">' . $cat->name . '</a>';
+			$o .= ' class="badge badge-' . $cls . '">' . $cat->name . '</a>';
 			if ($i != 0) $o .= '<span class="sep"> </span>';
 		}
 		$o .= '</span>';
@@ -259,7 +259,7 @@ function get_bs4_post_meta() {
 
 			$o .= '<a href="' . get_tag_link($id) . '"';
 			if (!empty($tag->description)) $o .= ' title=" ' . $tag->description . '"';
-			$o .= ' class="tag tag-pill tag-' . $cls . ' t-link-' . $id . '">' . $tag->name . '</a>';
+			$o .= ' class="badge badge-pill badge-' . $cls . ' tag-link-' . $id . '">' . $tag->name . '</a>';
 			if ($i != 0) $o .= '<span class="sep"> </span>';
 		}
 		$o .= '</span>';

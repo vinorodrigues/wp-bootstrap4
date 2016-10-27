@@ -272,7 +272,7 @@ add_filter( 'the_password_form', 'bs4_password_form' );
  *
  */
 function bs4_wp_list_categories($links) {
-	$links = str_replace(array(' (', ')'), array(' <span class="tag tag-default">', '</span>'), $links);
+	$links = str_replace(array(' (', ')'), array(' <span class="badge badge-default">', '</span>'), $links);
 	return $links;
 }
 
