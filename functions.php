@@ -195,7 +195,8 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' . DOTMIN . '.css' );
+		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' .
+			(bs4_get_option('flexbox') ? '-flex' : '') . DOTMIN . '.css' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;

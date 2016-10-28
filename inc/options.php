@@ -10,6 +10,7 @@
 if (!defined('BS4_THOPT_SLUG')) define( 'BS4_THOPT_SLUG' , 'tswp_bootstrap4_options' );
 if (!defined('BS4_THOPT_SEC1')) define( 'BS4_THOPT_SEC1' , BS4_THOPT_SLUG.'_1' );
 if (!defined('BS4_THOPT_SEC2')) define( 'BS4_THOPT_SEC2' , BS4_THOPT_SLUG.'_2' );
+if (!defined('BS4_THOPT_SEC3')) define( 'BS4_THOPT_SEC3' , BS4_THOPT_SLUG.'_3' );
 
 
 include_once 'lib-ts/opt-common.php';
@@ -40,6 +41,11 @@ function bs4_options_page() {
 	?>Styling &amp; Script<?php
 	if ($active_tab != 2) echo '</a>'; else echo '</span>';
 
+	if ($active_tab != 3) echo '<a href="?page='.BS4_THOPT_SLUG.'&tab=3" class="nav-tab">';
+	else echo '<span class="nav-tab nav-tab-active">';
+	?>Plugins<?php
+	if ($active_tab != 3) echo '</a>'; else echo '</span>';
+
 	?></h2><?php
 
 
@@ -55,6 +61,10 @@ function bs4_options_page() {
 		case 2:
 			settings_fields(BS4_THOPT_SEC2);
 			do_settings_sections(BS4_THOPT_SEC2);
+			break;
+		case 3:
+			settings_fields(BS4_THOPT_SEC3);
+			do_settings_sections(BS4_THOPT_SEC3);
 			break;
 		default:
 			echo '<h2>Oops</h2>';
@@ -104,18 +114,21 @@ function bs4_get_option($option = null) {
 
 		$array1 = (array) get_option(BS4_THOPT_SEC1);
 		$array2 = (array) get_option(BS4_THOPT_SEC2);
-		$saved = array_merge($array1, $array2);
+		$array3 = (array) get_option(BS4_THOPT_SEC3);
+		$saved = array_merge($array1, $array2, $array3);
 		$defaults = array(
-			'block_plugins' => false,
 			'bootstrap_css' => '',
-			'equalheights' => false,
-			'bootstrap_js' => '',
-			'jquery_js' => '',
-			'icon_set' => 'fa',
+			'bootstrap_js'  => '',
+			'flexbox'       => false,
+			'equalheights'  => false,
+			'jquery_js'     => '',
+			'icon_set'      => 'fa',
 
-			'inline_css' => '',
-			'inline_js' => '',
-			'footer_text' => '',
+			'inline_css'    => '',
+			'inline_js'     => '',
+			'footer_text'   => '',
+
+			'block_plugins' => false,
 			);
 		$bs4_singletons['options'] = wp_parse_args( $saved, $defaults );
 	}
@@ -134,7 +147,7 @@ function bs4_get_option($option = null) {
  */
 function bs4_dependancies_callback() {
 	?><p class="description">This section changes the look, feel and behavior of the theme's framework.
-	<br /><i class="dashicons dashicons-warning"></i> <b>Use with caution!</b></p><?php
+	<br><span class="dashicons dashicons-warning"></span> <b>Use with caution!</b></p><?php
 }
 
 /**
@@ -142,7 +155,14 @@ function bs4_dependancies_callback() {
  */
 function bs4_styling_callback() {
 	?><p class="description">This section allows you to add custom CSS and additional JavaScript.
-	<br /><i class="dashicons dashicons-warning"></i> <b>Warning:</b> Invalid code may cause the site to fail.</p><?php
+	<br><span class="dashicons dashicons-warning"></span> <b>Warning:</b> Invalid code may cause the site to fail.</p><?php
+}
+
+/**
+ *
+ */
+function bs4_plugins_callback() {
+	?><p class="description">The theme includes several Bootstrap helper plugins.</p><?php
 }
 
 /**
@@ -151,7 +171,7 @@ function bs4_styling_callback() {
 function bs4_opts_bool_callback($args) {
 	?><input type="checkbox" id="<?= $args[1] ?>" name="<?= $args[0].'['.$args[1].']' ?>" value="1" <?= checked(1, bs4_get_option($args[1]), false) ?> />
 	<label for="<?= $args[1] ?>"><?= $args[2] ?></label><?php
-	if (isset($args[3])) { ?><br /><span class="description"><?= $args[3] ?></span><?php }
+	if (isset($args[3])) { ?><br><p class="description"><?= $args[3] ?></p><?php }
 }
 
 /**
@@ -166,7 +186,7 @@ function bs4_opts_url_callback($args) {
 
 	if ($has_err) echo '<span class="form-invalid">';
 	?><input type="url" style="width:100%" id="<?= $args[1] ?>" name="<?= $args[0].'['.$args[1].']' ?>" value="<?= bs4_get_option($args[1]); ?>" />
-	<br /><span class="description"><?= $args[2] ?></span><?php
+	<br><p class="description"><?= $args[2] ?></p><?php
 	if ($has_err) echo '</span>';
 }
 
@@ -175,7 +195,7 @@ function bs4_opts_url_callback($args) {
  */
 function bs4_opts_text_callback($args) {
 	?><input type="text" style="width:100%" id="<?= $args[1] ?>" name="<?= $args[0].'['.$args[1].']' ?>" value="<?= bs4_get_option($args[1]); ?>" />
-	<br /><span class="description"><?= $args[2] ?></span><?php
+	<br><p class="description"><?= $args[2] ?></p><?php
 }
 
 /**
@@ -256,9 +276,10 @@ function bs4_sanitize_options( $input ) {
 	$output = array();
 	foreach ($input as $key => $value) $output[$key] = $value;
 
-	__bs4_san_bool('block_plugins', $input, $output);
+	__bs4_san_bool('flexbox', $input, $output);
 	__bs4_san_bool('equalheights', $input, $output);
 	__bs4_san_bool('wide_footer', $input, $output);
+	__bs4_san_bool('block_plugins', $input, $output);
 	__bs4_san_url('bootstrap_css', $input, $output);
 	__bs4_san_url('bootstrap_js', $input, $output);
 	__bs4_san_url('jquery_js', $input, $output);
@@ -276,28 +297,15 @@ function bs4_sanitize_options( $input ) {
 function bs4_admin_init() {
 	register_setting( BS4_THOPT_SEC1, BS4_THOPT_SEC1, 'bs4_sanitize_options' );
 	register_setting( BS4_THOPT_SEC2, BS4_THOPT_SEC2, 'bs4_sanitize_options' );
+	register_setting( BS4_THOPT_SEC3, BS4_THOPT_SEC3, 'bs4_sanitize_options' );
 
 	/* ---------------------------------------------------------------- */
 
 	add_settings_section(
-		'bs4_dependancies',           // ID section
-		'Theme Dependancies',         // Title
-		'bs4_dependancies_callback',  // description callback
-		BS4_THOPT_SEC1 );             // page
-
-	add_settings_field(
-		'block_plugins',               // ID
-		'Don\'t load theme plugins',  // Title
-		'bs4_opts_bool_callback',     // callback
-		BS4_THOPT_SEC1,               // page
-		'bs4_dependancies',           // section
-		array(                        // args
-			BS4_THOPT_SEC1,
-			'block_plugins',
-			'Inhibit from loading the WP-Bootsrap4 plugins.',
-			'WP theme purists will want this on, but there will be significant loss of theme functionality.'
-			)
-		);
+		'bs4_dependancies',
+		'Theme Dependancies',
+		'bs4_dependancies_callback',
+		BS4_THOPT_SEC1 );
 
 	add_settings_field(
 		'bootstrap_css',
@@ -308,21 +316,10 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'bootstrap_css',
-			'URL to <code>boostrap.css</code> file. Leave blank for local copy (version ' . BOOTSTRAP_VERSION . ').',
+			'URL to <code>boostrap.css</code> file.' .
+				' Leave blank for local copy (version ' .
+				BOOTSTRAP_VERSION . ').',
 			)
-		);
-
-	add_settings_field(
-		'equalheights',
-		'Enable Equal Heights',
-		'bs4_opts_bool_callback',
-		BS4_THOPT_SEC1,
-		'bs4_dependancies',
-		array(
-			BS4_THOPT_SEC1,
-			'equalheights',
-			'Use the <code>match-heights.js</code> JavaScript to create equal high columns.',
-			'Do not use this option if you have set for the FlexBox variant of Bootstrap.')
 		);
 
 	add_settings_field(
@@ -334,8 +331,43 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'bootstrap_js',
-			'URL to <code>boostrap.js</code> file.',
+			'URL to <code>boostrap.js</code> file.' .
+				' Leave blank for local copy (version ' .
+				BOOTSTRAP_VERSION . ').',
 			)
+		);
+
+	add_settings_field(
+		'flexbox',
+		'Enable Flexbox',
+		'bs4_opts_bool_callback',
+		BS4_THOPT_SEC1,
+		'bs4_dependancies',
+		array(
+			BS4_THOPT_SEC1,
+			'flexbox',
+			'Use the local copy of <code>bootstrap-flex.css</code> <i>(version ' .
+				BOOTSTRAP_VERSION . ')</i>.',
+			'<span class="dashicons dashicons-warning"></span> ' .
+				'Do not use this option if you have enabled Equal Heights.' .
+				'<br>' .
+				'<span class="dashicons dashicons-info"></span> ' .
+				'Flexbox is not supported by some browsers and may impede some user experience.')
+		);
+
+	add_settings_field(
+		'equalheights',
+		'Enable Equal Heights',
+		'bs4_opts_bool_callback',
+		BS4_THOPT_SEC1,
+		'bs4_dependancies',
+		array(
+			BS4_THOPT_SEC1,
+			'equalheights',
+			'Use the <code>match-heights.js</code> JavaScript (version ' .
+				MATCH_HEIGHT_VERSION . ') to create equal high columns.',
+			'<span class="dashicons dashicons-warning"></span> ' .
+				'Do not use this option if you have set for the Flexbox variant of Bootstrap.')
 		);
 
 	add_settings_field(
@@ -347,7 +379,8 @@ function bs4_admin_init() {
 		array(
 			BS4_THOPT_SEC1,
 			'jquery_js',
-			'URL to <code>jquery.js</code> file. Leave blank for local copy (version ' . JQUERY_VERSION . ').',
+			'URL to <code>jquery.js</code> file. Leave blank for local copy (version ' .
+				JQUERY_VERSION . ').',
 			)
 		);
 
@@ -403,7 +436,7 @@ function bs4_admin_init() {
 			BS4_THOPT_SEC2,
 			'footer_text',
 			'Text to display in the copyright section of the footer.' .
-				'<br /><small>Use <kbd>%c%</kbd> for &copy; symbol,' .
+				'<br><small>Use <kbd>%c%</kbd> for &copy; symbol,' .
 				' <kbd>%y%</kbd> for current year &amp' .
 				' <kbd>%n%</kbd> for site name, or' .
 				' just <kbd>%x%</kbd> to disable the footer.' .
@@ -424,6 +457,27 @@ function bs4_admin_init() {
 			)
 		);
 
+	/* ---------------------------------------------------------------- */
+
+	add_settings_section(
+		'bs4_plugins',                // ID section
+		'Theme Plugins',              // Title
+		'bs4_plugins_callback',       // description callback
+		BS4_THOPT_SEC3 );             // page
+
+	add_settings_field(
+		'block_plugins',               // ID
+		'Don\'t load theme plugins',  // Title
+		'bs4_opts_bool_callback',     // callback
+		BS4_THOPT_SEC3,               // page
+		'bs4_plugins',                // section
+		array(                        // args
+			BS4_THOPT_SEC3,
+			'block_plugins',
+			'Inhibit from loading the WP-Bootsrap4 plugins.',
+			'WP theme purists will want this on, but there will be significant loss of theme functionality.'
+			)
+		);
 }
 
 add_action('admin_init', 'bs4_admin_init');
