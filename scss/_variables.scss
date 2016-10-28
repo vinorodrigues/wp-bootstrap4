@@ -58,12 +58,12 @@
   }
 }
 
-/// Replace `$search` with `$replace` in `$string`
-/// @author Hugo Giraudel
-/// @param {String} $string - Initial string
-/// @param {String} $search - Substring to replace
-/// @param {String} $replace ('') - New value
-/// @return {String} - Updated string
+// Replace `$search` with `$replace` in `$string`
+// @author Hugo Giraudel
+// @param {String} $string - Initial string
+// @param {String} $search - Substring to replace
+// @param {String} $replace ('') - New value
+// @return {String} - Updated string
 @function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
@@ -73,6 +73,15 @@
 
   @return $string;
 }
+
+@mixin _assert-starts-at-zero($map) {
+  $values: map-values($map);
+  $first-value: nth($values, 1);
+  @if $first-value != 0 {
+    @warn "First breakpoint in `$grid-breakpoints` must start at 0, but starts at #{$first-value}.";
+  }
+}
+
 
 // General variable structure
 //
@@ -172,6 +181,7 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
+@include _assert-starts-at-zero($grid-breakpoints);
 
 
 // 7. Grid containers
@@ -221,6 +231,7 @@ $font-size-xs:   .75rem !default;
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
 
+$font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;
 
 $font-size-h1: 2.5rem !default;
@@ -526,12 +537,12 @@ $dropdown-header-color:          $gray-light !default;
 $zindex-dropdown-backdrop:  990 !default;
 $zindex-navbar:            1000 !default;
 $zindex-dropdown:          1000 !default;
-$zindex-popover:           1060 !default;
-$zindex-tooltip:           1070 !default;
 $zindex-navbar-fixed:      1030 !default;
 $zindex-navbar-sticky:     1030 !default;
-$zindex-modal-bg:          1040 !default;
+$zindex-modal-backdrop:    1040 !default;
 $zindex-modal:             1050 !default;
+$zindex-popover:           1060 !default;
+$zindex-tooltip:           1070 !default;
 
 
 // 16. Navbar
