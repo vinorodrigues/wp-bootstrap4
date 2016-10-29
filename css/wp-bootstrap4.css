@@ -221,6 +221,7 @@ header.home-page {
 .head-c-1 .h-i,
 .head-c-2 .h-i,
 .head-c-3 .h-i {
+  display: block;
   text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
