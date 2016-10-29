@@ -65,6 +65,10 @@ a img.alignleft {
   margin: 0.25rem 1rem 1rem 0;
 }
 
+img.alignnone, img.aligncenter, img.alignright, img.alignleft {
+  display: block;
+}
+
 /* -------------------- THEME SPECIFIC UI -------------------- */
 .content article:not(:last-child) {
   margin-bottom: 3rem;

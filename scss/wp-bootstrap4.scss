@@ -73,6 +73,15 @@ a img.alignleft {
 	margin: ($spacer-y / 4) $spacer-x $spacer-y 0;
 }
 
+img {
+	&.alignnone,
+	&.aligncenter,
+	&.alignright,
+	&.alignleft {
+		display: block;
+	}
+}
+
 /* -------------------- THEME SPECIFIC UI -------------------- */
 
 .content article:not(:last-child) {
