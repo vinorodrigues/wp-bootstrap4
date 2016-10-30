@@ -292,6 +292,10 @@ header.home-page {
 }
 
 /* ----- Navbar fixes ----- */
+.navbar-brand img {
+  display: inline-block;
+}
+
 @media screen {
   body.admin-bar .navbar-fixed-top {
     top: 32px;
