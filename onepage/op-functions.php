@@ -94,7 +94,7 @@ add_action( 'admin_enqueue_scripts', 'bs4_onepage_admin_enqueue_scripts' );
  */
 function bs4_onepage_content_class($classes) {
 	// $classes[] = 'onepageOuter';
-	$classes[] = 'onepage-inner';
+	if (in_front_page()) $classes[] = 'onepage-inner';
 	return $classes;
 }
 
@@ -147,8 +147,10 @@ add_filter( 'bs4_main_class', 'bs4_onepage_main_class' );
  *
  */
 function bs4_onepage_main_attribs( $attribs ) {
-	if ($attribs != '') $attribs .= ' ';
-	$attribs = 'style="min-height: 768px"';
+	if (in_front_page()) {
+		if ($attribs != '') $attribs .= ' ';
+		$attribs = 'style="min-height: 768px"';
+	}
 	return $attribs;
 }
 

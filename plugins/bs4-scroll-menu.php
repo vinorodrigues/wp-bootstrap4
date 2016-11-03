@@ -159,7 +159,7 @@ function bs4_scroll_menu_customize_register( $wp_customize ) {
 	$s->panel = 'pnl_cust_navbar';
 	$s->title = 'General Navbar';
 
-	$wp_customize->add_setting( 'i_navbar_when', array( 'defult' => false ) );
+	$wp_customize->add_setting( 'i_navbar_when', array( 'defult' => 0 ) );
 	$wp_customize->add_setting( 'i_navbar_color', array( 'default' => 0 ) );
 	$wp_customize->add_setting( 'i_navbar_color_custom', array( 'default' => '#000000' ) );
 	$wp_customize->add_setting( 'i_navbar_shading', array( 'default' => 0 ) );
