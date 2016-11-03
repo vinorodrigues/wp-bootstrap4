@@ -135,14 +135,22 @@ $spacers: (
     y: 0
   ),
   1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
     x: $spacer-x,
     y: $spacer-y
   ),
-  2: (
+  4: (
     x: ($spacer-x * 1.5),
     y: ($spacer-y * 1.5)
   ),
-  3: (
+  5: (
     x: ($spacer-x * 3),
     y: ($spacer-y * 3)
   )
@@ -154,8 +162,10 @@ $border-width: 1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:    #fff !default;
-$body-color: $gray-dark !default;
+$body-bg:       #fff !default;
+$body-color:    $gray-dark !default;
+$inverse-bg:    $gray-dark !default;
+$inverse-color: $gray-lighter !default;
 
 
 // 5. Links
@@ -310,9 +320,14 @@ $table-cell-padding:            .75rem !default;
 $table-sm-cell-padding:         .3rem !default;
 
 $table-bg:                      transparent !default;
+$table-bg-inverse:              $gray-dark !default;
+
 $table-bg-accent:               rgba(0,0,0,.05) !default;
 $table-bg-hover:                rgba(0,0,0,.075) !default;
 $table-bg-active:               $table-bg-hover !default;
+
+$table-head-bg:                 $gray-lighter !default;
+$table-head-color:              $gray !default;
 
 $table-border-width:            $border-width !default;
 $table-border-color:            $gray-lighter !default;
@@ -390,7 +405,7 @@ $input-border-radius-sm:         $border-radius-sm !default;
 
 $input-bg-focus:                 $input-bg !default;
 $input-border-focus:             #66afe9 !default;
-$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba(102,175,233,.6) !default;
+$input-box-shadow-focus:         $input-box-shadow, 0 0 8px rgba($input-border-focus,.6) !default;
 $input-color-focus:              $input-color !default;
 
 $input-color-placeholder:        #999 !default;
@@ -461,7 +476,7 @@ $custom-select-border-color:  $input-border-color !default;
 $custom-select-border-radius: $border-radius !default;
 
 $custom-select-focus-border-color: #51a7e8 !default;
-$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5) !default;
+$custom-select-focus-box-shadow:   inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-sm-padding-y: .2rem !default;
 $custom-select-sm-font-size: 75% !default;
@@ -842,6 +857,7 @@ $thumbnail-box-shadow:        0 1px 2px rgba(0,0,0,.075) !default;
 // 30. Figures
 
 $figure-caption-font-size: 90% !default;
+$figure-caption-color:     $gray-light !default;
 
 
 // 31. Breadcrumbs
