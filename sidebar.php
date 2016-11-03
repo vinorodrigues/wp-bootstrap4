@@ -24,19 +24,29 @@ function bs4_sidebar_class($sidebar_position, $first = true) {
 	return $o;
 }
 
+do_action('tha_content_bottom');
 ?></div><?php
+do_action('tha_content_after');
+
 if ($sidebar_position != 0) :
+	do_action('tha_sidebars_before');
 	?><div class="<?= bs4_sidebar_class($sidebar_position) ?>"><?php
+	do_action('tha_sidebar_top');
 	dynamic_sidebar('sidebar-1');
 	if (($sidebar_position != 3) && is_active_sidebar('sidebar-2'))
 		dynamic_sidebar('sidebar-2');
+	do_action('tha_sidebar_bottom');
 	?></div><?php
 endif;
 if ($sidebar_position == 3) :
 	?><div class="<?= bs4_sidebar_class($sidebar_position, false) ?>"><?php
+	do_action('tha_sidebar_top');
 	dynamic_sidebar('sidebar-2');
+	do_action('tha_sidebar_bottom');
 	?></div><?php
 endif;
+if ($sidebar_position != 0)
+	do_action('tha_sidebars_after');
 
 if ( bs4_get_option('equalheights') )
 	bs4_equal_heights('.eh', 99);

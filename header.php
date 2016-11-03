@@ -192,9 +192,13 @@ if ($color)
 		'tagline-color',
 		'.heading .subtitle { color: ' . $color . ' !important; }' );
 
-?><!DOCTYPE html>
+function bs4_html_before() { echo '<!DOCTYPE html>'; }
+add_action('tha_html_before', 'bs4_html_before', 10);
+do_action('tha_html_before');
+
+?>
 <html <?php language_attributes(); ?>>
-<head>
+<?php do_action('tha_header_before'); ?><head><?php do_action('tha_header_top'); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -204,15 +208,18 @@ if ($color)
 	// comments_popup_script(640, 480);
 	// XXX: http://www.quickonlinetips.com/archives/2014/06/add-popup-comments-in-wordpress-posts/
 ?>
-</head>
-<body <?php bs4_body_attribs(); ?>><a name="top"></a>
+<?php do_action( 'tha_header_bottom' ); ?></head><?php do_action('tha_header_after'); ?>
+<body <?php bs4_body_attribs(); ?>>
 <?php
+
+do_action('tha_body_top');
+
 if ($container_segments == 0) {
-	echo '<div class="' . $container_class . ' folio">';
+	echo '<div id="top" class="' . $container_class . ' folio">';
 	do_action('bs4_header_before');
 } else {
 	do_action('bs4_header_before');
-	echo '<div class="header">';
+	echo '<div id="top" class="header">';
 }
 ?>
 
@@ -304,6 +311,6 @@ if ($container_segments == 0) {
 <main id="main" class="section">
 <div
   class="<?= $main_band_class ?>"<?php if ($container_segments == 0) echo $main_attribs; ?>><div
-  class="row"><div
-  id="content" class="<?= bs4_content_class($sidebar_position) ?>">
+  class="row"><?php do_action('tha_content_before'); ?><div
+  id="content" class="<?= bs4_content_class($sidebar_position) ?>"><?php do_action('tha_content_top'); ?>
 <?php if (function_exists('bs4_breadcrumb') && !is_404()) bs4_breadcrumb(); ?>

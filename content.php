@@ -5,14 +5,19 @@
 
 global $band_class;
 
-$post_class = '';
+$post_class = 'entry';
 $title_class = is_singular() ? '' : 'h2';
 $is_card = is_sticky() && !is_singular() && !is_search();
 $has_thumbnail = has_post_thumbnail( get_the_ID() );
 
+do_action('tha_entry_before');
+
 ?>
 <article <?php post_class($post_class); ?>>
 <?php
+
+do_action('tha_entry_top');
+
 $title_class = 'title';
 if ( $is_card ) {
 	?><div class="card card-block sticky"><?php
@@ -69,7 +74,9 @@ if ( is_search() ) {
 		?></a><div class="media-body"><?php
 	}
 
+	do_action('tha_entry_content_before');
 	the_content('More...');  // display Post
+	do_action('tha_entry_content_after');
 
 	if ($has_thumbnail && !is_singular()) {
 		?></div></div><?php
@@ -94,5 +101,9 @@ if (is_singular() && $link) { ?>
 if ( $is_card ) {
 	?></span></div><?php
 }
+
+do_action('tha_entry_bottom');
 ?>
 </article>
+<?php
+do_action('tha_entry_after');

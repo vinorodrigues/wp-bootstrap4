@@ -167,10 +167,28 @@ function bs4_setup() {
 			'flex-width' => true,
 			'flex-height' => true,
 		) );  /* */
+
+	add_theme_support( 'tha_hooks', array('html', 'body', 'head', 'header',
+		'content', 'entry', 'comments', 'sidebars', 'sidebar', 'footer') );
 }
 endif; // wp_bootstrap_setup
 
 add_action( 'after_setup_theme', 'bs4_setup' );
+
+/**
+ * Determines, whether the specific hook type is actually supported.
+ * @see https://github.com/zamoose/themehookalliance
+ *
+ * @param bool $bool true
+ * @param array $args The hook type being checked
+ * @param array $registered All registered hook types
+ *
+ * @return bool
+ */
+function bs4_current_theme_supports_tha( $bool, $args, $registered ) {
+	return in_array( $args[0], $registered[0] ) || in_array( 'all', $registered[0] );
+}
+add_filter( 'current_theme_supports-tha_hooks', 'bs4_current_theme_supports_tha', 10, 3 );
 
 /**
  * Get URI of style file, if exists in child, else parent

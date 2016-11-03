@@ -68,9 +68,13 @@ if ($has_mn) {
 
 <?php if ($container_segments != 0) { echo '</div><div class="footer">'; } ?>
 
+<?php do_action('tha_footer_before'); ?>
 <footer id="footer" class="section"><div class="<?= $band_class ?>">
 <?php
+do_action('tha_footer_top');
 get_template_part( 'sidebar-footer' );
+do_action('tha_footer_bottom');
+
 if ($has_mn || $has_cr) :
 	?><div class="row footing"><?php
 
@@ -92,10 +96,11 @@ if ($has_mn || $has_cr) :
 endif;
 ?>
 </div></footer>
+<?php do_action('tha_footer_after'); ?>
 
 <?php echo '</div>'; // .folio or .footer ?>
 
 <div class="ends"><?php wp_footer(); ?></div>
-
+<?php do_action('tha_body_bottom'); ?>
 </body>
 </html>

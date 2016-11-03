@@ -1,5 +1,7 @@
 <?php
 
+do_action('tha_content_while_before');
+
 $post_count = 0;
 while ( have_posts() ) {
 	the_post();  // Load Post
@@ -13,6 +15,8 @@ while ( have_posts() ) {
 
 	bs4_link_pages();
 }
+
+do_action('tha_content_while_after');
 
 if ($post_count == 0)
 	get_template_part( 'content-not-found' );

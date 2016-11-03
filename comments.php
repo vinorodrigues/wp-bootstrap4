@@ -166,6 +166,9 @@ function bs4_comment_form($args = array(), $post_id = null) {
 
 	comment_form_2($args);
 }
+
+do_action('tha_comments_before');
+
 ?>
 
 <section id="comments" class="comments hidden-print mt-2">
@@ -212,4 +215,6 @@ else :
 		}
 endif;
 
-?></section>
+?></section><?
+
+do_action('tha_comments_after');
