@@ -231,19 +231,21 @@ add_filter('comment_reply_link', 'bs4_comment_reply_link' /* , 10, 4 */ );
  * Default gravatar
  */
 function bs4_avatar_defaults($avatars) {
-	$gravatar = get_template_directory_uri() . '/img/user.png';
-	$avatars[$gravatar] = 'Theme Default';
+	$avatars[get_template_directory_uri() . '/img/user.svg'] = 'Theme Default';
+	$avatars[get_template_directory_uri() . '/img/user-dark.svg'] = 'Theme Dark';
+	$avatars[get_template_directory_uri() . '/img/user-light.svg'] = 'Theme Light';
 	return $avatars;
 }
 
 add_filter( 'avatar_defaults', 'bs4_avatar_defaults' );
 
 if ( defined('WP_DEBUG') && WP_DEBUG ) :
-	function get_gravatar_off( $avatar, $id_or_email, $size = '96' ) {
-		$img = get_template_directory_uri() .'/img/user.png';
+	function get_gravatar_off( $avatar, $id_or_email, $size ) {
+		$img = get_template_directory_uri() .'/img/debug.svg';
 		return "<img src='{$img}' class='avatar avatar-{$size} " .
 			AVATAR_CLASS . "' height='{$size}' width='{$size}'>";
 	}
+
 	add_filter('get_avatar', 'get_gravatar_off', 1, 3);
 endif;
 
