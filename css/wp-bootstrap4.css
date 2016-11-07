@@ -12,13 +12,13 @@
   text-decoration: none;
 }
 
-img.float-xs-left,
-figure.float-xs-left {
+img.float-left,
+figure.float-left {
   padding-right: 1rem !important;
 }
 
-img.float-xs-right,
-figure.float-xs-right {
+img.float-right,
+figure.float-right {
   padding-left: 1rem !important;
 }
 
