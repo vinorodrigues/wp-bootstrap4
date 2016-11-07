@@ -216,17 +216,18 @@ do_action('tha_body_top');
 
 if ($container_segments == 0) {
 	echo '<div id="top" class="' . $container_class . ' folio">';
-	do_action('bs4_header_before');
+	do_action('tha_leader_before');
 } else {
-	do_action('bs4_header_before');
+	do_action('tha_leader_before');
 	echo '<div id="top" class="header">';
 }
-?>
 
+?>
 <header id="header" class="section">
 <?php
 	$do_header = (($head_a & 3) == 0) && ($logo_placement != 3) && ($logo_placement != 4);
 
+	do_action('tha_leader_top');
 	if ($do_header) echo '<div class="' . $band_class . ' heading"><div class="row">';
 
 	switch ($logo_placement) {
@@ -293,10 +294,12 @@ if ($container_segments == 0) {
 			?></div><?php
 		}
 	}
-?></header>
 
+	do_action('tha_leader_bottom');
+?></header>
 <?php
-do_action('bs4_header_after');
+
+do_action('tha_leader_after');
 $main_band_class = $band_class;
 $main_attribs = apply_filters('bs4_main_attribs', '');
 if ($main_attribs != '') $main_attribs = ' ' . $main_attribs;
