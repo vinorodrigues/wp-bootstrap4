@@ -65,6 +65,10 @@ function bs4_shortcode_atts( $default_pairs, $atts, $shortcode = '') {
 	return shortcode_atts($default_pairs, $atts, $shortcode);
 }
 
+function bs4_shortcode_error($tag, $msg, $atts = null) {
+	return '[' . $tag . ' <span style="color:yellow;background-color:red;padding:0 0.33rem">error="' . $msg . '"</span>]';
+}
+
 /**
  * Cleaner shortcodes
  */

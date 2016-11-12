@@ -401,6 +401,23 @@ ul.gallery {
 	}
 }
 
+/* ----- Cards ----- */
+
+.card {
+
+	& > img {
+		max-width: 100%;
+		display: block;
+
+	}
+
+	.card-img,
+	.card-img-top,
+	.card-img-bottom {
+		width: 100%;
+	}
+}
+
 /* ----- Print ----- */
 
 @media print {

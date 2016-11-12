@@ -375,6 +375,17 @@ ul.gallery li {
   margin-right: auto;
 }
 
+/* ----- Cards ----- */
+.card > img {
+  max-width: 100%;
+  display: block;
+}
+.card .card-img,
+.card .card-img-top,
+.card .card-img-bottom {
+  width: 100%;
+}
+
 /* ----- Print ----- */
 @media print {
   .heading {

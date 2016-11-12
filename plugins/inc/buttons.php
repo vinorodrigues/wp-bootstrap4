@@ -26,6 +26,8 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 			'type' => 'secondary',
 			'size' => false,
 			'link' => false,
+			'url' => false,  // link fallbak
+			'href' => false,  // link fallback
 			'action' => false,
 			'class' => false,
 			'active' => false,
@@ -37,6 +39,11 @@ function ts_bootstrap4_button_sc( $atts, $content = null, $tag = '' ) {
 	$attribs = bs4_filter_booleans($attribs, array('active', 'disabled', 'outline'));
 	$attribs['type'] = strtolower($attribs['type']);
 	$attribs['size'] = strtolower($attribs['size']);
+
+	if ($attribs['link'] === false && $attribs['href'] !== false)
+		$attribs['link'] = $attribs['href'];
+	if ($attribs['link'] === false && $attribs['url'] !== false)
+		$attribs['link'] = $attribs['url'];
 
 	$class = 'btn';
 	if (in_array($attribs['type'], array('primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'))) {
