@@ -124,7 +124,7 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'images/',
-					src: ['**/*.{png,jpg,gif}', '!~*', '!_*', '!~/*'],
+					src: ['**/*.{png,jpg,gif,svg}', '!~*', '!_*', '!~/*'],
 					dest: 'img/'
 				}]
 			}
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 				tasks: ['uglify:js_onepage']
 			},
 			imagemin: {
-				files: ['images/*.png', 'images/*.jpg'],
+				files: ['images/*.png', 'images/*.jpg', 'images/*.gif', 'images/*.svg'],
 				tasks: ['imagemin']
 			}
 		}
