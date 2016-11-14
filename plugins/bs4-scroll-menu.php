@@ -10,12 +10,13 @@ License: MIT License
 License URI: http://opensource.org/licenses/mit-license.html
 */
 
-if (!defined('SCROLL_MENU_URL')) {
+if (!defined('BS4_SCROLL_MENU_URL')) {
 	if (defined('BOOTSTRAP4_LOADS_PLUGINS') && BOOTSTRAP4_LOADS_PLUGINS)
-		define( 'SCROLL_MENU_URL', trailingslashit(get_template_directory_uri()).'plugins');
+		define( 'BS4_SCROLL_MENU_URL', trailingslashit(get_template_directory_uri()).'plugins');
 	else
-		define( 'SCROLL_MENU_URL', esc_url(plugin_dir_url( __FILE__ )));
+		define( 'BS4_SCROLL_MENU_URL', esc_url(plugin_dir_url( __FILE__ )));
 }
+if (!defined('DOTMIN')) define( 'DOTMIN', '.min' );
 
 /**
  * Tecsmith Options, does noting, just a place holder
@@ -72,7 +73,7 @@ function bs4_scroll_menu_scripts() {
 
 
 	wp_register_script( 'bs4-scroll-menu',
-		SCROLL_MENU_URL . '/js/bs4-scroll-menu' . DOTMIN . '.js',
+		BS4_SCROLL_MENU_URL . '/js/bs4-scroll-menu' . DOTMIN . '.js',
 		array( 'jquery' ),
 		false,
 		true );

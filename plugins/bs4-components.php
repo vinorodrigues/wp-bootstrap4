@@ -10,6 +10,14 @@ License: MIT License
 License URI: http://opensource.org/licenses/mit-license.html
 */
 
+if (!defined('BS4_COMPONENTS_URL')) {
+	if (defined('BOOTSTRAP4_LOADS_PLUGINS') && BOOTSTRAP4_LOADS_PLUGINS)
+		define( 'BS4_COMPONENTS_URL', trailingslashit(get_template_directory_uri()).'plugins');
+	else
+		define( 'BS4_COMPONENTS_URL', esc_url(plugin_dir_url( __FILE__ )));
+}
+if (!defined('DOTMIN')) define( 'DOTMIN', '.min' );
+
 include_once 'inc/plugin-lib.php';
 include_once 'inc/buttons.php';
 include_once 'inc/lists.php';
