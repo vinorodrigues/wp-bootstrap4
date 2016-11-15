@@ -36,8 +36,6 @@ function ts_bootstrap4_card_sc( $atts, $content = null, $tag = '' ) {
 		), $atts, $tag);
 	$attribs = bs4_filter_booleans($attribs, array('block', 'inverse'));
 
-	var_dump_pre($attribs, '$attribs');
-
 	$class = 'card';
 	if ($attribs['block'] != false) $class .= ' card-block';
 	if ($attribs['inverse'] != false) $class .= ' card-inverse';
