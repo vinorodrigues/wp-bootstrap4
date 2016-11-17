@@ -76,7 +76,7 @@ function bs4_headernav($container_class = '', $menu_class = '') {
 
 function bs4_content_class($sidebar_position) {
 	$classes = array();
-	$classes[] = 'col-xs-12';
+	$classes[] = 'col-12';
 	switch ($sidebar_position) {
 		case 1:
 			$classes[] = 'col-md-8';
@@ -232,29 +232,29 @@ if ($container_segments == 0) {
 
 	switch ($logo_placement) {
 	case 1:  // center
-		?><div class="col-xs-12 head-c-1"><?= bs4_heading() ?></div><?php
+		?><div class="col-12 head-c-1"><?= bs4_heading() ?></div><?php
 	case 3:  // Navbar
 	case 4:  // Disabled
 		if (($head_a & 1) != 0) {
-			?><div class="col-xs-12 head-c-2 hidden-print"><?php
+			?><div class="col-12 head-c-2 hidden-print"><?php
 			echo bs4_headernav() ?></div><?php
 		}
 		if (($head_a & 2) != 0) {
-			?><div class="col-xs-12 head-c-3 hidden-print"><?php
+			?><div class="col-12 head-c-3 hidden-print"><?php
 			dynamic_sidebar('sidebar-3') ?></div><?php
 		}
 		break;
 	case 2:  // right
 		if ($head_a == 0) {
-			?><div class="col-xs-12 head-r-1"><?= bs4_heading() ?></div><?php
+			?><div class="col-12 head-r-1"><?= bs4_heading() ?></div><?php
 		} else {
-			?><div class="col-xs-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?php
+			?><div class="col-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?php
 				echo bs4_heading() ?></div><?php
-			?><div class="col-xs-12 col-sm-7 pull-sm-5 <?php
+			?><div class="col-12 col-sm-7 pull-sm-5 <?php
 				echo $head_a !== 3 ? 'head-r-2 ' : '' ?>hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-r-2">';  // nested row
+			if ($head_a === 3) echo '<div class="row"><div class="col-12 head-r-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
-			if ($head_a === 3) echo '</div><div class="col-xs-12 head-r-3">';
+			if ($head_a === 3) echo '</div><div class="col-12 head-r-3">';
 			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
 			if ($head_a === 3) echo '</div></div>';
 			?></div><?php
@@ -262,15 +262,15 @@ if ($container_segments == 0) {
 		break;
 	default:  // left
 		if ($head_a == 0) {
-			?><div class="col-xs-12 head-l-1"><?= bs4_heading() ?></div><?php
+			?><div class="col-12 head-l-1"><?= bs4_heading() ?></div><?php
 		} else {
-			?><div class="col-xs-12 col-sm-5 col-pr-12 head-l-1"><?php
+			?><div class="col-12 col-sm-5 col-pr-12 head-l-1"><?php
 				echo bs4_heading() ?></div><?php
-			?><div class="col-xs-12 col-sm-7 <?php
+			?><div class="col-12 col-sm-7 <?php
 				echo $head_a !== 3 ? 'head-l-2 ' : '' ?>hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-xs-12 head-l-2">';  // nested row
+			if ($head_a === 3) echo '<div class="row"><div class="col-12 head-l-2">';  // nested row
 			if (($head_a & 1) != 0) echo bs4_headernav();
-			if ($head_a === 3) echo '</div><div class="col-xs-12 head-l-3">';
+			if ($head_a === 3) echo '</div><div class="col-12 head-l-3">';
 			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
 			if ($head_a === 3) echo '</div></div>';
 			?></div><?php
@@ -286,7 +286,7 @@ if ($container_segments == 0) {
 		if ( ! empty( $header_image ) ) {
 			?><div id="feature" class="hidden-print"><?php
 			echo '<div class="' . $band_class . ' feature">' .
-				'<div class="row"><div class="col-xs-12">';
+				'<div class="row"><div class="col-12">';
 			echo '<img src="' . $header_image .
 				'" class="header-image img-fluid ' .
 				FEATURED_IMAGE_CLASS . '">';

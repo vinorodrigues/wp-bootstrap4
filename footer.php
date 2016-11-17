@@ -42,7 +42,7 @@ $has_cr = ($cr_text === false) || !empty($cr_text);
 $has_mn = has_nav_menu( 'footer' );
 
 if ($has_cr) {
-	$cr_class = 'col-xs-12';
+	$cr_class = 'col-12';
 	switch ($cr_position) {
 		case 1: $cr_class .= ' text-xs-center'; break;
 		case 2: $cr_class .= ' text-xs-right'; break;
@@ -52,7 +52,7 @@ if ($has_cr) {
 	$cr_class .= ' col-pr-12 copyright';
 }
 if ($has_mn) {
-	$mn_class = 'col-xs-12';
+	$mn_class = 'col-12';
 	if ($has_cr && ($cr_position != 1)) $mn_class .= ' col-md-6';
 	$mn_c_class = '';
 	switch ($cr_position) {

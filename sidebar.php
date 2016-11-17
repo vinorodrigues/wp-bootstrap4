@@ -8,7 +8,7 @@
 global $sidebar_position;
 
 function bs4_sidebar_class($sidebar_position, $first = true) {
-	$o = 'col-xs-12';
+	$o = 'col-12';
 	if ($first) {
 		switch ($sidebar_position) {
 			case 1: $o .= ' col-md-4 pull-md-8 col-lg-3 pull-lg-9 sb-l'; break;

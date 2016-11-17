@@ -97,17 +97,17 @@ function bs4_comment_form($args = array(), $post_id = null) {
 	$fields = array(
 		'author' =>
 			'<div class="row">' .
-			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
+			'<div class="col-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
 			'<label for="author" class="input-group-addon">' . get_bs4_i('user fw') . '</label>' .
 			'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" class="form-control' . ($req ? ' form-control-required' : '') . '" placeholder="Name"' . $html_req . '>' .
 			'</div></div>',
 		'email' =>
-			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
+			'<div class="col-12 col-md-4 form-group"><div class="input-group' . ($req ? ' is-required' : '') . '">' .
 			'<label for="email" class="input-group-addon">' . get_bs4_i('email fw') . '</label>' .
 			'<input id="email" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" class="form-control' . ($req ? ' form-control-required' : '') . '" placeholder="Email"' . $html_req . '>' .
 			'</div></div>',
 		'url' =>
-			'<div class="col-xs-12 col-md-4 form-group"><div class="input-group">' .
+			'<div class="col-12 col-md-4 form-group"><div class="input-group">' .
 			'<label for="url" class="input-group-addon">' . get_bs4_i('link fw') . '</label>' .
 			'<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" class="form-control" placeholder="Website">' .
 			'</div></div>' .
@@ -127,13 +127,13 @@ function bs4_comment_form($args = array(), $post_id = null) {
 			'</p>',
 		'comment_field' =>
 			'<div class="row">' .
-			'<div class="col-xs-12 form-group"><div class="input-group is-required">' .
+			'<div class="col-12 form-group"><div class="input-group is-required">' .
 			'<label for="comment" class="input-group-addon">' . get_bs4_i('commenta fw') . '</label>' .
 			'<textarea id="comment" name="comment" placeholder="Comment" rows="3" class="form-control form-control-required" required></textarea>' .
 			'</div></div>' .
 			'</div>',
 		/* 'comment_notes_after' =>
-			'<div class="row"><div class="col-xs-12 form-group">' .
+			'<div class="row"><div class="col-12 form-group">' .
 			'<small class="text-muted">' .
 			'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: <code>' . allowed_tags() . '</code>' .
 			'</small>' .

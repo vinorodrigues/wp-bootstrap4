@@ -355,7 +355,7 @@ function bs4_inject_feature($fn, $html) {
 
 	$fi = 'fn_' . str_replace('-', '_', $fn);
 
-	$html = '<div class="' . $band_class . ' feature"><div class="row"><div class="col-xs-12">' .
+	$html = '<div class="' . $band_class . ' feature"><div class="row"><div class="col-12">' .
 		$html .
 		'</div></div></div>';
 
