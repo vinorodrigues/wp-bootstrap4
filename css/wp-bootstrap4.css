@@ -100,7 +100,7 @@ header.home-page {
 }
 .nav-footer li a {
   margin: 0 0.5rem;
-  color: #373a3c;
+  color: #292b2c;
 }
 .nav-footer li:first-child a {
   margin-left: 0;
@@ -114,7 +114,7 @@ header.home-page {
 }
 
 .copyright {
-  color: #818a91;
+  color: #636c72;
 }
 
 /* Fix meta items */
@@ -379,11 +379,6 @@ ul.gallery li {
 .card > img {
   max-width: 100%;
   display: block;
-}
-.card .card-img,
-.card .card-img-top,
-.card .card-img-bottom {
-  width: 100%;
 }
 
 /* ----- Print ----- */

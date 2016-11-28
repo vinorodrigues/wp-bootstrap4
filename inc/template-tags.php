@@ -142,7 +142,7 @@ function bs4_img_caption_shortcode( $output, $attr, $content ) {
 	$output .= do_shortcode( $content );
 
 	/* Append the caption text. */
-	$output .= '<figcaption class="figure-caption text-center">' . $attr['caption'] . '</figcaption>';
+	$output .= '<figcaption class="figure-caption text-xs-center">' . $attr['caption'] . '</figcaption>';
 
 	/* Close the caption </div>. */
 	$output .= '</figure>';
