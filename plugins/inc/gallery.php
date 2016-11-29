@@ -165,7 +165,7 @@ function ts_bootstrap4_post_gallery( $output, $attr, $instance ) {
 		if ( $captiontag && trim($attachment->post_excerpt) ) {
 			$output .= '<' . $captiontag .
 				' class="wp-caption-text gal-caption';
-			if ($is_f) $output .= ' figure-caption text-xs-center';
+			if ($is_f) $output .= ' figure-caption text-center';
 			$output .= '" id="' . $selector . '-' . $id . '">';
 			$output .= wptexturize($attachment->post_excerpt);
 			$output .= '</' . $captiontag . '>';

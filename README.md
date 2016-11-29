@@ -5,7 +5,7 @@ WP-Bootstrap4
 
 (_At the time of release Bootstrap 4 is in version 4.0.0-alpha.5_)
 
-This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 28-Nov-2016 - [#eb5ad73](https://github.com/twbs/bootstrap/commit/eb5ad730ee85ea02a2eba6e7e9ed1e9a8dd837f4).
+This theme is based on the [v4-dev](https://github.com/twbs/bootstrap/tree/v4-dev) branch, last pull dated 30-Nov-2016 - [#9749bab](https://github.com/twbs/bootstrap/commit/9749bab4ce07c655231cc13c1539f37d751e856b).
 
 ---
 

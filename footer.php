@@ -44,9 +44,9 @@ $has_mn = has_nav_menu( 'footer' );
 if ($has_cr) {
 	$cr_class = 'col-12';
 	switch ($cr_position) {
-		case 1: $cr_class .= ' text-xs-center'; break;
-		case 2: $cr_class .= ' text-xs-right'; break;
-		default: $cr_class .= ' text-xs-left'; break;
+		case 1: $cr_class .= ' text-center'; break;
+		case 2: $cr_class .= ' text-right'; break;
+		default: $cr_class .= ' text-left'; break;
 	}
 	if ($has_mn && ($cr_position != 1)) $cr_class .= ' col-md-6';
 	$cr_class .= ' col-pr-12 copyright';
