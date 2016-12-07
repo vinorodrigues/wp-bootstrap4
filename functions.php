@@ -193,13 +193,15 @@ add_filter( 'current_theme_supports-tha_hooks', 'bs4_current_theme_supports_tha'
 /**
  * Get URI of style file, if exists in child, else parent
  */
-function get_theme_file_uri($filename) {
-	if (!is_child_theme()) {
-		return get_template_directory_uri() . $filename;
-	} else {
-		$f = get_stylesheet_directory() . $filename;
-		if (file_exists($f)) return get_stylesheet_directory_uri() . $filename;
-		else return get_template_directory_uri() . $filename;
+if (!function_exists('get_theme_file_uri')) {
+	function get_theme_file_uri($filename) {
+		if (!is_child_theme()) {
+			return get_template_directory_uri() . $filename;
+		} else {
+			$f = get_stylesheet_directory() . $filename;
+			if (file_exists($f)) return get_stylesheet_directory_uri() . $filename;
+			else return get_template_directory_uri() . $filename;
+		}
 	}
 }
 
