@@ -5,10 +5,9 @@
 
 define( 'BOOTSTRAP_VERSION', '4.0.0-alpha.5' );  // Bootstrap Version - @see http://v4-alpha.getbootstrap.com/
 define( 'JQUERY_VERSION', '3.1.1' );  // JQuery Version - @see http://jquery.com
-define( 'TETHER_VERSION', '1.3.7' );  // Tether Version - @see http://tether.io
+define( 'TETHER_VERSION', '1.4.0' );  // Tether Version - @see http://tether.io
 define( 'EASING_VERSION', '1.3' );  // Easing Version - @see http://gsgd.co.uk/sandbox/jquery/easing
 define( 'FONTAWESOME_VERSION', '4.7.0' );  // Fontawesome version - @see http://fontawesome.io
-define( 'MATCH_HEIGHT_VERSION', '0.7.0' );  // matchHeight.js - @see http://brm.io/jquery-match-height
 define( 'BOOTSTRAP_PR_VERSION', '0.0.1' );
 
 define( 'AVATAR_CLASS', 'rounded-circle' );

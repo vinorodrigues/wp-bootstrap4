@@ -187,6 +187,8 @@ function bs4_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'navbar_color_custom', array( 'default' => '#000000' ) );
 	$wp_customize->add_setting( 'navbar_shading', array( 'default' => 0 ) );
 	$wp_customize->add_setting( 'navbar_container', array( 'default' => 0 ) );
+	$wp_customize->add_setting( 'navbar_toggler', array( 'default' => 0 ) );
+	$wp_customize->add_setting( 'navbar_tog_pos', array( 'default' => 0 ) );
 	$wp_customize->add_setting( 'navbar_placement', array( 'default' => 0 ) );
 	$wp_customize->add_setting( 'navbar_brand', array( 'default' => '', 'sanitize_callback' => 'bs4_sanitize_navbar_brand' ) );
 	// $wp_customize->add_setting( 'navbar_icon', array( 'default' => false ) );
@@ -231,6 +233,28 @@ function bs4_customize_register( $wp_customize ) {
 			1 => 'Wide with inner items aligned',
 			) ) );
 
+	$wp_customize->add_control( 'navbar_toggler', array(
+		'type'    => 'select',
+		'section' => 'cust_navbar',
+		'label'   => 'Toggler Visible',
+		'choices' => array(
+			0 => 'Extra small screen / phone',         // XS
+			1 => 'Small screen / phone',               // SM
+			2 => 'Medium screen / tablet',             // MD
+			3 => 'Large screen / desktop',             // LG
+			4 => 'Extra large screen / wide desktop',  // XL
+			) ) );
+
+	$wp_customize->add_control( 'navbar_tog_pos', array(
+		'type'        => 'select',
+		'section'     => 'cust_navbar',
+		'label'       => 'Toggler Position',
+		'choices'     => array(
+			0 => 'Left',
+			1 => 'Right',
+			),
+		'description' => '(Make sure to usa a Brand Text when selecting toggler button to the right.)' ) );
+
 	$wp_customize->add_control( 'navbar_placement', array(
 		'type'    => 'select',
 		'section' => 'cust_navbar',
@@ -242,9 +266,9 @@ function bs4_customize_register( $wp_customize ) {
 			) ) );
 
 	$wp_customize->add_control( 'navbar_brand', array(
-		'type'    => 'text',
-		'section' => 'cust_navbar',
-		'label'   => 'Brand Text',
+		'type'        => 'text',
+		'section'     => 'cust_navbar',
+		'label'       => 'Brand Text',
 		'description' => '(Disabled when Site Identity Logo Placement is in the Navbar.)',
 		) );
 

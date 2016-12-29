@@ -20,7 +20,6 @@ function bs4_sidebar_class($sidebar_position, $first = true) {
 		$o .= ' col-sm-6 col-md-3 col-lg-2 sb-r';
 	}
 	$o .= ' sidebar hidden-print';
-	if ( bs4_get_option('equalheights') ) $o .= ' eh';
 	return $o;
 }
 
@@ -47,6 +46,3 @@ if ($sidebar_position == 3) :
 endif;
 if ($sidebar_position != 0)
 	do_action('tha_sidebars_after');
-
-if ( bs4_get_option('equalheights') )
-	bs4_equal_heights('.eh', 99);

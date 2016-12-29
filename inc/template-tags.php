@@ -173,7 +173,7 @@ add_filter('widget_tag_cloud_args', 'bs4_widget_tag_cloud_args');
 function bs4_wp_link_pages_item($item, $i, $is_current, $is_disabled) {
 	if (strpos($item, '<li') !== false) {
 		$item = inject_class_in_tag('li', 'page-item', $item);
-		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
+		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);  // AAAAAAAAAA
 		if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
 		$item = inject_class_in_tag('a', 'page-link', $item);
 	}
@@ -189,7 +189,7 @@ add_filter('wp_link_pages_item', 'bs4_wp_link_pages_item', 10, 4);
 function bs4_paginate_links_item($item, $is_current, $is_disabled) {
 	if (strpos($item, '<li') !== false) {
 		$item = inject_class_in_tag('li', 'page-item', $item);
-		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);
+		if ($is_current) $item = inject_class_in_tag('li', 'active', $item);  // AAAAAAAAAA
 		if ($is_disabled) $item = inject_class_in_tag('li', 'disabled', $item);
 		$item = inject_class_in_tag('a', 'page-link', $item);
 	}

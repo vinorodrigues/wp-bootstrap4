@@ -40,7 +40,6 @@ if (has_bs4_footer_bar()) :
 	}
 
 	$classf = ' sidebar hidden-print';
-	if ( bs4_get_option('equalheights') && ($cnt > 1) ) $classf .= ' ef';
 
 	?><div class="row footbar"><?php
 	for ($i = 0; $i <= ($cnt - 1); $i++) {
@@ -54,8 +53,5 @@ if (has_bs4_footer_bar()) :
 		?></div><?php
 	}
 	?></div><?php
-
-	if ( bs4_get_option('equalheights') && (count($sidebars) > 1) )
-		bs4_equal_heights('.ef', 101);
 endif;
 ?>

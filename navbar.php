@@ -31,8 +31,14 @@ if (false === $navbar_brand) {
 $navbar_search = boolval( get_theme_mod( 'navbar_search', 0 ) );
 
 $navbar_class = array('navbar');
-$navbar_class[] = bs4_navbar_color_class( get_theme_mod( 'navbar_color', 0 ) );
+$navbar_class[] = bs4_navbar_toggler_class( get_theme_mod( 'navbar_toggler', 0 ) );
 $navbar_class[] = bs4_navbar_shading_class( boolval( get_theme_mod( 'navbar_shading', 0 ) ) );
+$navbar_class[] = bs4_navbar_color_class( get_theme_mod( 'navbar_color', 0 ) );
+
+$navbar_tog_pos = get_theme_mod( 'navbar_tog_pos', 0 );
+$navbar_toggler_class = 'navbar-toggler';
+if ($navbar_tog_pos != 0)
+	$navbar_toggler_class .= ' ' . bs4_navbar_tog_pos_class( $navbar_tog_pos );
 
 switch ($navbar_placement) {
 	case 1: $navbar_class[] = 'navbar-fixed-top'; break;
@@ -61,17 +67,23 @@ if ($navbar_container) {
 	<nav id="main-navbar" class="<?= $navbar_class ?>"><?php
 }
 
-?><button class="navbar-toggler hidden-sm-up" type="button"
-	data-toggle="collapse" data-target="#collapsible-navbar">&#9776;</button><div
-	class="collapse navbar-toggleable-xs" id="collapsible-navbar"><?php
+?><button class="<?= $navbar_toggler_class ?>" type="button"
+  data-toggle="collapse" data-target="#collapsible-navbar"><span class="navbar-toggler-icon"></span></button><?php
 
-if (!empty($navbar_brand)) {
-	echo apply_filters( 'bs4_navbar_brand_link',
-		'<a class="navbar-brand" href="' .
-		bs4_home_url() . '" rel="home">' . $navbar_brand . '</a>' );
+function __do_bs4_navbar_brand_link($navbar_brand) {
+	if (!empty($navbar_brand))
+		echo apply_filters( 'bs4_navbar_brand_link',
+			'<a class="navbar-brand" href="' .
+			bs4_home_url() . '" rel="home">' . $navbar_brand . '</a>' );
 }
 
-$menu_class = 'nav navbar-nav';
+if ($navbar_tog_pos != 0) __do_bs4_navbar_brand_link($navbar_brand);
+
+?><div class="collapse navbar-collapse" id="collapsible-navbar"><?php
+
+if ($navbar_tog_pos == 0) __do_bs4_navbar_brand_link($navbar_brand);
+
+$menu_class = 'navbar-nav mr-auto';
 if ($navbar_brand && ($logo_placement == 3) && (!$navbar_search))
 	$menu_class .= ' float-right';
 $menu_content = apply_filters('bs4_wp_nav_menu', '', $menu_class);

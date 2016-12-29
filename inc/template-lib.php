@@ -83,23 +83,43 @@ function get_bs4_user_i($id_or_email = null, $before = '', $after = '', $attribs
  */
 function bs4_navbar_color_class($navbar_color, $custom_color_class = false) {
 	switch ($navbar_color) {
-		case 1: return 'bg-inverse'; break;
-		case 2: return 'bg-faded'; break;
-		case 3: return 'bg-default'; break;
-		case 4: return 'bg-transparent'; break;
+		case 1: $ret = 'inverse'; break;
+		case 2: $ret = 'faded'; break;
+		case 3: $ret = 'default'; break;
+		case 4: $ret = 'transparent'; break;
 		case 5:
-			$ret = 'bg-custom';
+			$ret = 'custom';
 			if ($custom_color_class)
 				$ret .= '-' . $custom_color_class;
-			return $ret;
 			break;
+		default:
+			$ret = 'primary';
 	}
-	return 'bg-primary';
+	return 'bg-' . $ret;
 }
 
+/**
+ */
 function bs4_navbar_shading_class($navbar_shading) {
-	if ($navbar_shading) return 'navbar-light';
-	else return 'navbar-dark';
+	if ($navbar_shading) $ret = 'light';
+	else $ret = 'inverse';
+	return 'navbar-' . $ret;
+}
+
+function bs4_navbar_toggler_class($navbar_toggler) {
+	switch ($navbar_toggler) {
+		case 1: $ret = '-sm'; break;
+		case 2: $ret = '-md'; break;
+		case 3: $ret = '-lg'; break;
+		case 4: $ret = '-xl'; break;
+		default: $ret = '';
+	}
+	return 'navbar-toggleable' . $ret;
+}
+
+function bs4_navbar_tog_pos_class($navbar_tog_pos) {
+	if ($navbar_tog_pos == 0) return '';
+	else return 'navbar-toggler-right';
 }
 
 /**

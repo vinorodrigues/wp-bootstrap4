@@ -24,7 +24,6 @@ include_once 'inc/template-tags.php';
 include_once 'inc/template-lib.php';
 include_once 'inc/custom-header.php';
 include_once 'inc/custom-background.php';
-include_once 'inc/equal-heights.php';
 // Wordpress fix-ups
 include_once 'inc/fix-post-template.php';
 include_once 'inc/fix-comment-template.php';
@@ -215,8 +214,7 @@ function bs4_scripts() {
 
 	$url = trim( bs4_get_option('bootstrap_css') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' .
-			(bs4_get_option('flexbox') ? '-flex' : '') . DOTMIN . '.css' );
+		$url = get_theme_file_uri( '/vendor/bootstrap/css/bootstrap' . DOTMIN . '.css' );
 		$ver = BOOTSTRAP_VERSION;
 	} else {
 		$ver = NULL;
@@ -304,15 +302,6 @@ function bs4_scripts() {
 		array( 'jquery' ),
 		false,
 		true );
-
-	// Equal Heights
-	if ( bs4_get_option('equalheights') )
-		wp_register_script(
-			'match-height',
-			get_theme_file_uri( '/vendor/match-height/js/matchHeight' . DOTMIN . '.js' ),
-			array( 'jquery' ),
-			MATCH_HEIGHT_VERSION,
-			true );
 
 	// Comment Reply
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )

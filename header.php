@@ -95,7 +95,6 @@ function bs4_content_class($sidebar_position) {
 			$classes[] = 'push-lg-2';
 			break;
 	};
-	if ( bs4_get_option('equalheights') ) $classes[] = 'eh';
 	$classes[] = 'col-pr-12';
 	if (($sidebar_position == 1) || ($sidebar_position == 3)) $classes[]= 'push-pr-0';
 	$classes[] = 'content';

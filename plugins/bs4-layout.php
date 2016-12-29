@@ -12,7 +12,6 @@ License URI: http://opensource.org/licenses/mit-license.html
 
 include_once 'inc/plugin-lib.php';
 include_once 'inc/grid.php';
-include_once 'inc/equal-heights.php';
 
 
 // Tecsmith Options

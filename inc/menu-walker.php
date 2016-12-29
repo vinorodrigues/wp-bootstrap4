@@ -27,7 +27,7 @@
 			$w_depth = $args->depth - 1;
 			$has_children = in_array('menu-item-has-children', $classes) && ($depth < $w_depth);
 			$classes = array('nav-item');
-			if ($is_active) $classes[] = 'active';
+			if ($is_active) $classes[] = 'active';  // AAAAAAAAAA
 			if ($has_children) $classes[] = 'dropdown';
 
 			$id = apply_filters( 'nav_menu_item_id', '', $item, $args );
@@ -54,7 +54,7 @@
 				$class_names = 'dropdown-item';
 				if ($is_active) $class_names .= ' text-primary';
 			}
-			if ($is_active) $class_names .= ' active';
+			if ($is_active) $class_names .= ' active';  // AAAAAAAAAA
 			$attributes = ' class="' . $class_names . '"';
 			$this_attr_title = empty($item->description) ? $item->attr_title : $item->description;
 			$attributes .= ! empty( $this_attr_title ) ? ' title="'  . esc_attr( $this_attr_title ) .'"' : '';

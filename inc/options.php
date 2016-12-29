@@ -32,17 +32,17 @@ function bs4_options_page() {
 	?><h2 class="nav-tab-wrapper"><?php
 
 	if ($active_tab != 1) echo '<a href="?page='.BS4_THOPT_SLUG.'&tab=1" class="nav-tab">';
-	else echo '<span class="nav-tab nav-tab-active">';
+	else echo '<span class="nav-tab nav-tab-active">';  // AAAAAAAAAA
 	?>Dependencies<?php
 	if ($active_tab != 1) echo '</a>'; else echo '</span>';
 
 	if ($active_tab != 2) echo '<a href="?page='.BS4_THOPT_SLUG.'&tab=2" class="nav-tab">';
-	else echo '<span class="nav-tab nav-tab-active">';
+	else echo '<span class="nav-tab nav-tab-active">';  // AAAAAAAAAA
 	?>Styling &amp; Script<?php
 	if ($active_tab != 2) echo '</a>'; else echo '</span>';
 
 	if ($active_tab != 3) echo '<a href="?page='.BS4_THOPT_SLUG.'&tab=3" class="nav-tab">';
-	else echo '<span class="nav-tab nav-tab-active">';
+	else echo '<span class="nav-tab nav-tab-active">';  // AAAAAAAAAA
 	?>Plugins<?php
 	if ($active_tab != 3) echo '</a>'; else echo '</span>';
 
@@ -119,8 +119,6 @@ function bs4_get_option($option = null) {
 		$defaults = array(
 			'bootstrap_css' => '',
 			'bootstrap_js'  => '',
-			'flexbox'       => false,
-			'equalheights'  => false,
 			'jquery_js'     => '',
 			'icon_set'      => 'fa',
 
@@ -276,8 +274,6 @@ function bs4_sanitize_options( $input ) {
 	$output = array();
 	foreach ($input as $key => $value) $output[$key] = $value;
 
-	__bs4_san_bool('flexbox', $input, $output);
-	__bs4_san_bool('equalheights', $input, $output);
 	__bs4_san_bool('wide_footer', $input, $output);
 	__bs4_san_bool('block_plugins', $input, $output);
 	__bs4_san_url('bootstrap_css', $input, $output);
@@ -335,39 +331,6 @@ function bs4_admin_init() {
 				' Leave blank for local copy (version ' .
 				BOOTSTRAP_VERSION . ').',
 			)
-		);
-
-	add_settings_field(
-		'flexbox',
-		'Enable Flexbox',
-		'bs4_opts_bool_callback',
-		BS4_THOPT_SEC1,
-		'bs4_dependancies',
-		array(
-			BS4_THOPT_SEC1,
-			'flexbox',
-			'Use the local copy of <code>bootstrap-flex.css</code> <i>(version ' .
-				BOOTSTRAP_VERSION . ')</i>.',
-			'<span class="dashicons dashicons-warning"></span> ' .
-				'Do not use this option if you have enabled Equal Heights.' .
-				'<br>' .
-				'<span class="dashicons dashicons-info"></span> ' .
-				'Flexbox is not supported by some browsers and may impede some user experience.')
-		);
-
-	add_settings_field(
-		'equalheights',
-		'Enable Equal Heights',
-		'bs4_opts_bool_callback',
-		BS4_THOPT_SEC1,
-		'bs4_dependancies',
-		array(
-			BS4_THOPT_SEC1,
-			'equalheights',
-			'Use the <code>match-heights.js</code> JavaScript (version ' .
-				MATCH_HEIGHT_VERSION . ') to create equal high columns.',
-			'<span class="dashicons dashicons-warning"></span> ' .
-				'Do not use this option if you have set for the Flexbox variant of Bootstrap.')
 		);
 
 	add_settings_field(
