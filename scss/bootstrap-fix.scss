@@ -32,23 +32,31 @@ input[type="search"].form-control::-webkit-search-results-decoration {
 
 /* ----- Centering ----- */
 
-@mixin center {
+@mixin centered {
 	margin-left: auto !important;
 	margin-right: auto !important;
 	text-align: center !important;
+	display: block;
+	clear: both;
+}
+
+.centered {
+	@include centered();
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    .center-#{$breakpoint} {
-      @include center();
-    }
-  }
-  @include media-breakpoint-down($breakpoint) {
-    .center-#{$breakpoint}-down {
-      @include center();
-    }
-  }
+	@if $breakpoint != 'xs' {
+		@include media-breakpoint-up($breakpoint) {
+			.centered-#{$breakpoint} {
+				@include centered();
+			}
+		}
+		@include media-breakpoint-down($breakpoint) {
+			.centered-#{$breakpoint}-down {
+				@include centered();
+			}
+		}
+	}
 }
 
 

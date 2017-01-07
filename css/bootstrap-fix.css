@@ -12,72 +12,83 @@ input[type="search"].form-control::-webkit-search-results-decoration {
 }
 
 /* ----- Centering ----- */
-.center-xs {
+.centered {
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;
+  display: block;
+  clear: both;
 }
 
-@media (max-width: 575px) {
-  .center-xs-down {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-}
 @media (min-width: 576px) {
-  .center-sm {
+  .centered-sm {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (max-width: 767px) {
-  .center-sm-down {
+  .centered-sm-down {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (min-width: 768px) {
-  .center-md {
+  .centered-md {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (max-width: 991px) {
-  .center-md-down {
+  .centered-md-down {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (min-width: 992px) {
-  .center-lg {
+  .centered-lg {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (max-width: 1199px) {
-  .center-lg-down {
+  .centered-lg-down {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
 @media (min-width: 1200px) {
-  .center-xl {
+  .centered-xl {
     margin-left: auto !important;
     margin-right: auto !important;
     text-align: center !important;
+    display: block;
+    clear: both;
   }
 }
-.center-xl-down {
+.centered-xl-down {
   margin-left: auto !important;
   margin-right: auto !important;
   text-align: center !important;
+  display: block;
+  clear: both;
 }
 
 /* ----- Form required ----- */

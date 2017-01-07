@@ -202,7 +202,7 @@ else :
 			'next_text' => get_bs4_i('raquo'),
 			'prev_text' => get_bs4_i('laquo'),
 			'dots' => '&vellip;',
-			'before' => '<nav class="center-xs"><ul class="pagination pagination-sm">',
+			'before' => '<nav class="centered"><ul class="pagination pagination-sm">',
 			'after' => '</ul></nav>',
 		) );
 

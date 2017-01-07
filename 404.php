@@ -10,7 +10,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 
 <div class="alert alert-warning alert-404">
 
-<div class="center-sm mb-3">
+<div class="centered-sm mb-3">
 	<h1 class="display-1"><?php bs4_i('warning', '', ' ') ?>404</h1>
 	<p class="text-danger text-center">The page you were looking for could not be found.</p>
 </div>
@@ -22,7 +22,7 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : false;
 } ?>
 
 <form method="get" id="search-form-404"
-	action="<?= esc_url(home_url('/')) ?>" class="form-inline search-from center-sm">
+	action="<?= esc_url(home_url('/')) ?>" class="form-inline search-from centered-sm">
 	<fieldset class="form-group">
 	<input type="search" name="s" class="search-input form-control"
 		placeholder="Search &hellip;" value="<?php esc_attr( get_search_query() ); ?>"

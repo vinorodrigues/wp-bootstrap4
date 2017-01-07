@@ -11,6 +11,9 @@ if ( !defined('THEMEPATH') )
 if ( !defined('DOTMIN') )
 	define('DOTMIN', (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ) ? '' : '.min');
 
+if ( !defined('DOTSLIM') )
+	define('DOTSLIM', '.slim');
+
 // config
 include_once 'config.php';
 include_once 'inc/options.php';
@@ -268,7 +271,7 @@ function bs4_scripts() {
 	// jQuery
 	$url = trim( bs4_get_option('jquery_js') );
 	if (empty($url)) {
-		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTMIN . '.js' );
+		$url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTSLIM . DOTMIN . '.js' );
 		$ver = JQUERY_VERSION;
 	} else {
 		$ver = NULL;

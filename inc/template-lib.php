@@ -335,7 +335,7 @@ function bs4_content_pager() {
 		$_n = inject_class_in_tag('a', 'btn btn-outline-info', $_n);
 		$_p = inject_class_in_tag('a', 'btn btn-outline-info', $_p);
 
-		?><nav class="center-xs hidden-print"><div class="pager"><?php
+		?><nav class="centered hidden-print"><div class="pager"><?php
 
 		if ( is_single() ) {
 			if ($_p) echo $_p;
@@ -352,7 +352,7 @@ function bs4_content_pager() {
 
 function bs4_link_pages() {
 	wp_link_pages_2( array(
-		'before'           => '<nav class="center-xs"><ul class="pagination">',
+		'before'           => '<nav class="centered"><ul class="pagination">',
 		'after'            => '</ul></center></nav>',
 		'nextpagelink'     => get_bs4_i('raquo'),
 		'previouspagelink' => get_bs4_i('laquo'),

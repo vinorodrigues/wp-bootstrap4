@@ -69,17 +69,20 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 			'md' => false,
 			'lg' => false,
 			'xl' => false,
-			'pull-xs' => false,
+			'pull' = false,
+			'push' = false,
+			'offset' = false,
+			'pull-xs' => false,  // alias of pull
 			'pull-sm' => false,
 			'pull-md' => false,
 			'pull-lg' => false,
 			'pull-xl' => false,
-			'push-xs' => false,
+			'push-xs' => false,  // alias of push
 			'push-sm' => false,
 			'push-md' => false,
 			'push-lg' => false,
 			'push-xl' => false,
-			'offset-xs' => false,
+			'offset-xs' => false,  // alias of offset
 			'offset-sm' => false,
 			'offset-md' => false,
 			'offset-lg' => false,
@@ -90,13 +93,20 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 			'offset-pr' => false,
 		), $atts, $tag);
 
+	foreach (array('pull', 'push', 'offset') as $xs_key) {
+		if (array_key_exists($xs_key, $attribs)) {
+			$attribs[$xs_key.'-xs'] = $attribs[$xs_key];
+			unset($attribs[$xs_key]);
+		}
+	}
+
 	$class = '';
 	foreach ($attribs as $key => $value) {
 		if ($value !== false) {
 			if (('pr' == $key) && (intval($value) == 0)) {
 				$class .= 'hidden-print ';
 			} elseif (in_array($key, array('xs','sm','md','lg','xl'))) {
-				$class .= 'col-' . $key . '-' . intval($value) . ' ';
+				$class .= 'col-' . ($key != 'xs' ? $key . '-' : '') . intval($value) . ' ';
 			} else {
 				$class .= $key . '-' . intval($value) . ' ';
 			}

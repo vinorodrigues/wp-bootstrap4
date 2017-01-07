@@ -51,7 +51,7 @@ function bs4_scroll_menu_get_navbar_struct() {
 }
 
 function bs4_scroll_menu_should_do() {
-	$do = get_theme_mod('i_navbar_when', false);
+	$do = get_theme_mod('i_navbar_when', 0);
 	if (!$do || ($do == 0)) return false;
 	if ($do == 1) return is_front_page();
 	if ($do == 2) return true;
