@@ -69,9 +69,9 @@ function ts_bootstrap4_column_sc( $atts, $content = null, $tag = '' ) {
 			'md' => false,
 			'lg' => false,
 			'xl' => false,
-			'pull' = false,
-			'push' = false,
-			'offset' = false,
+			'pull' => false,
+			'push' => false,
+			'offset' => false,
 			'pull-xs' => false,  // alias of pull
 			'pull-sm' => false,
 			'pull-md' => false,
