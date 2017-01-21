@@ -181,7 +181,7 @@ header.home-page {
 }
 
 .brand-logo {
-	max-height: ((0.85rem) - ($navbar-brand-padding-y * 2) + $line-height-base);
+	max-height: ((0.85rem) - (0.50rem) + $line-height-base);
 }
 
 /* -------------------- BOOTSTRAP TRICKS -------------------- */

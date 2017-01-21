@@ -41,8 +41,8 @@ if ($navbar_tog_pos != 0)
 	$navbar_toggler_class .= ' ' . bs4_navbar_tog_pos_class( $navbar_tog_pos );
 
 switch ($navbar_placement) {
-	case 1: $navbar_class[] = 'navbar-fixed-top'; break;
-	case 2: $navbar_class[] = 'navbar-fixed-bottom'; break;
+	case 1: $navbar_class[] = 'fixed-top'; break;
+	case 2: $navbar_class[] = 'fixed-bottom'; break;
 	default:
 		if ($navbar_container && ($container_segments != 0))
 			$navbar_class[] = 'navbar-full';
