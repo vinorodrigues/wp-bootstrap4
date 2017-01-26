@@ -52,6 +52,9 @@ Tags: bootstrap, responsive-layout
 
 /* ----- DEBUG ----- */
 
-/* .wp-debug [class^="col-"] {
-	outline: 1px dashed rgba(255,0,0,0.1);
+/* .wp-debug .container {
+	ouline: 1px dotted rgba(0,255,0,0.2);
+}
+.wp-debug [class^="col-"] {
+	outline: 1px dashed rgba(255,0,0,0.2);
 }  /* */

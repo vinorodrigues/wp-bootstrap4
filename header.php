@@ -223,57 +223,57 @@ if ($container_segments == 0) {
 ?>
 <header id="header" class="section">
 <?php
-	$do_header = (($head_a & 3) == 0) && ($logo_placement != 3) && ($logo_placement != 4);
+	$do_header = (($head_a & 3) != 0) || (($logo_placement != 3) && ($logo_placement != 4));
 
 	do_action('tha_leader_top');
 	if ($do_header) echo '<div class="' . $band_class . ' heading"><div class="row">';
 
 	switch ($logo_placement) {
-	case 1:  // center
-		?><div class="col-12 head-c-1"><?= bs4_heading() ?></div><?php
-	case 3:  // Navbar
-	case 4:  // Disabled
-		if (($head_a & 1) != 0) {
-			?><div class="col-12 head-c-2 hidden-print"><?php
-			echo bs4_headernav() ?></div><?php
-		}
-		if (($head_a & 2) != 0) {
-			?><div class="col-12 head-c-3 hidden-print"><?php
-			dynamic_sidebar('sidebar-3') ?></div><?php
-		}
-		break;
-	case 2:  // right
-		if ($head_a == 0) {
-			?><div class="col-12 head-r-1"><?= bs4_heading() ?></div><?php
-		} else {
-			?><div class="col-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?php
-				echo bs4_heading() ?></div><?php
-			?><div class="col-12 col-sm-7 pull-sm-5 <?php
-				echo $head_a !== 3 ? 'head-r-2 ' : '' ?>hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-12 head-r-2">';  // nested row
-			if (($head_a & 1) != 0) echo bs4_headernav();
-			if ($head_a === 3) echo '</div><div class="col-12 head-r-3">';
-			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
-			if ($head_a === 3) echo '</div></div>';
-			?></div><?php
-		}
-		break;
-	default:  // left
-		if ($head_a == 0) {
-			?><div class="col-12 head-l-1"><?= bs4_heading() ?></div><?php
-		} else {
-			?><div class="col-12 col-sm-5 col-pr-12 head-l-1"><?php
-				echo bs4_heading() ?></div><?php
-			?><div class="col-12 col-sm-7 <?php
-				echo $head_a !== 3 ? 'head-l-2 ' : '' ?>hidden-print"><?php
-			if ($head_a === 3) echo '<div class="row"><div class="col-12 head-l-2">';  // nested row
-			if (($head_a & 1) != 0) echo bs4_headernav();
-			if ($head_a === 3) echo '</div><div class="col-12 head-l-3">';
-			if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
-			if ($head_a === 3) echo '</div></div>';
-			?></div><?php
-		}
-		break;
+		case 1:  // center
+			?><div class="col-12 head-c-1"><?= bs4_heading() ?></div><?php
+		case 3:  // Navbar
+		case 4:  // Disabled
+			if (($head_a & 1) != 0) {
+				?><div class="col-12 head-c-2 hidden-print"><?php
+				echo bs4_headernav() ?></div><?php
+			}
+			if (($head_a & 2) != 0) {
+				?><div class="col-12 head-c-3 hidden-print"><?php
+				dynamic_sidebar('sidebar-3') ?></div><?php
+			}
+			break;
+		case 2:  // right
+			if ($head_a == 0) {
+				?><div class="col-12 head-r-1"><?= bs4_heading() ?></div><?php
+			} else {
+				?><div class="col-12 col-sm-5 push-sm-7 col-pr-12 head-r-1"><?php
+					echo bs4_heading() ?></div><?php
+				?><div class="col-12 col-sm-7 pull-sm-5 <?php
+					echo $head_a !== 3 ? 'head-r-2 ' : '' ?>hidden-print"><?php
+				if ($head_a === 3) echo '<div class="row"><div class="col-12 head-r-2">';  // nested row
+				if (($head_a & 1) != 0) echo bs4_headernav();
+				if ($head_a === 3) echo '</div><div class="col-12 head-r-3">';
+				if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
+				if ($head_a === 3) echo '</div></div>';
+				?></div><?php
+			}
+			break;
+		default:  // left
+			if ($head_a == 0) {
+				?><div class="col-12 head-l-1"><?= bs4_heading() ?></div><?php
+			} else {
+				?><div class="col-12 col-sm-5 col-pr-12 head-l-1"><?php
+					echo bs4_heading() ?></div><?php
+				?><div class="col-12 col-sm-7 <?php
+					echo $head_a !== 3 ? 'head-l-2 ' : '' ?>hidden-print"><?php
+				if ($head_a === 3) echo '<div class="row"><div class="col-12 head-l-2">';  // nested row
+				if (($head_a & 1) != 0) echo bs4_headernav();
+				if ($head_a === 3) echo '</div><div class="col-12 head-l-3">';
+				if (($head_a & 2) != 0) dynamic_sidebar('sidebar-3');
+				if ($head_a === 3) echo '</div></div>';
+				?></div><?php
+			}
+			break;
 	}
 
 	if ($do_header) echo '</div></div>';

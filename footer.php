@@ -5,12 +5,14 @@
 
 global $container_segments, $band_class;
 
-function bs4_footernav($classes = '') {
+function bs4_footernav($mn_c_class) {
+	$ul_class = 'nav';
+	if (!empty($mn_c_class)) $ul_class .= ' ' . $mn_c_class;
 	return wp_nav_menu( array(
 		'menu'	          => 'footer',
-		'menu_class'      => 'list-inline',
+		'menu_class'      => $ul_class,
 		'container'       => 'nav',
-		'container_class' => $classes,
+		'container_class' => 'nav-footer',
 		'fallback_cb'     => false,
 		'depth'	          => 1,
 		'walker'	  => new Bootstrap_Walker_Menu_Nav(),
@@ -25,11 +27,9 @@ function ___cr($cr_class, $cr_text) {
 	?></div><?php
 }
 
-function ___mn($mn_class, $mn_c_class, $center = false) {
+function ___mn($mn_class, $mn_c_class) {
 	?><div class="<?= $mn_class ?>"><?php
-	if ($center) echo '<center>';
-	echo bs4_footernav('nav nav-footer ' . $mn_c_class);
-	if ($center) echo '</center>';
+	echo bs4_footernav($mn_c_class);
 	?></div><?php
 }
 
@@ -56,9 +56,9 @@ if ($has_mn) {
 	if ($has_cr && ($cr_position != 1)) $mn_class .= ' col-md-6';
 	$mn_c_class = '';
 	switch ($cr_position) {
-		case 1: $mn_c_class .= ''; break;
-		case 2: $mn_c_class .= ' float-left'; break;
-		default: $mn_c_class .= ' float-right'; break;
+		case 1: $mn_c_class .= 'justify-content-center'; break;
+		case 2: $mn_c_class .= 'justify-content-start'; break;
+		default: $mn_c_class .= 'justify-content-end'; break;
 	}
 	$mn_class .= ' hidden-print';
 }
@@ -80,7 +80,7 @@ if ($has_mn || $has_cr) :
 
 	switch ($cr_position) {
 		case 1:
-			if ($has_mn) ___mn($mn_class, $mn_c_class, true);
+			if ($has_mn) ___mn($mn_class, $mn_c_class);
 			if ($has_cr) ___cr($cr_class, $cr_text);
 			break;
 		case 2:

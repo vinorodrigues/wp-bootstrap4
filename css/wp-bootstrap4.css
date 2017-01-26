@@ -74,10 +74,6 @@ img.alignnone, img.aligncenter, img.alignright, img.alignleft {
   margin-bottom: 3rem;
 }
 
-.header-nav .nav {
-  display: inline-block;
-}
-
 .alert-404 {
   margin-bottom: 0;
 }
@@ -88,19 +84,19 @@ header.home-page {
 }
 
 /* Go Facebook style and use "·" (the interpunct character) for separators */
-.nav-footer ul {
-  margin-bottom: 0 !important;
-}
-.nav-footer li {
-  padding: 0;
-  display: inline;
-}
-.nav-footer li:not(:last-child):after {
+.nav-footer .nav-item:not(:last-child):after {
   content: "·";
+}
+.nav-footer .nav-link {
+  color: #292b2c;
+  padding: 0;
+  display: inline-block;
+}
+.nav-footer .nav-link:hover, .nav-footer .nav-link:focus {
+  color: #014c8c;
 }
 .nav-footer li a {
   margin: 0 0.5rem;
-  color: #292b2c;
 }
 .nav-footer li:first-child a {
   margin-left: 0;
@@ -108,11 +104,16 @@ header.home-page {
 .nav-footer li:last-child a {
   margin-right: 0;
 }
-.nav-footer li a:hover, .nav-footer li a:focus {
-  text-decoration: none;
-  color: #014c8c;
-}
 
+/* .nav-footer {
+	ul { margin-bottom: 0 !important; }
+	li { padding: 0; display: inline; }
+	li:not(:last-child):after { content: "·"; }
+	li a { margin: 0 ($spacer-x / 2); color: $body-color; }
+	li:first-child a { margin-left: 0; }
+	li:last-child a { margin-right: 0; }
+	li a:hover, li a:focus { text-decoration: none; color: $link-hover-color; }
+} */
 .copyright {
   color: #636c72;
 }
