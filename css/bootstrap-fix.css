@@ -121,7 +121,9 @@ input[type="search"].form-control::-webkit-search-results-decoration {
 .is-required .form-control-required {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath stroke='%23f70' stroke-linecap='round' d='M2 2L6.6 5M2 5L6.6 2M4.3 1L4.3 6'/%3E%3C/svg%3E");
 }
-.is-required .form-control-required:focus {
+.is-required .form-control,
+.is-required .custom-select,
+.is-required .custom-file-control {
   border-color: rgba(255, 119, 0, 0.85);
 }
 

@@ -102,7 +102,9 @@ $form-icon-optional: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://w
 		background-image: $form-icon-required;
 	}
 
-	.form-control-required:focus {
+	.form-control,
+	.custom-select,
+	.custom-file-control {
 		border-color: rgba(255,119,0,0.85);
 	}
 }

@@ -2331,7 +2331,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #5cb85c;
 }
 
-.has-success .form-control {
+.has-success .form-control,
+.has-success .custom-select,
+.has-success .custom-file-control {
   border-color: #5cb85c;
 }
 
@@ -2353,7 +2355,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #f0ad4e;
 }
 
-.has-warning .form-control {
+.has-warning .form-control,
+.has-warning .custom-select,
+.has-warning .custom-file-control {
   border-color: #f0ad4e;
 }
 
@@ -2375,7 +2379,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   color: #d9534f;
 }
 
-.has-danger .form-control {
+.has-danger .form-control,
+.has-danger .custom-select,
+.has-danger .custom-file-control {
   border-color: #d9534f;
 }
 
@@ -2394,6 +2400,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
@@ -2432,6 +2440,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     -webkit-flex: 0 0 auto;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
@@ -3592,8 +3602,9 @@ tbody.collapse.show {
           background-size: 8px 10px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
-  -moz-appearance: none;
   -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .custom-select:focus {
@@ -4508,6 +4519,8 @@ tbody.collapse.show {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
@@ -4541,6 +4554,8 @@ tbody.collapse.show {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
     -webkit-flex-flow: row wrap;
         -ms-flex-flow: row wrap;
             flex-flow: row wrap;
@@ -5021,6 +5036,8 @@ a.badge:focus, a.badge:hover {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
   -webkit-flex-flow: row wrap;
       -ms-flex-flow: row wrap;
           flex-flow: row wrap;
