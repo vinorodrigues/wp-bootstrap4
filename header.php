@@ -197,7 +197,7 @@ do_action('tha_html_before');
 
 ?>
 <html <?php language_attributes(); ?>>
-<?php do_action('tha_header_before'); ?><head><?php do_action('tha_header_top'); ?>
+<?php do_action('tha_head_before'); ?><head><?php do_action('tha_head_top'); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
@@ -206,7 +206,7 @@ do_action('tha_html_before');
 	// comments_popup_script(640, 480);
 	// XXX: http://www.quickonlinetips.com/archives/2014/06/add-popup-comments-in-wordpress-posts/
 ?>
-<?php do_action( 'tha_header_bottom' ); ?></head><?php do_action('tha_header_after'); ?>
+<?php do_action( 'tha_head_bottom' ); ?></head><?php do_action('tha_head_after'); ?>
 <body <?php bs4_body_attribs(); ?>>
 <?php
 
@@ -214,9 +214,9 @@ do_action('tha_body_top');
 
 if ($container_segments == 0) {
 	echo '<div id="top" class="' . $container_class . ' folio">';
-	do_action('tha_leader_before');
+	do_action('tha_header_before');
 } else {
-	do_action('tha_leader_before');
+	do_action('tha_header_before');
 	echo '<div id="top" class="header">';
 }
 
@@ -225,7 +225,7 @@ if ($container_segments == 0) {
 <?php
 	$do_header = (($head_a & 3) != 0) || (($logo_placement != 3) && ($logo_placement != 4));
 
-	do_action('tha_leader_top');
+	do_action('tha_header_top');
 	if ($do_header) echo '<div class="' . $band_class . ' heading"><div class="row">';
 
 	switch ($logo_placement) {
@@ -293,11 +293,11 @@ if ($container_segments == 0) {
 		}
 	}
 
-	do_action('tha_leader_bottom');
+	do_action('tha_header_bottom');
 ?></header>
 <?php
 
-do_action('tha_leader_after');
+do_action('tha_header_after');
 $main_band_class = $band_class;
 $main_attribs = apply_filters('bs4_main_attribs', '');
 if ($main_attribs != '') $main_attribs = ' ' . $main_attribs;
