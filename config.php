@@ -4,7 +4,7 @@
  */
 
 define( 'BOOTSTRAP_VERSION', '4.0.0-alpha.6' );  // Bootstrap Version - @see http://v4-alpha.getbootstrap.com/
-define( 'JQUERY_VERSION', '3.2.0' );  // JQuery Version - @see http://jquery.com
+define( 'JQUERY_VERSION', '3.2.1' );  // JQuery Version - @see http://jquery.com
 define( 'TETHER_VERSION', '1.4.0' );  // Tether Version - @see http://tether.io
 define( 'EASING_VERSION', '1.3' );  // Easing Version - @see http://gsgd.co.uk/sandbox/jquery/easing
 define( 'FONTAWESOME_VERSION', '4.7.0' );  // Fontawesome version - @see http://fontawesome.io
