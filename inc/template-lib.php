@@ -114,7 +114,7 @@ function bs4_navbar_toggler_class($navbar_toggler) {
 		case 4: $ret = '-xl'; break;
 		default: $ret = '';
 	}
-	return 'navbar-toggleable' . $ret;
+	return 'navbar-expand' . $ret;
 }
 
 function bs4_navbar_tog_pos_class($navbar_tog_pos) {

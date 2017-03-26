@@ -314,6 +314,9 @@ function bs4_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 
+	// Remove l10n
+	wp_deregister_script( 'l10n' );
+
 	// Raw JS
 
 	/* ts_enqueue_script(

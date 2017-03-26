@@ -105,15 +105,6 @@ header.home-page {
   margin-right: 0;
 }
 
-/* .nav-footer {
-	ul { margin-bottom: 0 !important; }
-	li { padding: 0; display: inline; }
-	li:not(:last-child):after { content: "·"; }
-	li a { margin: 0 ($spacer-x / 2); color: $body-color; }
-	li:first-child a { margin-left: 0; }
-	li:last-child a { margin-right: 0; }
-	li a:hover, li a:focus { text-decoration: none; color: $link-hover-color; }
-} */
 .copyright {
   color: #636c72;
 }
