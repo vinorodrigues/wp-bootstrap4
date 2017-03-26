@@ -199,8 +199,9 @@ do_action('tha_html_before');
 <html <?php language_attributes(); ?>>
 <?php do_action('tha_head_before'); ?><head><?php do_action('tha_head_top'); ?>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
+<title><?php wp_title(); ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+<!-- <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>"> -->
 <?php
 	wp_head();
 	// comments_popup_script(640, 480);
