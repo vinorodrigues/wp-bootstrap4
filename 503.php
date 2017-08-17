@@ -39,8 +39,6 @@ $jqry_url = trim( bs4_get_option('jquery_js') );
 if (empty($jqry_url))
 	$jqry_url = get_theme_file_uri( '/vendor/jquery/js/jquery-' . JQUERY_VERSION . DOTMIN . '.js' );
 
-// $tthr_url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
-
 $bsjs_url = trim( bs4_get_option('bootstrap_js') );
 if (empty($bsjs_url))
 	$bsjs_url = get_theme_file_uri( '/vendor/bootstrap/js/bootstrap' . DOTMIN . '.js' );

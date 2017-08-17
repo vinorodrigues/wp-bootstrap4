@@ -282,10 +282,10 @@ function bs4_scripts() {
 	}
 	wp_enqueue_script( 'jquery', $url, array(), $ver, true );
 
-	// Tether
-	$url = get_theme_file_uri( '/vendor/tether/js/tether' . DOTMIN . '.js' );
-	$ver = TETHER_VERSION;
-	wp_enqueue_script( 'tether', $url, array( 'jquery' ), $ver, true );
+	// Popper
+	$url = get_theme_file_uri( '/vendor/popper/js/popper' . DOTMIN . '.js' );
+	$ver = POPPER_VERSION;
+	wp_enqueue_script( 'popper', $url, array( 'jquery' ), $ver, true );
 
 	// Easing
 	$url = get_theme_file_uri( '/vendor/easing/js/easing' . DOTMIN . '.js' );
